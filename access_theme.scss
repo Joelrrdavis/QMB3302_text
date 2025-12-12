@@ -1,0 +1,12 @@
+// Strong body text on white
+$body-color: #212529; // high contrast vs #ffffff
+
+// Ensure links meet 4.5:1 vs background
+a, .nav-link {
+  color: #0050a8;           // pick something with >= 4.5:1 on white
+}
+
+// Avoid ultra-light muted text for important content
+.text-muted {
+  color: #555555;           // not super-light gray
+}

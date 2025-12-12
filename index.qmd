@@ -2,8 +2,7 @@
 title: "Foundations of Analytics & AI"
 ---
 
-# Foundations of Analytics & AI  
-### Course Textbook
+## Course Textbook
 
 Welcome to the online textbook for the course. It is organized to provide a clear, structured pathway through the foundational ideas and practical techniques of analytics and artificial intelligence. Each week’s chapter includes:
 
@@ -17,7 +16,7 @@ This site is designed to complement the in-class experience while remaining acce
 
 ---
 
-# How to Use This Textbook
+## How to Use This Textbook
 
 The material is organized into three  types:
 
@@ -45,7 +44,7 @@ These guides remain relevant throughout the semester and may be updated as tools
 
 ---
 
-# Course Learning Philosophy
+## Course Learning Philosophy
 
 This textbook is built around two related objectives:
 
@@ -56,7 +55,7 @@ Each week reinforces both trajectories: one conceptual, one applied.
 
 ---
 
-# Accessing Code and Data
+## Accessing Code and Data
 
 All example code for the course is maintained in the main GitHub repository:
 
@@ -70,6 +69,6 @@ Links to specific scripts and notebooks appear at the end of each week’s chapt
 
 ---
 
-# Need Help?
+## Need Help?
 
 If you encounter technical issues with installation, environments, or package setup, consult the **Guides** section using the navigation bar above. These pages provide step-by-step instructions tailored for this course.

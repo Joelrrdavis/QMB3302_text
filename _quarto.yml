@@ -2,17 +2,14 @@ project:
   type: website
   output-dir: docs
 
-# Tell Quarto exactly which files to render.
-# This avoids rendering code, materials, or ignored folders.
+# which files to render.
 render:
   - index.qmd
   - textbook_src/week01_main.qmd
   - textbook_src/week02_main.qmd
   - textbook_src/week03_main.qmd
   - textbook_src/week04_main.qmd
-  # Add additional weeks here...
   - guides/*.qmd    # Render all guide pages
-
 
 website:
   title: "Foundations of Analytics & AI"
@@ -25,14 +22,13 @@ website:
       - text: Weeks
         menu:
           - href: textbook_src/week01_main.qmd
-            text: Week 1 – What is Analytics & AI?
+            text: Week 1. What is Analytics & AI?
           - href: textbook_src/week02_main.qmd
-            text: Week 2 – Python Basics
-          #- href: textbook_src/week03_main.qmd
-          #  text: Week 3 – Data Structures & Pandas
-          #- href: textbook_src/week04_main.qmd
-          #  text: Week 4 – From Data to Models
-          # Continue adding weekly pages...
+            text: Week 2. Python Basics
+          - href: textbook_src/week03_main.qmd
+            text: Week 3. Data Structures & Pandas
+          - href: textbook_src/week04_main.qmd
+            text: Week 4. From Data to Models
 
       - text: Guides
         menu:
@@ -40,20 +36,23 @@ website:
             text: Install Python
           - href: guides/install_requirements.qmd
             text: Installing requirements.txt
-          #- href: guides/setup_vscode.qmd
-          #  text: VS Code Setup
-          #- href: guides/using_jupyter.qmd
-          #  text: Using Jupyter / Colab
-          # Add additional how-to pages here...
+          - href: guides/using_colab.qmd
+            text: Using Colab
 
+  # Correct place for search configuration
+  search:
+    location: navbar      # puts it in the top navbar
+    type: overlay         # magnifying glass icon that opens a dialog
+    # type: textbox      
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: cosmo
+    css: access.theme.scss   # accessibility/contrast tweaks
     toc: true
     toc-depth: 3
     code-copy: true
-
 
 execute:
   echo: true

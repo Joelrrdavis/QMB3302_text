@@ -2,15 +2,15 @@
 title: "Week 3 – Data Structures & Pandas"
 ---
 
-# Week 3 – Overview
+## Week 3 – Overview
 
 This chapter will introduce essential data structures and basic data manipulation.
 
-## Key Topics
+### Key Topics
 - Lists, dictionaries, and tuples  
 - Pandas DataFrames  
 - Importing, cleaning, and selecting data  
 
-## Code for This Week
+### Code for This Week
 (links will be added later)
 
