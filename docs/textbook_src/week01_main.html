@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -149,11 +183,81 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#week-1-overview" id="toc-week-1-overview" class="nav-link active" data-scroll-target="#week-1-overview">Week 1 – Overview</a>
+  <li><a href="#week-1-overview" id="toc-week-1-overview" class="nav-link active" data-scroll-target="#week-1-overview">Week 1 Overview</a>
   <ul class="collapse">
-  <li><a href="#key-topics" id="toc-key-topics" class="nav-link" data-scroll-target="#key-topics">Key Topics</a></li>
-  <li><a href="#code-for-this-week" id="toc-code-for-this-week" class="nav-link" data-scroll-target="#code-for-this-week">Code for This Week</a></li>
+  <li><a href="#what-you-will-learn-this-week" id="toc-what-you-will-learn-this-week" class="nav-link" data-scroll-target="#what-you-will-learn-this-week">What you will learn this week</a></li>
+  <li><a href="#what-you-will-produce-this-week" id="toc-what-you-will-produce-this-week" class="nav-link" data-scroll-target="#what-you-will-produce-this-week">What you will produce this week</a></li>
+  <li><a href="#ai-literacy-objectives" id="toc-ai-literacy-objectives" class="nav-link" data-scroll-target="#ai-literacy-objectives">AI Literacy Objectives</a></li>
+  <li><a href="#job-ready-skills-objectives" id="toc-job-ready-skills-objectives" class="nav-link" data-scroll-target="#job-ready-skills-objectives">Job-Ready Skills Objectives</a></li>
   </ul></li>
+  <li><a href="#welcome-to-the-course-and-how-it-works" id="toc-welcome-to-the-course-and-how-it-works" class="nav-link" data-scroll-target="#welcome-to-the-course-and-how-it-works">1. Welcome to the Course and How It Works</a>
+  <ul class="collapse">
+  <li><a href="#course-outcomes-and-the-two-track-approach-ai-literacy-job-skills" id="toc-course-outcomes-and-the-two-track-approach-ai-literacy-job-skills" class="nav-link" data-scroll-target="#course-outcomes-and-the-two-track-approach-ai-literacy-job-skills">1.1 Course outcomes and the two-track approach (AI literacy + job skills)</a></li>
+  <li><a href="#what-you-will-build-each-week" id="toc-what-you-will-build-each-week" class="nav-link" data-scroll-target="#what-you-will-build-each-week">1.2 What you will build each week</a></li>
+  <li><a href="#how-to-succeed-in-this-course" id="toc-how-to-succeed-in-this-course" class="nav-link" data-scroll-target="#how-to-succeed-in-this-course">1.3 How to succeed in this course</a></li>
+  </ul></li>
+  <li><a href="#what-is-analytics-and-what-is-ai" id="toc-what-is-analytics-and-what-is-ai" class="nav-link" data-scroll-target="#what-is-analytics-and-what-is-ai">2. What Is Analytics and What Is AI?</a>
+  <ul class="collapse">
+  <li><a href="#analytics-descriptive-diagnostic-predictive-prescriptive" id="toc-analytics-descriptive-diagnostic-predictive-prescriptive" class="nav-link" data-scroll-target="#analytics-descriptive-diagnostic-predictive-prescriptive">2.1 Analytics: descriptive → diagnostic → predictive → prescriptive</a></li>
+  <li><a href="#ai-systems-that-perform-tasks-requiring-human-like-judgment" id="toc-ai-systems-that-perform-tasks-requiring-human-like-judgment" class="nav-link" data-scroll-target="#ai-systems-that-perform-tasks-requiring-human-like-judgment">2.2 AI: systems that perform tasks requiring human-like judgment</a></li>
+  <li><a href="#analytics-vs-ai-overlap-and-differences" id="toc-analytics-vs-ai-overlap-and-differences" class="nav-link" data-scroll-target="#analytics-vs-ai-overlap-and-differences">2.3 Analytics vs AI: overlap and differences</a></li>
+  <li><a href="#prediction-as-a-component-not-the-whole-system" id="toc-prediction-as-a-component-not-the-whole-system" class="nav-link" data-scroll-target="#prediction-as-a-component-not-the-whole-system">2.4 Prediction as a component, not the whole system</a></li>
+  </ul></li>
+  <li><a href="#data-models-logic-the-core-of-ai-systems" id="toc-data-models-logic-the-core-of-ai-systems" class="nav-link" data-scroll-target="#data-models-logic-the-core-of-ai-systems">3. Data + Models + Logic: The Core of AI Systems</a>
+  <ul class="collapse">
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">3.1 Data</a></li>
+  <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models">3.2 Models</a></li>
+  <li><a href="#logic" id="toc-logic" class="nav-link" data-scroll-target="#logic">3.3 Logic</a></li>
+  <li><a href="#where-systems-fail-data-model-logic-layer" id="toc-where-systems-fail-data-model-logic-layer" class="nav-link" data-scroll-target="#where-systems-fail-data-model-logic-layer">3.4 Where systems fail (data, model, logic layer)</a></li>
+  </ul></li>
+  <li><a href="#ai-paradigms-overview" id="toc-ai-paradigms-overview" class="nav-link" data-scroll-target="#ai-paradigms-overview">4. AI Paradigms Overview</a>
+  <ul class="collapse">
+  <li><a href="#symbolic-ai" id="toc-symbolic-ai" class="nav-link" data-scroll-target="#symbolic-ai">4.1 Symbolic AI</a></li>
+  <li><a href="#statistical-machine-learning" id="toc-statistical-machine-learning" class="nav-link" data-scroll-target="#statistical-machine-learning">4.2 Statistical / Machine Learning</a></li>
+  <li><a href="#neural-deep-learning" id="toc-neural-deep-learning" class="nav-link" data-scroll-target="#neural-deep-learning">4.3 Neural / Deep Learning</a></li>
+  <li><a href="#hybrid-systems-in-practice" id="toc-hybrid-systems-in-practice" class="nav-link" data-scroll-target="#hybrid-systems-in-practice">4.4 Hybrid systems in practice</a></li>
+  </ul></li>
+  <li><a href="#data-pipelines-and-decision-frameworks" id="toc-data-pipelines-and-decision-frameworks" class="nav-link" data-scroll-target="#data-pipelines-and-decision-frameworks">5. Data Pipelines and Decision Frameworks</a>
+  <ul class="collapse">
+  <li><a href="#how-systems-acquire-data" id="toc-how-systems-acquire-data" class="nav-link" data-scroll-target="#how-systems-acquire-data">5.1 How systems acquire data</a></li>
+  <li><a href="#from-pipeline-to-decision-frameworks" id="toc-from-pipeline-to-decision-frameworks" class="nav-link" data-scroll-target="#from-pipeline-to-decision-frameworks">5.2 From pipeline to decision frameworks</a></li>
+  <li><a href="#common-failure-modes" id="toc-common-failure-modes" class="nav-link" data-scroll-target="#common-failure-modes">5.3 Common failure modes</a></li>
+  </ul></li>
+  <li><a href="#running-your-first-python-script-.py" id="toc-running-your-first-python-script-.py" class="nav-link" data-scroll-target="#running-your-first-python-script-.py">6. Running Your First Python Script (<code>.py</code>)</a>
+  <ul class="collapse">
+  <li><a href="#what-a-python-script-is" id="toc-what-a-python-script-is" class="nav-link" data-scroll-target="#what-a-python-script-is">6.1 What a Python script is</a></li>
+  <li><a href="#running-a-script-in-visual-studio-code" id="toc-running-a-script-in-visual-studio-code" class="nav-link" data-scroll-target="#running-a-script-in-visual-studio-code">6.2 Running a script in Visual Studio Code</a></li>
+  <li><a href="#reading-error-messages-very-high-level" id="toc-reading-error-messages-very-high-level" class="nav-link" data-scroll-target="#reading-error-messages-very-high-level">6.3 Reading error messages (very high level)</a></li>
+  <li><a href="#the-edit-run-fix-loop" id="toc-the-edit-run-fix-loop" class="nav-link" data-scroll-target="#the-edit-run-fix-loop">6.4 The edit → run → fix loop</a></li>
+  </ul></li>
+  <li><a href="#week-1-code" id="toc-week-1-code" class="nav-link" data-scroll-target="#week-1-code">Week 1 Code:</a></li>
+  <li><a href="#hello-python-printing-variables-and-simple-math" id="toc-hello-python-printing-variables-and-simple-math" class="nav-link" data-scroll-target="#hello-python-printing-variables-and-simple-math">7. Hello Python: Printing, Variables, and Simple Math</a>
+  <ul class="collapse">
+  <li><a href="#printing-output" id="toc-printing-output" class="nav-link" data-scroll-target="#printing-output">7.1 Printing output</a></li>
+  <li><a href="#variables-and-assignment" id="toc-variables-and-assignment" class="nav-link" data-scroll-target="#variables-and-assignment">7.2 Variables and assignment</a></li>
+  <li><a href="#simple-math-and-expressions" id="toc-simple-math-and-expressions" class="nav-link" data-scroll-target="#simple-math-and-expressions">7.3 Simple math and expressions</a></li>
+  <li><a href="#a-first-complete-python-program" id="toc-a-first-complete-python-program" class="nav-link" data-scroll-target="#a-first-complete-python-program">7.4 A first complete Python program</a></li>
+  </ul></li>
+  <li><a href="#terminal-and-file-navigation-basics" id="toc-terminal-and-file-navigation-basics" class="nav-link" data-scroll-target="#terminal-and-file-navigation-basics">8. Terminal and File Navigation Basics</a>
+  <ul class="collapse">
+  <li><a href="#opening-the-terminal-macos-windows-and-vs-code" id="toc-opening-the-terminal-macos-windows-and-vs-code" class="nav-link" data-scroll-target="#opening-the-terminal-macos-windows-and-vs-code">Opening the terminal (macOS, Windows, and VS Code)</a></li>
+  <li><a href="#what-the-terminal-is-and-why-it-matters" id="toc-what-the-terminal-is-and-why-it-matters" class="nav-link" data-scroll-target="#what-the-terminal-is-and-why-it-matters">8.1 What the terminal is and why it matters</a></li>
+  <li><a href="#files-folders-and-working-directories" id="toc-files-folders-and-working-directories" class="nav-link" data-scroll-target="#files-folders-and-working-directories">8.2 Files, folders, and working directories</a></li>
+  <li><a href="#relative-vs-absolute-paths" id="toc-relative-vs-absolute-paths" class="nav-link" data-scroll-target="#relative-vs-absolute-paths">8.3 Relative vs absolute paths</a></li>
+  <li><a href="#essential-navigation-commands-conceptual-overview" id="toc-essential-navigation-commands-conceptual-overview" class="nav-link" data-scroll-target="#essential-navigation-commands-conceptual-overview">8.4 Essential navigation commands (conceptual overview)</a></li>
+  <li><a href="#how-the-terminal-connects-to-python-execution" id="toc-how-the-terminal-connects-to-python-execution" class="nav-link" data-scroll-target="#how-the-terminal-connects-to-python-execution">8.5 How the terminal connects to Python execution</a></li>
+  <li><a href="#common-mistakes-and-recovery-strategies" id="toc-common-mistakes-and-recovery-strategies" class="nav-link" data-scroll-target="#common-mistakes-and-recovery-strategies">8.6 Common mistakes and recovery strategies</a></li>
+  </ul></li>
+  <li><a href="#virtual-environments-overview" id="toc-virtual-environments-overview" class="nav-link" data-scroll-target="#virtual-environments-overview">9. Virtual Environments Overview</a>
+  <ul class="collapse">
+  <li><a href="#why-virtual-environments-exist" id="toc-why-virtual-environments-exist" class="nav-link" data-scroll-target="#why-virtual-environments-exist">9.1 Why virtual environments exist</a></li>
+  <li><a href="#what-a-virtual-environment-is" id="toc-what-a-virtual-environment-is" class="nav-link" data-scroll-target="#what-a-virtual-environment-is">9.2 What a virtual environment is</a></li>
+  <li><a href="#the-course-standard-environment-workflow-using-uv" id="toc-the-course-standard-environment-workflow-using-uv" class="nav-link" data-scroll-target="#the-course-standard-environment-workflow-using-uv">9.3 The course-standard environment workflow (using uv)</a></li>
+  <li><a href="#activating-and-deactivating-environments-conceptual" id="toc-activating-and-deactivating-environments-conceptual" class="nav-link" data-scroll-target="#activating-and-deactivating-environments-conceptual">9.4 Activating and deactivating environments (conceptual)</a></li>
+  <li><a href="#how-environments-connect-to-the-terminal-and-visual-studio-code" id="toc-how-environments-connect-to-the-terminal-and-visual-studio-code" class="nav-link" data-scroll-target="#how-environments-connect-to-the-terminal-and-visual-studio-code">9.5 How environments connect to the terminal and Visual Studio Code</a></li>
+  <li><a href="#common-environment-mistakes-and-recovery-strategies" id="toc-common-environment-mistakes-and-recovery-strategies" class="nav-link" data-scroll-target="#common-environment-mistakes-and-recovery-strategies">9.6 Common environment mistakes and recovery strategies</a></li>
+  </ul></li>
+  <li><a href="#week-1-summary" id="toc-week-1-summary" class="nav-link" data-scroll-target="#week-1-summary">Week 1 Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -180,23 +284,640 @@ ul.task-list li input[type="checkbox"] {
 
 
 <section id="week-1-overview" class="level2">
-<h2 class="anchored" data-anchor-id="week-1-overview">Week 1 – Overview</h2>
-<p>This chapter will introduce the core concepts of analytics and artificial intelligence.<br>
-A more detailed draft will be added soon.</p>
-<section id="key-topics" class="level3">
-<h3 class="anchored" data-anchor-id="key-topics">Key Topics</h3>
+<h2 class="anchored" data-anchor-id="week-1-overview">Week 1 Overview</h2>
+<section id="what-you-will-learn-this-week" class="level3">
+<h3 class="anchored" data-anchor-id="what-you-will-learn-this-week">What you will learn this week</h3>
 <ul>
-<li>What we mean by “analytics”</li>
-<li>What we mean by “AI”</li>
-<li>Data → Model → Decision (the high-level pipeline)</li>
+<li>What “analytics” means, and the four common types: descriptive, diagnostic, predictive, and prescriptive.</li>
+<li>What “AI” means in practice—and why it often involves judgment, uncertainty, and automation.</li>
+<li>How analytics and AI overlap, and how they differ based on how results are used in decision-making.</li>
+<li>A simple way to break down AI systems into <strong>data</strong>, <strong>models</strong>, and <strong>logic</strong>.</li>
+<li>The major AI approaches (symbolic, machine learning, deep learning) and what each is good at.</li>
+<li>How data gets into real systems, and why pipelines matter for decision-making.</li>
 </ul>
 </section>
-<section id="code-for-this-week" class="level3">
-<h3 class="anchored" data-anchor-id="code-for-this-week">Code for This Week</h3>
-<p>(links will be added later)</p>
-
-
+<section id="what-you-will-produce-this-week" class="level3">
+<h3 class="anchored" data-anchor-id="what-you-will-produce-this-week">What you will produce this week</h3>
+<ul>
+<li>A working course project folder with a <code>.venv</code> created via <code>uv</code></li>
+<li>Several runnable Python scripts (<code>.py</code>) you can execute from the terminal</li>
+</ul>
 </section>
+<section id="ai-literacy-objectives" class="level3">
+<h3 class="anchored" data-anchor-id="ai-literacy-objectives">AI Literacy Objectives</h3>
+<p>By the end of this week, you should be able to:</p>
+<ul>
+<li>Explain what <em>analytics</em> is and how it differs from (and overlaps with) <em>artificial intelligence</em>.</li>
+<li>Describe AI systems using the <strong>Data + Models + Logic</strong> framework.</li>
+<li>Identify the major AI paradigms (symbolic, statistical, neural) and explain how they differ conceptually.</li>
+<li>Explain how data pipelines support decision-making in modern analytics and AI systems.</li>
+</ul>
+</section>
+<section id="job-ready-skills-objectives" class="level3">
+<h3 class="anchored" data-anchor-id="job-ready-skills-objectives">Job-Ready Skills Objectives</h3>
+<p>By the end of this week, you should be able to:</p>
+<ul>
+<li>Run a Python script (<code>.py</code>) from the terminal.</li>
+<li>Navigate folders and files using basic shell commands.</li>
+<li>Understand the role of virtual environments in Python workflows.</li>
+<li>Create and activate a virtual environment using <code>uv</code>.</li>
+<li>Verify that your local Python environment is correctly configured for the course.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="welcome-to-the-course-and-how-it-works" class="level2">
+<h2 class="anchored" data-anchor-id="welcome-to-the-course-and-how-it-works">1. Welcome to the Course and How It Works</h2>
+<p>This section is not intended to replace the syllabus. It is a brief outline of some of the course philosophy.</p>
+<section id="course-outcomes-and-the-two-track-approach-ai-literacy-job-skills" class="level3">
+<h3 class="anchored" data-anchor-id="course-outcomes-and-the-two-track-approach-ai-literacy-job-skills">1.1 Course outcomes and the two-track approach (AI literacy + job skills)</h3>
+<p>This course is designed around a simple but intentional idea: <strong>understanding AI is not the same as being able to work with it</strong>. Many courses emphasize one at the expense of the other—either focusing heavily on conceptual discussions with little hands-on skill development, or emphasizing tools and code without building a durable mental model of what those tools are actually doing.</p>
+<p>This course explicitly pursues <strong>two parallel outcomes</strong>, which we will refer to throughout the semester as <strong>AI literacy</strong> and <strong>job-ready skills</strong>.</p>
+<p><strong>AI literacy</strong> refers to your ability to <em>reason about</em> analytics and AI systems. This includes understanding what problems these systems are designed to solve, how they are structured, where they tend to fail, and how their outputs should (and should not) be used in decision-making. AI literacy is not about memorizing algorithms or mathematical formulas. Instead, it is about developing a clear conceptual framework that allows you to ask good questions, interpret results critically, and communicate effectively with both technical and non-technical stakeholders.</p>
+<p>In parallel, <strong>job-ready skills</strong> focus on your ability to <em>work with</em> analytics and AI tools in practice. This includes writing and running Python code, managing files and environments, and following workflows that resemble how analytics work is actually performed in organizational settings. These skills are intentionally practical: the goal is not to turn you into a software engineer, but to ensure that you can confidently execute, modify, and troubleshoot analytical work rather than treating code as a black box.</p>
+<p>Importantly, these two tracks are not separate parts of the course—they are interwoven each week. Conceptual material will often appear before coding so that you understand <em>why</em> a tool or technique exists before learning <em>how</em> to use it. Conversely, hands-on work will frequently reinforce conceptual ideas by making them concrete. When something breaks, behaves unexpectedly, or produces a surprising result, that moment is not a failure—it is an opportunity to deepen both your literacy and your skill.</p>
+<p>By the end of the course, success will not be defined by how many lines of code you can write or how many definitions you can recite. Instead, success means that you can <strong>explain what an analytics or AI system is doing, execute it reliably, and evaluate its output with informed judgment</strong>. That combination—understanding plus execution—is the core outcome this course is designed to deliver.</p>
+</section>
+<section id="what-you-will-build-each-week" class="level3">
+<h3 class="anchored" data-anchor-id="what-you-will-build-each-week">1.2 What you will build each week</h3>
+<p>Each week in this course follows a consistent production pattern. Rather than treating readings, code, and assignments as separate activities, you will <strong>build a small, coherent set of artifacts</strong> that work together. This structure is intentional: it mirrors how analytics and AI work is typically organized in practice, where documentation, code, and reasoning evolve together.</p>
+<p>First, you will work through a <strong>weekly textbook chapter</strong>, delivered as an HTML document. These chapters serve as both your primary learning resource and a long-term reference. They introduce concepts, explain why techniques exist, and provide annotated examples. You are encouraged to revisit these chapters throughout the semester, especially when later topics build on earlier ideas.</p>
+<p>Alongside most but not all chapters, you will create and run one or more <strong>Python scripts (<code>.py</code>)</strong>. These scripts are not isolated exercises, even if at times they feel that way; they are the hands-on implementation of the ideas discussed in the chapter and/or the lecture. All code in the textbook is written so that it can be copied directly into a script file and executed in your Python environment. Over time, these scripts are intended to create a small personal codebase that reflects your growing capability using these tools.</p>
+<p>By the end of each week, you should be able to look at what you have built and answer two questions confidently:<br>
+(1) <em>Do I understand what this code is doing and why it exists?</em><br>
+(2) <em>Can I run it, modify it, and explain its output?</em></p>
+<p>If the answer to both is yes, you are doing great.</p>
+</section>
+<section id="how-to-succeed-in-this-course" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-succeed-in-this-course">1.3 How to succeed in this course</h3>
+<p>Success in this course is less about prior experience and more about <strong>how you approach the work</strong>. Analytics and AI involve working with systems that are complex, imperfect, and sometimes frustrating. Learning to make progress in that environment is a skill in itself, and this course is designed to help you develop it.</p>
+<p>First, treat confusion as a normal part of the process. You will encounter unfamiliar terms, error messages that do not immediately make sense, and code that does not work the first time you run it. This is not a sign that you are “bad at Python” or “not technical enough.” It is simply how learning in this space works. Progress will come from narrowing the problem, reading error messages carefully, and making small, deliberate changes rather than trying to fix everything at once. The struggle is what will cement these skills for you.</p>
+<p>Second, focus on <strong>understanding before optimization</strong>. You are not expected to write elegant or highly efficient code early in the course, it is not the point of the course at all. Instead we focus on prioritizing clarity: writing code you can read, explain, and reason about. If you can explain what each line is doing and why it is there, you are on the right track—even if the solution feels simple or verbose. This sometimes means the course code is not written in what would be considered “textbook Python”, and as your skills progress in this area during and after the course, you will probably grow out of the patterns and approaches used here. That is normal.</p>
+<p>Third, develop a consistent workflow. Each week, you should expect to read the chapter, run the provided code, modify it, and verify that it behaves as expected. Running code, managing files deliberately, and using your programming environment consistently will save you significant time and frustration later in the semester. Small habits—such as running scripts frequently, saving your work often, and keeping your project folders organized—compound quickly.</p>
+<p>Finally, use available resources strategically. When you get stuck, start by re-reading the relevant section of the chapter and carefully examining any error messages. If you consult external resources or AI tools, do so with intention: use them to clarify concepts or suggest possible fixes, but always make sure you understand the solution before moving on. Being able to explain <em>why</em> a fix works is more important than finding one quickly.</p>
+<hr>
+</section>
+</section>
+<section id="what-is-analytics-and-what-is-ai" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-analytics-and-what-is-ai">2. What Is Analytics and What Is AI?</h2>
+<section id="analytics-descriptive-diagnostic-predictive-prescriptive" class="level3">
+<h3 class="anchored" data-anchor-id="analytics-descriptive-diagnostic-predictive-prescriptive">2.1 Analytics: descriptive → diagnostic → predictive → prescriptive</h3>
+<p>Analytics is best understood not as a single technique, but as a <strong>progression of questions</strong> organizations ask about their data. These questions range from understanding what has already happened to deciding what action should be taken next. A useful way to organize this progression is through four common categories: <strong>descriptive, diagnostic, predictive, and prescriptive analytics</strong>.</p>
+<p><strong>Descriptive analytics</strong> answers the question: <em>What happened?</em><br>
+This is the most familiar form of analytics and focuses on summarizing historical data. Examples include reports, dashboards, averages, totals, and trends over time. Descriptive analytics does not attempt to explain why something occurred or what will happen next—it provides a clear picture of past outcomes. In practice, this might look like a weekly sales report, website traffic summary, or inventory count.</p>
+<p><strong>Diagnostic analytics</strong> asks: <em>Why did it happen?</em><br>
+Once an outcome is observed, the next step is often to understand its cause. Diagnostic analytics explores relationships, comparisons, and breakdowns in the data to identify contributing factors. This might involve segmenting customers, comparing performance across regions, or examining changes before and after a specific event. While still focused on historical data, diagnostic analytics moves beyond description toward explanation.</p>
+<p><strong>Predictive analytics</strong> shifts the focus to the future by asking: <em>What is likely to happen next?</em><br>
+Here, statistical models and machine learning techniques are often used to estimate future outcomes based on patterns in past data. Examples include forecasting demand, predicting customer churn, or estimating the probability that an event will occur. Predictive analytics does not guarantee what will happen—it produces <strong>probabilistic estimates</strong> that support informed planning and risk management.</p>
+<p><strong>Prescriptive analytics</strong> addresses the final question: <em>What should we do about it?</em><br>
+Prescriptive analytics builds on predictions by incorporating goals, constraints, and trade-offs to recommend actions. This may involve optimization models, business rules, or simulation. For example, a system might recommend how much inventory to reorder, which customers to target with a promotion, or how to allocate limited resources. At this stage, analytics becomes tightly connected to decision-making rather than analysis alone.</p>
+<p>It is important to recognize that these categories are <strong>not mutually exclusive</strong> and are often combined in real systems. A single workflow might summarize past performance (descriptive), identify a problem area (diagnostic), estimate future risk (predictive), and recommend an action (prescriptive). Understanding this progression provides a foundation for seeing where AI fits—and where it extends beyond traditional analytics—later in the course.</p>
+</section>
+<section id="ai-systems-that-perform-tasks-requiring-human-like-judgment" class="level3">
+<h3 class="anchored" data-anchor-id="ai-systems-that-perform-tasks-requiring-human-like-judgment">2.2 AI: systems that perform tasks requiring human-like judgment</h3>
+<p>Artificial intelligence (AI) refers to a class of systems designed to perform tasks that would normally require <strong>human judgment, interpretation, or decision-making</strong>. Unlike traditional analytics, which primarily focuses on summarizing data or supporting decisions, AI systems are often embedded directly into processes where they make or influence decisions in real time.</p>
+<p>A defining feature of AI systems is that they operate in environments where rules are incomplete, uncertainty is present, or inputs are too complex to handle with simple, hand-coded logic. Examples include recognizing objects in images, understanding natural language, detecting fraudulent transactions, or recommending products to users. In each case, the system must evaluate patterns, weigh evidence, and produce an output that resembles what a human might do in a similar situation.</p>
+<p>AI systems typically rely on <strong>models trained from data</strong> rather than explicit instructions for every possible scenario. Instead of being told exactly how to respond in each case, the system learns statistical relationships or representations from historical examples. When presented with new inputs, it uses those learned patterns to generate predictions, classifications, or actions. This learning-based approach allows AI systems to scale to complex tasks, but it also introduces uncertainty and the possibility of error.</p>
+<p>Another important characteristic of AI is that its outputs are often <strong>probabilistic rather than definitive</strong>. An AI system may estimate the likelihood that an email is spam, that a customer will stop using a service, or that an image contains a particular object. These estimates are then combined with thresholds, business rules, or human oversight to determine what action is taken. As a result, AI should be understood as a component within a broader decision system rather than as an autonomous replacement for human judgment.</p>
+<p>Finally, it is useful to distinguish between <strong>narrow AI</strong> and broader notions of intelligence. The systems discussed in this course are narrow by design: they are built to perform specific tasks under specific conditions, often very well, but they do not possess general understanding or awareness. Recognizing both the strengths and limitations of these systems is essential for using them responsibly and effectively in organizational settings.</p>
+<p>In the next sections, we will compare analytics and AI more directly, highlighting where they overlap, where they differ, and how they are often combined in modern decision-making systems.</p>
+</section>
+<section id="analytics-vs-ai-overlap-and-differences" class="level3">
+<h3 class="anchored" data-anchor-id="analytics-vs-ai-overlap-and-differences">2.3 Analytics vs AI: overlap and differences</h3>
+<p>Analytics and AI are closely related, but they are not interchangeable. In practice, many systems labeled as “AI” rely heavily on analytical techniques, and many analytical workflows now incorporate AI-based models. Understanding how these two domains <strong>overlap and differ</strong> is essential for making sense of how modern decision systems are designed and deployed.</p>
+<p>At a high level, <strong>analytics</strong> is primarily concerned with <em>supporting human decision-making</em>. It focuses on extracting insight from data, identifying patterns, and presenting information in ways that help people understand what is happening and decide what to do. Even in advanced forms such as predictive or prescriptive analytics, the output is often intended to inform a human decision-maker, who retains responsibility for interpreting the results and acting on them.</p>
+<p><strong>AI</strong>, by contrast, is often designed to <em>participate directly in the decision process</em>. AI systems may classify, recommend, prioritize, or trigger actions with minimal human involvement, especially in high-volume or time-sensitive contexts. While humans still define objectives, constraints, and oversight mechanisms, AI systems are frequently embedded into operational workflows where their outputs have immediate consequences.</p>
+<p>There is, however, a significant <strong>area of overlap</strong>. Both analytics and AI: - rely on data as their primary input, - use models to represent relationships or patterns, - and produce outputs that influence decisions.</p>
+<p>Many predictive analytics techniques—such as regression or classification models—are also foundational components of AI systems. The difference often lies not in the mathematics, but in <strong>how the results are used</strong>. A churn prediction model displayed on a dashboard for managers is typically considered analytics; the same model automatically triggering retention offers may be considered AI.</p>
+<p>Another key distinction is the role of <strong>interpretability and automation</strong>. Analytics tools often emphasize transparency, explainability, and exploration, allowing users to drill down into results and ask follow-up questions. AI systems, especially those based on complex models, may prioritize performance and scalability over interpretability, requiring additional governance and monitoring to ensure appropriate use.</p>
+<p>Rather than viewing analytics and AI as competing approaches, it is more accurate to see them as <strong>points along a continuum</strong>. Many real-world systems combine analytical reporting, predictive modeling, and AI-driven automation into a single pipeline. Recognizing where a system sits along this continuum helps clarify expectations, risks, and responsibilities associated with its use.</p>
+<p>This distinction will be especially important as we move deeper into topics such as machine learning and generative AI, where the same underlying techniques can support very different organizational roles depending on how they are deployed.</p>
+</section>
+<section id="prediction-as-a-component-not-the-whole-system" class="level3">
+<h3 class="anchored" data-anchor-id="prediction-as-a-component-not-the-whole-system">2.4 Prediction as a component, not the whole system</h3>
+<p>Many discussions of AI—especially those focused on machine learning—treat <strong>prediction</strong> as the central task. While prediction is a critical capability, it is important to recognize that <strong>prediction alone does not make a complete AI system</strong>. In practice, prediction is just one component within a larger structure that connects data, models, and decisions.</p>
+<p>A prediction answers a narrow question such as <em>“What is the likelihood that this event will occur?”</em> or <em>“Which category does this input most likely belong to?”</em> For example, a model might predict the probability that a customer will churn, that a transaction is fraudulent, or that a document belongs to a particular topic. These outputs are useful, but on their own they do not specify what action should be taken.</p>
+<p>What turns a prediction into something operational is the surrounding <strong>decision logic</strong>. Organizations must decide how to interpret a predicted probability, what threshold to apply, what constraints exist, and what costs are associated with different actions. A churn prediction of 70%, for instance, does not automatically imply the same response as a churn prediction of 40%—and even the same prediction may lead to different actions depending on business priorities or resource availability.</p>
+<p>This distinction highlights why AI systems should be understood as <strong>socio-technical systems</strong>, not just models. Data pipelines determine what information is available to the model. Models generate predictions based on learned patterns. Decision frameworks translate those predictions into actions, often with human oversight and governance layered on top. Focusing exclusively on prediction risks ignoring these equally important components.</p>
+<p>Recognizing prediction as a component rather than the whole system also helps clarify common misunderstandings about AI capability. High predictive accuracy does not guarantee good decisions, ethical outcomes, or organizational value. Poorly designed thresholds, misaligned incentives, or unexamined assumptions can undermine even the most accurate model.</p>
+<p>Throughout this course, we will return to this idea repeatedly: <strong>models produce predictions, but systems produce decisions</strong>. Developing the ability to evaluate and design the full system—not just the model—will be a central goal as we move from foundational concepts into more advanced analytics and AI techniques.</p>
+<p><strong>Quick check: Analytics, AI, or both?</strong></p>
+<p>The goal here is not to label each system correctly, but rather to sharpen your intuition about <em>why</em> something is considered analytics, AI, or a combination of both. The differences are fairly nuanced. In most real-world systems, the distinction depends less on the mathematical technique and more on <strong>how the output is used</strong>.</p>
+<ul>
+<li><p><strong>A dashboard showing last quarter’s sales by region, with filters and charts</strong><br>
+This is best described as <strong>analytics</strong>. The system summarizes historical data and presents it to a human decision-maker, who interprets the results and decides what action to take. The key thing to note here is that this is not predicting any outcome. That makes this clearly analytics. The way to think about this is to ask “does this model have decision autonomy”? If the answer is no, it is analytics. If it is “maybe” or “yes”, that answer is more complicated.</p></li>
+<li><p><strong>A model that predicts the probability a customer will cancel their subscription, displayed to a manager</strong><br>
+This sits at the boundary but is still primarily <strong>analytics</strong>. Even though a predictive model is used, the output supports human judgment rather than directly triggering an action.</p></li>
+<li><p><strong>The same churn prediction model automatically sending retention offers to high-risk customers</strong><br>
+This is best described as <strong>AI</strong>. The prediction is now embedded in an operational workflow, and the system is actively participating in decision-making and taking action rather than merely informing it.</p></li>
+<li><p><strong>A fraud detection system that flags suspicious transactions for human review</strong><br>
+This example illustrates <strong>both analytics and AI</strong>. The model performs an AI-like task (pattern recognition and classification), but the final decision remains with a human, creating a hybrid system. These kinds of systems are fairly classical examples of overlap.</p></li>
+<li><p><strong>A recommendation engine that personalizes product suggestions in real time</strong><br>
+This is clearly <strong>AI</strong>. The system continuously generates predictions and acts on them automatically at scale, often without direct human intervention for each decision.</p></li>
+</ul>
+<p>The key takeaway is that <strong>the same underlying model can be analytics or AI depending on context</strong>. What matters is not just whether a model is used, but <em>where it sits in the decision process</em>, how much autonomy it has, and who—or what—ultimately acts on its output.</p>
+</section>
+</section>
+<section id="data-models-logic-the-core-of-ai-systems" class="level2">
+<h2 class="anchored" data-anchor-id="data-models-logic-the-core-of-ai-systems">3. Data + Models + Logic: The Core of AI Systems</h2>
+<section id="data" class="level3">
+<h3 class="anchored" data-anchor-id="data">3.1 Data</h3>
+<p>Data forms the foundation of all analytics and AI systems. Regardless of how sophisticated a model or decision framework may be, the behavior of the system is fundamentally shaped by the data it receives. Understanding what data represents, how it is generated, and how it enters a system is therefore a prerequisite for understanding how AI systems operate in practice.</p>
+<p>Broadly defined, data consists of <strong>recorded observations about the world</strong>. These observations may take many forms, including transaction records, sensor readings, text documents, images, user interactions, or system logs. Although these data sources differ in structure and complexity, they share a common role: they capture traces of past events or states that can be analyzed, modeled, and acted upon.</p>
+<p>Data serves two critical functions within AI systems. First, it is used to <strong>train models</strong>. Historical data provides the examples from which models learn patterns, relationships, or representations. The coverage, quality, and diversity of this data directly influence what a model can learn and how well it generalizes beyond its training examples. Second, data is used during <strong>system operation</strong>, when new observations are provided as input to a trained model in order to generate predictions, classifications, or scores. Errors, shifts, or inconsistencies in either training data or operational data can degrade system performance.</p>
+<p>It is important to recognize that data is not a complete or neutral representation of reality. Data reflects the processes through which it was collected, including organizational priorities, technical constraints, and human choices. Some phenomena are easier to observe and record than others, some groups or behaviors are overrepresented, and some variables serve only as indirect proxies for what is actually of interest. As a result, data commonly contains noise, omissions, and systematic biases.</p>
+<p>From a systems perspective, data does not simply exist—it is <strong>acquired and prepared through pipelines</strong>. These pipelines involve decisions about what to collect, how frequently to collect it, how it is stored, and how it is cleaned or transformed before use. Choices made at this stage—such as how missing values are handled or how categories are encoded—can have consequences that propagate throughout the system.</p>
+<p>For these reasons, effective analysis of AI systems begins with careful attention to data. Asking where data comes from, what it represents, and what it leaves out is often the most reliable way to understand system behavior, anticipate limitations, and diagnose failures.</p>
+</section>
+<section id="models" class="level3">
+<h3 class="anchored" data-anchor-id="models">3.2 Models</h3>
+<p>A <strong>model</strong> is a formal representation of a relationship between inputs and outputs. In analytics and AI systems, models are used to map observed data to predictions, classifications, scores, or other quantities that support decision-making. While models can take many forms—from simple equations to complex neural networks—their role within a system is conceptually consistent: they provide a structured way to generalize from past observations to new situations.</p>
+<p>Models differ from raw data in an important way. Data records what has already happened, whereas a model encodes an assumption about <strong>how the world works</strong>. These assumptions may be explicit, as in a linear equation that specifies how inputs combine to produce an output, or implicit, as in a deep learning model that learns internal representations through training. In both cases, the model embodies a hypothesis about underlying patterns in the data.</p>
+<p>In analytics and AI systems, models are typically created through a <strong>training process</strong>. During training, historical data is used to adjust the model’s parameters so that its outputs align as closely as possible with observed outcomes. This process allows the model to capture regularities in the data, but it also ties the model’s behavior to the quality and scope of the data it was trained on. A model cannot reliably learn patterns that are absent, rare, or systematically distorted in the training data.</p>
+<p>Once trained, a model is used to generate outputs for new inputs during system operation. These outputs are often <strong>probabilistic</strong> rather than deterministic. Instead of producing a single “correct” answer, a model may estimate the likelihood of different outcomes or assign scores that reflect relative confidence. This probabilistic nature is a strength—it allows models to operate under uncertainty—but it also requires careful interpretation and downstream handling.</p>
+<p>It is also important to recognize that models are not inherently intelligent or autonomous. They do not understand context, intent, or consequences in a human sense. Instead, they apply learned patterns mechanically, based on the structure imposed during training. As a result, models can perform impressively within familiar conditions while behaving unpredictably when those conditions change.</p>
+<p>Understanding models as components rather than complete systems helps clarify both their power and their limitations. Models can recognize patterns, make estimates, and scale decisions, but they do so within the boundaries defined by data, training procedures, and design choices. How their outputs are ultimately used depends on the surrounding logic and decision framework, which is addressed next.</p>
+</section>
+<section id="logic" class="level3">
+<h3 class="anchored" data-anchor-id="logic">3.3 Logic</h3>
+<p>While data and models are often the most visible components of AI systems, <strong>logic</strong> is what ultimately connects model outputs to real-world actions. Logic defines how predictions, scores, or classifications are interpreted and how they are translated into decisions. Without logic, even the most accurate model remains analytically interesting but operationally incomplete.</p>
+<p>Logic encompasses the <strong>rules, thresholds, constraints, and objectives</strong> that govern system behavior. These elements specify what should happen when a model produces a particular output. For example, a probability score may be compared against a threshold to determine whether an alert is triggered, a recommendation is shown, or a transaction is blocked. These thresholds are not inherent to the model—they are design choices that reflect priorities, trade-offs, and risk tolerance.</p>
+<p>In many systems, logic also encodes <strong>business or organizational constraints</strong>. These may include resource limitations, regulatory requirements, fairness considerations, or cost structures. A model might identify many high-risk cases, but logic determines how many can realistically be acted upon, which cases are prioritized, and which actions are permissible. As a result, logic often mediates between what a model suggests and what an organization can or should do.</p>
+<p>Logic can be implemented in various ways. In some systems, it takes the form of explicit rules written by humans, such as conditional statements or decision trees. In others, logic is embedded within optimization routines or policy frameworks that balance competing objectives. Even when decisions appear automated, logic typically reflects human judgments made earlier about acceptable outcomes and trade-offs.</p>
+<p>Importantly, logic is where accountability often resides. When a system produces an undesirable outcome, the cause may not lie in the data or the model, but in the logic that governed how outputs were used. Poorly chosen thresholds, misaligned incentives, or overly rigid rules can undermine system performance even when model accuracy is high.</p>
+<p>Viewing logic as a core component of AI systems highlights a critical insight: <strong>models produce outputs, but logic determines actions</strong>. Understanding this distinction is essential for evaluating system behavior, diagnosing failures, and designing AI systems that align with intended goals and constraints.</p>
+</section>
+<section id="where-systems-fail-data-model-logic-layer" class="level3">
+<h3 class="anchored" data-anchor-id="where-systems-fail-data-model-logic-layer">3.4 Where systems fail (data, model, logic layer)</h3>
+<p>Failures in analytics and AI systems rarely originate from a single cause. Instead, they tend to emerge from breakdowns at one or more layers of the system: <strong>data</strong>, <strong>models</strong>, or <strong>logic</strong>. Understanding these layers—and how they interact—provides a structured way to diagnose why a system behaves unexpectedly or produces poor outcomes.</p>
+<p>Failures at the <strong>data layer</strong> occur when the information feeding the system is incomplete, biased, noisy, or no longer representative of the environment in which the system operates. This may include missing values, measurement errors, outdated records, or shifts in underlying patterns over time. Because models learn from historical data, weaknesses at this layer often propagate forward, limiting what the system can reasonably achieve regardless of model sophistication.</p>
+<p>Failures at the <strong>model layer</strong> arise when the model is poorly matched to the task or the data available. This may involve overly simplistic models that fail to capture important relationships, overly complex models that overfit historical patterns, or models trained on data that does not reflect current conditions. Even well-designed models can fail when deployed in contexts that differ meaningfully from those seen during training.</p>
+<p>Failures at the <strong>logic layer</strong> occur when model outputs are translated into decisions inappropriately. Common issues include poorly chosen thresholds, rigid rules that do not adapt to changing conditions, or decision criteria that prioritize the wrong objectives. In these cases, a model may be producing reasonable outputs, but the surrounding logic causes undesirable actions or missed opportunities.</p>
+<p>Importantly, these layers are interdependent. A system with high-quality data and a strong model can still fail due to flawed decision logic. Likewise, careful logic cannot compensate for fundamentally uninformative or biased data. Effective system design therefore requires attention to all three layers simultaneously rather than focusing narrowly on model performance.</p>
+<p>Viewing failures through this layered lens encourages more precise diagnosis and more effective intervention. Rather than asking whether an AI system “works” or “does not work,” it becomes possible to ask <em>where</em> it is breaking down and <em>why</em>. This perspective supports more thoughtful system evaluation and more responsible use of analytics and AI in decision-making contexts.</p>
+<hr>
+</section>
+</section>
+<section id="ai-paradigms-overview" class="level2">
+<h2 class="anchored" data-anchor-id="ai-paradigms-overview">4. AI Paradigms Overview</h2>
+<section id="symbolic-ai" class="level3">
+<h3 class="anchored" data-anchor-id="symbolic-ai">4.1 Symbolic AI</h3>
+<p>Symbolic AI represents one of the earliest approaches to artificial intelligence. Rather than learning patterns from data, symbolic systems rely on <strong>explicit representations of knowledge</strong> and <strong>rule-based reasoning</strong> to perform tasks. These systems operate by manipulating symbols—such as words, categories, or logical statements—according to predefined rules.</p>
+<p>At the core of symbolic AI is the idea that intelligent behavior can be produced by encoding expert knowledge directly into a system. This often takes the form of <em>if–then</em> rules, decision trees, logic statements, or structured knowledge bases. For example, a symbolic system might contain rules such as: <em>if a customer is late on payment and has missed multiple deadlines, then flag the account for review</em>. Each rule reflects a human judgment that has been translated into formal logic.</p>
+<p>Symbolic AI systems tend to be <strong>transparent and interpretable</strong>. Because their reasoning process is explicitly defined, it is usually possible to trace how a particular conclusion was reached. This makes symbolic approaches attractive in domains where explanations, compliance, or auditability are critical. They also perform well in environments where the rules are stable and the problem space is well understood.</p>
+<p>However, symbolic AI has notable limitations. Writing and maintaining rules is labor-intensive, and such systems struggle to scale as complexity increases. They also perform poorly in settings characterized by ambiguity, noise, or high variability—such as image recognition or natural language understanding—where it is difficult or impractical to enumerate all relevant rules in advance.</p>
+<p>While symbolic AI is no longer the dominant paradigm in many areas, it remains an important conceptual foundation. Many modern systems still rely on symbolic components for constraints, validation, and control, even when learning-based models are used elsewhere. Understanding symbolic AI helps clarify both the strengths of explicit reasoning and the challenges that motivated the development of data-driven approaches addressed in the next sections.</p>
+</section>
+<section id="statistical-machine-learning" class="level3">
+<h3 class="anchored" data-anchor-id="statistical-machine-learning">4.2 Statistical / Machine Learning</h3>
+<p>Statistical and machine learning approaches to AI differ from symbolic systems in a fundamental way: rather than relying on explicitly programmed rules, they <strong>learn patterns from data</strong>. These approaches use historical observations to infer relationships between inputs and outputs, allowing systems to generalize to new, unseen cases without being told exactly how to respond in every situation.</p>
+<p>At the heart of machine learning is the idea that regularities in data can be captured through mathematical models whose parameters are estimated from examples. During training, a model is exposed to data and adjusted so that its predictions align with observed outcomes as closely as possible. This process allows the system to adapt to complex patterns that would be difficult to specify manually using rules alone.</p>
+<p>Machine learning methods are often categorized based on the type of feedback available during training. In <strong>supervised learning</strong>, the model is trained using labeled examples, where the correct output is known in advance. Common applications include classification and regression tasks, such as predicting customer churn or estimating demand. In <strong>unsupervised learning</strong>, the model works with unlabeled data to identify structure, such as clusters or latent patterns, without predefined outcomes. Both approaches are widely used in analytics and AI systems.</p>
+<p>Compared to symbolic AI, statistical and machine learning systems are generally more flexible and scalable. They perform well in environments with large volumes of data and can adapt to subtle patterns and correlations. However, this flexibility comes with trade-offs. Learned models may be less transparent, and their behavior can be sensitive to the data used for training. As a result, understanding and validating model performance often requires careful evaluation rather than direct inspection of rules.</p>
+<p>Importantly, statistical and machine learning approaches do not eliminate the need for human judgment. Choices about which data to use, which features to include, how to evaluate performance, and how to deploy model outputs remain human decisions. Machine learning shifts the burden of specification from rule-writing to <strong>data curation and model design</strong>, redefining where expertise is applied within AI systems.</p>
+<p>This paradigm has become central to modern analytics and AI, forming the basis for many applications encountered in practice. It also provides the foundation for more advanced approaches, such as neural and deep learning, discussed next.</p>
+</section>
+<section id="neural-deep-learning" class="level3">
+<h3 class="anchored" data-anchor-id="neural-deep-learning">4.3 Neural / Deep Learning</h3>
+<p>Neural and deep learning approaches extend statistical machine learning by focusing on <strong>learning representations</strong> directly from data. Rather than relying on hand-crafted features or simple functional forms, these models use layered computational structures—commonly referred to as <em>neural networks</em>—to transform raw inputs into increasingly abstract representations.</p>
+<p>The key idea behind neural networks is inspired by, but not equivalent to, biological neurons. A neural network is composed of interconnected units that apply weighted combinations of inputs followed by nonlinear transformations. By stacking many such layers, deep learning models can capture complex patterns in high-dimensional data. This layered structure allows them to excel in tasks such as image recognition, speech processing, and natural language understanding, where relationships are difficult to specify explicitly.</p>
+<p>One defining characteristic of deep learning is its ability to operate on <strong>unstructured or semi-structured data</strong>, including images, audio, and text. In these domains, traditional statistical models often require extensive feature engineering. Deep learning models, by contrast, can learn relevant representations automatically from large volumes of data, reducing the need for manual specification of features.</p>
+<p>This capability comes with important trade-offs. Neural and deep learning models are typically <strong>data-intensive and computationally demanding</strong>. Training them often requires large datasets, specialized hardware, and careful tuning. They also tend to be less interpretable than simpler models, making it more difficult to explain why a particular output was produced. As a result, deployment of deep learning systems often involves additional monitoring, validation, and governance mechanisms.</p>
+<p>Despite these challenges, neural and deep learning approaches have reshaped the AI landscape. Many contemporary systems—including speech recognition, computer vision applications, and large language models—are built on deep learning architectures. Understanding this paradigm helps clarify why modern AI systems can handle tasks that were previously infeasible, as well as why concerns about transparency, robustness, and control remain central to their use.</p>
+<p>Neural and deep learning approaches are rarely used in isolation. In practice, they are often combined with statistical methods and symbolic logic to form integrated systems, a topic addressed in the next section.</p>
+</section>
+<section id="hybrid-systems-in-practice" class="level3">
+<h3 class="anchored" data-anchor-id="hybrid-systems-in-practice">4.4 Hybrid systems in practice</h3>
+<p>In real-world applications, AI systems rarely rely on a single paradigm. Instead, they are typically <strong>hybrid systems</strong> that combine symbolic reasoning, statistical or machine learning models, and neural or deep learning components. Each paradigm contributes different strengths, and hybrid designs allow systems to balance performance, interpretability, and control.</p>
+<p>A common pattern in hybrid systems is the use of <strong>learning-based models for perception and prediction</strong>, paired with <strong>symbolic or rule-based logic for decision-making and constraints</strong>. For example, a deep learning model may be used to recognize objects in an image or extract meaning from text, while a rule-based layer determines whether the output meets regulatory requirements or triggers a specific action. In this structure, learning handles complexity and variability, while symbolic logic enforces consistency and accountability.</p>
+<p>Hybrid systems also help address practical limitations of individual approaches. Machine learning models can adapt to data and capture subtle patterns, but they may behave unpredictably outside familiar conditions. Symbolic logic can impose guardrails, prevent certain actions, or require human review under specified circumstances. Statistical models can provide calibrated probabilities that support decision thresholds and prioritization. Together, these components form systems that are more robust than any single approach alone.</p>
+<p>Many modern AI applications illustrate this hybrid structure. Recommendation systems often combine learned user preference models with business rules and inventory constraints. Fraud detection systems use predictive models to score transactions and rule-based logic to manage alerts and workflows. Large language model applications frequently pair neural models with retrieval systems, validation rules, and structured decision logic to ensure usable and reliable outputs.</p>
+<p>Understanding AI systems as hybrids reinforces an important perspective: intelligence in practice is <strong>distributed across system components</strong>, not concentrated in a single model. Performance, reliability, and responsibility emerge from how data, models, and logic are assembled and governed. This systems-level view provides a foundation for analyzing and designing AI applications that operate effectively within real organizational and societal constraints.</p>
+<hr>
+</section>
+</section>
+<section id="data-pipelines-and-decision-frameworks" class="level2">
+<h2 class="anchored" data-anchor-id="data-pipelines-and-decision-frameworks">5. Data Pipelines and Decision Frameworks</h2>
+<section id="how-systems-acquire-data" class="level3">
+<h3 class="anchored" data-anchor-id="how-systems-acquire-data">5.1 How systems acquire data</h3>
+<p>Before any analysis or modeling can occur, data must be <strong>acquired</strong>. Data acquisition refers to the processes through which information is collected, recorded, and made available for use within analytics and AI systems. These processes shape not only what data is available, but also how timely, reliable, and representative that data is.</p>
+<p>One common source of data is <strong>operational systems</strong>. Transaction databases, customer relationship management systems, enterprise resource planning platforms, and web applications routinely generate records as part of normal business activity. In these cases, data is a byproduct of operations rather than something collected specifically for analysis. While such data is often rich and high-volume, it reflects the structure and incentives of the underlying system, which may limit what can be observed.</p>
+<p>Another important source is <strong>instrumentation and logging</strong>. Systems are frequently designed to log events, interactions, or performance metrics explicitly for monitoring and analysis. Examples include website click logs, application usage telemetry, or sensor readings from physical devices. Instrumented data can provide fine-grained insight into behavior over time, but it requires deliberate design decisions about what to record and at what level of detail.</p>
+<p>Data may also be acquired through <strong>external sources</strong>. These include public datasets, third-party data providers, APIs, and partner organizations. External data can enrich internal records by providing additional context, such as demographic information, market indicators, or environmental conditions. However, reliance on external sources introduces dependencies related to data quality, licensing, update frequency, and long-term availability.</p>
+<p>Across these sources, data can be collected in different modes. <strong>Batch acquisition</strong> involves gathering data at regular intervals, such as daily or weekly extracts, and is common in reporting and strategic analysis. <strong>Streaming or real-time acquisition</strong> captures data continuously as events occur and is often used in monitoring, personalization, or fraud detection systems. The choice between batch and streaming acquisition affects system responsiveness, complexity, and infrastructure requirements.</p>
+<p>Importantly, data acquisition is not a passive process. Decisions about what to collect, how to define variables, and how frequently to record observations embed assumptions into the system. These assumptions influence downstream analysis and decision-making, sometimes in subtle ways. Understanding how data enters a system is therefore a critical step in evaluating both the capabilities and the limitations of analytics and AI applications.</p>
+</section>
+<section id="from-pipeline-to-decision-frameworks" class="level3">
+<h3 class="anchored" data-anchor-id="from-pipeline-to-decision-frameworks">5.2 From pipeline to decision frameworks</h3>
+<p>A data pipeline does not exist in isolation. Its purpose is to support <strong>decisions</strong> by moving raw data through a sequence of steps that make it usable, interpretable, and actionable. Understanding how pipelines connect to decision frameworks helps clarify how analytics and AI systems translate information into outcomes.</p>
+<p>A typical data pipeline begins with acquisition and continues through stages such as cleaning, transformation, storage, and aggregation. Each stage prepares the data for the next, addressing issues such as missing values, inconsistent formats, or incompatible sources. While these steps are often treated as technical details, they play a central role in shaping what information ultimately reaches models and decision-makers.</p>
+<p>Once data has been processed, it enters the <strong>decision framework</strong>. This framework defines what decision is being supported or automated, what objectives are being pursued, and what constraints must be respected. In analytical settings, the output of the pipeline may feed dashboards or reports that inform human judgment. In AI-driven settings, processed data may be passed directly to models whose outputs trigger actions or recommendations.</p>
+<p>Decision frameworks also specify <strong>how outputs are evaluated and acted upon</strong>. This includes defining thresholds, priorities, costs, and trade-offs. For example, a predictive model may estimate risk, but the decision framework determines what level of risk warrants intervention, how limited resources are allocated, and what actions are permissible. These choices are rarely purely technical; they reflect organizational goals and values.</p>
+<p>The connection between pipelines and decision frameworks is often iterative rather than linear. As decisions are made and actions are taken, new data is generated and fed back into the pipeline. This feedback loop can be used to monitor performance, update models, or revise decision rules over time. Effective systems are designed with this dynamic interaction in mind rather than treating pipelines as one-time processes.</p>
+<p>Viewing pipelines and decision frameworks together reinforces a systems-level perspective. Data pipelines make information available, but decision frameworks determine how that information is used. Both are necessary for analytics and AI systems to function effectively, and weaknesses in either can undermine the overall quality of decisions.</p>
+</section>
+<section id="common-failure-modes" class="level3">
+<h3 class="anchored" data-anchor-id="common-failure-modes">5.3 Common failure modes</h3>
+<p>Even when individual components appear well designed, analytics and AI systems can fail in predictable ways. Many of these failures arise not from a single mistake, but from <strong>misalignments between data pipelines, models, and decision frameworks</strong>. Recognizing common failure modes makes it easier to diagnose problems and to design systems that are more resilient.</p>
+<p>One common failure occurs when <strong>data pipelines drift away from decision needs</strong>. Data may be collected because it is easy to capture rather than because it is relevant to the decision at hand. Over time, pipelines can accumulate variables and transformations that no longer align with current objectives, leading to analyses that are technically correct but operationally unhelpful.</p>
+<p>Another frequent issue is <strong>stale or delayed data</strong>. When pipelines operate on batch schedules that are too slow for the decisions they support, outputs may be outdated by the time they are used. This is especially problematic in environments where conditions change rapidly. In such cases, system performance degrades not because models are inaccurate, but because they are responding to yesterday’s information.</p>
+<p>Failures also occur when <strong>feedback loops are ignored or misunderstood</strong>. Decisions based on model outputs often influence future data, which in turn affects subsequent model behavior. If these feedback effects are not anticipated, systems can reinforce undesirable patterns, amplify noise, or create misleading signals that appear as genuine trends.</p>
+<p>A further source of failure lies in <strong>overconfidence in automation</strong>. When decision frameworks rely too heavily on model outputs without sufficient monitoring or human oversight, small errors can scale quickly. Conversely, overly cautious frameworks that ignore model outputs may negate potential benefits. Balancing automation and control is therefore a persistent design challenge.</p>
+<p>Finally, failure can result from <strong>organizational misalignment</strong>. Even well-designed pipelines and models can produce poor outcomes if incentives, responsibilities, or governance structures are unclear. Decisions about who owns the data, who is accountable for outcomes, and how performance is evaluated play a critical role in system success.</p>
+<p>Understanding these common failure modes reinforces an important lesson: effective analytics and AI systems depend on alignment across technical and organizational dimensions. Addressing failures requires looking beyond individual components to the system as a whole.</p>
+<hr>
+</section>
+</section>
+<section id="running-your-first-python-script-.py" class="level2">
+<h2 class="anchored" data-anchor-id="running-your-first-python-script-.py">6. Running Your First Python Script (<code>.py</code>)</h2>
+<section id="what-a-python-script-is" class="level3">
+<h3 class="anchored" data-anchor-id="what-a-python-script-is">6.1 What a Python script is</h3>
+<p>A <strong>Python script</strong> is a plain text file containing Python code, typically saved with a <code>.py</code> extension. When a script is run, Python reads the file from top to bottom and executes each instruction in order. Unlike interactive environments, such as notebooks or consoles, a script represents a <strong>complete, self-contained program</strong>.</p>
+<p>Scripts are the most common way Python is used in professional analytics and AI workflows. They are easy to version, easy to share, and behave predictably when run multiple times. Because a script always starts from a clean state, its behavior depends entirely on the code it contains and the environment in which it runs—there is no hidden execution history.</p>
+<p>A Python script can contain many elements, including:<br>
+- variable assignments,<br>
+- calculations,<br>
+- function definitions,<br>
+- conditional logic,<br>
+- and instructions to read data or produce output.</p>
+<p>Some scripts are short and perform a single task, while others may coordinate complex workflows. Regardless of size, the defining characteristic is that the script is <strong>executed as a unit</strong>.</p>
+<p>Many scripts follow a common structural pattern that improves clarity and reusability. For example, logic is often placed inside functions, with a designated entry point that tells Python where execution should begin. This pattern makes it easier to read the code, reuse components later, and avoid unintended behavior when code is imported into other files.</p>
+<p>Conceptually, it is helpful to think of a Python script as answering three questions:<br>
+1. <em>What inputs does this program expect?</em><br>
+2. <em>What processing does it perform?</em><br>
+3. <em>What outputs does it produce?</em></p>
+<p>Keeping these questions in mind encourages clearer program structure and makes debugging easier as scripts become more complex.</p>
+</section>
+<section id="running-a-script-in-visual-studio-code" class="level3">
+<h3 class="anchored" data-anchor-id="running-a-script-in-visual-studio-code">6.2 Running a script in Visual Studio Code</h3>
+<p>Visual Studio Code (VS Code) is a commonly used environment for writing and running Python scripts. It combines a code editor, a terminal, and language support in a single interface, making it well suited for analytics and AI workflows.</p>
+<p>To run a Python script in VS Code, the file must first be opened in the editor. Scripts are typically saved with a <code>.py</code> extension and stored within a project folder. Once the file is open, execution can be initiated in several ways, but all methods ultimately run the script using the Python interpreter selected for the project.</p>
+<p>One common approach is to use the <strong>integrated terminal</strong>. VS Code includes a terminal window that opens within the editor and behaves like a standard system terminal. From this terminal, the script can be executed by navigating to the folder containing the file and running:</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Run the script from the terminal">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Run the script from the terminal
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>From the project folder, run:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> hello_world.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p>VS Code also provides editor-based run options, such as a <strong>Run Python File</strong> button or command palette actions. These tools are convenient, but they rely on the same underlying mechanism: calling the Python interpreter on the current file. Regardless of how execution is triggered, the result is the same—the script runs from top to bottom and any output is displayed in the terminal.</p>
+<p>An important step when running scripts in VS Code is selecting the correct <strong>Python interpreter</strong>. In projects that use virtual environments, the interpreter should point to the environment created for the project rather than the system-wide Python installation. VS Code allows the interpreter to be selected on a per-project basis, ensuring that the correct packages and versions are used when scripts are executed.</p>
+<p>When a script runs successfully, any output produced by <code>print()</code> statements or error messages appears in the terminal. If the script finishes without errors, control returns to the terminal prompt. This clear start-and-finish behavior is a defining feature of script-based workflows and makes it easier to reason about program execution and diagnose problems when issues arise.</p>
+</section>
+<section id="reading-error-messages-very-high-level" class="level3">
+<h3 class="anchored" data-anchor-id="reading-error-messages-very-high-level">6.3 Reading error messages (very high level)</h3>
+<p>When a Python script encounters a problem, it produces an <strong>error message</strong>. While error messages can look intimidating at first, they are an essential part of working with code and often contain enough information to identify what went wrong. Learning to read them at a high level is an important early skill.</p>
+<p>Most Python error messages include three main components. First, they indicate <strong>where</strong> the error occurred, usually by showing the file name and line number. This helps narrow attention to a specific part of the script rather than the entire program. Second, they describe <strong>what type of error</strong> occurred, such as a syntax error, a missing name, or an invalid operation. Third, they may include a brief explanation of the issue.</p>
+<p>At this stage, it is not necessary to understand every detail of an error message. Instead, focus on identifying the general category of the problem. A <strong>syntax error</strong> usually means Python could not interpret the structure of the code, often due to a missing parenthesis, quotation mark, or colon. Other errors occur while the script is running and typically indicate that Python understood the code but encountered an unexpected situation, such as using a variable that does not exist.</p>
+<p>Error messages are not signals to stop; they are signals to <strong>inspect and adjust</strong>. Often, the fastest way forward is to read the message carefully, locate the referenced line, and compare it to what was intended. Small changes—such as correcting a spelling mistake or fixing indentation—frequently resolve the issue.</p>
+<p>Developing comfort with error messages takes time, but it begins with a simple mindset shift: errors are feedback, not failure. Each message is an opportunity to understand how Python interprets instructions and how small changes in code affect execution.</p>
+</section>
+<section id="the-edit-run-fix-loop" class="level3">
+<h3 class="anchored" data-anchor-id="the-edit-run-fix-loop">6.4 The edit → run → fix loop</h3>
+<p>Writing code is an iterative process. Scripts are rarely written correctly on the first attempt, and effective work with Python depends on developing a steady rhythm of <strong>editing</strong>, <strong>running</strong>, and <strong>fixing</strong> code. This cycle—often referred to as the edit → run → fix loop—is the normal way programs are developed and refined.</p>
+<p>The process begins by making a small change to the code. This might involve adding a new line, modifying an existing statement, or adjusting a variable value. After making the change, the script is run to observe its behavior. Running the script provides immediate feedback, either in the form of expected output or an error message that signals a problem.</p>
+<p>If the result is not what was intended, the next step is to fix the issue. This may involve correcting a syntax error, revising a calculation, or clarifying the logic of the program. Importantly, fixes are most effective when changes are made incrementally. Altering many parts of a script at once can make it difficult to identify what caused a problem or whether a fix actually worked.</p>
+<p>This loop encourages experimentation and learning. By making small, deliberate changes and observing their effects, it becomes easier to understand how individual lines of code contribute to overall behavior. Over time, this process builds intuition about how Python executes instructions and how to approach debugging systematically.</p>
+<p>The edit → run → fix loop also reinforces a practical habit: <strong>run code early and often</strong>. Frequent execution reduces the distance between cause and effect, making problems easier to diagnose. As scripts grow more complex, maintaining this iterative rhythm becomes one of the most reliable ways to write correct, understandable, and maintainable code.</p>
+</section>
+</section>
+<section id="week-1-code" class="level2">
+<h2 class="anchored" data-anchor-id="week-1-code">Week 1 Code:</h2>
+<p>This is just an example, the details in the below code are covered in future chapters.</p>
+<p><strong>Name the script: <code>hello_world.py</code></strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># hello_world.py</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># A minimal Python script illustrating basic structure and execution.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">    The main function contains the core logic of the script.</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    When the script is run, this function will be executed.</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Hello, world!"</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"This script is running successfully."</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This conditional ensures that main() runs only</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># when the script is executed directly, not when imported.</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="hello-python-printing-variables-and-simple-math" class="level2">
+<h2 class="anchored" data-anchor-id="hello-python-printing-variables-and-simple-math">7. Hello Python: Printing, Variables, and Simple Math</h2>
+<section id="printing-output" class="level3">
+<h3 class="anchored" data-anchor-id="printing-output">7.1 Printing output</h3>
+<p>The simplest way for a Python program to communicate with you is by <strong>printing output</strong> to the screen. In a script-based workflow, this output appears in the terminal after the script is run. Printing is therefore the most basic feedback mechanism for understanding what a program is doing.</p>
+<p>In Python, printing is done using the built-in <code>print()</code> function. A function is an instruction that performs a specific task, and <code>print()</code> is responsible for displaying information. Anything placed inside the parentheses is sent to standard output.</p>
+<p>For example, printing a short message looks like this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello, world!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When this line is executed, Python displays the text exactly as written (without the quotation marks). Text enclosed in quotation marks is called a <strong>string</strong>, and strings are commonly used for messages, labels, and explanations.</p>
+<p>Printing is not limited to text. Python can also print numbers and the results of calculations:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">3</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span> <span class="op">+</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In these cases, Python evaluates the expression first and then prints the result. This makes <code>print()</code> especially useful for checking intermediate values and understanding how a program is behaving as it runs.</p>
+<p>It is important to note that <code>print()</code> does not change the program’s logic or store information for later use. Its role is purely communicative—it shows values so they can be read by a person. For this reason, printing is frequently used when learning Python, debugging code, or verifying that a script is producing the expected results.</p>
+<p>As scripts become more complex, printing remains a simple but powerful tool. By printing values at different points in a program, it becomes possible to observe how data flows through the code and how instructions are executed step by step.</p>
+</section>
+<section id="variables-and-assignment" class="level3">
+<h3 class="anchored" data-anchor-id="variables-and-assignment">7.2 Variables and assignment</h3>
+<p>In Python, a <strong>variable</strong> is a name that refers to a value. Variables allow programs to store information so it can be used, reused, and modified as the program runs. Rather than working only with raw numbers or text, variables make code more readable and flexible.</p>
+<p>Variables are created using <strong>assignment</strong>, which is done with a single equals sign (<code>=</code>). Assignment tells Python to take the value on the right-hand side and store it under the name on the left-hand side.</p>
+<p>For example:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This line should be read as “assign the value 2 to the variable named x,” not as a statement of equality. The equals sign in Python does not mean “is equal to” in the mathematical sense; it means “store this value under this name.” This can be confusing for new users, so make sure you understand the difference.</p>
+<p>Once a variable has been assigned, it can be used anywhere a value could be used. For example:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here, Python looks up the value stored in <code>x</code> and prints it. If the value of <code>x</code> changes later, printing <code>x</code> will reflect the new value.</p>
+<p>Variables are especially useful when working with calculations. Instead of repeating numbers directly, values can be stored once and reused:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( <span class="dv">2</span> <span class="op">+</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In these 2 examples, the result should be the same for each of these chunks of code. Initially it can be hard to understand why you might use variables instead of just the numbers. In more complicated examples, variables may make the code easier to understand, and easier to modify.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>tax <span class="op">=</span> <span class="fl">1.50</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> price <span class="op">+</span> tax</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>As the values for price and tax changes, the model (calculation of “total”) still continues to work.</p>
+<p>Variable names are chosen by the programmer and should be descriptive enough to indicate what the value represents. While Python allows many naming styles, good variable names improve clarity and reduce confusion, especially as programs grow longer.</p>
+<p>At a conceptual level, variables answer a simple question: <em>What information does this program need to remember while it runs?</em> Learning to use variables effectively is a key step toward writing programs that do more than display fixed messages.</p>
+</section>
+<section id="simple-math-and-expressions" class="level3">
+<h3 class="anchored" data-anchor-id="simple-math-and-expressions">7.3 Simple math and expressions</h3>
+<p>Python can perform basic mathematical operations in a way that closely mirrors standard arithmetic. These operations are written as <strong>expressions</strong>, which are combinations of values and operators that Python evaluates to produce a result.</p>
+<p>The most common arithmetic operators include addition, subtraction, multiplication, and division:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">10</span> <span class="op">-</span> <span class="dv">4</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">3</span> <span class="op">*</span> <span class="dv">5</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">8</span> <span class="op">/</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In each case, Python evaluates the expression and then prints the result. These operations behave as expected for most everyday calculations, making Python a natural tool for working with numerical data.</p>
+<p>Expressions become more useful when combined with variables. Instead of working with fixed numbers, variables allow calculations to adapt as values change:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a <span class="op">+</span> b)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a <span class="op">*</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here, Python replaces each variable with its stored value before performing the calculation. This substitution happens automatically and is a core feature of how expressions work.</p>
+<p>Python follows standard <strong>order of operations</strong> when evaluating expressions. Multiplication and division are performed before addition and subtraction, unless parentheses are used to make the intended order explicit:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> <span class="dv">4</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span>) <span class="op">*</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Parentheses make calculations clearer and reduce ambiguity, especially as expressions become more complex. Using them deliberately improves readability and helps prevent unintended results.</p>
+<p>It is also common to combine expressions and printing in a single line, especially when exploring or verifying calculations:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="dv">15</span> <span class="op">+</span> <span class="dv">7</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Total:"</span>, total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this example, Python first evaluates the expression, assigns the result to a variable, and then prints a message that includes the computed value.</p>
+<p>Simple math and expressions form the computational backbone of most programs. Even advanced analytics and AI systems ultimately rely on large numbers of these basic operations. Developing comfort with expressions at this level makes it easier to understand how more complex calculations are built later on.</p>
+</section>
+<section id="a-first-complete-python-program" class="level3">
+<h3 class="anchored" data-anchor-id="a-first-complete-python-program">7.4 A first complete Python program</h3>
+<p>At this point, it is useful to bring together the ideas from the previous sections into a <strong>single, complete Python script</strong>. A complete program combines printing, variables, and expressions in a way that performs a small but meaningful task from start to finish.</p>
+<p>Consider the following example. This script defines a few values, performs a calculation, and prints the result in a readable way:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first_program.py</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>tax <span class="op">=</span> <span class="fl">1.50</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>total_cost <span class="op">=</span> price <span class="op">+</span> tax</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Price:"</span>, price)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Tax:"</span>, tax)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Total cost:"</span>, total_cost)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This program follows a simple and common structure. First, values are assigned to variables. Next, those variables are used in an expression to compute a new value. Finally, the results are printed so they can be seen in the terminal when the script is run.</p>
+<p>Each line in this script serves a clear purpose. The variable assignments store information the program needs to remember. The expression combines those values to produce a result. The print statements communicate that result to the user. Together, these elements form a complete workflow: <strong>define → compute → display</strong>.</p>
+<p>When this script is executed, Python runs the file from top to bottom. There is no hidden state and no interaction required during execution. Every time the script is run, it produces the same output given the same starting values. This predictability is one of the key advantages of script-based programming.</p>
+<p>Although this program is simple, it illustrates the core building blocks that appear in much larger applications. More advanced programs may read data from files, make decisions using conditional logic, or repeat calculations in loops, but they are still composed of the same fundamental elements introduced here.</p>
+<p>Being able to read, write, and reason about small complete programs is an important milestone. From this point forward, new concepts will build on these foundations rather than replacing them.</p>
+</section>
+</section>
+<section id="terminal-and-file-navigation-basics" class="level2">
+<h2 class="anchored" data-anchor-id="terminal-and-file-navigation-basics">8. Terminal and File Navigation Basics</h2>
+<p>This section explains how Python scripts are located and executed on a computer by introducing the basic ideas behind the terminal, file systems, and paths. The goal is not to master the terminal, it is fairly complicated, and takes some time to really figure out. Instead this section should be seen as the minimally viable tools in the terminal.</p>
+<section id="opening-the-terminal-macos-windows-and-vs-code" class="level3">
+<h3 class="anchored" data-anchor-id="opening-the-terminal-macos-windows-and-vs-code">Opening the terminal (macOS, Windows, and VS Code)</h3>
+<p>Before working with terminal commands, it is important to know <strong>how to open a terminal</strong>. The exact steps depend on the operating system and tools being used, but the underlying concept is the same: opening a window where text-based commands can be entered and executed.</p>
+<p>On <strong>macOS</strong>, the terminal application is called Terminal. It can be opened in several ways:<br>
+- By using Spotlight search and typing “Terminal”<br>
+- By navigating to Applications → Utilities → Terminal<br>
+Once opened, the Terminal window provides direct access to the macOS command line.</p>
+<p>On <strong>Windows</strong>, the terminal experience may appear under different names depending on configuration. Common options include:<br>
+- Command Prompt<br>
+- Windows PowerShell<br>
+- Windows Terminal (a newer application that supports multiple shells)<br>
+Any of these can be opened by searching from the Start menu. While they may look slightly different, they all allow commands to be typed and executed in the same basic way.</p>
+<p>In this course, most examples assume the use of <strong>Visual Studio Code</strong>, which includes an <strong>integrated terminal</strong>. This terminal runs inside the editor itself and behaves just like a regular system terminal, but with important advantages for programming.</p>
+<p>To open the integrated terminal in Visual Studio Code: - Use the menu option View → Terminal<br>
+- Or use the keyboard shortcut that opens the terminal panel</p>
+<p>The integrated terminal starts in the context of the current project folder, which reduces the need to navigate manually through the file system. This makes it especially convenient for running Python scripts and managing project files.</p>
+<p>Regardless of how the terminal is opened, the same ideas apply. Commands are typed, executed, and produce output.</p>
+<p>The sections that follow explain how to understand how to interact with and use the terminal once opened.</p>
+</section>
+<section id="what-the-terminal-is-and-why-it-matters" class="level3">
+<h3 class="anchored" data-anchor-id="what-the-terminal-is-and-why-it-matters">8.1 What the terminal is and why it matters</h3>
+<p>The <strong>terminal</strong> is a text-based interface for interacting directly with a computer’s operating system. Instead of clicking on icons or navigating menus, instructions are typed as commands. The computer executes those commands and returns output in the same window.</p>
+<p>While graphical interfaces are designed for ease of use, the terminal is designed for <strong>precision and control</strong>. It allows you to specify exactly what you want the computer to do, where to do it, and how to do it. This makes the terminal especially important for programming, where small differences in location or configuration matter.</p>
+<p>In a graphical interface, running a program often involves clicking on a file. In contrast, running a Python script from the terminal requires two pieces of information:<br>
+1. <strong>Which Python interpreter to use</strong><br>
+2. <strong>Where the script is located</strong></p>
+<p>The terminal makes both of these explicit.</p>
+<p>When you type a command into the terminal, you are issuing an instruction and then waiting for a response. For example, a simple command that asks the computer where you currently are in the file system looks like this:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After pressing Enter, the terminal responds by printing the current working directory. This directory is the location the terminal is “pointing to,” and it determines which files the computer can see when you issue commands.</p>
+<p>This idea of <em>location</em> is critical. When you run a Python script using a command such as:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> first_program.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Python looks for the file named <code>first_program.py</code> <strong>in the current working directory</strong>. If the file is not located there, Python cannot run it, even if the file exists elsewhere on your computer. This is one of the most common sources of confusion for beginners, and it highlights why understanding the terminal matters.</p>
+<p>The terminal also differs from clicking files in an important way: commands are <strong>repeatable and explicit</strong>. When you type a command, you can see exactly what was executed. This makes it easier to reproduce results, diagnose errors, and understand what the computer is doing step by step.</p>
+<p>Every terminal interaction follows the same basic pattern:<br>
+1. You type a command.<br>
+2. The computer executes it.<br>
+3. The terminal displays output or an error message.<br>
+4. Control returns to you.</p>
+<p>For example, listing the contents of the current directory looks like this:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The terminal responds by showing the files and folders in that location. This immediate feedback loop—command followed by output—is central to working effectively with the terminal and will be used throughout the course.</p>
+<p>Understanding the terminal is not about memorizing commands. It is about developing a mental model of how the computer interprets instructions, how files are located, and how programs are executed. With that model in place, the terminal becomes a powerful and reliable tool rather than a source of frustration.</p>
+</section>
+<section id="files-folders-and-working-directories" class="level3">
+<h3 class="anchored" data-anchor-id="files-folders-and-working-directories">8.2 Files, folders, and working directories</h3>
+<p>Computers organize information using <strong>files</strong> and <strong>folders</strong> (also called directories). A file contains data or instructions, such as a Python script, while a folder is a container that holds files and other folders. Every file on a computer exists inside exactly one folder, and folders can be nested inside other folders.</p>
+<p>When working in the terminal, the computer always keeps track of a single location called the <strong>current working directory</strong>. This directory represents “where you are” in the file system at any given moment. All commands you type into the terminal are interpreted relative to this location unless you explicitly say otherwise.</p>
+<p>You can ask the terminal to show the current working directory using the following command:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The output shows the full path to the folder the terminal is currently using. This location matters because most commands—including those that run Python scripts—operate on files in this directory by default.</p>
+<p>To see what files and folders exist in the current working directory, you can list its contents:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The terminal responds by displaying the names of files and folders in that location. If a Python script does not appear in this list, it means the terminal cannot “see” it from the current directory.</p>
+<p>This explains why a command such as:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> script.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>only works when the file named <code>script.py</code> is located in the current working directory. When this command is run, Python looks for <code>script.py</code> in the folder the terminal is currently pointing to. If the file is elsewhere, Python cannot run it and will report that the file cannot be found.</p>
+<p>Programs locate files using the same logic. When a program is executed, it starts in the current working directory and interprets file references relative to that location. If a script refers to another file without specifying a full path, Python assumes that file is located in—or relative to—the directory where the program was run.</p>
+<p>Changing the current working directory changes what files are visible to the terminal and to any programs launched from it. Moving between folders is therefore a fundamental skill when working with scripts and project-based code. In the next section, this idea is extended by introducing <strong>paths</strong>, which provide precise ways to describe file locations both relative to the current directory and relative to the entire file system.</p>
+</section>
+<section id="relative-vs-absolute-paths" class="level3">
+<h3 class="anchored" data-anchor-id="relative-vs-absolute-paths">8.3 Relative vs absolute paths</h3>
+<p>A <strong>path</strong> is a description of where a file or folder is located on a computer. Paths allow both humans and programs to refer to specific locations in the file system. When working in the terminal, paths are how you tell the computer <em>which</em> file or folder you mean.</p>
+<p>There are two main types of paths: <strong>absolute paths</strong> and <strong>relative paths</strong>. The difference between them depends on where the path begins.</p>
+<p>An <strong>absolute path</strong> describes a location starting from the root of the file system. It specifies the full sequence of folders that must be followed to reach a file, regardless of the current working directory. Because absolute paths always start from the same place, they uniquely identify a file’s location.</p>
+<p>For example, an absolute path might look like this:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/Users/username/projects/week1/hello_world.py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This path tells the computer exactly where the file lives, no matter where the terminal is currently pointed. Absolute paths are precise, but they can be long, system-specific, and inconvenient to type repeatedly.</p>
+<p>A <strong>relative path</strong>, by contrast, describes a location starting from the <strong>current working directory</strong>. Instead of beginning at the root of the file system, a relative path is interpreted based on where you are at the moment the command is run.</p>
+<p>For example, if the terminal is already inside the <code>week1</code> folder, the same file could be referred to simply as:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">hello_world.py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Relative paths are shorter and easier to read, but they only make sense in relation to the current working directory. This is why understanding where you are in the file system is so important when using the terminal.</p>
+<p>In most projects, <strong>relative paths are used far more often than absolute paths</strong>. Relative paths make code easier to move between computers and directories without modification. If a project folder is copied or shared, relative paths continue to work as long as the internal structure of the project remains the same.</p>
+<p>Two special symbols are commonly used in relative paths. The symbol <code>.</code> refers to the <strong>current directory</strong>, while <code>..</code> refers to the <strong>parent directory</strong>, which is the folder that contains the current one. These symbols provide a concise way to navigate up and down the folder hierarchy.</p>
+<p>For example, moving up one level in the directory structure looks like this:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Using these symbols allows paths to express relationships between folders rather than fixed locations. This relational view of file locations is central to working effectively with scripts, projects, and command-line tools.</p>
+<p>Understanding paths—especially the distinction between relative and absolute paths—helps explain many common terminal errors and clarifies how programs locate the files they need. With this foundation in place, navigating the file system becomes a logical process rather than a trial-and-error exercise.</p>
+</section>
+<section id="essential-navigation-commands-conceptual-overview" class="level3">
+<h3 class="anchored" data-anchor-id="essential-navigation-commands-conceptual-overview">8.4 Essential navigation commands (conceptual overview)</h3>
+<p>Working in the terminal involves a small set of core commands that allow you to <strong>navigate the file system</strong> and understand what files are available at any given moment. These commands are used constantly when working with Python scripts, not because they are complex, but because they express intent very directly.</p>
+<p>One of the most common tasks is <strong>moving between folders</strong>. This is done by changing the current working directory. Conceptually, this is no different from opening a different folder in a graphical interface, except that it is done by issuing a command rather than clicking.</p>
+<p>For example, moving into a folder looks like this:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> projects</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After this command runs, the terminal’s current working directory changes to the <code>projects</code> folder. All subsequent commands are interpreted relative to this new location.</p>
+<p>Another common task is <strong>listing the contents of a folder</strong>. This allows you to see which files and subfolders exist in the current directory:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Listing files is often the first step when something does not work as expected. If a file does not appear in the listing, it means the terminal cannot see it from the current location.</p>
+<p>Folders are also created directly from the terminal. Creating folders is especially useful for organizing projects and keeping related files together:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> week1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This command creates a new folder named <code>week1</code> inside the current working directory. Organizing code into folders helps keep scripts, data, and outputs clearly separated, which becomes increasingly important as projects grow.</p>
+<p>These navigation commands matter because <strong>the terminal always operates in a specific location</strong>. Python scripts are run from that location, files are created there by default, and relative paths are resolved based on it. When a command behaves unexpectedly, the cause is often not the command itself, but the directory from which it was run.</p>
+<p>The goal is not to memorize commands, but to understand their intent:<br>
+- <em>Where am I?</em><br>
+- <em>What files are here?</em><br>
+- <em>Where do I want to go next?</em></p>
+<p>Once this mental model is in place, the specific command names become easier to remember, and working in the terminal becomes a predictable and logical process rather than a trial-and-error activity.</p>
+</section>
+<section id="how-the-terminal-connects-to-python-execution" class="level3">
+<h3 class="anchored" data-anchor-id="how-the-terminal-connects-to-python-execution">8.5 How the terminal connects to Python execution</h3>
+<p>The terminal plays a central role in running Python scripts because it provides the context in which commands are interpreted. When a Python script is executed, the terminal is responsible for telling Python <strong>which file to run</strong> and <strong>where to find it</strong>.</p>
+<p>When you type a command such as:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> first_program.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>you are giving Python two pieces of information at once. First, you are specifying that the Python interpreter should be used. Second, you are specifying the name of the file to execute. What is not explicitly stated—but is critically important—is <strong>where Python should look for that file</strong>.</p>
+<p>By default, Python looks for the script in the <strong>current working directory</strong>. That directory is determined entirely by the terminal’s location at the moment the command is run. If the file named <code>first_program.py</code> is located in that directory, Python can execute it. If it is not, Python reports an error indicating that the file cannot be found.</p>
+<p>This explains why errors such as “file not found” or “no such file or directory” occur so frequently. In many cases, the issue is not that the file does not exist, but that the terminal is pointed at the wrong folder when the command is issued.</p>
+<p>Terminal navigation commands directly affect this outcome. Changing directories changes what files are visible to Python. Listing files allows you to verify whether the script you want to run is actually present in the current location. Together, these actions form a simple but powerful workflow:</p>
+<ol type="1">
+<li>Navigate to the folder containing the script.<br>
+</li>
+<li>Confirm the file is present.<br>
+</li>
+<li>Run the script using the Python command.</li>
+</ol>
+<p>Project folder structure reinforces this workflow. When scripts are organized into predictable folders, it becomes easier to navigate to the correct location and run code reliably. Relative paths and consistent organization reduce the likelihood of execution errors and make projects easier to understand and maintain.</p>
+<p>This leads to a useful mental model for running Python scripts:</p>
+<p><strong>location → command → execution</strong></p>
+<p>First, the terminal’s location determines what files are accessible. Next, the command specifies what action to take. Finally, Python executes the script based on that context. When something goes wrong, tracing the problem through these three steps is often the fastest way to identify and resolve the issue.</p>
+<p>Understanding this connection between the terminal and Python execution transforms error messages from obstacles into signals. Rather than guessing, it becomes possible to reason systematically about what the computer is doing and why a particular command succeeds or fails.</p>
+</section>
+<section id="common-mistakes-and-recovery-strategies" class="level3">
+<h3 class="anchored" data-anchor-id="common-mistakes-and-recovery-strategies">8.6 Common mistakes and recovery strategies</h3>
+<p>Mistakes in the terminal are not signs of failure or lack of ability. They are a normal and expected part of learning to work with files, paths, and scripts. Most issues encountered at this stage fall into a small number of common patterns, and each has straightforward recovery strategies.</p>
+<p>One frequent mistake is <strong>running commands from the wrong directory</strong>. When the terminal is pointed at a different folder than expected, commands such as running a Python script will fail because the file cannot be found. In these situations, the solution is not to change the command, but to confirm the terminal’s current location and navigate to the correct folder before trying again.</p>
+<p>Another common issue is <strong>confusing file names or extensions</strong>. Python scripts must be referenced using their exact file name, including the <code>.py</code> extension. A missing or misspelled character is enough to cause an error. Verifying file names by listing the contents of the directory often resolves this type of problem quickly.</p>
+<p>It is also easy to <strong>forget where files were saved</strong>, especially when working across multiple folders or projects. When this happens, the most effective approach is to slow down and retrace steps: identify the project folder, navigate into it, and inspect its contents. Guessing or repeatedly trying variations of a command rarely helps and often increases frustration.</p>
+<p>Getting “unstuck” usually involves a small set of reliable actions:<br>
+- Check the current working directory.<br>
+- List the files in that directory.<br>
+- Confirm the script’s name and location.<br>
+- Re-run the command once the context is correct.</p>
+<p>These steps are simple, but they are powerful because they restore clarity about what the computer can see and what it is being asked to do.</p>
+<p>Perhaps most importantly, these mistakes are not unique to beginners. Even experienced programmers regularly encounter them, especially when switching projects or environments. What changes with experience is not the absence of mistakes, but the speed and confidence with which they are resolved.</p>
+<p>Learning to work in the terminal is as much about developing patience and a clear mental model as it is about learning commands. With practice, errors become signals rather than obstacles, and recovery becomes a routine part of working effectively with code.</p>
+</section>
+</section>
+<section id="virtual-environments-overview" class="level2">
+<h2 class="anchored" data-anchor-id="virtual-environments-overview">9. Virtual Environments Overview</h2>
+<p>Up to this point, the focus has been on understanding how the terminal interacts with files and how Python scripts are located and executed. These ideas establish <em>where</em> commands run and <em>which</em> files they act on. The next layer adds an equally important question: <strong>which version of Python, and which set of installed tools, should be used when a script runs</strong>.</p>
+<p>This question becomes especially important as projects grow and as additional libraries are introduced. Virtual environments provide a structured way to manage this complexity by controlling the software context in which Python programs execute. The sections that follow introduce virtual environments as a practical solution to a common problem, building directly on the terminal-based workflows already established.</p>
+<section id="why-virtual-environments-exist" class="level3">
+<h3 class="anchored" data-anchor-id="why-virtual-environments-exist">9.1 Why virtual environments exist</h3>
+<p>Virtual environments exist to solve a practical problem that arises when working with Python across multiple projects: <strong>different projects often require different packages, or different versions of the same package</strong>.</p>
+<p>By default, Python allows packages to be installed globally, meaning they are available to all Python programs on a computer. While this may seem convenient at first, it quickly leads to conflicts. One project may require a newer version of a library, while another depends on an older version. Installing or upgrading a package for one project can unintentionally break another.</p>
+<p>These conflicts are especially common in analytics and AI work, where projects often rely on rapidly evolving libraries. Changes in package behavior, version compatibility, or dependencies can cause code that once worked correctly to fail without any changes to the code itself.</p>
+<p>Virtual environments address this problem by providing <strong>isolation</strong>. Each environment contains its own copy of the Python interpreter along with its own set of installed packages. This allows each project to define and control exactly which packages and versions it uses, without affecting other projects or the system-wide Python installation.</p>
+<p>Importantly, virtual environments are not about adding complexity for its own sake. They are a way to <strong>reduce uncertainty and prevent accidental breakage</strong>. By isolating dependencies, environments make projects more predictable, easier to reproduce, and easier to share with others.</p>
+<p>From a workflow perspective, virtual environments support a simple principle: <em>a project should carry its own assumptions about its software dependencies</em>. When those assumptions are explicit and isolated, problems become easier to diagnose and fixes become easier to apply.</p>
+<p>Understanding why virtual environments exist provides context for the steps that follow. Rather than treating environment setup as a ritual to memorize, it becomes clear that environments are a practical response to a real and common problem in Python-based work.</p>
+</section>
+<section id="what-a-virtual-environment-is" class="level3">
+<h3 class="anchored" data-anchor-id="what-a-virtual-environment-is">9.2 What a virtual environment is</h3>
+<p>A <strong>virtual environment</strong> is a self-contained Python setup that exists alongside, but separate from, the system-wide Python installation. It provides a controlled space in which a project can run using a specific Python interpreter and a specific set of installed packages.</p>
+<p>Each virtual environment includes its own Python interpreter and its own package directory. When a program is run inside an environment, Python uses the interpreter and packages associated with that environment rather than those installed globally on the system. This separation is what allows multiple projects with different requirements to coexist on the same computer without interfering with one another.</p>
+<p>Virtual environments are closely tied to two components: the <strong>Python interpreter</strong> and <strong>installed packages</strong>. The interpreter determines which version of Python is used, while the installed packages determine which libraries and tools are available to the program. Together, these define the software context in which a script executes.</p>
+<p>When a virtual environment is <strong>activated</strong>, the terminal is instructed to use the environment’s Python interpreter by default. As a result, running Python commands or executing scripts uses the environment’s configuration rather than the system-wide one. Activation does not change Python itself; it changes which Python is selected when commands are run.</p>
+<p>It is important to understand what activation does <em>not</em> do. Activating a virtual environment does not delete or replace the system Python installation. It does not modify other environments, and it does not affect projects outside the current working context. The system Python remains available and unchanged; the environment simply provides an alternative that is used temporarily.</p>
+<p>This distinction is essential for developing confidence with environments. Virtual environments do not take control of the computer or permanently alter Python. They provide a scoped, reversible context in which projects can be developed and executed reliably. Once this idea is clear, the mechanics of using environments become much easier to understand and apply.</p>
+</section>
+<section id="the-course-standard-environment-workflow-using-uv" class="level3">
+<h3 class="anchored" data-anchor-id="the-course-standard-environment-workflow-using-uv">9.3 The course-standard environment workflow (using uv)</h3>
+<p>To manage virtual environments consistently, this course uses a single tool: <strong>uv</strong>. Rather than introducing multiple environment managers or allowing a mix of tools, one standard workflow is used throughout. This reduces confusion, minimizes setup errors, and ensures that examples behave the same way for everyone.</p>
+<p>The choice to standardize on one tool is intentional. Environment management is not the core subject of the course; it is supporting infrastructure. Using a single, reliable tool allows attention to remain on analytics, AI concepts, and Python itself rather than on resolving tooling differences.</p>
+<p>At a high level, the environment workflow consists of three steps:</p>
+<ol type="1">
+<li><p><strong>Create an environment</strong><br>
+A new virtual environment is created for the project. This environment serves as an isolated space where the project’s Python interpreter and packages will live.</p></li>
+<li><p><strong>Activate the environment</strong><br>
+Activating the environment tells the terminal to use the environment’s Python interpreter by default. From this point forward, Python commands and scripts run within the context of the environment rather than the system-wide installation.</p></li>
+<li><p><strong>Install dependencies</strong><br>
+Required packages are installed into the environment. These packages become available only within that environment, ensuring that the project’s dependencies are isolated and controlled.</p></li>
+</ol>
+<p>These steps form a repeatable process that is used for every project. While the specific commands will be introduced later, the important idea is the sequence itself. Creating, activating, and installing are distinct actions with different purposes, and each plays a role in establishing a predictable execution context.</p>
+<p>By emphasizing process rather than command memorization, the workflow remains understandable even as tools evolve. The details of how <code>uv</code> performs each step may change over time, but the underlying structure of environment-based development remains the same. Understanding this structure makes it easier to reason about errors, recover from mistakes, and apply the same approach in future projects beyond this course.</p>
+</section>
+<section id="activating-and-deactivating-environments-conceptual" class="level3">
+<h3 class="anchored" data-anchor-id="activating-and-deactivating-environments-conceptual">9.4 Activating and deactivating environments (conceptual)</h3>
+<p>Activating a virtual environment changes how the terminal interprets Python-related commands. Rather than altering Python itself, activation tells the terminal <strong>which Python interpreter and which set of packages should be used</strong> when commands are executed.</p>
+<p>When an environment is activated, the terminal is temporarily configured so that Python commands refer to the environment’s Python interpreter instead of the system-wide one. As a result, any script that is run uses the packages installed in that environment. This is why activation is such an important step in the workflow: it determines the software context in which code executes.</p>
+<p>Activation affects two key things. First, it determines <strong>which Python runs</strong>. Even if multiple versions of Python exist on a computer, activation ensures that the correct interpreter is used for the current project. Second, it determines <strong>which packages are available</strong>. Only the packages installed in the active environment can be imported and used by scripts.</p>
+<p>Forgetting to activate an environment is a common source of confusion. When this happens, Python may still run, but it may use the system-wide interpreter and packages instead of the project-specific ones. This can lead to errors where code appears correct but fails because required packages are missing or the wrong versions are being used.</p>
+<p>Deactivating an environment simply returns the terminal to its default state. After deactivation, Python commands once again refer to the system-wide Python installation. No files are deleted, and no environments are removed; the change is temporary and reversible.</p>
+<p>Understanding activation and deactivation reinforces an important idea: <strong>virtual environments are contexts, not permanent changes</strong>. They define how Python behaves in a given terminal session, and they can be entered and exited as needed. With this mental model in place, environment-related issues become easier to identify and resolve.</p>
+</section>
+<section id="how-environments-connect-to-the-terminal-and-visual-studio-code" class="level3">
+<h3 class="anchored" data-anchor-id="how-environments-connect-to-the-terminal-and-visual-studio-code">9.5 How environments connect to the terminal and Visual Studio Code</h3>
+<p>Virtual environments are closely tied to the <strong>terminal session</strong> in which they are activated. When an environment is activated, the change applies only to that specific terminal window. Other terminal windows remain unaffected unless the environment is activated there as well. This session-specific behavior is intentional and allows different projects to be worked on simultaneously using different environments.</p>
+<p>Because activation is terminal-specific, it is possible for two terminals on the same computer to behave differently at the same time. One terminal may be using a project’s virtual environment, while another is using the system-wide Python installation. Understanding this distinction helps explain why code may run successfully in one terminal but fail in another.</p>
+<p>Visual Studio Code builds on this behavior by integrating the terminal and the editor. When a project folder is opened in VS Code, the editor scans the folder structure to detect virtual environments. If an environment is found, VS Code can associate that environment with the project and use it when running Python scripts.</p>
+<p>VS Code’s Python tooling uses this association to determine which Python interpreter should be used for execution, linting, and debugging. When the correct environment is selected, running a script from the editor or from the integrated terminal uses the same Python configuration. This alignment reduces confusion and helps ensure consistent behavior across tools.</p>
+<p>At this point, several concepts come together:<br>
+- The <strong>terminal location</strong> determines which files are visible.<br>
+- The <strong>active environment</strong> determines which Python interpreter and packages are used.<br>
+- The <strong>execution command</strong> tells Python which script to run.</p>
+<p>All three must align for code to run as expected. If any one of them is incorrect—wrong directory, wrong environment, or wrong command—errors can occur even if the code itself is correct.</p>
+<p>Viewing these elements as a coordinated system rather than independent pieces makes troubleshooting much easier. Instead of guessing, it becomes possible to check each part in turn: where the terminal is, which environment is active, and which Python is being used. This systems-level understanding is key to working confidently with Python projects in both the terminal and Visual Studio Code.</p>
+</section>
+<section id="common-environment-mistakes-and-recovery-strategies" class="level3">
+<h3 class="anchored" data-anchor-id="common-environment-mistakes-and-recovery-strategies">9.6 Common environment mistakes and recovery strategies</h3>
+<p>Mistakes involving virtual environments are extremely common and occur at all experience levels. These issues rarely indicate a problem with the code itself. Instead, they usually arise from a mismatch between the environment that was intended and the one that is actually being used.</p>
+<p>One frequent mistake is <strong>installing packages in the wrong environment</strong>. This happens when packages are installed while the system-wide Python environment is active instead of the project’s virtual environment. As a result, a script may fail to import a package even though it appears to be installed. The package exists—but not in the environment the script is using.</p>
+<p>Another common issue is <strong>running scripts with the wrong Python interpreter</strong>. Because multiple Python interpreters can exist on the same computer, it is possible to run a script using a different interpreter than expected. When this occurs, the script may behave inconsistently across terminals or tools, even though no changes were made to the code.</p>
+<p>It is also easy to <strong>forget which environment is active</strong>, especially when switching between projects or terminal windows. Since activation is specific to each terminal session, opening a new terminal often means starting without any environment activated. This can lead to confusion when previously working code suddenly fails.</p>
+<p>Recovering from environment-related issues usually involves a small number of simple checks:<br>
+- Confirm which environment is active in the current terminal.<br>
+- Verify which Python interpreter is being used.<br>
+- Ensure required packages are installed in that environment.<br>
+- Re-activate the intended environment if necessary.</p>
+<p>These steps are effective because they reestablish clarity about the execution context before any changes are made. Guessing or reinstalling packages repeatedly is rarely helpful without first confirming which environment is actually in use.</p>
+<p>Most importantly, these mistakes are routine and fixable. Even experienced developers encounter them regularly, particularly when working across multiple projects or tools. With practice, identifying environment issues becomes a quick diagnostic step rather than a source of frustration.</p>
+<p>Virtual environments are designed to make work more reliable, not more fragile. Once their role is understood, environment-related problems become signals to check context rather than obstacles to progress.</p>
+</section>
+</section>
+<section id="week-1-summary" class="level2">
+<h2 class="anchored" data-anchor-id="week-1-summary">Week 1 Summary</h2>
+<p>This chapter established the foundational ideas and workflows that will be used throughout the course. Conceptually, it introduced analytics as a progression from description to prescription, and positioned artificial intelligence as systems that extend analytics by embedding models into decision-making processes. Rather than treating analytics and AI as competing ideas, the chapter emphasized their overlap and the importance of understanding <em>how</em> model outputs are ultimately used.</p>
+<p>A central organizing framework was the decomposition of AI systems into <strong>data, models, and logic</strong>. This lens provides a practical way to reason about system behavior, diagnose failures, and understand why strong predictive performance alone does not guarantee good decisions. The discussion of AI paradigms—symbolic, statistical, neural, and hybrid—reinforced the idea that real-world systems are assembled from multiple approaches rather than built around a single technique.</p>
+<p>From a practical perspective, the chapter introduced the core mechanics required to work with Python in a professional, script-based workflow. You learned how Python scripts execute, how simple programs are constructed using printing, variables, and expressions, and why the edit → run → fix loop is the normal mode of development. These skills form the computational foundation for later analytical work.</p>
+<p>The chapter also emphasized the importance of <strong>execution context</strong>. By introducing the terminal, file navigation, paths, and virtual environments, it clarified how Python code is located, executed, and isolated across projects. Rather than treating these tools as technical hurdles, the chapter framed them as mechanisms for control, predictability, and reproducibility.</p>
+<p>By the end of Week 1, you should have both a conceptual framework for understanding analytics and AI systems and a practical workflow for running Python code reliably. These foundations will be built upon in subsequent chapters, where data analysis, modeling, and AI techniques become more sophisticated—but always within the same mental and operational structure introduced here.</p>
+
+
 </section>
 
 </main> <!-- /main -->
