@@ -1,16 +1,1110 @@
 ---
-title: "Week 2 – Python Basics"
+title: "Week 2 – Python Foundations: Data, Control, and Functions"
 ---
 
-## Week 2 – Overview
+## Week 2 Overview
 
-This chapter will introduce Python fundamentals needed for the course.
+### What you will learn this week
+- How Python represents different kinds of data and why types matter.
+- How to work with text and structured collections of values.
+- How programs make decisions and repeat actions using control flow.
+- How functions help organize and reuse code.
+- How to read Python error messages and debug common problems.
 
-### Key Topics
-- Variables and data types  
-- Control flow (if/else, loops)  
-- Basic functions  
+### What you will produce this week
+- Multiple Python scripts demonstrating data types, data structures, and control flow.
+- Functions that encapsulate reusable logic.
+- Debugged versions of scripts that initially contain errors.
 
-### Code for This Week
-(links will be added later)
+### AI Literacy Objectives
+By the end of this week, you should be able to:  
+- Explain how data representation affects program behavior.  
+- Recognize how structured data enables more complex reasoning in programs.  
+- Describe how control flow supports conditional and repeated decision-making.  
+- Explain why modular design (functions) matters for scalable systems.  
+
+### Job-Ready Skills Objectives
+By the end of this week, you should be able to:  
+- Work with core Python data types: numbers, strings, and booleans.  
+- Manipulate lists and dictionaries to store and retrieve data.  
+- Write conditional logic using if/else statements.  
+- Use for and while loops to iterate over data.  
+- Define and call functions to organize code.
+- Interpret Python error messages and apply basic debugging strategies.
+
+---
+
+## 1. Python Basics: Variables and Data Types
+
+This section revisits variables and introduces Python’s core data types. The goal is to move from thinking of variables as simple containers to understanding how **data type influences program behavior**, interpretation, and outcomes.
+
+### 1.1 Variables revisited
+
+A **variable** in Python is a name that refers to a value. When a variable is created, Python associates that name with an object stored in memory. This association can change over time as the program runs.
+
+One important idea to reinforce is that variables are **not fixed containers**. They are labels that can be reassigned to different values:
+
+``` python
+x = 5
+x = 10
+print(x)
+```
+
+After this code runs, the value associated with `x` is `10`, not `5`. The original value is no longer referenced by `x`. This ability to reassign variables is what allows programs to update state, respond to inputs, and evolve during execution.
+
+Variables also help make programs easier to understand. Using meaningful variable names communicates intent and reduces the need to mentally track raw values. As programs become more complex, this clarity becomes increasingly important.
+
+At this stage, the key takeaway is that variables:
+- bind names to values,
+- can be reassigned,
+- and allow programs to remember and update information as they run.
+
+---
+
+### 1.2 Numbers and numeric behavior
+
+Python supports several numeric data types, the most common being **integers** (whole numbers) and **floating-point numbers** (numbers with decimal points). While they may look similar, they behave differently in certain operations.
+
+For example:
+
+``` python
+a = 10
+b = 3
+print(a / b)
+```
+
+Even though both `a` and `b` are integers, the result of division is a floating-point number. Python automatically determines the appropriate type based on the operation being performed.
+
+This automatic behavior is convenient, but it also means that numeric results may not always be what you expect at first glance. Floating-point numbers, in particular, can introduce small rounding effects due to how they are represented internally.
+
+At this level, the most important ideas are:  
+- Python distinguishes between integers and floats,  
+- arithmetic operations can change types,  
+- and numeric behavior is governed by both the values and the operation.  
+
+Understanding these basics helps prevent confusion later when numeric results appear slightly different than anticipated.
+
+---
+
+### 1.3 Strings as data
+
+A **string** is a sequence of characters used to represent text. Strings are created by enclosing characters in quotation marks:
+
+``` python
+text = "analytics"
+```
+
+Strings behave differently from numbers. Although they may look similar when printed, Python treats them as text rather than quantities. Strings can be indexed, meaning individual characters can be accessed by position:
+
+``` python
+print(text[0])
+```
+
+Here, Python returns the first character of the string. Indexing begins at zero, which is a common convention in programming.
+
+An important property of strings is that they are **immutable**. Once a string is created, its individual characters cannot be changed. Operations on strings create new strings rather than modifying existing ones.
+
+Strings are used extensively in analytics and AI workflows to represent labels, categories, identifiers, and unstructured text. Treating strings as data rather than just “things to print” is an important conceptual shift.
+
+---
+
+### 1.4 Booleans and logical values
+
+A **boolean** represents one of two logical values: `True` or `False`. Booleans often arise from **comparisons**, where Python evaluates whether a statement is correct:
+
+``` python
+x = 5
+print(x > 3)
+```
+
+In this example, the comparison produces a boolean result. Booleans are fundamental to decision-making in programs because they control whether certain code paths are executed.
+
+Although booleans are simple, they play a central role in program logic. They act as the bridge between data and behavior, determining how a program responds to different conditions.
+
+Later sections will build on booleans to introduce conditional logic and loops. For now, the key idea is that booleans encode yes/no decisions that programs can act upon.
+
+---
+
+### 1.5 Type behavior and common surprises
+
+Python uses **dynamic typing**, meaning that variable types are determined at runtime rather than declared in advance. A variable can be reassigned to a value of a different type without error:
+
+``` python
+x = 5
+x = "five"
+print(x)
+```
+
+This flexibility is powerful, but it can also lead to surprises—especially when mixing types in expressions. For example:
+
+``` python
+print("5" + "5")
+print(5 + 5)
+```
+
+Although both lines use the `+` operator, they behave differently. In the first case, Python performs string concatenation. In the second, it performs numeric addition. The operator’s meaning depends on the data types involved.
+
+These behaviors are not bugs; they are consistent rules applied by Python. Understanding them requires paying attention to **type**, not just appearance.
+
+Common beginner surprises often come from assuming that values that look similar behave the same way. Developing the habit of asking “what type is this?” is one of the most effective ways to reason about Python programs and avoid errors.
+
+---
+
+
+## 2. Working with Strings
+
+Strings are one of the most common data types used in Python. They represent text, but they are also structured objects that can be indexed, sliced, transformed, and formatted. In analytics and AI contexts, strings are frequently used to represent labels, categories, identifiers, and unstructured text, making it important to understand how to work with them beyond simple printing.
+
+This section builds fluency in treating strings as data rather than as static text.
+
+---
+
+### 2.1 String creation and indexing
+
+A **string** is created by enclosing characters in quotation marks. Python allows both single and double quotation marks, as long as they are used consistently:
+
+``` python
+text = "analytics"
+label = 'AI'
+```
+
+Once created, a string behaves like a **sequence of characters**. This means each character has a position, known as an index. Python uses **zero-based indexing**, so the first character is at position 0, the second at position 1, and so on.
+
+Characters can be accessed using square brackets:
+
+``` python
+text = "analytics"
+print(text[0])
+print(text[1])
+```
+
+Python also allows **negative indexing**, which counts from the end of the string. An index of `-1` refers to the last character:
+
+``` python
+print(text[-1])
+```
+
+Indexing allows programs to inspect or extract specific parts of a string, but it must be done carefully. Attempting to access an index that does not exist results in an error. This reinforces the idea that strings have a fixed length and well-defined boundaries.
+
+At a conceptual level, indexing answers the question: *Which character is at this position in the string?*
+
+---
+
+### 2.2 String slicing
+
+While indexing accesses a single character, **slicing** extracts a range of characters from a string. A slice is specified using a start position and an end position. The start position is included, while the end position is excluded.
+
+For example:
+
+``` python
+text = "analytics"
+print(text[0:4])
+```
+
+This slice returns the characters at positions 0 through 3. Python also allows either the start or end to be omitted, which defaults to the beginning or end of the string:
+
+``` python
+print(text[:4])
+print(text[4:])
+```
+
+Slicing always returns a **new string**. The original string remains unchanged, which reflects the immutable nature of strings.
+
+Slicing is often safer and more expressive than manual indexing, especially when working with variable-length strings. Rather than counting exact positions, slices allow code to express intent more clearly, such as “everything before this point” or “everything after that point.”
+
+At a conceptual level, slicing answers the question: *Which portion of this string do I want to work with?*
+
+---
+
+### 2.3 Common string operations and methods
+
+Python provides many built-in operations and methods for working with strings. These allow programs to measure, transform, and search text without modifying the original string.
+
+One common operation is measuring the length of a string:
+
+``` python
+text = "Analytics and AI"
+print(len(text))
+```
+
+Other common operations involve transforming the string, such as changing letter case:
+
+``` python
+print(text.lower())
+print(text.upper())
+```
+
+Strings can also be searched or modified using methods that return new strings:
+
+``` python
+print(text.replace("AI", "analytics"))
+```
+
+These methods do not alter the original string. Instead, they produce a new string with the requested changes applied.
+
+Because strings are immutable, all transformations result in new objects. This behavior is consistent and predictable, but it also means that results must be captured in variables if they are needed later.
+
+String operations are widely used in data cleaning, labeling, and preprocessing tasks. Understanding how these methods behave helps prevent subtle bugs and makes string manipulation more intentional.
+
+---
+
+### 2.4 Formatting strings for output
+
+In most programs, strings are not used in isolation. They are combined with variables to produce readable output for users, logs, or reports. **String formatting** is the process of embedding variable values into text.
+
+One common and modern approach is the use of **formatted strings**, often called f-strings. These allow variables to be inserted directly into a string:
+
+``` python
+name = "Jordan"
+score = 92
+print(f"{name} scored {score} points")
+```
+
+Formatted strings improve readability by keeping text and values together in a single expression. They also reduce the need for manual concatenation, which can become error-prone as output becomes more complex.
+
+Formatting matters because output is often how results are interpreted by humans. Clear, well-formatted strings make it easier to understand what a program has done and what its results mean.
+
+At a conceptual level, string formatting answers the question: *How should this information be presented so it is easy to read and understand?*
+
+---
+
+
+## 3. Data Structures: Lists
+
+Lists allow programs to work with **collections of values** rather than single items. Instead of storing one number, one string, or one result at a time, lists make it possible to store many related values together and treat them as a unit. This capability is essential for working with real-world data, where information almost always comes in groups.
+
+This section introduces lists as a natural extension of variables and strings, focusing on how they are created, accessed, and modified.
+
+---
+
+### 3.1 What a list is and when to use one
+
+A **list** is an ordered collection of values. Each value in the list occupies a position, and those positions are preserved. This ordering allows values to be accessed, updated, and processed in a predictable way.
+
+Lists are useful whenever a program needs to work with:  
+- multiple related values,  
+- values that should be processed together,  
+- or data whose size may change over time.  
+
+For example, a list can represent a set of scores, a group of names, or a sequence of measurements. Rather than creating separate variables for each value, a list groups them into a single structure.
+
+``` python
+numbers = [1, 2, 3, 4]
+```
+
+Conceptually, lists answer the question: *How do I represent many values as one thing?* This makes lists a foundational structure for iteration, aggregation, and analysis later in the course.
+
+---
+
+### 3.2 Creating lists
+
+Lists are created using square brackets, with individual values separated by commas. A list can contain values of the same type or a mixture of different types.
+
+``` python
+names = ["Alice", "Bob", "Charlie"]
+mixed = [1, "two", True]
+```
+
+Although Python allows mixed-type lists, using a consistent type within a list often improves readability and reduces confusion. For example, a list of numbers or a list of strings communicates intent more clearly than a list with unrelated values.
+
+Lists can also be created empty and filled later as the program runs. This pattern is especially useful when values are generated dynamically.
+
+``` python
+results = []
+```
+
+At a conceptual level, creating a list establishes a container whose contents can grow, shrink, or change as the program executes.
+
+---
+
+### 3.3 Indexing and slicing lists
+
+Like strings, lists are **sequences**, which means their elements are accessed using zero-based indexing. The first element is at index 0, the second at index 1, and so on.
+
+``` python
+values = [10, 20, 30, 40, 50]
+print(values[0])
+```
+
+Negative indexing also works with lists, allowing access from the end:
+
+``` python
+print(values[-1])
+```
+
+Lists support **slicing**, which extracts a portion of the list and returns a new list containing those elements.
+
+``` python
+print(values[1:4])
+```
+
+Slicing behavior for lists closely mirrors slicing for strings, but instead of returning a string, Python returns a list. The original list remains unchanged.
+
+Indexing and slicing allow programs to focus on specific elements or subsets of data, which is especially useful when analyzing or transforming collections.
+
+---
+
+### 3.4 Modifying list contents
+
+One key difference between lists and strings is that **lists are mutable**. This means their contents can be changed after the list is created.
+
+Individual elements can be updated by assigning a new value to a specific index:
+
+``` python
+values = [10, 20, 30]
+values[1] = 25
+```
+
+Elements can also be added to a list. A common pattern is appending new values to the end:
+
+``` python
+values.append(40)
+```
+
+Removing elements is also possible, either by value or by position. Because lists can change over time, they are well suited for workflows where data is accumulated, filtered, or updated incrementally.
+
+Mutability is powerful, but it also means that changes to a list affect all parts of the program that reference it. Understanding when and how list contents change is critical for reasoning about program behavior.
+
+---
+
+### 3.5 Common list patterns and mistakes
+
+Lists are frequently used in patterns that involve building up data step by step. A common approach is to start with an empty list and add values as they are produced.
+
+``` python
+results = []
+results.append(10)
+results.append(20)
+```
+
+One common mistake involves **indexing errors**, such as attempting to access an index that does not exist. These errors often arise from forgetting that indexing starts at zero or miscounting list length.
+
+Another frequent source of confusion involves **references**. When one variable is assigned to another, both names may refer to the same list rather than creating a copy.
+
+``` python
+a = [1, 2, 3]
+b = a
+b.append(4)
+```
+
+In this example, both `a` and `b` refer to the same list. Modifying the list through one variable affects the other. This behavior is consistent but can be surprising if it is not anticipated.
+
+Developing a habit of thinking carefully about list creation, modification, and referencing helps prevent subtle bugs. Lists are powerful tools, but they require attention to how and when data changes.
+
+---
+
+## 4. Data Structures: Dictionaries
+
+Dictionaries provide a way to store **structured, labeled data**. While lists organize values by position, dictionaries organize values by meaning. This makes dictionaries especially useful for representing real-world entities, records, and attributes where each value has a clear label.
+
+This section introduces dictionaries as a complementary data structure to lists, emphasizing when dictionaries are the better choice and how they support clearer, more expressive programs.
+
+---
+
+### 4.1 Why dictionaries exist
+
+Lists are effective when values are naturally ordered and accessed by position. However, many real-world data problems are not about position—they are about **association**. For example, a person is not best described by “the first value, the second value, and the third value,” but by attributes such as name, age, or location.
+
+Dictionaries exist to solve this problem. A dictionary allows values to be accessed using **keys** that describe what the values represent. This makes programs easier to read and reason about, especially as the number of attributes grows.
+
+``` python
+person = {"name": "Alex", "age": 30}
+```
+
+In this example, each value is paired with a descriptive label. The dictionary structure makes it immediately clear what each value represents, without relying on positional knowledge.
+
+Conceptually, dictionaries answer the question: *How do I store related pieces of information under meaningful names?* This makes them a natural choice for representing records, configurations, and structured inputs.
+
+---
+
+### 4.2 Key–value pairs
+
+A dictionary is composed of **key–value pairs**. The key acts as an identifier, and the value is the data associated with that identifier. Together, they form a mapping from meaning to data.
+
+``` python
+record = {"city": "Gainesville", "state": "FL"}
+```
+
+Keys are typically strings, although Python allows other immutable types to be used as keys. The important property is that keys must be **unique** within a dictionary. Each key identifies exactly one value.
+
+Accessing data through keys is fundamentally different from indexing into a list. Instead of asking “what is at position 0?” the program asks “what is the value associated with this label?” This shift from positional access to semantic access improves clarity and reduces errors.
+
+At a conceptual level, key–value pairs encode relationships: *this label corresponds to that value*. This relational structure is central to many analytics and AI workflows.
+
+---
+
+### 4.3 Creating and accessing dictionaries
+
+Dictionaries are created using curly braces, with key–value pairs separated by commas. Each key is followed by a colon and its associated value.
+
+``` python
+scores = {"math": 90, "history": 85}
+```
+
+Values are accessed by referencing the key:
+
+``` python
+print(scores["math"])
+```
+
+If the specified key exists, Python returns the associated value. If the key does not exist, Python raises an error. This behavior reinforces the idea that keys define the valid structure of the data.
+
+Dictionary access is explicit and intentional. Unlike lists, where accessing an invalid index might result from a miscount, accessing a dictionary with a missing key usually indicates a mismatch between what the program expects and what the data contains.
+
+Understanding how dictionaries are created and accessed helps establish a clear mental model of structured data: keys define *what can be asked*, and values define *what is returned*.
+
+---
+
+### 4.4 Updating and iterating over dictionaries
+
+Dictionaries are **mutable**, meaning their contents can be changed after creation. Existing values can be updated by assigning a new value to an existing key:
+
+``` python
+scores["math"] = 92
+```
+
+New key–value pairs can also be added dynamically:
+
+``` python
+scores["science"] = 88
+```
+
+This flexibility allows dictionaries to evolve as a program runs, making them well suited for tasks where information is accumulated, updated, or refined over time.
+
+Dictionaries are often iterated over to process their contents. While full loop syntax is introduced later, it is important to recognize that dictionaries can be traversed by their keys, values, or key–value pairs. This makes it possible to perform operations across structured data in a systematic way.
+
+Because dictionaries are mutable and often shared across a program, changes to a dictionary affect all references to it. This behavior is powerful but requires careful reasoning about when and where updates occur.
+
+---
+
+### 4.5 Structured data with dictionaries
+
+One of the most common uses of dictionaries is to represent **records**—collections of related attributes that describe a single entity. For example, a dictionary can represent a student, a transaction, or a configuration setting.
+
+``` python
+student = {"name": "Alex", "score": 90}
+```
+
+When working with multiple records, it is common to use **lists of dictionaries**, where each dictionary represents one structured item:
+
+``` python
+students = [
+    {"name": "Alex", "score": 90},
+    {"name": "Jordan", "score": 85}
+]
+```
+
+This pattern bridges the gap between simple Python data structures and more advanced representations such as tables, data frames, and JSON objects. It is widely used in data processing, APIs, and machine learning pipelines.
+
+Dictionaries matter because they allow programs to work with data in a way that mirrors real-world structure. Instead of relying on position or implicit meaning, dictionaries make relationships explicit. This clarity becomes increasingly important as programs grow in size and complexity.
+
+---
+
+
+## 5. Control Flow: Conditional Logic
+
+Conditional logic allows programs to make decisions. Without conditional logic, a program would execute the same instructions in the same order every time, regardless of what data it receives. Real programs do not work that way. They respond differently depending on inputs, context, and state.
+
+This section introduces conditional logic as a fundamental mechanism for decision-making in programs.
+
+---
+
+### 5.1 Why programs need branching
+
+Many early programming examples look like calculators: values go in, a result comes out, and the program ends. That is useful for learning syntax, but it does not capture how most programs behave in practice.
+
+Real programs must handle situations where different cases require different actions. For example:  
+- If a user enters invalid input, the program should respond differently than if the input is valid.  
+- If a customer’s risk score is high, the program may trigger review, while a low score may be ignored.  
+- If a file exists, the program may load it; otherwise it may create a new one.  
+
+This is the purpose of **branching**. Branching means that a program can follow one of multiple paths depending on a condition.
+
+Conditional logic is also the foundation for many forms of decision logic in analytics and AI systems. Models may produce scores or probabilities, but something still has to decide what happens next. That decision is often implemented using thresholds and conditional statements. Even simple branching logic is therefore a core building block for larger systems.
+
+---
+
+### 5.2 If, elif, and else
+
+In Python, branching is expressed using the `if` statement. An `if` statement evaluates a condition. If the condition is true, Python executes the block of code under the `if`. If the condition is false, Python skips that block.
+
+A minimal example looks like this:
+
+``` python
+x = 10
+if x > 5:
+    print("Large value")
+```
+
+The condition is `x > 5`. Python evaluates it as either true or false. If it is true, the indented block runs.
+
+Often, programs need to handle more than two cases. Python supports this using `elif` (short for “else if”). The program checks conditions in order, and the first condition that evaluates to true determines which block runs.
+
+``` python
+score = 85
+if score >= 90:
+    print("A")
+elif score >= 80:
+    print("B")
+else:
+    print("Below B")
+```
+
+In this structure:
+- `if` checks the first condition.
+- `elif` checks additional conditions only if earlier ones were false.
+- `else` acts as a fallback when no conditions were met.
+
+A useful way to read this is: “check the first condition; if it fails, check the next; if all fail, use the default.”
+
+---
+
+### 5.3 Boolean expressions in conditions
+
+Conditions in `if` statements are **boolean expressions**. A boolean expression is any expression that evaluates to either `True` or `False`.
+
+The most common boolean expressions are comparisons. Python supports standard comparison operators such as:  
+- greater than and less than  
+- equality and inequality  
+- greater than or equal to, less than or equal to  
+
+For example:
+
+``` python
+x = 5
+print(x == 5)
+print(x > 10)
+```
+
+These expressions evaluate to booleans. That is why they can be used in conditions: the `if` statement is ultimately asking a yes/no question.
+
+A common source of confusion is that conditions often look like natural language, but they are not. They are strict expressions that must evaluate cleanly to true or false. Small mistakes in a condition can change program behavior dramatically, so it is important to write conditions clearly and test them when needed.
+
+At this stage, the key idea is simple: conditional logic works because Python evaluates conditions as booleans and then decides which block of code to execute.
+
+---
+
+### 5.4 Nested conditionals and readability
+
+A **nested conditional** is an `if` statement inside another `if` statement. Nesting is sometimes necessary when decisions depend on multiple layers of conditions.
+
+``` python
+age = 20
+if age >= 18:
+    if age < 21:
+        print("Adult, but under 21")
+```
+
+This structure expresses two related conditions:  
+- The outer condition checks whether the person is an adult.  
+- The inner condition refines the case for adults under 21.  
+
+Nesting can be useful, but it can also reduce readability if overused. Deeply nested logic is harder to follow, harder to debug, and easier to misunderstand. As conditional logic becomes more complex, readability becomes a design concern, not just a style preference.
+
+Two practical habits help keep conditionals readable:  
+- Use clear conditions that communicate intent.  
+- Avoid unnecessary nesting when a simpler structure is possible.  
+
+Even when nesting is appropriate, indentation must be treated as part of the logic. In Python, indentation is not cosmetic; it determines which code belongs to which branch. Learning to visually interpret indentation is therefore part of learning how conditional logic works.
+
+---
+
+
+## 6. Control Flow: Loops
+
+Loops allow programs to **repeat actions systematically**. Instead of writing the same instruction multiple times, loops provide a way to apply the same logic across collections of data or across repeated conditions. This ability to repeat is essential for working with real data, where the number of values is often large or unknown in advance.
+
+This section introduces looping as a fundamental control structure and emphasizes careful reasoning about how and when repetition occurs.
+
+---
+
+### 6.1 Why repetition matters
+
+Without loops, programs would be limited to one-time calculations. Any task that involved processing multiple values would require duplicated code, which is inefficient, error-prone, and difficult to maintain.
+
+Many real-world tasks involve repetition:  
+- Checking each item in a list  
+- Processing each record in a dataset  
+- Repeating an action until a condition is met  
+- Accumulating results across many values  
+
+Loops make these tasks possible by allowing a program to **apply the same operation repeatedly**, while only writing the logic once.
+
+Conceptually, loops are closely tied to data structures. When data is stored in collections such as lists or dictionaries, loops provide the mechanism to visit each element in turn. This connection between *structure* (data) and *behavior* (loops) is central to programming and analytics.
+
+At a high level, loops answer the question:  
+*How do I apply the same logic across many values or over time?*
+
+---
+
+### 6.2 For loops and iteration patterns
+
+A **for loop** is used when a program needs to iterate over a collection of values. The loop variable takes on each value in the collection, one at a time, and the loop body runs once for each value.
+
+``` python
+values = [10, 20, 30]
+for v in values:
+    print(v)
+```
+
+This loop can be read as: “for each value in the list, print the value.” The loop variable `v` is assigned a new value on each iteration.
+
+For loops work naturally with sequences such as lists and strings. The number of iterations is determined by the size of the collection, which makes for loops predictable and easy to reason about.
+
+A helpful habit is to read for loops **out loud in plain language**. Doing so reinforces the intent of the loop and reduces confusion about what the code is doing.
+
+For loops are especially useful when:  
+- the collection is known,  
+- every element should be processed,  
+- and the order of processing matters.  
+
+---
+
+### 6.3 While loops and termination conditions
+
+A **while loop** repeats as long as a condition remains true. Instead of iterating over a collection, a while loop continues until a specific condition changes.
+
+``` python
+count = 0
+while count < 3:
+    print(count)
+    count = count + 1
+```
+
+This loop runs while the condition `count < 3` is true. Each iteration updates `count`, and eventually the condition becomes false, causing the loop to stop.
+
+While loops are useful when:  
+- the number of iterations is not known in advance,  
+- repetition depends on a changing condition,  
+- or the loop should continue until some state is reached.  
+
+The most important concept with while loops is **termination**. Every while loop must include logic that eventually makes the condition false. Without this, the loop will continue indefinitely.
+
+Conceptually, while loops answer the question:  
+*Should I keep going right now?*
+
+---
+
+### 6.4 Common looping errors
+
+Loops are powerful, but they also introduce common sources of error. One of the most frequent mistakes is creating an **infinite loop**, where the condition never becomes false.
+
+``` python
+count = 0
+while count < 3:
+    print(count)
+    # count is never updated
+```
+
+In this example, the condition remains true forever because `count` never changes. Infinite loops often occur when a loop variable is not updated or when the termination condition is incorrect.
+
+Another common issue is **off-by-one errors**, where a loop runs one time too many or one time too few. These errors often arise from misunderstandings about starting values, ending conditions, or zero-based indexing.
+
+Loops can also behave unexpectedly when data is modified while being iterated over. Changing a list while looping through it can lead to skipped values or unintended behavior, which is why careful reasoning about loop structure is important.
+
+When debugging loops, a useful strategy is to:  
+- trace the loop step by step,  
+- track how loop variables change,  
+- and verify exactly when the condition becomes false.
+
+---
+
+### 6.5 Choosing between for and while
+
+Both for and while loops enable repetition, but they serve different purposes. Choosing between them is a matter of **intent**, not preference.
+
+A for loop is usually the better choice when:  
+- iterating over a known collection,  
+- applying logic to each element,  
+- or when the number of iterations is determined by the data.
+
+A while loop is usually the better choice when:
+- repetition depends on a condition,
+- the number of iterations is not known ahead of time,
+- or the loop should stop based on changing state.
+
+``` python
+# for loop: known collection
+for x in [1, 2, 3]:
+    print(x)
+
+# while loop: condition-based repetition
+count = 0
+while count < 3:
+    print(count)
+    count = count + 1
+```
+
+In many cases, either loop could be used, but one will communicate intent more clearly than the other. Readability and correctness are more important than cleverness.
+
+Understanding when and why to use each type of loop makes programs easier to understand, debug, and extend. Loops are not just a syntactic feature—they are a way of expressing repeated reasoning in code.
+
+---
+
+
+## 7. Functions and Modular Design
+
+As programs grow, writing code from top to bottom becomes difficult to manage. Logic is repeated, scripts become long, and small changes require edits in multiple places. **Functions** address this problem by allowing programs to be broken into reusable, named units of logic.
+
+This section introduces functions not just as a Python feature, but as a way of thinking about program design. Functions help manage complexity, improve readability, and make programs easier to reason about and extend.
+
+---
+
+### 7.1 Why functions exist
+
+One of the earliest signs that a program needs functions is **repetition**. When the same logic appears multiple times, it becomes harder to maintain and easier to introduce errors.
+
+``` python
+print("Processing value")
+print("Processing value")
+```
+
+If the message or behavior needs to change, every repeated instance must be updated. Functions solve this by allowing logic to be written once and reused many times.
+
+Functions also support **abstraction**. By giving a block of code a meaningful name, the details of how something is done can be hidden behind *what* it does. This allows programs to be read at a higher level, focusing on intent rather than mechanics.
+
+Conceptually, functions answer the question:  
+*How can I name and reuse a piece of behavior?*
+
+This idea scales from small scripts to large systems. In analytics and AI workflows, functions often represent steps in a pipeline, transformations applied to data, or decisions applied consistently across many values.
+
+---
+
+### 7.2 Defining a function
+
+A function is defined using the `def` keyword, followed by the function name, parentheses, and a colon. The body of the function is indented beneath the definition.
+
+``` python
+def greet():
+    print("Hello")
+```
+
+This code **defines** a function named `greet`, but it does not execute it. Defining a function tells Python what the function does, not when it should run.
+
+The function body contains the instructions that will be executed whenever the function is called. Indentation is critical here: it determines which statements belong to the function.
+
+Function names should be descriptive and reflect behavior. A well-named function makes code easier to read, especially when functions are combined into larger programs.
+
+A useful way to read a function definition is:  
+“Define a function called `greet` that performs these actions.”
+
+---
+
+### 7.3 Calling functions
+
+A function runs only when it is **called**. Calling a function means telling Python to execute the instructions inside the function body.
+
+``` python
+greet()
+greet()
+```
+
+Each time the function is called, the same block of code runs. After the function finishes executing, control returns to the point where it was called.
+
+This separation between definition and execution is essential. It allows functions to be defined once and used many times, in different parts of a program, or under different conditions.
+
+Understanding the difference between *defining* a function and *calling* a function is one of the most important conceptual steps in learning Python. Many early errors come from assuming that defining a function automatically runs it.
+
+---
+
+### 7.4 Parameters and return values
+
+Functions become more powerful when they can accept **inputs** and produce **outputs**. Inputs are specified using **parameters**, and outputs are produced using **return values**.
+
+``` python
+def add(a, b):
+    return a + b
+```
+
+In this example, `a` and `b` are parameters. When the function is called, concrete values—called **arguments**—are passed in.
+
+``` python
+result = add(2, 3)
+```
+
+The function computes a value and returns it to the caller. The returned value can then be stored in a variable, used in expressions, or passed to other functions.
+
+Returning values is often preferable to printing results inside functions. Printing is useful for communication with a user, but return values allow functions to be composed and reused as part of larger computations.
+
+Conceptually, a function with parameters and a return value represents a **transformation**: it takes inputs, applies logic, and produces an output.
+
+---
+
+### 7.5 Functions as building blocks
+
+As programs grow, functions act as **building blocks** that can be combined with loops, conditionals, and data structures. Each function handles a specific task, making the overall program easier to understand.
+
+``` python
+def is_passing(score):
+    return score >= 70
+```
+
+This function encodes a simple rule. Instead of repeating the condition `score >= 70` throughout a program, the logic is captured once and reused wherever needed.
+
+Functions also improve **testability** and **debugging**. When behavior is isolated inside a function, it can be tested independently. If something goes wrong, the scope of the problem is smaller and easier to locate.
+
+At a higher level, functions support modular design. Programs can be understood as collections of interacting functions, each with a clear purpose. This mirrors how larger analytics and AI systems are structured, where components are designed to do one thing well and interact through well-defined interfaces.
+
+Thinking in terms of functions encourages a shift from writing code that merely works to writing code that is understandable, maintainable, and scalable.
+
+---
+
+
+## 8. Debugging Fundamentals
+
+Debugging is the process of identifying, understanding, and correcting problems in code. It is not a special activity reserved for advanced programmers, nor is it a sign that something has gone wrong in learning. Debugging is how programming actually happens.
+
+This section reframes errors as information and introduces debugging as a **systematic reasoning process**, not a guessing game.
+
+---
+
+### 8.1 What an error message is telling you
+
+When Python encounters a problem it cannot resolve, it produces an **error message**. That message is Python’s way of explaining what it expected, what it encountered instead, and where the problem occurred.
+
+An error message is not a judgment about your ability. It is a report. Learning to debug begins with learning to **read error messages rather than avoiding them**.
+
+Some errors occur before the program runs at all. These are typically **syntax errors**, where Python cannot understand the structure of the code. For example:
+
+``` python
+print("Hello"
+```
+
+In this case, Python reaches the end of the line and realizes something is missing. The error message points to the location where Python became confused.
+
+Other errors occur **while the program is running**. These runtime errors indicate that Python understood the code structurally, but something went wrong during execution.
+
+At a high level, error messages answer three questions:   
+- Where did the problem occur?  
+- What kind of problem was it?  
+- What was Python trying to do at the time?  
+
+Debugging begins by treating error messages as clues rather than obstacles.
+
+---
+
+### 8.2 Reading a traceback from top to bottom
+
+When a runtime error occurs, Python often produces a **traceback**. A traceback shows the sequence of steps Python followed before encountering the error.
+
+``` python
+def divide(a, b):
+    return a / b
+
+divide(10, 0)
+```
+
+The traceback lists function calls from top to bottom, ending with the line where the error actually occurred. While the traceback may look intimidating at first, it follows a consistent structure.
+
+A useful strategy is to:  
+- skim the traceback to understand the context,  
+- then focus on the **last line**, which usually describes the actual error.
+
+The file name and line number tell you where Python was executing when the problem occurred. This information narrows the search space and prevents unnecessary changes elsewhere in the code.
+
+Over time, reading tracebacks becomes a skill. Instead of seeing a wall of text, you begin to recognize patterns and quickly identify the relevant information.
+
+---
+
+### 8.3 Common beginner errors
+
+Certain errors appear frequently when learning Python. These errors are predictable and shared by almost everyone at this stage.
+
+**Syntax errors** occur when Python cannot parse the code structure. Missing quotation marks, parentheses, or colons are common causes.
+
+**Name errors** occur when a variable or function is used before it has been defined. This often results from spelling mistakes or assumptions about what exists in the current scope.
+
+**Type errors** occur when an operation is applied to incompatible data types. These errors highlight the importance of understanding how different types behave.
+
+**Index and key errors** occur when attempting to access elements that do not exist.
+
+``` python
+values = [1, 2, 3]
+print(values[3])
+```
+
+This error does not mean the list is broken. It means the program asked for something outside the valid range.
+
+Recognizing these errors as *categories* rather than isolated failures helps reduce frustration and speeds up debugging.
+
+---
+
+### 8.4 Debugging as a systematic process
+
+Effective debugging is not about trying random fixes. It is about **narrowing the problem space** and testing assumptions deliberately.
+
+A systematic debugging process usually involves:  
+- reproducing the error consistently,  
+- identifying the exact location of failure,  
+- inspecting the values of variables at that point,  
+- and changing one thing at a time.
+
+One of the simplest and most effective debugging tools is printing intermediate values.
+
+``` python
+print("Current value:", x)
+```
+
+By inspecting program state as it runs, it becomes easier to understand how data flows through the code and where expectations diverge from reality.
+
+Changing multiple things at once makes debugging harder. When only one change is made, its effect is easier to interpret.
+
+Debugging rewards patience and methodical thinking. The goal is not to fix the error as quickly as possible, but to understand **why the error occurred**.
+
+---
+
+### 8.5 When to fix code vs. rethink logic
+
+Not all bugs are caused by incorrect syntax or misuse of language features. Sometimes the code runs exactly as written, but the result is still wrong. In these cases, the issue lies in the **logic**, not the implementation.
+
+``` python
+def is_valid(score):
+    return score > 100
+```
+
+This function works exactly as defined, but the condition may not reflect the intended rule. Debugging logic errors requires stepping back and examining assumptions.
+
+A useful question to ask is:
+*Is Python doing something unexpected, or is Python doing exactly what I told it to do?*
+
+If the latter is true, the solution may involve redesigning conditions, rethinking data structures, or clarifying the problem definition rather than fixing syntax.
+
+Debugging is therefore part of program design. It is how understanding improves over time. Learning when to adjust code and when to rethink logic is one of the most valuable skills developed in this course.
+
+---
+
+## 8. Debugging Fundamentals
+
+Debugging is the process of identifying, understanding, and correcting problems in code. It is not a special activity reserved for advanced programmers, nor is it a sign that something has gone wrong in learning. Debugging is how programming actually happens.
+
+This section reframes errors as information and introduces debugging as a **systematic reasoning process**, not a guessing game.
+
+---
+
+### 8.1 What an error message is telling you
+
+When Python encounters a problem it cannot resolve, it produces an **error message**. That message is Python’s way of explaining what it expected, what it encountered instead, and where the problem occurred.
+
+An error message is not a judgment about your ability. It is a report. Learning to debug begins with learning to **read error messages rather than avoiding them**.
+
+Some errors occur before the program runs at all. These are typically **syntax errors**, where Python cannot understand the structure of the code. For example:
+
+    print("Hello"
+
+In this case, Python reaches the end of the line and realizes something is missing. The error message points to the location where Python became confused.
+
+Other errors occur **while the program is running**. These runtime errors indicate that Python understood the code structurally, but something went wrong during execution.
+
+At a high level, error messages answer three questions:  
+- Where did the problem occur?  
+- What kind of problem was it?  
+- What was Python trying to do at the time?
+
+Debugging begins by treating error messages as clues rather than obstacles.
+
+---
+
+### 8.2 Reading a traceback from top to bottom
+
+When a runtime error occurs, Python often produces a **traceback**. A traceback shows the sequence of steps Python followed before encountering the error.
+
+``` python
+def divide(a, b):
+    return a / b
+
+divide(10, 0)
+```
+
+The traceback lists function calls from top to bottom, ending with the line where the error actually occurred. While the traceback may look intimidating at first, it follows a consistent structure.
+
+A useful strategy is to:  
+- skim the traceback to understand the context,  
+- then focus on the **last line**, which usually describes the actual error.  
+
+The file name and line number tell you where Python was executing when the problem occurred. This information narrows the search space and prevents unnecessary changes elsewhere in the code.
+
+Over time, reading tracebacks becomes a skill. Instead of seeing a wall of text, you begin to recognize patterns and quickly identify the relevant information.
+
+---
+
+### 8.3 Common beginner errors
+
+Certain errors appear frequently when learning Python. These errors are predictable and shared by almost everyone at this stage.
+
+**Syntax errors** occur when Python cannot parse the code structure. Missing quotation marks, parentheses, or colons are common causes.
+
+**Name errors** occur when a variable or function is used before it has been defined. This often results from spelling mistakes or assumptions about what exists in the current scope.
+
+**Type errors** occur when an operation is applied to incompatible data types. These errors highlight the importance of understanding how different types behave.
+
+**Index and key errors** occur when attempting to access elements that do not exist.
+
+``` python
+values = [1, 2, 3]
+print(values[3])
+```
+
+This error does not mean the list is broken. It means the program asked for something outside the valid range.
+
+Recognizing these errors as *categories* rather than isolated failures helps reduce frustration and speeds up debugging.
+
+---
+
+### 8.4 Debugging as a systematic process
+
+Effective debugging is not about trying random fixes. It is about **narrowing the problem space** and testing assumptions deliberately.
+
+A systematic debugging process usually involves:  
+- reproducing the error consistently,  
+- identifying the exact location of failure,  
+- inspecting the values of variables at that point,  
+- and changing one thing at a time.  
+
+One of the simplest and most effective debugging tools is printing intermediate values.
+
+``` python
+print("Current value:", x)
+```
+
+By inspecting program state as it runs, it becomes easier to understand how data flows through the code and where expectations diverge from reality.
+
+Changing multiple things at once makes debugging harder. When only one change is made, its effect is easier to interpret.
+
+Debugging rewards patience and methodical thinking. The goal is not to fix the error as quickly as possible, but to understand **why the error occurred**.
+
+---
+
+### 8.5 When to fix code vs. rethink logic
+
+Not all bugs are caused by incorrect syntax or misuse of language features. Sometimes the code runs exactly as written, but the result is still wrong. In these cases, the issue lies in the **logic**, not the implementation.
+
+``` python
+def is_valid(score):
+    return score > 100
+```
+
+This function works exactly as defined, but the condition may not reflect the intended rule. Debugging logic errors requires stepping back and examining assumptions.
+
+A useful question to ask is:
+*Is Python doing something unexpected, or is Python doing exactly what I told it to do?*
+
+If the latter is true, the solution may involve redesigning conditions, rethinking data structures, or clarifying the problem definition rather than fixing syntax.
+
+Debugging is therefore part of program design. It is how understanding improves over time. Learning when to adjust code and when to rethink logic is one of the most valuable skills developed in this course.
+
+---
+
+## Week 2 Summary
+
+This chapter focused on building foundational Python skills by moving from individual values to structured data, decision-making, repetition, and modular program design. The goal was not just to learn Python syntax, but to develop a mental model of how programs reason about data and control their own behavior.
+
+Conceptually, the chapter emphasized that **data representation matters**. Numbers, strings, booleans, lists, and dictionaries are not interchangeable; each type carries assumptions about how it can be used, combined, and transformed. Understanding these differences is essential for writing programs that behave predictably and for interpreting results correctly in analytics and AI contexts.
+
+The introduction of **control flow**—conditional logic and loops—marked a shift from linear execution to decision-making and repetition. Programs were no longer treated as calculators that run once, but as systems that respond differently depending on conditions and that can operate over collections of data. This logic-based view of execution directly connects to how larger decision systems and algorithms function.
+
+Functions extended this idea by introducing **modularity and abstraction**. By encapsulating logic into reusable units, programs become easier to read, test, and extend. Functions also reinforce the idea that complex behavior is built from smaller, well-defined components—a principle that scales from simple scripts to full analytics and AI systems.
+
+Finally, the chapter reframed **debugging** as a core reasoning skill rather than a remedial activity. Error messages, tracebacks, and unexpected results were treated as sources of information that guide understanding. Learning to debug systematically—by isolating problems, checking assumptions, and distinguishing between syntax issues and logic flaws—is a skill that will be used continuously in later weeks.
+
+By the end of Week 2, you should be able to write Python programs that store and manipulate structured data, make decisions, repeat actions, and organize logic into functions. More importantly, you should be developing confidence in reading, reasoning about, and correcting code—skills that form the foundation for more advanced analytics and AI techniques in the weeks ahead.
 
