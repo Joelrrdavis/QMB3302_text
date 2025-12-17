@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -249,11 +283,20 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="ai-literacy-objectives" class="level3">
 <h3 class="anchored" data-anchor-id="ai-literacy-objectives">AI Literacy Objectives</h3>
-<p>By the end of this week, you should be able to: - Explain why simulation is useful for exploring uncertainty and behavior. - Describe how visualization supports analytical reasoning. - Interpret visual patterns and relate them to underlying data processes. - Explain how synthetic data is used in ML and AI development.</p>
+<p>By the end of this week, you should be able to:<br>
+- Explain why simulation is useful for exploring uncertainty and behavior.<br>
+- Describe how visualization supports analytical reasoning.<br>
+- Interpret visual patterns and relate them to underlying data processes.<br>
+- Explain how synthetic data is used in ML and AI development.</p>
 </section>
 <section id="job-ready-skills-objectives" class="level3">
 <h3 class="anchored" data-anchor-id="job-ready-skills-objectives">Job-Ready Skills Objectives</h3>
-<p>By the end of this week, you should be able to: - Generate synthetic datasets using Python. - Create basic plots using matplotlib. - Customize plots for readability and communication. - Use seaborn for statistical visualization. - Build a reproducible workflow from data generation to visualization.</p>
+<p>By the end of this week, you should be able to:<br>
+- Generate synthetic datasets using Python.<br>
+- Create basic plots using matplotlib.<br>
+- Customize plots for readability and communication.<br>
+- Use seaborn for statistical visualization.<br>
+- Build a reproducible workflow from data generation to visualization.</p>
 </section>
 </section>
 <section id="data-simulation-simulating-data-and-random-processes" class="level2">
@@ -264,10 +307,21 @@ ul.task-list li input[type="checkbox"] {
 <section id="why-simulate-data" class="level3">
 <h3 class="anchored" data-anchor-id="why-simulate-data">1.1 Why simulate data</h3>
 <p>In an ideal world, every analytical question would be answered using high-quality, representative real-world data. In practice, this is rarely the case. Real datasets often come with limitations that make analysis difficult or incomplete.</p>
-<p>Some common challenges include: - data that is incomplete or missing important cases, - data that is biased due to how it was collected, - data that is proprietary, sensitive, or restricted, - data that does not yet exist because the system is new or hypothetical.</p>
-<p>Simulation provides a way to work around these limitations. By generating <strong>synthetic data</strong>, analysts can explore how systems behave under controlled assumptions. This makes it possible to ask “what if” questions, such as: - What happens if inputs change? - How sensitive are outcomes to randomness? - What patterns would we expect to see under certain conditions?</p>
+<p>Some common challenges include:<br>
+- data that is incomplete or missing important cases,<br>
+- data that is biased due to how it was collected,<br>
+- data that is proprietary, sensitive, or restricted,<br>
+- data that does not yet exist because the system is new or hypothetical.</p>
+<p>Simulation provides a way to work around these limitations. By generating <strong>synthetic data</strong>, analysts can explore how systems behave under controlled assumptions. This makes it possible to ask “what if” questions, such as:<br>
+- What happens if inputs change?<br>
+- How sensitive are outcomes to randomness?<br>
+- What patterns would we expect to see under certain conditions?</p>
 <p>It is important to distinguish <strong>simulation</strong> from <strong>data collection</strong>. Data collection records what has already happened in the real world. Simulation, by contrast, creates plausible data based on assumptions about how a system might behave. Simulated data is not a replacement for real data, but it is a complementary tool.</p>
-<p>In analytics and AI, simulation plays several important roles: - testing analysis logic before real data is available, - stress-testing models under different scenarios, - building intuition about variability and uncertainty, - generating training or evaluation data when real examples are scarce.</p>
+<p>In analytics and AI, simulation plays several important roles:<br>
+- testing analysis logic before real data is available,<br>
+- stress-testing models under different scenarios,<br>
+- building intuition about variability and uncertainty,<br>
+- generating training or evaluation data when real examples are scarce.</p>
 <p>Conceptually, simulation answers the question:<br>
 <em>If the world behaved according to these assumptions, what kinds of data and patterns would we observe?</em></p>
 <p>Understanding simulation helps shift thinking away from treating datasets as fixed artifacts and toward seeing data as the result of underlying processes.</p>
@@ -278,11 +332,12 @@ ul.task-list li input[type="checkbox"] {
 <p>At the heart of most simulations is <strong>randomness</strong>. In everyday language, randomness often implies unpredictability or lack of structure. In computation, randomness has a more precise meaning.</p>
 <p>Computers do not generate truly random numbers. Instead, they use <strong>pseudo-random number generators</strong>, which produce sequences of numbers that <em>appear</em> random but are generated deterministically by an algorithm. These sequences are sufficiently unpredictable for most analytical purposes, while still being reproducible.</p>
 <p>Python provides built-in tools for generating pseudo-random values. For example:</p>
-<p>EEEpython import random random.random() EEE</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random.random()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Each call to <code>random.random()</code> returns a floating-point number between 0 and 1. Over many calls, these values form a distribution that can be used to simulate uncertainty, noise, or variability in a system.</p>
 <p>A process that involves randomness is often called a <strong>stochastic process</strong>. Stochastic processes are used to model systems where outcomes are influenced by chance, such as customer arrivals, demand fluctuations, or measurement error. Rather than producing a single deterministic outcome, stochastic processes produce distributions of possible outcomes.</p>
 <p>An important concept related to pseudo-randomness is <strong>repeatability</strong>. Because random number generation is algorithmic, it can be controlled using a seed. Setting a seed causes the same sequence of “random” values to be generated each time the program runs. This is essential for debugging, testing, and scientific reproducibility.</p>
-<p>At a conceptual level, randomness in simulation is not about chaos—it is about <strong>controlled variability</strong>. By introducing randomness deliberately, analysts can explore how systems behave across many possible realizations rather than relying on a single outcome.</p>
+<p>At a conceptual level, randomness in simulation is not about chaos, it is about <strong>controlled variability</strong>. By introducing randomness deliberately, analysts can explore how systems behave across many possible realizations rather than relying on a single outcome.</p>
 <p>This idea will recur throughout analytics and AI. Models often rely on random initialization, randomized sampling, or stochastic optimization. Understanding how randomness is generated and used in simulation builds intuition for why repeated runs may produce slightly different results and why variability itself is something to be analyzed rather than ignored.</p>
 <hr>
 </section>
@@ -294,9 +349,12 @@ ul.task-list li input[type="checkbox"] {
 <section id="simulating-numeric-variables" class="level4">
 <h4 class="anchored" data-anchor-id="simulating-numeric-variables">Simulating numeric variables</h4>
 <p>The simplest form of simulation involves generating numeric values. For example, random numbers between 0 and 1 can be used to represent proportions, probabilities, noise, or normalized measurements.</p>
-<p>EEEpython values = [random.random() for _ in range(100)] EEE</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> [random.random() <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In this example, a list of 100 simulated values is created. Each value is generated independently, but together they form a dataset that can be summarized, visualized, or transformed.</p>
-<p>Although this dataset is simple, it already supports many analytical questions: - What does the distribution look like? - How much variability is present? - How do summaries change as the number of observations increases?</p>
+<p>Although this dataset is simple, it already supports many analytical questions:<br>
+- What does the distribution look like?<br>
+- How much variability is present?<br>
+- How do summaries change as the number of observations increases?</p>
 <p>Simulated numeric variables provide a controlled environment for developing intuition about distributions and variability.</p>
 <hr>
 </section>
@@ -304,7 +362,10 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="simulating-categorical-variables">Simulating categorical variables</h4>
 <p>Not all data is numeric. Many datasets include <strong>categorical variables</strong>, such as labels, group memberships, or types. These can also be simulated by randomly assigning categories according to specified rules.</p>
 <p>For example, categories might be assigned uniformly at random, or with different probabilities to reflect imbalance. Although the mechanics differ slightly from numeric simulation, the underlying idea is the same: define a process, then generate observations from it.</p>
-<p>Categorical simulation is useful for: - testing grouping and aggregation logic, - exploring how category imbalance affects summaries, - preparing for visualization and comparison tasks.</p>
+<p>Categorical simulation is useful for:<br>
+- testing grouping and aggregation logic,<br>
+- exploring how category imbalance affects summaries,<br>
+- preparing for visualization and comparison tasks.</p>
 <p>Even when categories are simulated, they behave like real categorical data in downstream analysis.</p>
 <hr>
 </section>
@@ -312,19 +373,23 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="combining-multiple-simulated-variables-into-datasets">Combining multiple simulated variables into datasets</h4>
 <p>Real datasets rarely consist of a single variable. More commonly, each observation includes multiple attributes. Synthetic datasets can be constructed by simulating several variables independently or jointly and then combining them into a structured dataset.</p>
 <p>For example, one variable might represent a numeric measurement, while another represents a category or group. Together, these variables form a dataset that more closely resembles real analytical inputs.</p>
-<p>Combining simulated variables allows analysts to test how different components of an analysis interact: - filtering by category, - summarizing numeric values within groups, - visualizing relationships between variables.</p>
+<p>Combining simulated variables allows analysts to test how different components of an analysis interact:<br>
+- filtering by category,<br>
+- summarizing numeric values within groups,<br>
+- visualizing relationships between variables.</p>
 <p>At this stage, the emphasis is on structure rather than realism. The goal is to create datasets that support reasoning about code and analysis logic.</p>
 <hr>
 </section>
 <section id="using-simulation-to-test-analysis-logic" class="level4">
 <h4 class="anchored" data-anchor-id="using-simulation-to-test-analysis-logic">Using simulation to test analysis logic</h4>
 <p>One of the most important uses of simulation is <strong>testing analysis logic before applying it to real data</strong>. Because synthetic data is generated under known assumptions, it becomes easier to reason about whether code behaves as intended.</p>
-<p>For example: - If a filter is applied, does it select the expected proportion of data? - If a summary statistic is computed, does it behave sensibly as data size changes? - If a visualization is produced, does it reflect the underlying data-generating process?</p>
+<p>For example: - If a filter is applied, does it select the expected data?<br>
+- If a summary statistic is computed, does it behave sensibly as data size changes?<br>
+- If a visualization is produced, does it reflect the underlying data-generating process?</p>
 <p>Simulation turns analysis into an experiment. By controlling inputs and observing outputs, analysts can build confidence that their workflow is correct before introducing the messiness of real-world data.</p>
-<p>This practice is common in analytics and AI development. Models, pipelines, and visualizations are often tested on synthetic data first, then refined using real data once logic is validated.</p>
-<p>Conceptually, generating synthetic datasets answers the question:<br>
-<em>If my analysis pipeline is correct, does it behave sensibly on data generated from known processes?</em></p>
-<p>This mindset—testing logic under controlled conditions—will continue to be important as the course moves toward modeling and machine learning.</p>
+<p>This practice is common in analytics and AI development. Models, pipelines, and visualizations are often tested on synthetic data first, then refined using real data once logic is validated. Sometimes this is to test models viability for a certain task, and often this is related to the cost (in time, dollars, effort) to test a model on a real world dateset.</p>
+<p>Conceptually, generating synthetic datasets answers the question: <em>If my analysis pipeline is correct, does it behave sensibly on data generated from known processes?</em> You could simply this to thinking about a synthetic data set as a data set you have created, with known relationships beween the variables. And now you want to understand if your model can identify/capture those relationships.</p>
+<p>This mindset, testing logic under controlled conditions, will continue to be important as you continue to learn machine learning and AI.</p>
 <hr>
 </section>
 </section>
@@ -336,7 +401,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="visualization-as-a-reasoning-tool" class="level3">
 <h3 class="anchored" data-anchor-id="visualization-as-a-reasoning-tool">2.1 Visualization as a reasoning tool</h3>
 <p>Visualization supports <strong>reasoning</strong>, not just communication. While tables are precise and compact, they place a heavy cognitive burden on the reader. Detecting patterns in rows of numbers requires careful scanning and mental comparison, which becomes increasingly difficult as datasets grow.</p>
-<p>Visual representations leverage the strengths of human perception. Humans are especially good at detecting: - trends and changes over time, - differences in magnitude, - clusters and outliers, - and relationships between variables.</p>
+<p>Visual representations leverage the strengths of human perception. Humans are especially good at detecting:<br>
+- trends and changes over time,<br>
+- differences in magnitude,<br>
+- clusters and outliers,<br>
+- and relationships between variables.</p>
 <p>By mapping data values to visual properties such as position, length, or shape, visualizations make these patterns immediately apparent. A trend that might be difficult to notice in a table often becomes obvious when plotted.</p>
 <p>It is also important to distinguish between <strong>visualization for exploration</strong> and <strong>visualization for presentation</strong>. Exploratory visualizations are created to help the analyst understand the data. They may be rough, iterative, and rapidly discarded. Presentation visualizations, by contrast, are designed to communicate a specific message clearly to an audience.</p>
 <p>In analytics and AI workflows, visualization often begins as an exploratory activity. Before formal modeling or reporting, visual inspection helps clarify what the data contains, what questions are reasonable, and where potential issues may lie.</p>
@@ -348,7 +417,11 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="visualization-in-analytics-and-ai">2.2 Visualization in analytics and AI</h3>
 <p>Visualization plays a central role throughout analytics and AI pipelines. Early in the process, visualizations are used to examine <strong>distributions</strong>, <strong>trends</strong>, and <strong>relationships</strong> within data. These views help analysts understand scale, variability, and potential anomalies before applying statistical or machine learning models.</p>
 <p>Visualization also functions as a <strong>diagnostic tool</strong>. Unexpected patterns in a plot may reveal data quality issues, incorrect assumptions, or errors in preprocessing. For example, a strange spike or gap in a distribution might indicate missing values, mis-coded categories, or unit mismatches.</p>
-<p>In AI contexts, visualization remains important even after models are introduced. Visual diagnostics are often used to: - examine model inputs and outputs, - compare predicted values to actual outcomes, - assess residuals or errors, - and monitor model behavior over time.</p>
+<p>In AI contexts, visualization remains important even after models are introduced. Visual diagnostics are often used to:<br>
+- examine model inputs and outputs,<br>
+- compare predicted values to actual outcomes,<br>
+- assess residuals or errors,<br>
+- and monitor model behavior over time.</p>
 <p>Although models may operate mathematically, their behavior must still be interpreted by humans. Visualization provides one of the most effective ways to bridge this gap between computation and understanding.</p>
 <p>Across analytics and AI, visualization serves a consistent purpose: it reduces complexity by externalizing patterns that would otherwise remain hidden in raw data or numerical summaries. Used thoughtfully, visualization supports better reasoning, better debugging, and better decisions.</p>
 </section>
@@ -368,27 +441,37 @@ ul.task-list li input[type="checkbox"] {
 <section id="line-plots" class="level3">
 <h3 class="anchored" data-anchor-id="line-plots">3.2 Line plots</h3>
 <p>A <strong>line plot</strong> connects a sequence of data points with lines. Line plots are commonly used to visualize trends over time or over an ordered sequence of observations.</p>
-<p>EEEpython import matplotlib.pyplot as plt plt.plot(values) EEE</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.plot(values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In this example, the values are plotted in the order they appear. The horizontal axis represents the position or index of each value, while the vertical axis represents the value itself.</p>
-<p>Line plots are appropriate when: - the order of observations matters, - data represents a progression over time or sequence, - or the goal is to see trends, patterns, or changes.</p>
+<p>Line plots are appropriate when:<br>
+- the order of observations matters,<br>
+- data represents a progression over time or sequence,<br>
+- or the goal is to see trends, patterns, or changes.</p>
 <p>Using a line plot for unordered categories can be misleading, because the connecting lines imply continuity where none exists. Choosing a line plot therefore reflects an assumption about the underlying data structure.</p>
 <hr>
 </section>
 <section id="bar-plots" class="level3">
 <h3 class="anchored" data-anchor-id="bar-plots">3.3 Bar plots</h3>
 <p>A <strong>bar plot</strong> represents values associated with discrete categories using rectangular bars. Bar plots are commonly used to compare quantities across groups or categories.</p>
-<p>EEEpython plt.bar([“A”, “B”, “C”], [10, 15, 7]) EEE</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plt.bar([<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>], [<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">7</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In this example, each category is represented by a bar whose height corresponds to a value. Unlike line plots, bar plots do not imply continuity between categories. Each bar stands on its own.</p>
-<p>Bar plots are appropriate when: - comparing values across categories, - visualizing aggregated statistics, - or emphasizing differences between groups.</p>
+<p>Bar plots are appropriate when:<br>
+- comparing values across categories,<br>
+- visualizing aggregated statistics,<br>
+- or emphasizing differences between groups.</p>
 <p>Because bar plots emphasize magnitude differences, they are often used in descriptive analysis and reporting. Care should be taken to ensure that axes and scales are chosen thoughtfully, as visual exaggeration or compression can distort interpretation.</p>
 <hr>
 </section>
 <section id="scatter-plots" class="level3">
 <h3 class="anchored" data-anchor-id="scatter-plots">3.4 Scatter plots</h3>
 <p>A <strong>scatter plot</strong> displays individual observations as points in a two-dimensional space. Each point represents a pair of values, one on the horizontal axis and one on the vertical axis.</p>
-<p>EEEpython plt.scatter(x, y) EEE</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Scatter plots are used to visualize <strong>relationships between variables</strong>. Patterns such as clustering, trends, or outliers are often visible in scatter plots even when they are not obvious numerically.</p>
-<p>Scatter plots are appropriate when: - examining the relationship between two numeric variables, - exploring correlation or association, - or identifying unusual observations.</p>
+<p>Scatter plots are appropriate when:<br>
+- examining the relationship between two numeric variables,<br>
+- exploring correlation or association,<br>
+- or identifying unusual observations.</p>
 <p>It is important to distinguish between <strong>correlation and causation</strong>. A visible relationship in a scatter plot does not imply that one variable causes the other to change. Scatter plots support exploration and hypothesis generation, not definitive conclusions.</p>
 <p>Together, line plots, bar plots, and scatter plots form a basic visual vocabulary. Choosing the appropriate plot type is a substantive analytical decision that reflects assumptions about data structure and the questions being asked.</p>
 </section>
@@ -403,8 +486,6 @@ ul.task-list li input[type="checkbox"] {
 <p>Visualization works by mapping data to visual properties. If those properties are unclear or poorly chosen, interpretation suffers—even when the underlying data is sound.</p>
 <p>Customization matters for two main reasons. First, it improves <strong>readability</strong>. Titles, labels, and legends help viewers understand what they are looking at without guessing. Second, it helps avoid <strong>misleading visuals</strong>. Poor choices in scale, labeling, or color can suggest patterns that are not actually present or hide patterns that are.</p>
 <p>Uncustomized plots often rely on default settings that may not match the context of the data. Defaults are designed to work reasonably well in general, but they are not tailored to specific analytical questions. Customization allows the analyst to align the visual with intent.</p>
-<p>Conceptually, customization answers the question:<br>
-<em>What does someone need to know in order to interpret this plot correctly?</em></p>
 <hr>
 </section>
 <section id="titles-labels-and-legends" class="level3">
@@ -412,15 +493,22 @@ ul.task-list li input[type="checkbox"] {
 <p>Titles, axis labels, and legends provide essential context. Without them, viewers must infer meaning from the shape of the plot alone, which increases cognitive load and the risk of misinterpretation.</p>
 <p>A <strong>title</strong> describes what the plot represents. It should be concise but informative, indicating what is being visualized and, when appropriate, under what conditions.</p>
 <p><strong>Axis labels</strong> explain what each axis represents, including units when relevant. Clear labeling makes it easier to interpret magnitudes and compare values.</p>
-<p>EEEpython plt.title(“Example Plot”) plt.xlabel(“X”) plt.ylabel(“Y”) EEE</p>
-<p>When a plot includes multiple series or categories, a <strong>legend</strong> helps distinguish between them. Legends map visual elements—such as colors or markers—to their meanings.</p>
-<p>Together, titles, labels, and legends turn a plot from a visual pattern into an interpretable analytical artifact. They make the assumptions and structure of the visualization explicit.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Example Plot"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"X"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When a plot includes multiple series or categories, a <strong>legend</strong> helps distinguish between them. Legends map visual elements, such as colors or markers, to their meanings.</p>
+<p>Together, titles, labels, and legends are used to turn a plot from a visual pattern into an interpretable artifact. They make the assumptions and structure of the visualization explicit. As your knowledge in analytics grows, it becomes more and more important to use these tools. It is not uncommon to see experts with extremely poorly annotated visuals, because they know them so well!</p>
 <hr>
 </section>
 <section id="colors-and-styles" class="level3">
 <h3 class="anchored" data-anchor-id="colors-and-styles">4.3 Colors and styles</h3>
 <p>Color is a powerful visual cue, but it must be used intentionally. Color choices can highlight differences, group related elements, or draw attention to specific features. At the same time, excessive or inconsistent use of color can create visual clutter and confusion.</p>
-<p>Good color usage follows a few general principles: - Use color to encode information, not decoration. - Keep color palettes simple and consistent. - Avoid using too many colors at once. - Ensure sufficient contrast for readability.</p>
+<p>Good color usage follows a few general principles:<br>
+- Use color to encode information, not decoration.<br>
+- Keep color palettes simple and consistent.<br>
+- Avoid using too many colors at once.<br>
+- Ensure sufficient contrast for readability.</p>
+<p>Color can be problematic, if it is the only signal in a visualization. Imagine a chart with only red and green dots, the red dots are “bad” and the green dots are “good”. This chart would be entirely useless to someone who is color blind.</p>
 <p>Consistency across plots is especially important in analytical workflows. When similar plots use similar styles, viewers can focus on the data rather than re-learning how to read each visualization.</p>
 <p>Styles also include choices about markers, line thickness, and layout. These choices affect how easily patterns can be detected and compared. Small adjustments can significantly improve interpretability without adding complexity.</p>
 <p>Customization is not about making plots look impressive. It is about making them <strong>honest, readable, and aligned with analytical intent</strong>. As visualizations become more central to reasoning and communication, thoughtful customization becomes a core analytical skill rather than a cosmetic one.</p>
@@ -428,13 +516,13 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="seaborn-statistical-visualization-optional" class="level2">
 <h2 class="anchored" data-anchor-id="seaborn-statistical-visualization-optional">5. Seaborn: Statistical Visualization <em>(Optional)</em></h2>
-<p>Seaborn is a higher-level visualization library built on top of matplotlib. While matplotlib provides fine-grained control over plots, seaborn focuses on making <strong>statistical patterns</strong> easier to visualize with less code. This section introduces seaborn conceptually and demonstrates its use for distribution-based plots.</p>
-<p>This section is optional. The core ideas of simulation and visualization do not depend on seaborn, but seaborn provides a useful preview of how visualization tools evolve toward higher-level abstractions.</p>
+<p>Seaborn is a higher-level visualization library built on top of matplotlib. While matplotlib provides fine-grained control over plots, seaborn focuses on making <strong>statistical patterns</strong> easier to visualize with less code. This makes Seaborn very useful as a tool. It is faster and easier to create reasonable looking graphics and charts in Seaborn, but you don’t get the same level of fine tuned control you get in matplotlib. As LLM and coding tools get more powerful, I think we will see more shift towards the highly customizable graphing solutions, as the code to create it becomes easier/faster/cheaper to generate.</p>
+<p>The core ideas of simulation and visualization do not depend on seaborn, but seaborn provides a useful preview of how visualization tools evolve toward higher-level abstractions.</p>
 <hr>
 <section id="why-seaborn-exists" class="level3">
 <h3 class="anchored" data-anchor-id="why-seaborn-exists">5.1 Why seaborn exists</h3>
 <p>Matplotlib is highly flexible, but that flexibility can require substantial setup when creating plots that emphasize statistical structure. Seaborn was designed to address this gap by providing functions that automatically apply common statistical conventions and aesthetically sensible defaults.</p>
-<p>Seaborn builds on matplotlib rather than replacing it. When seaborn creates a plot, it is still using matplotlib underneath, but it handles many details—such as color palettes, axes formatting, and statistical aggregation—automatically.</p>
+<p>Seaborn builds on matplotlib rather than replacing it. When seaborn creates a plot, it is still using matplotlib underneath, but it handles many details, such as color palettes, axes formatting, and statistical aggregation, automatically.</p>
 <p>The key distinction is focus: - <strong>Matplotlib</strong> emphasizes low-level control and general-purpose plotting. - <strong>Seaborn</strong> emphasizes statistical visualization and common analytical patterns.</p>
 <p>Because of this focus, seaborn is often used for exploratory data analysis, where quickly understanding distributions, relationships, and group differences is more important than precise customization.</p>
 <hr>
@@ -442,7 +530,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="distribution-plots" class="level3">
 <h3 class="anchored" data-anchor-id="distribution-plots">5.2 Distribution plots</h3>
 <p>One of seaborn’s strengths is its support for <strong>distribution plots</strong>. Distribution plots visualize how values are spread across a range, making it easier to reason about variability, skewness, and concentration.</p>
-<p>EEEpython import seaborn as sns sns.histplot(values) EEE</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This example creates a histogram that shows the distribution of simulated values. Seaborn automatically selects binning, applies sensible styling, and labels the axes in a way that emphasizes the statistical meaning of the plot.</p>
 <p>Distribution plots are useful for: - examining the shape of a variable, - comparing distributions across groups, - identifying skew, outliers, or unusual patterns.</p>
 <p>Compared to basic matplotlib histograms, seaborn’s distribution plots reduce setup effort and encourage consistent visual conventions. This makes it easier to focus on interpretation rather than configuration.</p>
@@ -457,11 +546,11 @@ ul.task-list li input[type="checkbox"] {
 <hr>
 <section id="simulate-or-load-a-dataset" class="level3">
 <h3 class="anchored" data-anchor-id="simulate-or-load-a-dataset">6.1 Simulate or load a dataset</h3>
-<p>Every analysis begins with a dataset. That dataset may come from a real source—such as a cleaned CSV file from Week 3—or it may be generated synthetically through simulation. The choice depends on the goal of the analysis.</p>
+<p>Every analysis begins with a dataset. That dataset may come from a real source, such as a cleaned CSV file from Week 3, or it may be generated synthetically through simulation. The choice depends on the goal of the analysis.</p>
 <p>Simulation is often used when: - exploring hypothetical scenarios, - testing analysis logic, - or building intuition before working with real data.</p>
 <p>Real datasets are used when: - answering specific empirical questions, - validating assumptions against observed behavior, - or producing results tied to real-world systems.</p>
 <p>Regardless of origin, the key step is to <strong>establish analytical intent</strong>. Before summarizing or plotting, it should be clear what question the data is meant to support. This intent shapes every downstream decision, from which variables matter to which visualizations are appropriate.</p>
-<p>At this stage, the dataset—simulated or loaded—becomes the shared object that connects all subsequent analysis.</p>
+<p>At this stage, the dataset, simulated or loaded, becomes the shared object that connects all subsequent analysis.</p>
 <hr>
 </section>
 <section id="summarize-before-visualizing" class="level3">
@@ -482,7 +571,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Choosing a plot type is a substantive analytical decision. It reflects assumptions about the data and about what patterns are meaningful. Once a plot is created, interpretation becomes the focus.</p>
 <p>Interpreting visuals involves asking: - What patterns are visible? - Do these patterns align with expectations? - Are there anomalies or surprises? - What explanations are plausible given how the data was generated or collected?</p>
 <p>In an integrated workflow, visualization does not mark the end of analysis. Instead, it often leads back to earlier steps. A surprising plot may prompt additional summarization, refined filtering, or even changes to the simulation process.</p>
-<p>This iterative movement—<strong>data → summary → visualization → reasoning</strong>—is characteristic of real analytics and AI work. Understanding this cycle is more important than mastering any single plotting function.</p>
+<p>This iterative movement from <strong>data → summary → visualization → reasoning</strong>, is characteristic of real analytics and AI work. Understanding this cycle is more important than mastering any single plotting function.</p>
 <hr>
 </section>
 </section>
@@ -494,8 +583,9 @@ ul.task-list li input[type="checkbox"] {
 <section id="simulating-a-dataset" class="level3">
 <h3 class="anchored" data-anchor-id="simulating-a-dataset">7.1 Simulating a dataset</h3>
 <p>The workflow begins by generating a synthetic dataset. Simulation provides full control over how the data is created, which makes it easier to reason about expected patterns and variability.</p>
-<p>EEEpython import random</p>
-<p>values = [random.random() for _ in range(200)] EEE</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> [random.random() <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">200</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This simulated dataset represents a simple numeric variable. Although minimal, it is sufficient to explore distributional properties, variability, and visualization choices. In more complex scenarios, multiple simulated variables could be combined into a structured dataset.</p>
 <p>At this stage, the goal is to establish a clear understanding of how the data was generated. Knowing the data-generating process makes later interpretation more grounded and less speculative.</p>
 <hr>
@@ -503,7 +593,9 @@ ul.task-list li input[type="checkbox"] {
 <section id="cleaning-and-summarizing" class="level3">
 <h3 class="anchored" data-anchor-id="cleaning-and-summarizing">7.2 Cleaning and summarizing</h3>
 <p>Even simulated data benefits from inspection and summarization. Before visualizing, it is important to understand basic properties such as scale, range, and typical values.</p>
-<p>EEEpython min_value = min(values) max_value = max(values) average = sum(values) / len(values) EEE</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>min_value <span class="op">=</span> <span class="bu">min</span>(values)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>max_value <span class="op">=</span> <span class="bu">max</span>(values)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>average <span class="op">=</span> <span class="bu">sum</span>(values) <span class="op">/</span> <span class="bu">len</span>(values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>These summaries provide expectations for what the visualizations should reveal. For example, if values are uniformly distributed between 0 and 1, the average should be near the midpoint, and the range should reflect the bounds of the simulation.</p>
 <p>This step mirrors the <strong>Week 3 workflow</strong>, where inspection and descriptive statistics preceded visualization. The same discipline applies here: visualization is most useful when informed by prior understanding.</p>
 <hr>
@@ -511,11 +603,14 @@ ul.task-list li input[type="checkbox"] {
 <section id="visual-exploration" class="level3">
 <h3 class="anchored" data-anchor-id="visual-exploration">7.3 Visual exploration</h3>
 <p>With a summarized dataset, the next step is visual exploration. Visualization allows patterns to be assessed quickly and intuitively.</p>
-<p>EEEpython import matplotlib.pyplot as plt</p>
-<p>plt.hist(values) EEE</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>plt.hist(values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This plot provides a visual representation of how values are distributed. Adjustments such as adding titles, labels, or changing bin counts can improve clarity and make interpretation easier.</p>
-<p>EEEpython plt.title(“Distribution of Simulated Values”) plt.xlabel(“Value”) plt.ylabel(“Frequency”) EEE</p>
-<p>Creating multiple plots—such as line plots of cumulative values or comparisons across simulated groups—can further enrich understanding. The goal is not to generate as many plots as possible, but to create visuals that directly support reasoning about the data.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Distribution of Simulated Values"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Value"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Frequency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Creating multiple plots, such as line plots of cumulative values or comparisons across simulated groups, can further enrich understanding. The goal is not to generate as many plots as possible, but to create visuals that directly support reasoning about the data.</p>
 <p>Refinement is part of the process. If a plot is confusing or uninformative, it should be adjusted or replaced. Visualization is iterative, not one-shot.</p>
 <hr>
 </section>
@@ -531,8 +626,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="week-4-summary" class="level2">
 <h2 class="anchored" data-anchor-id="week-4-summary">Week 4 Summary</h2>
 <p>This chapter introduced two closely related ideas: <strong>simulation</strong> as a way to generate data deliberately, and <strong>visualization</strong> as a way to reason about data effectively. Together, these skills support a shift from treating datasets as fixed artifacts to understanding them as the output of underlying processes that can be explored, tested, and interpreted.</p>
-<p>Simulation was presented as a practical response to common limitations of real-world data. When data is incomplete, biased, restricted, or not yet available, synthetic data provides a controlled environment for experimentation. By using pseudo-random number generation, simulation makes uncertainty explicit and enables systematic “what if” exploration. The chapter emphasized that randomness in computation is not chaos, but <strong>controlled variability</strong>—a tool for understanding how outcomes can change across repeated realizations of the same process.</p>
-<p>Visualization was framed as a reasoning tool rather than a presentation artifact. Visual representations reduce cognitive load and leverage human strengths in detecting patterns, trends, and anomalies. The chapter distinguished exploratory visualization from presentation visualization and highlighted visualization’s role as a diagnostic mechanism in analytics and AI workflows. Matplotlib provided a practical foundation for producing basic plots, while customization was treated as a substantive analytical responsibility—necessary for clarity, interpretability, and avoiding misleading impressions. An optional seaborn section introduced how higher-level visualization tools capture common statistical patterns and reduce repetitive plotting work.</p>
+<p>Simulation was presented as a practical response to common limitations of real-world data. When data is incomplete, biased, restricted, or not yet available, synthetic data provides a controlled environment for experimentation. By using pseudo-random number generation, simulation makes uncertainty explicit and enables systematic “what if” exploration. The chapter emphasized that randomness in computation is not chaos, but <strong>controlled variability</strong>, a tool for understanding how outcomes can change across repeated realizations of the same process.</p>
+<p>Visualization was framed as a reasoning tool rather than a presentation artifact. Visual representations reduce cognitive load and leverage human strengths in detecting patterns, trends, and anomalies. The chapter distinguished exploratory visualization from presentation visualization and highlighted visualization’s role as a diagnostic mechanism in analytics and AI workflows. Matplotlib provided a practical foundation for producing basic plots, while customization was treated as a substantive analytical responsibility, necessary for clarity, interpretability, and avoiding misleading impressions. An optional seaborn section introduced how higher-level visualization tools capture common statistical patterns and reduce repetitive plotting work.</p>
 <p>The integrated workflow and mini-lab reinforced a complete analytical cycle: <strong>generate or obtain data → summarize → visualize → interpret → iterate</strong>. This cycle mirrors how real analytics work is performed and prepares the ground for the next stage of the course, where the focus will shift from describing and visualizing data to modeling it. By the end of Week 4, you should be able to generate synthetic data intentionally, visualize it thoughtfully, and interpret what you see in a way that reflects both the data-generating process and the analytical choices made along the way.</p>
 
 

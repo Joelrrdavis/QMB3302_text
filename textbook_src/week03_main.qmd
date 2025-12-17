@@ -21,6 +21,7 @@ title: "Week 3 – Working with Data: Pandas, Files, and APIs"
 
 ### AI Literacy Objectives
 By the end of this week, you should be able to:  
+
 - Explain what a dataset is and how structure enables analysis.  
 - Describe how tabular data supports analytics and AI workflows.  
 - Explain the role of data cleaning in model reliability.  
@@ -28,6 +29,7 @@ By the end of this week, you should be able to:
 
 ### Job-Ready Skills Objectives
 By the end of this week, you should be able to:  
+
 - Load data from CSV files using Pandas.  
 - Inspect datasets for structure and quality.  
 - Handle missing values and clean columns.  
@@ -49,9 +51,9 @@ This section introduces datasets as the foundational input to analytics and AI s
 
 A **dataset** is a structured collection of observations. Each observation represents a single instance, case, or entity, and each observation is described using a consistent set of attributes.
 
-In most analytical contexts, datasets are organized in a **tabular form**:
-- **Rows** represent individual observations or records.
-- **Columns** represent variables or attributes measured for each observation.
+In most analytical contexts, datasets are organized in a **tabular form**:  
+- **Rows** represent individual observations or records.  
+- **Columns** represent variables or attributes measured for each observation.  
 
 For example, a dataset of students might contain one row per student and columns for attributes such as major, exam score, or graduation year. A dataset of transactions might contain one row per transaction and columns describing amount, date, or location.
 
@@ -66,10 +68,10 @@ Conceptually, a dataset answers the question:
 
 A dataset is more than just values arranged in rows and columns. It also has a **schema**, which defines the structure and meaning of the data.
 
-A schema specifies:
-- what columns exist,
-- what each column represents,
-- and what type of data each column contains.
+A schema specifies:  
+- what columns exist,  
+- what each column represents,  
+- and what type of data each column contains.  
 
 For example, a column might represent numeric values, categorical labels, dates, or text. These distinctions matter because different operations are valid for different types of data. Numeric columns can be averaged or summed, while text columns cannot. Boolean columns encode yes/no logic, while categorical columns group observations into meaningful categories.
 
@@ -133,15 +135,15 @@ This structure allows Pandas to apply operations across columns, across rows, or
 
 The following example illustrates the creation of a simple DataFrame with two columns:
 
-EEEpython
+``` python
 import pandas as pd
 df = pd.DataFrame({"a": [1, 2], "b": [3, 4]})
-EEE
+```
 
-In this example:
-- The DataFrame has two columns, labeled `a` and `b`.
-- Each column is a Series containing numeric values.
-- Each row represents a single observation.
+In this example:  
+- The DataFrame has two columns, labeled `a` and `b`.  
+- Each column is a Series containing numeric values.  
+- Each row represents a single observation.  
 
 Although this example is small, the same structure scales to datasets with thousands or millions of rows. The consistent organization of rows and columns is what enables Pandas to support efficient data manipulation and analysis.
 
@@ -164,9 +166,9 @@ In most data workflows, Python scripts and data files are separate. A script con
 
 A **file path** is a description of where a file lives on a computer. When a script loads a dataset, it uses a file path to tell Python where to find that file. If the path is incorrect, the script cannot access the data, regardless of whether the file exists somewhere else on the system.
 
-This separation between code and data is intentional. It allows:
-- the same code to be reused with different datasets,
-- data to be updated without changing code,
+This separation between code and data is intentional. It allows:  
+- the same code to be reused with different datasets,  
+- data to be updated without changing code,  
 - projects to be organized into clear directory structures.
 
 Correctly managing file paths is therefore not just a technical detail; it is part of designing a clean and maintainable data workflow.
@@ -183,9 +185,9 @@ A **relative path** specifies a file’s location relative to the current workin
 
 In data workflows, relative paths are especially important because datasets are often stored in project subfolders such as `data/`. A typical pattern is to keep data files separate from scripts, but within the same project directory.
 
-EEEpython
+``` python
 data_path = "data/sample.csv"
-EEE
+```
 
 This example assumes that the script is being run from the project’s root directory and that the dataset is located in a folder named `data`. Using relative paths in this way allows the entire project to be moved or shared without modifying file references.
 
@@ -203,11 +205,11 @@ Another common issue is running a script from the **wrong working directory**. R
 
 When debugging file access issues, it is often helpful to inspect the current working directory and list the files Python can see:
 
-EEEpython
+``` python
 import os
 print(os.getcwd())
 print(os.listdir())
-EEE
+```
 
 These checks help confirm whether the script is looking in the correct place and whether the expected files are present.
 
@@ -229,10 +231,11 @@ One of the most common ways datasets are stored and shared is through **CSV file
 
 A **CSV file** (Comma-Separated Values) represents a dataset in a plain-text format. Each line in the file corresponds to a row in the dataset, and values within a row are separated by commas. Typically, the first row contains column names that describe the variables in the dataset.
 
-Conceptually, a CSV file maps directly to the idea of a tabular dataset:
-- each row represents an observation,
-- each column represents a variable,
-- and each cell contains a single value.
+Conceptually, a CSV file maps directly to the idea of a tabular dataset:  
+
+- each row represents an observation,  
+- each column represents a variable,  
+- and each cell contains a single value.  
 
 Because CSV files are plain text, they are easy to create, inspect, and share. They can be opened in spreadsheet software, text editors, and programming environments without requiring specialized tools.
 
@@ -244,14 +247,14 @@ Despite these limitations, CSV files remain a foundational format for analytics 
 
 ### 4.2 Reading CSV files with Pandas
 
-Pandas provides a dedicated function for loading CSV files into a DataFrame: `read_csv`. This function reads the contents of a CSV file and constructs a DataFrame where:
-- rows correspond to records,
-- columns correspond to variables,
-- and column labels are inferred from the header row.
+Pandas provides a dedicated function for loading CSV files into a DataFrame: `read_csv`. This function reads the contents of a CSV file and constructs a DataFrame where:  
+- rows correspond to records,  
+- columns correspond to variables,  
+- and column labels are inferred from the header row.  
 
-EEEpython
+``` python
 df = pd.read_csv("data/sample.csv")
-EEE
+```
 
 In this example, the CSV file located at `data/sample.csv` is read into a DataFrame named `df`. From this point forward, the dataset can be manipulated using Pandas operations rather than low-level file handling.
 
@@ -267,17 +270,17 @@ After loading a dataset, it is important to **verify that the data was read corr
 
 Two simple checks are especially useful. First, examining the **shape** of the DataFrame confirms the number of rows and columns:
 
-EEEpython
+``` python
 df.shape
-EEE
+```
 
 The shape provides a quick sanity check. If the number of rows or columns is unexpected, it may indicate a problem with the file path, the delimiter, or the structure of the CSV file.
 
 Second, inspecting the **column names** helps verify that variables were read correctly:
 
-EEEpython
+``` python
 df.columns
-EEE
+```
 
 This allows you to confirm that column labels match expectations and that no unexpected formatting issues occurred.
 
@@ -299,23 +302,23 @@ The first task after loading a dataset is to examine its overall structure. This
 
 One common starting point is to view the **first few rows** of the dataset. This provides a quick sense of what each column represents and how values are formatted.
 
-EEEpython
+``` python
 df.head()
-EEE
+```
 
 The output of `head()` shows the first rows of the DataFrame, including column names and sample values. This makes it easier to spot obvious issues such as unexpected column names, misaligned values, or formatting problems.
 
 Another essential inspection step is examining the **data types and completeness** of each column.
 
-EEEpython
+``` python
 df.info()
-EEE
+```
 
-The `info()` method provides a summary of the DataFrame, including:
-- the number of rows,
-- the names of columns,
-- the data type inferred for each column,
-- and the count of non-missing values.
+The `info()` method provides a summary of the DataFrame, including:  
+- the number of rows,  
+- the names of columns,  
+- the data type inferred for each column,  
+- and the count of non-missing values.  
 
 This information is critical for understanding how Pandas interprets the dataset. For example, a column intended to represent numbers may be interpreted as text, or a column may contain fewer non-null values than expected.
 
@@ -329,9 +332,9 @@ After inspecting structure and types, it is useful to examine **summary statisti
 
 Pandas provides the `describe()` method for this purpose.
 
-EEEpython
+``` python
 df.describe()
-EEE
+```
 
 For numeric columns, `describe()` typically reports:
 - count,
@@ -363,11 +366,11 @@ The emphasis here is not on finding a single “correct” solution, but on unde
 
 A **missing value** indicates that a data point is absent where a value is expected. In Pandas, missing values are typically represented using special markers that indicate the absence of data rather than a meaningful value.
 
-Missing data can occur for many reasons:
-- information was not collected,
-- a measurement failed or was skipped,
-- data was lost during transfer or processing,
-- a value was not applicable in a particular context.
+Missing data can occur for many reasons:  
+- information was not collected,  
+- a measurement failed or was skipped,  
+- data was lost during transfer or processing,  
+- a value was not applicable in a particular context.  
 
 Importantly, missing values are not the same as zero, empty strings, or false values. They represent **unknown or unavailable information**, and treating them as ordinary values can lead to incorrect conclusions.
 
@@ -383,16 +386,16 @@ Before missing data can be addressed, it must be identified. Pandas provides too
 
 A common approach is to check which values are missing and count how many missing values appear in each column.
 
-EEEpython
+``` python
 df.isna().sum()
-EEE
+```
 
 The `isna()` method returns a DataFrame of boolean values indicating whether each entry is missing. When combined with `sum()`, it produces a count of missing values for each column.
 
-This summary helps answer key questions:
-- Which columns contain missing values?
-- How many values are missing in each column?
-- Are missing values concentrated in specific variables or spread throughout the dataset?
+This summary helps answer key questions:  
+- Which columns contain missing values?  
+- How many values are missing in each column?  
+- Are missing values concentrated in specific variables or spread throughout the dataset?  
 
 Detecting missing values early allows informed decisions about whether data cleaning is required and which variables may need special attention.
 
@@ -406,9 +409,9 @@ One simple strategy is **dropping rows or columns** that contain missing values.
 
 Another approach is **filling missing values** with a substitute value. For numeric data, this might involve using a constant, an average, or another summary statistic. For categorical data, a placeholder value may be used. Filling allows the dataset to remain complete, but it introduces assumptions about what the missing values should represent.
 
-Both strategies involve tradeoffs:
-- Dropping data reduces sample size but avoids introducing assumptions.
-- Filling data preserves sample size but may distort distributions or relationships.
+Both strategies involve tradeoffs:  
+- Dropping data reduces sample size but avoids introducing assumptions.  
+- Filling data preserves sample size but may distort distributions or relationships.  
 
 At this stage, the goal is not to apply advanced imputation techniques, but to develop an awareness of how missing data affects analysis and why handling it requires deliberate choice. Simple strategies provide a starting point and help illustrate the consequences of different decisions.
 
@@ -428,10 +431,10 @@ Column names are not just labels; they are part of the dataset’s **schema**. T
 
 Poorly chosen column names can introduce confusion. Names may be too vague, too long, inconsistently formatted, or reflect internal system conventions rather than analytical meaning. For example, column names inherited from raw data sources may include abbreviations, spaces, or special characters that make code harder to read and write.
 
-Improving column names serves several purposes:
-- It increases readability for humans.
-- It reduces the likelihood of mistakes when referencing columns in code.
-- It clarifies the intended meaning of each variable.
+Improving column names serves several purposes:  
+- It increases readability for humans.  
+- It reduces the likelihood of mistakes when referencing columns in code.  
+- It clarifies the intended meaning of each variable.  
 
 Because column names are used repeatedly throughout an analysis, treating them as part of the schema—and cleaning them early—pays dividends later in the workflow.
 
@@ -441,17 +444,17 @@ Because column names are used repeatedly throughout an analysis, treating them a
 
 Renaming columns is a common data-cleaning task. Pandas allows columns to be renamed by providing a mapping from old names to new names. This approach supports **incremental cleanup**, where only problematic columns are renamed rather than rewriting the entire schema at once.
 
-EEEpython
+``` python
 df.rename(columns={"old": "new"}, inplace=True)
-EEE
+```
 
 In this example, the column originally named `"old"` is renamed to `"new"`. Other columns remain unchanged. This targeted approach makes it easier to track changes and reduces the risk of unintended consequences.
 
-Renaming columns is often used to:
-- replace cryptic or abbreviated names with descriptive ones,
-- standardize capitalization or naming conventions,
-- remove spaces or special characters,
-- align column names with analytical concepts rather than source-system terminology.
+Renaming columns is often used to:  
+- replace cryptic or abbreviated names with descriptive ones,  
+- standardize capitalization or naming conventions,  
+- remove spaces or special characters,  
+- align column names with analytical concepts rather than source-system terminology.   
 
 Performing renaming early in the analysis ensures that subsequent code is easier to read and that variable references are consistent throughout the project.
 
@@ -461,15 +464,15 @@ Performing renaming early in the analysis ensures that subsequent code is easier
 
 Not all columns in a dataset are useful for every analysis. Some columns may be redundant, irrelevant, or simply not needed for the current task. **Dropping columns** reduces dataset complexity and helps focus attention on the variables that matter.
 
-EEEpython
+``` python
 df.drop(columns=["unused"], inplace=True)
-EEE
+```
 
 In this example, the column named `"unused"` is removed from the DataFrame. Dropping unnecessary columns can:
-- reduce memory usage,
-- simplify inspection and analysis,
-- make code easier to understand,
-- and reduce the risk of accidentally using irrelevant variables.
+- reduce memory usage,  
+- simplify inspection and analysis,  
+- make code easier to understand,  
+- and reduce the risk of accidentally using irrelevant variables.  
 
 Deciding which columns to drop is a substantive analytical decision. Removing data too aggressively can eliminate useful information, while keeping too many columns can obscure important patterns. The goal is to strike a balance between completeness and clarity.
 
@@ -489,10 +492,10 @@ This section introduces basic selection and filtering techniques in Pandas, emph
 
 Selecting columns allows you to focus on a subset of variables within a dataset. Rather than working with every column at once, column selection narrows attention to the variables that are relevant for a particular analysis.
 
-Column selection matters for several reasons:
-- It improves readability by reducing clutter.
-- It makes code more explicit about which variables are being used.
-- It reduces the chance of accidentally incorporating irrelevant data.
+Column selection matters for several reasons:  
+- It improves readability by reducing clutter.  
+- It makes code more explicit about which variables are being used.  
+- It reduces the chance of accidentally incorporating irrelevant data.  
 
 In Pandas, selecting columns produces a new DataFrame or Series that contains only the specified variables. This operation does not change the original dataset unless explicitly assigned back to it.
 
@@ -509,15 +512,15 @@ Filtering rows allows you to select observations that meet specific criteria. In
 
 In Pandas, row filtering is typically done using **boolean masks**. A boolean mask is a sequence of True and False values that indicates whether each row meets a condition.
 
-EEEpython
+``` python
 filtered = df[df["score"] > 80]
-EEE
+```
 
 In this example, the condition `df["score"] > 80` produces a boolean mask. Pandas uses this mask to keep only the rows where the condition is true.
 
-Filtering rows is a powerful way to explore subsets of data, such as:
-- high-performing observations,
-- records from a specific category,
+Filtering rows is a powerful way to explore subsets of data, such as:  
+- high-performing observations,  
+- records from a specific category,  
 - or cases that meet defined thresholds.
 
 Conceptually, filtering answers the question:  
@@ -536,9 +539,9 @@ Pandas provides two explicit indexing tools for selecting data: `.loc` and `.ilo
 
 Understanding the distinction between `.loc` and `.iloc` is important because it makes code more precise and easier to read. When selection is label-based, `.loc` communicates intent clearly. When selection depends on position, `.iloc` makes that dependence explicit.
 
-Choosing between `.loc` and `.iloc` depends on context:
-- Use `.loc` when working with meaningful labels.
-- Use `.iloc` when selection depends on row or column position.
+Choosing between `.loc` and `.iloc` depends on context:  
+- Use `.loc` when working with meaningful labels.  
+- Use `.iloc` when selection depends on row or column position.  
 
 Although basic filtering and selection can be done without these methods, `.loc` and `.iloc` become increasingly important as datasets grow more complex and analyses become more detailed.
 
@@ -557,11 +560,11 @@ This section introduces descriptive statistics as sense-making tools rather than
 
 Raw datasets can be large and difficult to interpret directly. Even after filtering and cleaning, looking at individual rows rarely provides a clear picture of overall patterns or tendencies.
 
-**Summarization** condenses many observations into a small number of meaningful quantities. These summaries help answer questions such as:
-- What is typical in this dataset?
-- How much variation exists?
-- Are values generally large or small?
-- Are there obvious extremes or anomalies?
+**Summarization** condenses many observations into a small number of meaningful quantities. These summaries help answer questions such as:  
+- What is typical in this dataset?  
+- How much variation exists?  
+- Are values generally large or small?  
+- Are there obvious extremes or anomalies?  
 
 Descriptive statistics are often the first step in turning data into insight. They provide context and grounding before more advanced analysis is attempted. In analytics and AI workflows, descriptive summaries help analysts understand what the model will see and what assumptions may be reasonable.
 
@@ -574,24 +577,24 @@ At a conceptual level, summarization answers the question:
 
 Pandas provides convenient methods for computing common descriptive statistics. These statistics describe central tendency, spread, and range.
 
-Some of the most frequently used summary statistics include:
-- **count**, the number of non-missing values,
-- **mean**, the average value,
-- **median**, the middle value,
-- **minimum** and **maximum**, which describe the range of values.
+Some of the most frequently used summary statistics include:  
+- **count**, the number of non-missing values,  
+- **mean**, the average value,  
+- **median**, the middle value,  
+- **minimum** and **maximum**, which describe the range of values.  
 
 For example, computing the average of a numeric column can be done directly:
 
-EEEpython
+``` python
 df["score"].mean()
-EEE
+```
 
 These operations aggregate information across all rows in a column, producing a single value that summarizes the data. Similar methods exist for other statistics, and many can be applied column by column across an entire DataFrame.
 
 Summary statistics are especially useful for identifying potential issues:
-- unexpected ranges,
-- unusually large or small values,
-- or discrepancies between measures such as mean and median.
+- unexpected ranges,  
+- unusually large or small values,  
+- or discrepancies between measures such as mean and median.  
 
 While these statistics are simple, they play an essential role in exploratory analysis. They help determine whether further cleaning is needed and guide decisions about what analyses are appropriate.
 
@@ -601,10 +604,10 @@ While these statistics are simple, they play an essential role in exploratory an
 
 In many datasets, observations belong to meaningful **groups or categories**. For example, data may be grouped by region, category, or time period. Summarizing data across the entire dataset can obscure important differences between groups.
 
-Group-level summaries address this by computing descriptive statistics **within categories** rather than across all observations at once. This allows comparisons such as:
-- average scores by group,
-- counts by category,
-- or ranges within subpopulations.
+Group-level summaries address this by computing descriptive statistics **within categories** rather than across all observations at once. This allows comparisons such as:  
+- average scores by group,  
+- counts by category,  
+- or ranges within subpopulations.  
 
 Although the mechanics of grouping data will be introduced later, it is important to recognize the conceptual role of group-level summaries. They allow analysts to move from “overall” descriptions to more nuanced views that reveal structure within the data.
 
@@ -629,11 +632,11 @@ JSON represents data using **key–value pairs**, much like Python dictionaries.
 
 Conceptually, JSON encodes data as a hierarchy rather than a table. Instead of rows and columns, JSON organizes information into objects that contain other objects or lists. This makes it well suited for representing entities with varying attributes or nested relationships.
 
-JSON is common in AI systems because it is:
-- human-readable,
-- easy for machines to parse,
-- flexible in structure,
-- and well suited for transmitting data over networks.
+JSON is common in AI systems because it is:  
+- human-readable,  
+- easy for machines to parse,  
+- flexible in structure,  
+- and well suited for transmitting data over networks.  
 
 APIs frequently return data in JSON format because it allows systems to exchange structured information without requiring a fixed schema in advance. This flexibility is valuable in environments where data evolves over time or where different consumers may need different parts of the data.
 
@@ -672,17 +675,17 @@ This section introduces APIs conceptually and demonstrates how Python can be use
 
 An **API** (Application Programming Interface) is a structured way for one system to request information or services from another system. In data workflows, APIs are most often used as **data access mechanisms**.
 
-Rather than downloading a file manually, a program sends a request to an API endpoint and receives a response containing data. This interaction follows a predictable pattern:
-- the client sends a request,
-- the server processes it,
-- the server returns a response.
+Rather than downloading a file manually, a program sends a request to an API endpoint and receives a response containing data. This interaction follows a predictable pattern:  
+- the client sends a request,  
+- the server processes it,  
+- the server returns a response.  
 
 The response typically includes both the requested data and metadata about the request itself, such as whether it was successful.
 
-APIs are widely used because they:
-- allow real-time or near-real-time access to data,
-- enable controlled and authenticated access,
-- support integration across systems and platforms.
+APIs are widely used because they:  
+- allow real-time or near-real-time access to data,  
+- enable controlled and authenticated access,  
+- support integration across systems and platforms.  
 
 In analytics and AI contexts, APIs are commonly used to retrieve data from web services, cloud platforms, and internal systems. Understanding APIs therefore expands the range of data sources that Python programs can interact with.
 
@@ -692,15 +695,15 @@ In analytics and AI contexts, APIs are commonly used to retrieve data from web s
 
 Python provides several libraries for working with APIs. One of the most commonly used is the **requests** library, which simplifies sending HTTP requests and handling responses.
 
-The basic workflow for making an API request involves:
-1. importing the requests library,
-2. sending a request to a URL,
-3. storing the response for further inspection.
+The basic workflow for making an API request involves:  
+1. importing the requests library,  
+2. sending a request to a URL,  
+3. storing the response for further inspection.  
 
-EEEpython
+``` python
 import requests
 response = requests.get("https://api.example.com/data")
-EEE
+```
 
 In this example, a GET request is sent to the specified URL. The result is stored in a variable named `response`. At this stage, no assumptions are made about the content of the response; it is treated as an object that contains information returned by the server.
 
@@ -716,9 +719,9 @@ Most APIs return data in **JSON format**. Once a response has been received, the
 
 The requests library provides a method for this purpose:
 
-EEEpython
+``` python
 data = response.json()
-EEE
+```
 
 Calling `json()` on the response parses the JSON text and converts it into native Python data structures, typically dictionaries and lists. This transformation allows the data to be explored using familiar Python tools.
 
@@ -740,10 +743,10 @@ The emphasis is on reasoning about data at each step: what the data looks like, 
 
 The workflow begins by importing a dataset from a CSV file into a Pandas DataFrame. This step establishes the dataset as the central object for the remainder of the analysis.
 
-EEEpython
+``` python
 import pandas as pd
 df = pd.read_csv("data/sample.csv")
-EEE
+```
 
 At this point, the focus is simply on getting the data into the environment successfully. No assumptions are made yet about data quality or suitability for analysis. Importing the dataset creates the foundation on which all subsequent steps depend.
 
@@ -753,20 +756,20 @@ At this point, the focus is simply on getting the data into the environment succ
 
 Once the dataset is loaded, the next step is to inspect its structure and identify potential issues. Inspection helps determine whether the dataset aligns with expectations and where cleaning may be required.
 
-EEEpython
+``` python
 df.head()
 df.info()
-EEE
+```
 
 These inspection steps reveal column names, data types, and the presence of missing values. Based on this information, cleaning decisions can be made.
 
 Handling missing values is often a necessary part of preparing data for analysis. Depending on the context, missing values may be dropped or filled. Similarly, column names may be renamed for clarity, and columns that are not relevant to the analysis may be removed.
 
-EEEpython
+``` python
 df = df.dropna()
 df.rename(columns={"old_name": "new_name"}, inplace=True)
 df.drop(columns=["unused_column"], inplace=True)
-EEE
+```
 
 The goal of cleaning is not perfection, but **fitness for purpose**. Each cleaning step reflects a choice about what information is important and how it should be represented.
 
@@ -776,16 +779,16 @@ The goal of cleaning is not perfection, but **fitness for purpose**. Each cleani
 
 With a cleaned dataset, the next step is to focus on the subset of data relevant to the analytical question. This often involves filtering rows based on conditions and selecting specific columns for analysis.
 
-EEEpython
+``` python
 filtered = df[df["score"] > 80]
-EEE
+```
 
 Filtering narrows the dataset to observations that meet defined criteria. From there, descriptive statistics can be computed to summarize the filtered data.
 
-EEEpython
+``` python
 filtered["score"].mean()
 filtered.describe()
-EEE
+```
 
 These summaries condense the dataset into interpretable metrics that describe central tendency, variation, and range. The results provide a high-level view of the data after cleaning and filtering.
 
@@ -795,11 +798,11 @@ These summaries condense the dataset into interpretable metrics that describe ce
 
 The final step of the workflow is interpretation. Descriptive statistics do not speak for themselves; they must be interpreted in light of how the data was collected, cleaned, and filtered.
 
-Key questions to consider include:
-- What do the summaries reveal about the dataset?
-- How did cleaning decisions affect the results?
-- Are there patterns or anomalies that warrant further investigation?
-- What limitations remain due to missing data or assumptions made during cleaning?
+Key questions to consider include:  
+- What do the summaries reveal about the dataset?  
+- How did cleaning decisions affect the results?  
+- Are there patterns or anomalies that warrant further investigation?  
+- What limitations remain due to missing data or assumptions made during cleaning?  
 
 Interpreting results connects technical steps back to analytical reasoning. It reinforces the idea that analytics is not just about computation, but about making informed judgments based on data quality, structure, and context.
 
