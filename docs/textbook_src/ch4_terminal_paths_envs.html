@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.55">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Terminal, Paths, and Virtual Environments – Foundations of Analytics &amp; AI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="access.theme.scss">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Foundations of Analytics &amp; AI</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-textbook" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Textbook</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-textbook">    
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch1_foundations_analytics_ai_split.html">
+ <span class="dropdown-text">Ch 1. What Is Analytics &amp; AI?</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch2_ai_systems_data_models_logic.html">
+ <span class="dropdown-text">Ch 2. AI Systems: Data, Models, Logic</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch3_data_pipelines_decision_frameworks.html">
+ <span class="dropdown-text">Ch 3. Data Pipelines &amp; Decision Frameworks</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch4_terminal_paths_envs.html">
+ <span class="dropdown-text">Ch 4. Python Execution Foundations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch5_python_foundations_data_control_functions.html">
+ <span class="dropdown-text">Ch 5. Python Basics: Data, Control, Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch6_working_with_tabular_data_pandas.html">
+ <span class="dropdown-text">Ch 6. Working with Tabular Data in Pandas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch7_json_apis_data_access.html">
+ <span class="dropdown-text">Ch 7. JSON and APIs for Data Access</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch8_simulation_synthetic_data.html">
+ <span class="dropdown-text">Ch 8. Simulation and Synthetic Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch9_visualization_from_data_to_insight.html">
+ <span class="dropdown-text">Ch 9. Visualization: From Data to Insight</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/terminal_powershell_basics.html">
+ <span class="dropdown-text">Terminal and PowerShell Basics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/setup_python_uv_vscode.html">
+ <span class="dropdown-text">Install Python, uv, VS Code</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/using_colab.html">
+ <span class="dropdown-text">Using Colab</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/vscode_update_stability.html">
+ <span class="dropdown-text">Locking VS Code Updates (Optional)</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#opening-the-terminal" id="toc-opening-the-terminal" class="nav-link" data-scroll-target="#opening-the-terminal">Opening the Terminal</a></li>
+  <li><a href="#what-the-terminal-is-and-why-it-matters" id="toc-what-the-terminal-is-and-why-it-matters" class="nav-link" data-scroll-target="#what-the-terminal-is-and-why-it-matters">What the Terminal Is and Why It Matters</a></li>
+  <li><a href="#files-folders-and-working-directories" id="toc-files-folders-and-working-directories" class="nav-link" data-scroll-target="#files-folders-and-working-directories">Files, Folders, and Working Directories</a></li>
+  <li><a href="#relative-vs-absolute-paths" id="toc-relative-vs-absolute-paths" class="nav-link" data-scroll-target="#relative-vs-absolute-paths">Relative vs Absolute Paths</a></li>
+  <li><a href="#essential-navigation-commands-conceptual-overview" id="toc-essential-navigation-commands-conceptual-overview" class="nav-link" data-scroll-target="#essential-navigation-commands-conceptual-overview">Essential Navigation Commands (Conceptual Overview)</a></li>
+  <li><a href="#how-the-terminal-connects-to-python-execution" id="toc-how-the-terminal-connects-to-python-execution" class="nav-link" data-scroll-target="#how-the-terminal-connects-to-python-execution">How the Terminal Connects to Python Execution</a></li>
+  <li><a href="#virtual-environments-overview" id="toc-virtual-environments-overview" class="nav-link" data-scroll-target="#virtual-environments-overview">Virtual Environments Overview</a>
+  <ul class="collapse">
+  <li><a href="#why-virtual-environments-exist" id="toc-why-virtual-environments-exist" class="nav-link" data-scroll-target="#why-virtual-environments-exist">Why Virtual Environments Exist</a></li>
+  <li><a href="#what-a-virtual-environment-is" id="toc-what-a-virtual-environment-is" class="nav-link" data-scroll-target="#what-a-virtual-environment-is">What a Virtual Environment Is</a></li>
+  <li><a href="#a-standard-environment-workflow-using-uv" id="toc-a-standard-environment-workflow-using-uv" class="nav-link" data-scroll-target="#a-standard-environment-workflow-using-uv">A Standard Environment Workflow (Using uv)</a></li>
+  <li><a href="#activating-and-deactivating-environments-conceptual" id="toc-activating-and-deactivating-environments-conceptual" class="nav-link" data-scroll-target="#activating-and-deactivating-environments-conceptual">Activating and Deactivating Environments (Conceptual)</a></li>
+  <li><a href="#how-environments-connect-to-the-terminal-and-visual-studio-code" id="toc-how-environments-connect-to-the-terminal-and-visual-studio-code" class="nav-link" data-scroll-target="#how-environments-connect-to-the-terminal-and-visual-studio-code">How Environments Connect to the Terminal and Visual Studio Code</a></li>
+  <li><a href="#common-environment-mistakes-and-recovery-strategies" id="toc-common-environment-mistakes-and-recovery-strategies" class="nav-link" data-scroll-target="#common-environment-mistakes-and-recovery-strategies">Common Environment Mistakes and Recovery Strategies</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Terminal, Paths, and Virtual Environments</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This chapter explains how Python scripts are located and executed on a computer by introducing the basic ideas behind the terminal, file systems, and paths. Then we introduce virtual environments as a way to control which version of Python and which packages are used for a given project.</p>
+</section>
+<section id="opening-the-terminal" class="level2">
+<h2 class="anchored" data-anchor-id="opening-the-terminal">Opening the Terminal</h2>
+<p>The exact steps to opening a terminal depend on the operating system and tools being used, but the underlying concept is the same: opening a window where text-based commands can be entered and executed.</p>
+<p>On <strong>macOS</strong>, the terminal application is called Terminal. It can be opened in several ways:</p>
+<ul>
+<li>By using Spotlight search and typing “Terminal”<br>
+</li>
+<li>By navigating to Applications → Utilities → Terminal</li>
+</ul>
+<p>Once opened, the Terminal window provides direct access to the macOS command line.</p>
+<p>On <strong>Windows</strong>, the terminal experience may appear under different names depending on configuration. Common options include:</p>
+<ul>
+<li>Command Prompt<br>
+</li>
+<li>Windows PowerShell<br>
+</li>
+<li>Windows Terminal (a newer application that supports multiple shells)</li>
+</ul>
+<p>Any of these can be opened by searching from the Start menu. While they may look slightly different, they all allow commands to be typed and executed in the same basic way.</p>
+<p>Many developers use <strong>Visual Studio Code</strong>, which includes an <strong>integrated terminal</strong>. This terminal runs inside the editor itself and behaves just like a regular system terminal, but with important advantages for programming.</p>
+<p>To open the integrated terminal in Visual Studio Code:</p>
+<ul>
+<li>Use the menu option View → Terminal<br>
+</li>
+<li>Or use the keyboard shortcut that opens the terminal panel</li>
+</ul>
+<p>The integrated terminal often starts in the context of the <em>current project folder</em>, which reduces the need to navigate manually through the file system. This makes it especially convenient for running Python scripts and managing project files.</p>
+<p>Regardless of how the terminal is opened, the same ideas apply. Commands are typed, executed, and produce output.</p>
+</section>
+<section id="what-the-terminal-is-and-why-it-matters" class="level2">
+<h2 class="anchored" data-anchor-id="what-the-terminal-is-and-why-it-matters">What the Terminal Is and Why It Matters</h2>
+<p>The <strong>terminal</strong> is a text-based interface for interacting directly with a computer’s operating system. Instead of clicking on icons or navigating menus, instructions are typed as commands. The computer executes those commands and returns output in the same window.</p>
+<p>While graphical interfaces are designed for ease of use, the terminal is designed for <strong>precision and control</strong>. It allows you to specify exactly what you want the computer to do, where to do it, and how to do it.</p>
+<p>In a graphical interface, running a program often involves clicking on a file. In contrast, running a Python script from the terminal requires two pieces of information:</p>
+<ol type="1">
+<li><strong>Which Python interpreter to use</strong><br>
+</li>
+<li><strong>Where the script is located</strong></li>
+</ol>
+<p>The terminal makes both of these explicit.</p>
+<p>When you type a command into the terminal, you are issuing an instruction and then waiting for a response. For example, a simple command that asks the computer where you currently are in the file system looks like this:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After pressing Enter, the terminal responds by printing the current working directory. This directory is the location the terminal is “pointing to,” and it determines which files the computer can see when you issue commands.</p>
+<p>This idea of <em>location</em> is critical. When you run a Python script using a command such as:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> first_program.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Python looks for the file named <code>first_program.py</code> <strong>in the current working directory</strong>. If the file is not located there, Python cannot run it, even if the file exists elsewhere on your computer. This is one of the most common sources of confusion for beginners, and it highlights why understanding the terminal matters.</p>
+<p>The terminal also differs from clicking files in an important way: commands are <strong>repeatable and explicit</strong>. When you type a command, you can see exactly what was executed. This makes it easier to reproduce results, diagnose errors, and understand what the computer is doing step by step.</p>
+<p>Every terminal interaction follows the same basic pattern:</p>
+<ol type="1">
+<li>You type a command.<br>
+</li>
+<li>The computer executes it.<br>
+</li>
+<li>The terminal displays output or an error message.<br>
+</li>
+<li>Control returns to you.</li>
+</ol>
+<p>For example, listing the contents of the current directory in the terminal (MacOS or VSCode terminal) looks like this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The terminal responds by showing the files and folders in that location. This immediate feedback loop—command followed by output—is central to working effectively with the terminal and will be used frequently in analytics and AI workflows.</p>
+<p>The best way to understand and learn the terminal is not to memorize the commands. Those can be looked up, or cheat sheets printed until they are known. Instead, try to develop a mental model of how the computer interprets instructions, how files are located, and how programs are executed.</p>
+</section>
+<section id="files-folders-and-working-directories" class="level2">
+<h2 class="anchored" data-anchor-id="files-folders-and-working-directories">Files, Folders, and Working Directories</h2>
+<p>Computers organize information using <strong>files</strong> and <strong>folders</strong> (also called directories). A file contains data or instructions, such as a Python script, while a folder is a container that holds files and other folders. Every file on a computer exists inside exactly one folder, and folders can be nested inside other folders.</p>
+<p>When working in the terminal, the computer always keeps track of a single location called the <strong>current working directory</strong>. This directory represents “where you are” in the file system at any given moment. All commands you type into the terminal are interpreted relative to this location unless you explicitly say otherwise. This is one of biggest sources of confusion and issue with new programmers, so take note how to find and change your working directory. It will avoid a lot of confusion and frustration later.</p>
+<p>You can ask the terminal to show the current working directory using the following command:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The output shows the full path to the folder the terminal is currently using. This location matters because most commands—including those that run Python scripts—operate on files in this directory by default.</p>
+<p>To see what files and folders exist in the current working directory, you can list its contents:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The terminal responds by displaying the names of files and folders in that location. If a Python script does not appear in this list, it means the terminal cannot “see” it from the current directory.</p>
+<p>This explains why a command such as:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> script.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>only works when the file named <code>script.py</code> is located in the current working directory. When this command is run, Python looks for <code>script.py</code> in the folder the terminal is currently pointing to. If the file is elsewhere, Python cannot run it and will report that the file cannot be found.</p>
+<p>Programs locate files using the same logic. When a program is executed, it starts in the current working directory and interprets file references relative to that location. If a script refers to another file without specifying a full path, Python assumes that file is located in—or relative to—the directory where the program was run.</p>
+<p>Changing the current working directory changes what files are visible to the terminal and to any programs launched from it. Moving between folders is a <em>fundamental</em> skill when working with scripts and project-based code.</p>
+</section>
+<section id="relative-vs-absolute-paths" class="level2">
+<h2 class="anchored" data-anchor-id="relative-vs-absolute-paths">Relative vs Absolute Paths</h2>
+<p>A <strong>path</strong> is a description of where a file or folder is located on a computer. Paths allow both humans and programs to refer to specific locations in the file system. When working in the terminal, paths are how you tell the computer <em>which</em> file or folder you mean.</p>
+<p>There are two main types of paths: <strong>absolute paths</strong> and <strong>relative paths</strong>. The difference between them depends on where the path begins.</p>
+<p>An <strong>absolute path</strong> describes a location starting from the root of the file system. It specifies the full sequence of folders that must be followed to reach a file, regardless of the current working directory. Because absolute paths always start from the same place, they uniquely identify a file’s location.</p>
+<p>For example, an absolute path might look like this:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/Users/username/projects/week1/hello_world.py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This path tells the computer exactly where the file lives, no matter where the terminal is currently pointed. Absolute paths are precise, but they can be long, system-specific, and inconvenient to type repeatedly.</p>
+<p>A <strong>relative path</strong>, by contrast, describes a location starting from the <strong>current working directory</strong>. Instead of beginning at the root of the file system, a relative path is interpreted based on where you are at the moment the command is run.</p>
+<p>For example, if the terminal is already inside the <code>week1</code> folder, the same file could be referred to simply as:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">hello_world.py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Relative paths are shorter and easier to read, but they only make sense in relation to the current working directory. This is why understanding where you are in the file system is so important when using the terminal.</p>
+<p>In most projects, <strong>relative paths are used far more often than absolute paths</strong>. Relative paths make code easier to move between computers and directories without modification. If a project folder is copied or shared, relative paths continue to work as long as the internal structure of the project remains the same.</p>
+<p>Two special symbols are commonly used in relative paths. The symbol <code>.</code> refers to the <strong>current directory</strong>, while <code>..</code> refers to the <strong>parent directory</strong>, which is the folder that contains the current one. These symbols provide a concise way to navigate up and down the folder hierarchy.</p>
+<p>For example, moving up one level in the directory structure looks like this:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Using these symbols allows paths to express relationships between folders rather than fixed locations. This relational view of file locations is central to working effectively with scripts, projects, and command-line tools.</p>
+</section>
+<section id="essential-navigation-commands-conceptual-overview" class="level2">
+<h2 class="anchored" data-anchor-id="essential-navigation-commands-conceptual-overview">Essential Navigation Commands (Conceptual Overview)</h2>
+<p>Working in the terminal involves a small set of core commands that allow you to <strong>navigate the file system</strong> and understand what files are available at any given moment. These commands are used constantly when working with Python scripts, not because they are complex, but because they express intent very directly.</p>
+<p>One of the most common tasks is <strong>moving between folders</strong>. This is done by changing the current working directory. Conceptually, this is no different from opening a different folder in a graphical interface, except that it is done by issuing a command rather than clicking.</p>
+<p>For example, moving into a folder looks like this:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> projects</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After this command runs, the terminal’s current working directory changes to the <code>projects</code> folder. All subsequent commands are interpreted relative to this new location.</p>
+<p>Another common task is <strong>listing the contents of a folder</strong>. This allows you to see which files and subfolders exist in the current directory:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Listing files is often the first step when something does not work as expected. If a file does not appear in the listing, it means the terminal cannot see it from the current location.</p>
+<p>Folders are also created directly from the terminal. Creating folders is especially useful for organizing projects and keeping related files together:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> week1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This command creates a new folder named <code>week1</code> inside the current working directory. Organizing code into folders helps keep scripts, data, and outputs clearly separated, which becomes increasingly important as projects grow.</p>
+<p>These navigation commands matter because <strong>the terminal always operates in a specific location</strong>. Python scripts are run from that location, files are created there by default, and relative paths are resolved based on it. When a command behaves unexpectedly, the cause is often not the command itself, but the directory from which it was run.</p>
+<p>If you are new in the terminal, don’t memorize commands, but try to understand their intent:</p>
+<ul>
+<li><em>Where am I?</em><br>
+</li>
+<li><em>What files are here?</em><br>
+</li>
+<li><em>Where do I want to go next?</em></li>
+</ul>
+<p>Once this mental model is in place, the specific command names become easier to remember, and working in the terminal becomes a predictable and logical process rather than a trial-and-error activity.</p>
+</section>
+<section id="how-the-terminal-connects-to-python-execution" class="level2">
+<h2 class="anchored" data-anchor-id="how-the-terminal-connects-to-python-execution">How the Terminal Connects to Python Execution</h2>
+<p>The terminal plays a central role in running Python scripts because it provides the context in which commands are interpreted. When a Python script is executed, the terminal is responsible for telling Python <strong>which file to run</strong> and <strong>where to find it</strong>.</p>
+<p>When you type a command such as:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> first_program.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>(note in some MacOS systems you might write <code>python3</code> instead of <code>python</code>)</p>
+<p>you are giving Python two pieces of information at once. First, you are specifying that the Python interpreter should be used. Second, you are specifying the name of the file to execute. What is not explicitly stated—but is critically important—is <strong>where Python should look for that file</strong>.</p>
+<p>By default, Python looks for the script in the <strong>current working directory</strong>. That directory is determined entirely by the terminal’s location at the moment the command is run. If the file named <code>first_program.py</code> is located in that directory, Python can execute it. If it is not, Python reports an error indicating that the file cannot be found.</p>
+<p>This explains why errors such as “file not found” or “no such file or directory” occur so frequently. In many cases, the issue is not that the file does not exist, but that the terminal is pointed at the wrong folder when the command is issued.</p>
+<p>Changing directories changes what files are visible to Python. Listing files allows you to verify whether the script you want to run is actually present in the current location. A simple but powerful workflow:</p>
+<ol type="1">
+<li>Navigate to the folder containing the script.<br>
+</li>
+<li>Confirm the file is present.<br>
+</li>
+<li>Run the script using the Python command.</li>
+</ol>
+<p>Project folder structure reinforces this workflow. When scripts are organized into predictable folders, it becomes easier to navigate to the correct location and run code reliably. Relative paths and consistent organization reduce the likelihood of execution errors and make projects easier to understand and maintain.</p>
+<p>This leads to a useful mental model for running Python scripts:</p>
+<p><strong>location → command → execution</strong></p>
+<p>First, the terminal’s location determines what files are accessible. Next, the command specifies what action to take. Finally, Python executes the script based on that context. When something goes wrong, tracing the problem through these three steps is often the fastest way to identify and resolve the issue.</p>
+<p>Understanding this connection between the terminal and Python execution transforms error messages from obstacles into signals. Rather than guessing, it becomes possible to reason systematically about what the computer is doing and why a particular command succeeds or fails.</p>
+</section>
+<section id="virtual-environments-overview" class="level2">
+<h2 class="anchored" data-anchor-id="virtual-environments-overview">Virtual Environments Overview</h2>
+<p>A virtual environment defines the execution context of a Python project, including its library versions and dependencies. This isolation ensures that code behaves consistently across machines and over time. Without virtual environments, the same script may run successfully in one setting and fail in another, even when the code itself is unchanged. Virtual environments add an important system level question, and lock in options: <strong>which version of Python, and which set of installed tools, should be used when a script runs?</strong></p>
+<p>This question becomes especially important as projects grow and as additional libraries are introduced. Virtual environments provide a structured way to manage this complexity by controlling the software context in which Python programs execute.</p>
+<section id="why-virtual-environments-exist" class="level3">
+<h3 class="anchored" data-anchor-id="why-virtual-environments-exist">Why Virtual Environments Exist</h3>
+<p>Virtual environments exist to solve a practical problem that arises when working with Python across multiple projects: <strong>different projects often require different packages, or worse different versions of the same package</strong>.</p>
+<p>By default, Python allows packages to be installed globally, meaning they are available to all Python programs on a computer. While this may seem convenient at first, it quickly leads to conflicts. One project may require a newer version of a library, while another depends on an older version. Installing or upgrading a package for one project can unintentionally break another.</p>
+<p>These conflicts are especially common in analytics and AI work, where projects often rely on rapidly evolving libraries. Changes in package behavior, version compatibility, or dependencies can cause code that once worked correctly to fail without any changes to the code itself.</p>
+<p>Virtual environments address this problem by providing <strong>isolation</strong>. Each environment contains its own copy of the Python interpreter along with its own set of installed packages. This allows each project to define and control exactly which packages and versions it uses, without affecting other projects or the system-wide Python installation.</p>
+<p>Importantly, virtual environments are not about adding complexity for its own sake. They are a way to <strong>reduce uncertainty and prevent accidental breakage</strong>. By isolating dependencies, environments make projects more predictable, easier to reproduce, and easier to share with others.</p>
+<p>From a workflow perspective, virtual environments support a simple principle: <em>a project should carry its own assumptions about its software dependencies</em>. When those assumptions are explicit and isolated, problems become easier to diagnose and fixes become easier to apply.</p>
+</section>
+<section id="what-a-virtual-environment-is" class="level3">
+<h3 class="anchored" data-anchor-id="what-a-virtual-environment-is">What a Virtual Environment Is</h3>
+<p>A <strong>virtual environment</strong> is a self-contained Python setup that exists alongside, but separate from, the system-wide Python installation. It provides a controlled space in which a project can run using a specific Python interpreter and a specific set of installed packages.</p>
+<p>Each virtual environment includes its own Python interpreter and its own package directory. When a program is run inside an environment, Python uses the interpreter and packages associated with that environment rather than those installed globally on the system. This separation is what allows multiple projects with different requirements to coexist on the same computer without interfering with one another.</p>
+<p>Virtual environments are closely tied to two components: the <strong>Python interpreter</strong> and <strong>installed packages</strong>. The interpreter determines which version of Python is used, while the installed packages determine which libraries and tools are available to the program. Together, these define the software context in which a script executes.</p>
+<p>When a virtual environment is <strong>activated</strong>, the terminal is instructed to use the environment’s Python interpreter by default. As a result, running Python commands or executing scripts uses the environment’s configuration rather than the system-wide one. Activation does not change Python itself; it changes which Python is selected when commands are run.</p>
+<p>It is important to understand what activation does <em>not</em> do. Activating a virtual environment does not delete or replace the system Python installation. It does not modify other environments, and it does not affect projects outside the current working context. The system Python remains available and unchanged; the environment simply provides an alternative that is used temporarily.</p>
+<p>This distinction is essential for developing confidence with environments. Virtual environments do not take control of the computer or permanently alter Python. They provide a scoped, reversible context in which projects can be developed and executed reliably.</p>
+</section>
+<section id="a-standard-environment-workflow-using-uv" class="level3">
+<h3 class="anchored" data-anchor-id="a-standard-environment-workflow-using-uv">A Standard Environment Workflow (Using uv)</h3>
+<p>To manage virtual environments consistently, it is helpful to use a single tool. One modern option is <strong>uv</strong>, which can create and manage environments efficiently. Standardizing on one tool reduces confusion, minimizes setup errors, and helps ensure that examples behave the same way across machines.</p>
+<p>At a high level, an environment workflow consists of three steps:</p>
+<ol type="1">
+<li><p><strong>Create an environment</strong><br>
+A new virtual environment is created for the project. This environment serves as an isolated space where the project’s Python interpreter and packages will live.</p></li>
+<li><p><strong>Activate the environment</strong><br>
+Activating the environment tells the terminal to use the environment’s Python interpreter by default. From this point forward, Python commands and scripts run within the context of the environment rather than the system-wide installation.</p></li>
+<li><p><strong>Install dependencies</strong><br>
+Required packages are installed into the environment. These packages become available only within that environment, ensuring that the project’s dependencies are isolated and controlled.</p></li>
+</ol>
+<p>These steps form a repeatable process that can be used for every project. While specific commands depend on the tool and operating system, the underlying structure remains the same. Understanding this structure makes it easier to reason about environment errors, recover from mistakes, and apply the same approach in future projects.</p>
+</section>
+<section id="activating-and-deactivating-environments-conceptual" class="level3">
+<h3 class="anchored" data-anchor-id="activating-and-deactivating-environments-conceptual">Activating and Deactivating Environments (Conceptual)</h3>
+<p>Activating a virtual environment changes how the terminal interprets Python-related commands. Rather than altering Python itself, activation tells the terminal <strong>which Python interpreter and which set of packages should be used</strong> when commands are executed.</p>
+<p>When an environment is activated, the terminal is temporarily configured so that Python commands refer to the environment’s Python interpreter instead of the system-wide one. As a result, any script that is run uses the packages installed in that environment. This is why activation is such an important step in the workflow: it determines the software context in which code executes.</p>
+<p>Activation affects two key things. First, it determines <strong>which Python runs</strong>. Even if multiple versions of Python exist on a computer, activation ensures that the correct interpreter is used for the current project. Second, it determines <strong>which packages are available</strong>. Only the packages installed in the active environment can be imported and used by scripts.</p>
+<p>Forgetting to activate an environment is a common source of confusion. When this happens, Python may still run, but it may use the system-wide interpreter and packages instead of the project-specific ones. This can lead to errors where code appears correct but fails because required packages are missing or the wrong versions are being used.</p>
+<p>Deactivating an environment simply returns the terminal to its default state. After deactivation, Python commands once again refer to the system-wide Python installation. No files are deleted, and no environments are removed; the change is temporary and reversible.</p>
+<p>Understanding activation and deactivation reinforces an important idea: <strong>virtual environments are contexts, not permanent changes</strong>. They define how Python behaves in a given terminal session, and they can be entered and exited as needed.</p>
+</section>
+<section id="how-environments-connect-to-the-terminal-and-visual-studio-code" class="level3">
+<h3 class="anchored" data-anchor-id="how-environments-connect-to-the-terminal-and-visual-studio-code">How Environments Connect to the Terminal and Visual Studio Code</h3>
+<p>Virtual environments are closely tied to the <strong>terminal session</strong> in which they are activated. When an environment is activated, the change applies only to that specific terminal window. Other terminal windows remain unaffected unless the environment is activated there as well. This session-specific behavior is intentional and allows different projects to be worked on simultaneously using different environments.</p>
+<p>Because activation is terminal-specific, it is possible for two terminals on the same computer to behave differently at the same time. One terminal may be using a project’s virtual environment, while another is using the system-wide Python installation. Understanding this distinction helps explain why code may run successfully in one terminal but fail in another.</p>
+<p>Visual Studio Code builds on this behavior by integrating the terminal and the editor. When a project folder is opened in VS Code, the editor can detect virtual environments. If an environment is found, VS Code can associate that environment with the project and use it when running Python scripts.</p>
+<p>VS Code’s Python tooling uses this association to determine which Python interpreter should be used for execution, linting, and debugging. When the correct environment is selected, running a script from the editor or from the integrated terminal uses the same Python configuration. This alignment reduces confusion and helps ensure consistent behavior across tools.</p>
+<p>At this point, several concepts come together:</p>
+<ul>
+<li>The <strong>terminal location</strong> determines which files are visible.<br>
+</li>
+<li>The <strong>active environment</strong> determines which Python interpreter and packages are used.<br>
+</li>
+<li>The <strong>execution command</strong> tells Python which script to run.</li>
+</ul>
+<p>All three must align for code to run as expected. If any one of them is incorrect—wrong directory, wrong environment, or wrong command—errors can occur even if the code itself is correct.</p>
+<p>Viewing these elements as a coordinated system rather than independent pieces makes troubleshooting much easier. Instead of guessing, it becomes possible to check each part in turn: where the terminal is, which environment is active, and which Python is being used.</p>
+</section>
+<section id="common-environment-mistakes-and-recovery-strategies" class="level3">
+<h3 class="anchored" data-anchor-id="common-environment-mistakes-and-recovery-strategies">Common Environment Mistakes and Recovery Strategies</h3>
+<p>Mistakes involving virtual environments are extremely common and occur at all experience levels. These issues rarely indicate a problem with the code itself. Instead, they usually arise from a mismatch between the environment that was intended and the one that is actually being used.</p>
+<p>One frequent mistake is <strong>installing packages in the wrong environment</strong>. This happens when packages are installed while the system-wide Python environment is active instead of the project’s virtual environment. As a result, a script may fail to import a package even though it appears to be installed. The package exists—but not in the environment the script is using.</p>
+<p>Another common issue is <strong>running scripts with the wrong Python interpreter</strong>. Because multiple Python interpreters can exist on the same computer, it is possible to run a script using a different interpreter than expected. When this occurs, the script may behave inconsistently across terminals or tools, even though no changes were made to the code.</p>
+<p>It is also easy to <strong>forget which environment is active</strong>, especially when switching between projects or terminal windows. Since activation is specific to each terminal session, opening a new terminal often means starting without any environment activated. This can lead to confusion when previously working code suddenly fails.</p>
+<p>Recovering from environment-related issues usually involves a small number of simple checks:</p>
+<ul>
+<li>Confirm which environment is active in the current terminal.<br>
+</li>
+<li>Verify which Python interpreter is being used.<br>
+</li>
+<li>Ensure required packages are installed in that environment.<br>
+</li>
+<li>Re-activate the intended environment if necessary.</li>
+</ul>
+<p>These steps are effective because they reestablish clarity about the execution context before any changes are made. Guessing or reinstalling packages repeatedly is rarely helpful without first confirming which environment is actually in use.</p>
+<p>Most importantly, these mistakes are routine and fixable. Even experienced developers encounter them regularly, particularly when working across multiple projects or tools. With practice, identifying environment issues becomes a quick diagnostic step rather than a source of frustration.</p>
+<p>Virtual environments are designed to make work more reliable, not more fragile. Once their role is understood, environment-related problems become signals to check context rather than obstacles to progress.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,114 @@
+---
+title: "JSON and APIs for Data Access"
+---
+
+## Overview
+
+This chapter introduces JSON as a structured data format and shows how Python can retrieve and parse JSON data from APIs. The goal is to understand how modern analytics and AI workflows obtain data from external services and convert it into forms suitable for analysis.
+
+---
+
+## JSON and Structured Data Exchange
+
+### What JSON is
+
+**JSON** (JavaScript Object Notation) is a text-based format used to represent structured data. Despite its name, JSON is language-agnostic and is widely used across programming languages and platforms.
+
+JSON represents data using **key–value pairs**, much like Python dictionaries. Values associated with keys can themselves be other objects, lists, or simple values such as numbers, strings, or booleans. This allows JSON to represent complex, nested structures.
+
+Conceptually, JSON encodes data as a hierarchy rather than a table. Instead of rows and columns, JSON organizes information into objects that contain other objects or lists. This makes it well suited for representing entities with varying attributes or nested relationships.
+
+JSON is common in AI systems because it is:  
+- human-readable,  
+- easy for machines to parse,  
+- flexible in structure,  
+- and well suited for transmitting data over networks.  
+
+APIs frequently return data in JSON format because it allows systems to exchange structured information without requiring a fixed schema in advance. This flexibility is valuable in environments where data evolves over time or where different consumers may need different parts of the data.
+
+### JSON vs tabular data
+
+Although JSON and tabular data both represent structured information, they differ in how that structure is expressed.
+
+**Tabular data** is flat. Each row represents an observation, and each column represents a variable. This structure is ideal for many forms of analysis, especially when observations are uniform and relationships are simple.
+
+**JSON data**, by contrast, is hierarchical. Objects can contain nested objects or lists, and not every object must have the same keys. This allows JSON to represent more complex relationships, but it also makes direct analysis more challenging.
+
+Mapping JSON to tables often requires **flattening** the structure. Nested objects may be expanded into columns, and lists may be transformed into multiple rows. This transformation step is common in data pipelines that ingest API data and prepare it for analysis with tools like Pandas.
+
+
+---
+
+## APIs as Data Sources
+
+### What an API is
+
+An **API** (Application Programming Interface) is a structured way for one system to request information or services from another system. In data workflows, APIs are most often used as **data access mechanisms**. Sometimes it is helpful to think of APIs like a bridge, from one system to another, as a path to get information that is needed. 
+
+Rather than downloading a file manually, a program sends a request to an API endpoint and receives a response containing data. This interaction follows a predictable pattern:  
+- the client sends a request,  
+- the server processes it,  
+- the server returns a response.  
+
+The response typically includes both the requested data and metadata about the request itself, such as whether it was successful.
+
+APIs are widely used because they:  
+- allow real-time or near-real-time access to data,  
+- enable controlled and authenticated access,  
+- support integration across systems and platforms.  
+
+In analytics and AI contexts, APIs are commonly used to retrieve data from web services, cloud platforms, and internal systems. 
+
+---
+
+## Making API Requests with Python
+
+### Sending a request
+
+Python provides several libraries for working with APIs. One of the most commonly used is the **requests** library, which simplifies sending HTTP requests and handling responses.
+
+The basic workflow for making an API request involves:  
+1. importing the requests library,  
+2. sending a request to a URL,  
+3. storing the response for further inspection.  
+
+```python
+import requests
+response = requests.get("https://api.example.com/data")
+```
+
+In this example, a GET request is sent to the specified URL. The result is stored in a variable named `response`. At this stage, no assumptions are made about the content of the response; it is treated as an object that contains information returned by the server.
+
+Handling responses responsibly involves checking whether the request succeeded and understanding what kind of data was returned. Although error handling and authentication are not covered here, it is important to recognize that API requests can fail for many reasons, including network issues, invalid endpoints, or access restrictions.
+
+The key idea is that APIs allow programs to retrieve data programmatically rather than manually.
+
+### Parsing JSON responses
+
+Many APIs return data in **JSON format**. Once a response has been received, the next step is to convert that JSON data into Python objects that can be inspected and manipulated.
+
+The requests library provides a method for this purpose:
+
+```python
+data = response.json()
+```
+
+Calling `json()` on the response parses the JSON text and converts it into native Python data structures, typically dictionaries and lists. This transformation allows the data to be explored using familiar Python tools.
+
+At this point, inspection becomes important. API responses often contain nested structures, metadata, or multiple layers of information. Examining the structure of the returned object helps determine which parts of the data are relevant and how they might be transformed into tabular form.
+
+Parsing JSON responses reinforces a recurring theme: data often arrives in one structure and must be **transformed** into another before analysis can occur. APIs provide access to rich data sources, but turning that data into usable datasets requires effort.
+
+---
+
+## Chapter Summary
+
+This chapter introduced JSON and APIs as key components of modern data workflows. While earlier chapters focused on data stored in local files, this chapter expanded the view to include data that is retrieved dynamically from external systems.
+
+JSON was presented as a flexible, hierarchical data format that uses key–value pairs and nested structures to represent complex information. Its widespread use in AI and analytics systems reflects its strengths for data exchange and representation, even though it is not always convenient for direct analysis.
+
+APIs were introduced as structured interfaces for requesting data and services from other systems. By sending requests and receiving responses, programs can obtain up-to-date information without manual file handling. The combination of APIs and JSON underpins many contemporary data pipelines.
+
+Finally, the chapter showed how Python’s `requests` library can be used to call APIs and parse JSON responses into native Python objects. This ability to retrieve and interpret external data is essential for building analytics and AI workflows that interact with real-world systems.
+
+Together, JSON and APIs extend your data toolkit beyond static files. They enable your code to participate in larger ecosystems of services and data sources, setting the stage for more advanced topics such as automated pipelines, streaming data, and integration with AI services.

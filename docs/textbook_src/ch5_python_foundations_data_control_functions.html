@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 2 – Python Foundations: Data, Control, and Functions – Foundations of Analytics &amp; AI</title>
+<title>Python Foundations: Data, Control, and Functions – Foundations of Analytics &amp; AI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -126,25 +126,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-weeks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Weeks</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-textbook" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Textbook</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-weeks">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-textbook">    
         <li>
-    <a class="dropdown-item" href="../textbook_src/week01_main.html">
- <span class="dropdown-text">Week 1. What is Analytics &amp; AI?</span></a>
+    <a class="dropdown-item" href="../textbook_src/ch1_foundations_analytics_ai_split.html">
+ <span class="dropdown-text">Ch 1. What Is Analytics &amp; AI?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../textbook_src/week02_main.html">
- <span class="dropdown-text">Week 2. Python Basics</span></a>
+    <a class="dropdown-item" href="../textbook_src/ch2_ai_systems_data_models_logic.html">
+ <span class="dropdown-text">Ch 2. AI Systems: Data, Models, Logic</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../textbook_src/week03_main.html">
- <span class="dropdown-text">Week 3. Data Structures &amp; Pandas</span></a>
+    <a class="dropdown-item" href="../textbook_src/ch3_data_pipelines_decision_frameworks.html">
+ <span class="dropdown-text">Ch 3. Data Pipelines &amp; Decision Frameworks</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../textbook_src/week04_main.html">
- <span class="dropdown-text">Week 4. From Data to Models</span></a>
+    <a class="dropdown-item" href="../textbook_src/ch4_terminal_paths_envs.html">
+ <span class="dropdown-text">Ch 4. Python Execution Foundations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch5_python_foundations_data_control_functions.html">
+ <span class="dropdown-text">Ch 5. Python Basics: Data, Control, Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch6_working_with_tabular_data_pandas.html">
+ <span class="dropdown-text">Ch 6. Working with Tabular Data in Pandas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch7_json_apis_data_access.html">
+ <span class="dropdown-text">Ch 7. JSON and APIs for Data Access</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch8_simulation_synthetic_data.html">
+ <span class="dropdown-text">Ch 8. Simulation and Synthetic Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch9_visualization_from_data_to_insight.html">
+ <span class="dropdown-text">Ch 9. Visualization: From Data to Insight</span></a>
   </li>  
     </ul>
   </li>
@@ -154,16 +174,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
         <li>
-    <a class="dropdown-item" href="../guides/install_python.html">
- <span class="dropdown-text">Install Python</span></a>
+    <a class="dropdown-item" href="../guides/terminal_powershell_basics.html">
+ <span class="dropdown-text">Terminal and PowerShell Basics</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../guides/install_requirements.html">
- <span class="dropdown-text">Installing requirements.txt</span></a>
+    <a class="dropdown-item" href="../guides/setup_python_uv_vscode.html">
+ <span class="dropdown-text">Install Python, uv, VS Code</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../guides/using_colab.html">
  <span class="dropdown-text">Using Colab</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/vscode_update_stability.html">
+ <span class="dropdown-text">Locking VS Code Updates (Optional)</span></a>
   </li>  
     </ul>
   </li>
@@ -183,84 +207,70 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#week-2-overview" id="toc-week-2-overview" class="nav-link active" data-scroll-target="#week-2-overview">Week 2 Overview</a>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#python-basics-variables-and-data-types" id="toc-python-basics-variables-and-data-types" class="nav-link" data-scroll-target="#python-basics-variables-and-data-types">Python Basics: Variables and Data Types</a>
   <ul class="collapse">
-  <li><a href="#what-you-will-learn-this-week" id="toc-what-you-will-learn-this-week" class="nav-link" data-scroll-target="#what-you-will-learn-this-week">What you will learn this week</a></li>
-  <li><a href="#what-you-will-produce-this-week" id="toc-what-you-will-produce-this-week" class="nav-link" data-scroll-target="#what-you-will-produce-this-week">What you will produce this week</a></li>
-  <li><a href="#ai-literacy-objectives" id="toc-ai-literacy-objectives" class="nav-link" data-scroll-target="#ai-literacy-objectives">AI Literacy Objectives</a></li>
-  <li><a href="#job-ready-skills-objectives" id="toc-job-ready-skills-objectives" class="nav-link" data-scroll-target="#job-ready-skills-objectives">Job-Ready Skills Objectives</a></li>
+  <li><a href="#variables-revisited" id="toc-variables-revisited" class="nav-link" data-scroll-target="#variables-revisited">Variables revisited</a></li>
+  <li><a href="#numbers-and-numeric-behavior" id="toc-numbers-and-numeric-behavior" class="nav-link" data-scroll-target="#numbers-and-numeric-behavior">Numbers and numeric behavior</a></li>
+  <li><a href="#strings-as-data" id="toc-strings-as-data" class="nav-link" data-scroll-target="#strings-as-data">Strings as data</a></li>
+  <li><a href="#booleans-and-logical-values" id="toc-booleans-and-logical-values" class="nav-link" data-scroll-target="#booleans-and-logical-values">Booleans and logical values</a></li>
+  <li><a href="#type-behavior-and-common-surprises" id="toc-type-behavior-and-common-surprises" class="nav-link" data-scroll-target="#type-behavior-and-common-surprises">Type behavior and common surprises</a></li>
   </ul></li>
-  <li><a href="#python-basics-variables-and-data-types" id="toc-python-basics-variables-and-data-types" class="nav-link" data-scroll-target="#python-basics-variables-and-data-types">1. Python Basics: Variables and Data Types</a>
+  <li><a href="#working-with-strings" id="toc-working-with-strings" class="nav-link" data-scroll-target="#working-with-strings">Working with Strings</a>
   <ul class="collapse">
-  <li><a href="#variables-revisited" id="toc-variables-revisited" class="nav-link" data-scroll-target="#variables-revisited">1.1 Variables revisited</a></li>
-  <li><a href="#numbers-and-numeric-behavior" id="toc-numbers-and-numeric-behavior" class="nav-link" data-scroll-target="#numbers-and-numeric-behavior">1.2 Numbers and numeric behavior</a></li>
-  <li><a href="#strings-as-data" id="toc-strings-as-data" class="nav-link" data-scroll-target="#strings-as-data">1.3 Strings as data</a></li>
-  <li><a href="#booleans-and-logical-values" id="toc-booleans-and-logical-values" class="nav-link" data-scroll-target="#booleans-and-logical-values">1.4 Booleans and logical values</a></li>
-  <li><a href="#type-behavior-and-common-surprises" id="toc-type-behavior-and-common-surprises" class="nav-link" data-scroll-target="#type-behavior-and-common-surprises">1.5 Type behavior and common surprises</a></li>
+  <li><a href="#string-creation-and-indexing" id="toc-string-creation-and-indexing" class="nav-link" data-scroll-target="#string-creation-and-indexing">String creation and indexing</a></li>
+  <li><a href="#string-slicing" id="toc-string-slicing" class="nav-link" data-scroll-target="#string-slicing">String slicing</a></li>
+  <li><a href="#common-string-operations-and-methods" id="toc-common-string-operations-and-methods" class="nav-link" data-scroll-target="#common-string-operations-and-methods">Common string operations and methods</a></li>
+  <li><a href="#formatting-strings-for-output" id="toc-formatting-strings-for-output" class="nav-link" data-scroll-target="#formatting-strings-for-output">Formatting strings for output</a></li>
   </ul></li>
-  <li><a href="#working-with-strings" id="toc-working-with-strings" class="nav-link" data-scroll-target="#working-with-strings">2. Working with Strings</a>
+  <li><a href="#data-structures-lists" id="toc-data-structures-lists" class="nav-link" data-scroll-target="#data-structures-lists">Data Structures: Lists</a>
   <ul class="collapse">
-  <li><a href="#string-creation-and-indexing" id="toc-string-creation-and-indexing" class="nav-link" data-scroll-target="#string-creation-and-indexing">2.1 String creation and indexing</a></li>
-  <li><a href="#string-slicing" id="toc-string-slicing" class="nav-link" data-scroll-target="#string-slicing">2.2 String slicing</a></li>
-  <li><a href="#common-string-operations-and-methods" id="toc-common-string-operations-and-methods" class="nav-link" data-scroll-target="#common-string-operations-and-methods">2.3 Common string operations and methods</a></li>
-  <li><a href="#formatting-strings-for-output" id="toc-formatting-strings-for-output" class="nav-link" data-scroll-target="#formatting-strings-for-output">2.4 Formatting strings for output</a></li>
+  <li><a href="#what-a-list-is-and-when-to-use-one" id="toc-what-a-list-is-and-when-to-use-one" class="nav-link" data-scroll-target="#what-a-list-is-and-when-to-use-one">What a list is and when to use one</a></li>
+  <li><a href="#creating-lists" id="toc-creating-lists" class="nav-link" data-scroll-target="#creating-lists">Creating lists</a></li>
+  <li><a href="#indexing-and-slicing-lists" id="toc-indexing-and-slicing-lists" class="nav-link" data-scroll-target="#indexing-and-slicing-lists">Indexing and slicing lists</a></li>
+  <li><a href="#modifying-list-contents" id="toc-modifying-list-contents" class="nav-link" data-scroll-target="#modifying-list-contents">Modifying list contents</a></li>
+  <li><a href="#common-list-patterns-and-mistakes" id="toc-common-list-patterns-and-mistakes" class="nav-link" data-scroll-target="#common-list-patterns-and-mistakes">Common list patterns and mistakes</a></li>
   </ul></li>
-  <li><a href="#data-structures-lists" id="toc-data-structures-lists" class="nav-link" data-scroll-target="#data-structures-lists">3. Data Structures: Lists</a>
+  <li><a href="#data-structures-dictionaries" id="toc-data-structures-dictionaries" class="nav-link" data-scroll-target="#data-structures-dictionaries">Data Structures: Dictionaries</a>
   <ul class="collapse">
-  <li><a href="#what-a-list-is-and-when-to-use-one" id="toc-what-a-list-is-and-when-to-use-one" class="nav-link" data-scroll-target="#what-a-list-is-and-when-to-use-one">3.1 What a list is and when to use one</a></li>
-  <li><a href="#creating-lists" id="toc-creating-lists" class="nav-link" data-scroll-target="#creating-lists">3.2 Creating lists</a></li>
-  <li><a href="#indexing-and-slicing-lists" id="toc-indexing-and-slicing-lists" class="nav-link" data-scroll-target="#indexing-and-slicing-lists">3.3 Indexing and slicing lists</a></li>
-  <li><a href="#modifying-list-contents" id="toc-modifying-list-contents" class="nav-link" data-scroll-target="#modifying-list-contents">3.4 Modifying list contents</a></li>
-  <li><a href="#common-list-patterns-and-mistakes" id="toc-common-list-patterns-and-mistakes" class="nav-link" data-scroll-target="#common-list-patterns-and-mistakes">3.5 Common list patterns and mistakes</a></li>
+  <li><a href="#why-dictionaries-exist" id="toc-why-dictionaries-exist" class="nav-link" data-scroll-target="#why-dictionaries-exist">Why dictionaries exist</a></li>
+  <li><a href="#keyvalue-pairs" id="toc-keyvalue-pairs" class="nav-link" data-scroll-target="#keyvalue-pairs">Key–value pairs</a></li>
+  <li><a href="#creating-and-accessing-dictionaries" id="toc-creating-and-accessing-dictionaries" class="nav-link" data-scroll-target="#creating-and-accessing-dictionaries">Creating and accessing dictionaries</a></li>
+  <li><a href="#updating-and-iterating-over-dictionaries" id="toc-updating-and-iterating-over-dictionaries" class="nav-link" data-scroll-target="#updating-and-iterating-over-dictionaries">Updating and iterating over dictionaries</a></li>
+  <li><a href="#structured-data-with-dictionaries" id="toc-structured-data-with-dictionaries" class="nav-link" data-scroll-target="#structured-data-with-dictionaries">Structured data with dictionaries</a></li>
   </ul></li>
-  <li><a href="#data-structures-dictionaries" id="toc-data-structures-dictionaries" class="nav-link" data-scroll-target="#data-structures-dictionaries">4. Data Structures: Dictionaries</a>
+  <li><a href="#control-flow-conditional-logic" id="toc-control-flow-conditional-logic" class="nav-link" data-scroll-target="#control-flow-conditional-logic">Control Flow: Conditional Logic</a>
   <ul class="collapse">
-  <li><a href="#why-dictionaries-exist" id="toc-why-dictionaries-exist" class="nav-link" data-scroll-target="#why-dictionaries-exist">4.1 Why dictionaries exist</a></li>
-  <li><a href="#keyvalue-pairs" id="toc-keyvalue-pairs" class="nav-link" data-scroll-target="#keyvalue-pairs">4.2 Key–value pairs</a></li>
-  <li><a href="#creating-and-accessing-dictionaries" id="toc-creating-and-accessing-dictionaries" class="nav-link" data-scroll-target="#creating-and-accessing-dictionaries">4.3 Creating and accessing dictionaries</a></li>
-  <li><a href="#updating-and-iterating-over-dictionaries" id="toc-updating-and-iterating-over-dictionaries" class="nav-link" data-scroll-target="#updating-and-iterating-over-dictionaries">4.4 Updating and iterating over dictionaries</a></li>
-  <li><a href="#structured-data-with-dictionaries" id="toc-structured-data-with-dictionaries" class="nav-link" data-scroll-target="#structured-data-with-dictionaries">4.5 Structured data with dictionaries</a></li>
+  <li><a href="#why-programs-need-branching" id="toc-why-programs-need-branching" class="nav-link" data-scroll-target="#why-programs-need-branching">Why programs need branching</a></li>
+  <li><a href="#if-elif-and-else" id="toc-if-elif-and-else" class="nav-link" data-scroll-target="#if-elif-and-else">If, elif, and else</a></li>
+  <li><a href="#boolean-expressions-in-conditions" id="toc-boolean-expressions-in-conditions" class="nav-link" data-scroll-target="#boolean-expressions-in-conditions">Boolean expressions in conditions</a></li>
+  <li><a href="#nested-conditionals-and-readability" id="toc-nested-conditionals-and-readability" class="nav-link" data-scroll-target="#nested-conditionals-and-readability">Nested conditionals and readability</a></li>
   </ul></li>
-  <li><a href="#control-flow-conditional-logic" id="toc-control-flow-conditional-logic" class="nav-link" data-scroll-target="#control-flow-conditional-logic">5. Control Flow: Conditional Logic</a>
+  <li><a href="#control-flow-loops" id="toc-control-flow-loops" class="nav-link" data-scroll-target="#control-flow-loops">Control Flow: Loops</a>
   <ul class="collapse">
-  <li><a href="#why-programs-need-branching" id="toc-why-programs-need-branching" class="nav-link" data-scroll-target="#why-programs-need-branching">5.1 Why programs need branching</a></li>
-  <li><a href="#if-elif-and-else" id="toc-if-elif-and-else" class="nav-link" data-scroll-target="#if-elif-and-else">5.2 If, elif, and else</a></li>
-  <li><a href="#boolean-expressions-in-conditions" id="toc-boolean-expressions-in-conditions" class="nav-link" data-scroll-target="#boolean-expressions-in-conditions">5.3 Boolean expressions in conditions</a></li>
-  <li><a href="#nested-conditionals-and-readability" id="toc-nested-conditionals-and-readability" class="nav-link" data-scroll-target="#nested-conditionals-and-readability">5.4 Nested conditionals and readability</a></li>
+  <li><a href="#why-repetition-matters" id="toc-why-repetition-matters" class="nav-link" data-scroll-target="#why-repetition-matters">Why repetition matters</a></li>
+  <li><a href="#for-loops-and-iteration-patterns" id="toc-for-loops-and-iteration-patterns" class="nav-link" data-scroll-target="#for-loops-and-iteration-patterns">For loops and iteration patterns</a></li>
+  <li><a href="#while-loops-and-termination-conditions" id="toc-while-loops-and-termination-conditions" class="nav-link" data-scroll-target="#while-loops-and-termination-conditions">While loops and termination conditions</a></li>
+  <li><a href="#common-looping-errors" id="toc-common-looping-errors" class="nav-link" data-scroll-target="#common-looping-errors">Common looping errors</a></li>
+  <li><a href="#choosing-between-for-and-while" id="toc-choosing-between-for-and-while" class="nav-link" data-scroll-target="#choosing-between-for-and-while">Choosing between for and while</a></li>
   </ul></li>
-  <li><a href="#control-flow-loops" id="toc-control-flow-loops" class="nav-link" data-scroll-target="#control-flow-loops">6. Control Flow: Loops</a>
+  <li><a href="#functions-and-modular-design" id="toc-functions-and-modular-design" class="nav-link" data-scroll-target="#functions-and-modular-design">Functions and Modular Design</a>
   <ul class="collapse">
-  <li><a href="#why-repetition-matters" id="toc-why-repetition-matters" class="nav-link" data-scroll-target="#why-repetition-matters">6.1 Why repetition matters</a></li>
-  <li><a href="#for-loops-and-iteration-patterns" id="toc-for-loops-and-iteration-patterns" class="nav-link" data-scroll-target="#for-loops-and-iteration-patterns">6.2 For loops and iteration patterns</a></li>
-  <li><a href="#while-loops-and-termination-conditions" id="toc-while-loops-and-termination-conditions" class="nav-link" data-scroll-target="#while-loops-and-termination-conditions">6.3 While loops and termination conditions</a></li>
-  <li><a href="#common-looping-errors" id="toc-common-looping-errors" class="nav-link" data-scroll-target="#common-looping-errors">6.4 Common looping errors</a></li>
-  <li><a href="#choosing-between-for-and-while" id="toc-choosing-between-for-and-while" class="nav-link" data-scroll-target="#choosing-between-for-and-while">6.5 Choosing between for and while</a></li>
+  <li><a href="#why-functions-exist" id="toc-why-functions-exist" class="nav-link" data-scroll-target="#why-functions-exist">Why functions exist</a></li>
+  <li><a href="#defining-a-function" id="toc-defining-a-function" class="nav-link" data-scroll-target="#defining-a-function">Defining a function</a></li>
+  <li><a href="#calling-functions" id="toc-calling-functions" class="nav-link" data-scroll-target="#calling-functions">Calling functions</a></li>
+  <li><a href="#parameters-and-return-values" id="toc-parameters-and-return-values" class="nav-link" data-scroll-target="#parameters-and-return-values">Parameters and return values</a></li>
+  <li><a href="#functions-as-building-blocks" id="toc-functions-as-building-blocks" class="nav-link" data-scroll-target="#functions-as-building-blocks">Functions as building blocks</a></li>
   </ul></li>
-  <li><a href="#functions-and-modular-design" id="toc-functions-and-modular-design" class="nav-link" data-scroll-target="#functions-and-modular-design">7. Functions and Modular Design</a>
+  <li><a href="#debugging-fundamentals" id="toc-debugging-fundamentals" class="nav-link" data-scroll-target="#debugging-fundamentals">Debugging Fundamentals</a>
   <ul class="collapse">
-  <li><a href="#why-functions-exist" id="toc-why-functions-exist" class="nav-link" data-scroll-target="#why-functions-exist">7.1 Why functions exist</a></li>
-  <li><a href="#defining-a-function" id="toc-defining-a-function" class="nav-link" data-scroll-target="#defining-a-function">7.2 Defining a function</a></li>
-  <li><a href="#calling-functions" id="toc-calling-functions" class="nav-link" data-scroll-target="#calling-functions">7.3 Calling functions</a></li>
-  <li><a href="#parameters-and-return-values" id="toc-parameters-and-return-values" class="nav-link" data-scroll-target="#parameters-and-return-values">7.4 Parameters and return values</a></li>
-  <li><a href="#functions-as-building-blocks" id="toc-functions-as-building-blocks" class="nav-link" data-scroll-target="#functions-as-building-blocks">7.5 Functions as building blocks</a></li>
+  <li><a href="#what-an-error-message-is-telling-you" id="toc-what-an-error-message-is-telling-you" class="nav-link" data-scroll-target="#what-an-error-message-is-telling-you">What an error message is telling you</a></li>
+  <li><a href="#reading-a-traceback-from-top-to-bottom" id="toc-reading-a-traceback-from-top-to-bottom" class="nav-link" data-scroll-target="#reading-a-traceback-from-top-to-bottom">Reading a traceback from top to bottom</a></li>
+  <li><a href="#common-beginner-errors" id="toc-common-beginner-errors" class="nav-link" data-scroll-target="#common-beginner-errors">Common beginner errors</a></li>
+  <li><a href="#debugging-as-a-systematic-process" id="toc-debugging-as-a-systematic-process" class="nav-link" data-scroll-target="#debugging-as-a-systematic-process">Debugging as a systematic process</a></li>
+  <li><a href="#when-to-fix-code-vs.-rethink-logic" id="toc-when-to-fix-code-vs.-rethink-logic" class="nav-link" data-scroll-target="#when-to-fix-code-vs.-rethink-logic">When to fix code vs.&nbsp;rethink logic</a></li>
   </ul></li>
-  <li><a href="#debugging-fundamentals" id="toc-debugging-fundamentals" class="nav-link" data-scroll-target="#debugging-fundamentals">8. Debugging Fundamentals</a>
-  <ul class="collapse">
-  <li><a href="#what-an-error-message-is-telling-you" id="toc-what-an-error-message-is-telling-you" class="nav-link" data-scroll-target="#what-an-error-message-is-telling-you">8.1 What an error message is telling you</a></li>
-  <li><a href="#reading-a-traceback-from-top-to-bottom" id="toc-reading-a-traceback-from-top-to-bottom" class="nav-link" data-scroll-target="#reading-a-traceback-from-top-to-bottom">8.2 Reading a traceback from top to bottom</a></li>
-  <li><a href="#common-beginner-errors" id="toc-common-beginner-errors" class="nav-link" data-scroll-target="#common-beginner-errors">8.3 Common beginner errors</a></li>
-  <li><a href="#debugging-as-a-systematic-process" id="toc-debugging-as-a-systematic-process" class="nav-link" data-scroll-target="#debugging-as-a-systematic-process">8.4 Debugging as a systematic process</a></li>
-  <li><a href="#when-to-fix-code-vs.-rethink-logic" id="toc-when-to-fix-code-vs.-rethink-logic" class="nav-link" data-scroll-target="#when-to-fix-code-vs.-rethink-logic">8.5 When to fix code vs.&nbsp;rethink logic</a></li>
-  </ul></li>
-  <li><a href="#debugging-fundamentals-1" id="toc-debugging-fundamentals-1" class="nav-link" data-scroll-target="#debugging-fundamentals-1">8. Debugging Fundamentals</a>
-  <ul class="collapse">
-  <li><a href="#what-an-error-message-is-telling-you-1" id="toc-what-an-error-message-is-telling-you-1" class="nav-link" data-scroll-target="#what-an-error-message-is-telling-you-1">8.1 What an error message is telling you</a></li>
-  <li><a href="#reading-a-traceback-from-top-to-bottom-1" id="toc-reading-a-traceback-from-top-to-bottom-1" class="nav-link" data-scroll-target="#reading-a-traceback-from-top-to-bottom-1">8.2 Reading a traceback from top to bottom</a></li>
-  <li><a href="#common-beginner-errors-1" id="toc-common-beginner-errors-1" class="nav-link" data-scroll-target="#common-beginner-errors-1">8.3 Common beginner errors</a></li>
-  <li><a href="#debugging-as-a-systematic-process-1" id="toc-debugging-as-a-systematic-process-1" class="nav-link" data-scroll-target="#debugging-as-a-systematic-process-1">8.4 Debugging as a systematic process</a></li>
-  <li><a href="#when-to-fix-code-vs.-rethink-logic-1" id="toc-when-to-fix-code-vs.-rethink-logic-1" class="nav-link" data-scroll-target="#when-to-fix-code-vs.-rethink-logic-1">8.5 When to fix code vs.&nbsp;rethink logic</a></li>
-  </ul></li>
-  <li><a href="#week-2-summary" id="toc-week-2-summary" class="nav-link" data-scroll-target="#week-2-summary">Week 2 Summary</a></li>
+  <li><a href="#chapter-summary" id="toc-chapter-summary" class="nav-link" data-scroll-target="#chapter-summary">Chapter Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -269,7 +279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 2 – Python Foundations: Data, Control, and Functions</h1>
+<h1 class="title">Python Foundations: Data, Control, and Functions</h1>
 </div>
 
 
@@ -286,62 +296,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="week-2-overview" class="level2">
-<h2 class="anchored" data-anchor-id="week-2-overview">Week 2 Overview</h2>
-<section id="what-you-will-learn-this-week" class="level3">
-<h3 class="anchored" data-anchor-id="what-you-will-learn-this-week">What you will learn this week</h3>
-<ul>
-<li>How Python represents different kinds of data and why types matter.</li>
-<li>How to work with text and structured collections of values.</li>
-<li>How programs make decisions and repeat actions using control flow.</li>
-<li>How functions help organize and reuse code.</li>
-<li>How to read Python error messages and debug common problems.</li>
-</ul>
-</section>
-<section id="what-you-will-produce-this-week" class="level3">
-<h3 class="anchored" data-anchor-id="what-you-will-produce-this-week">What you will produce this week</h3>
-<ul>
-<li>Multiple Python scripts demonstrating data types, data structures, and control flow.</li>
-<li>Functions that encapsulate reusable logic.</li>
-<li>Debugged versions of scripts that initially contain errors.</li>
-</ul>
-</section>
-<section id="ai-literacy-objectives" class="level3">
-<h3 class="anchored" data-anchor-id="ai-literacy-objectives">AI Literacy Objectives</h3>
-<p>By the end of this week, you should be able to:<br>
-- Explain how data representation affects program behavior.<br>
-- Recognize how structured data enables more complex reasoning in programs.<br>
-- Describe how control flow supports conditional and repeated decision-making.<br>
-- Explain why modular design (functions) matters for scalable systems.</p>
-</section>
-<section id="job-ready-skills-objectives" class="level3">
-<h3 class="anchored" data-anchor-id="job-ready-skills-objectives">Job-Ready Skills Objectives</h3>
-<p>By the end of this week, you should be able to:<br>
-- Work with core Python data types: numbers, strings, and booleans.<br>
-- Manipulate lists and dictionaries to store and retrieve data.<br>
-- Write conditional logic using if/else statements.<br>
-- Use for and while loops to iterate over data.<br>
-- Define and call functions to organize code. - Interpret Python error messages and apply basic debugging strategies.</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <hr>
 </section>
-</section>
 <section id="python-basics-variables-and-data-types" class="level2">
-<h2 class="anchored" data-anchor-id="python-basics-variables-and-data-types">1. Python Basics: Variables and Data Types</h2>
-<p>This section revisits variables and introduces Python’s core data types. The goal is to move from thinking of variables as simple containers to understanding how <strong>data type influences program behavior</strong>, interpretation, and outcomes.</p>
+<h2 class="anchored" data-anchor-id="python-basics-variables-and-data-types">Python Basics: Variables and Data Types</h2>
+<p>This section discusses variables and introduces Python’s core data types. The goal is to move from thinking of variables as simple containers to understanding how <strong>data type influences program behavior</strong>, interpretation, and outcomes.</p>
 <section id="variables-revisited" class="level3">
-<h3 class="anchored" data-anchor-id="variables-revisited">1.1 Variables revisited</h3>
+<h3 class="anchored" data-anchor-id="variables-revisited">Variables revisited</h3>
 <p>A <strong>variable</strong> in Python is a name that refers to a value. When a variable is created, Python associates that name with an object stored in memory. This association can change over time as the program runs.</p>
 <p>One important idea to reinforce is that variables are <strong>not fixed containers</strong>. They are labels that can be reassigned to different values:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>After this code runs, the value associated with <code>x</code> is <code>10</code>, not <code>5</code>. The original value is no longer referenced by <code>x</code>. This ability to reassign variables is what allows programs to update state, respond to inputs, and evolve during execution.</p>
-<p>Variables also help make programs easier to understand. Using meaningful variable names communicates intent and reduces the need to mentally track raw values. As programs become more complex, this clarity becomes increasingly important.</p>
-<p>At this stage, the key takeaway is that variables: - bind names to values, - can be reassigned, - and allow programs to remember and update information as they run.</p>
+<p>It can sometimes be helpful to think about variables as a pointer. A variable my point at a value, but it can be changed to point at a different value.</p>
+<p>Variables also help make programs easier to understand. Using meaningful variable names communicates intent and reduces the need to mentally track raw values.</p>
+<p>The key takeaway is that variables:</p>
+<ul>
+<li>bind names to values,<br>
+</li>
+<li>can be reassigned,<br>
+</li>
+<li>and allow programs to remember and update information as they run.</li>
+</ul>
 <hr>
 </section>
 <section id="numbers-and-numeric-behavior" class="level3">
-<h3 class="anchored" data-anchor-id="numbers-and-numeric-behavior">1.2 Numbers and numeric behavior</h3>
+<h3 class="anchored" data-anchor-id="numbers-and-numeric-behavior">Numbers and numeric behavior</h3>
 <p>Python supports several numeric data types, the most common being <strong>integers</strong> (whole numbers) and <strong>floating-point numbers</strong> (numbers with decimal points). While they may look similar, they behave differently in certain operations.</p>
 <p>For example:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">10</span></span>
@@ -349,15 +332,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a <span class="op">/</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Even though both <code>a</code> and <code>b</code> are integers, the result of division is a floating-point number. Python automatically determines the appropriate type based on the operation being performed.</p>
 <p>This automatic behavior is convenient, but it also means that numeric results may not always be what you expect at first glance. Floating-point numbers, in particular, can introduce small rounding effects due to how they are represented internally.</p>
-<p>At this level, the most important ideas are:<br>
-- Python distinguishes between integers and floats,<br>
-- arithmetic operations can change types,<br>
-- and numeric behavior is governed by both the values and the operation.</p>
+<p>The most important ideas are:</p>
+<ul>
+<li>Python distinguishes between integers and floats,<br>
+</li>
+<li>arithmetic operations can change types,<br>
+</li>
+<li>and numeric behavior is governed by both the values and the operation.</li>
+</ul>
 <p>Understanding these basics helps prevent confusion later when numeric results appear slightly different than anticipated.</p>
 <hr>
 </section>
 <section id="strings-as-data" class="level3">
-<h3 class="anchored" data-anchor-id="strings-as-data">1.3 Strings as data</h3>
+<h3 class="anchored" data-anchor-id="strings-as-data">Strings as data</h3>
 <p>A <strong>string</strong> is a sequence of characters used to represent text. Strings are created by enclosing characters in quotation marks:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"analytics"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Strings behave differently from numbers. Although they may look similar when printed, Python treats them as text rather than quantities. Strings can be indexed, meaning individual characters can be accessed by position:</p>
@@ -368,7 +355,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 <section id="booleans-and-logical-values" class="level3">
-<h3 class="anchored" data-anchor-id="booleans-and-logical-values">1.4 Booleans and logical values</h3>
+<h3 class="anchored" data-anchor-id="booleans-and-logical-values">Booleans and logical values</h3>
 <p>A <strong>boolean</strong> represents one of two logical values: <code>True</code> or <code>False</code>. Booleans often arise from <strong>comparisons</strong>, where Python evaluates whether a statement is correct:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">&gt;</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -378,12 +365,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 <section id="type-behavior-and-common-surprises" class="level3">
-<h3 class="anchored" data-anchor-id="type-behavior-and-common-surprises">1.5 Type behavior and common surprises</h3>
+<h3 class="anchored" data-anchor-id="type-behavior-and-common-surprises">Type behavior and common surprises</h3>
 <p>Python uses <strong>dynamic typing</strong>, meaning that variable types are determined at runtime rather than declared in advance. A variable can be reassigned to a value of a different type without error:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"five"</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This flexibility is powerful, but it can also lead to surprises—especially when mixing types in expressions. For example:</p>
+<p>This flexibility is powerful, but it can also lead to surprises, especially when mixing types in expressions. For example:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"5"</span> <span class="op">+</span> <span class="st">"5"</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">5</span> <span class="op">+</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Although both lines use the <code>+</code> operator, they behave differently. In the first case, Python performs string concatenation. In the second, it performs numeric addition. The operator’s meaning depends on the data types involved.</p>
@@ -393,12 +380,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="working-with-strings" class="level2">
-<h2 class="anchored" data-anchor-id="working-with-strings">2. Working with Strings</h2>
+<h2 class="anchored" data-anchor-id="working-with-strings">Working with Strings</h2>
 <p>Strings are one of the most common data types used in Python. They represent text, but they are also structured objects that can be indexed, sliced, transformed, and formatted. In analytics and AI contexts, strings are frequently used to represent labels, categories, identifiers, and unstructured text, making it important to understand how to work with them beyond simple printing.</p>
 <p>This section builds fluency in treating strings as data rather than as static text.</p>
 <hr>
 <section id="string-creation-and-indexing" class="level3">
-<h3 class="anchored" data-anchor-id="string-creation-and-indexing">2.1 String creation and indexing</h3>
+<h3 class="anchored" data-anchor-id="string-creation-and-indexing">String creation and indexing</h3>
 <p>A <strong>string</strong> is created by enclosing characters in quotation marks. Python allows both single and double quotation marks, as long as they are used consistently:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"analytics"</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>label <span class="op">=</span> <span class="st">'AI'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -414,7 +401,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 <section id="string-slicing" class="level3">
-<h3 class="anchored" data-anchor-id="string-slicing">2.2 String slicing</h3>
+<h3 class="anchored" data-anchor-id="string-slicing">String slicing</h3>
 <p>While indexing accesses a single character, <strong>slicing</strong> extracts a range of characters from a string. A slice is specified using a start position and an end position. The start position is included, while the end position is excluded.</p>
 <p>For example:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"analytics"</span></span>
@@ -428,7 +415,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 <section id="common-string-operations-and-methods" class="level3">
-<h3 class="anchored" data-anchor-id="common-string-operations-and-methods">2.3 Common string operations and methods</h3>
+<h3 class="anchored" data-anchor-id="common-string-operations-and-methods">Common string operations and methods</h3>
 <p>Python provides many built-in operations and methods for working with strings. These allow programs to measure, transform, and search text without modifying the original string.</p>
 <p>One common operation is measuring the length of a string:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"Analytics and AI"</span></span>
@@ -438,13 +425,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text.upper())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Strings can also be searched or modified using methods that return new strings:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text.replace(<span class="st">"AI"</span>, <span class="st">"analytics"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>These methods do not alter the original string. Instead, they produce a new string with the requested changes applied.</p>
+<p>These methods do not alter the original string. Instead, they produce a <em>new</em> string with the requested changes applied.</p>
 <p>Because strings are immutable, all transformations result in new objects. This behavior is consistent and predictable, but it also means that results must be captured in variables if they are needed later.</p>
 <p>String operations are widely used in data cleaning, labeling, and preprocessing tasks. Understanding how these methods behave helps prevent subtle bugs and makes string manipulation more intentional.</p>
 <hr>
 </section>
 <section id="formatting-strings-for-output" class="level3">
-<h3 class="anchored" data-anchor-id="formatting-strings-for-output">2.4 Formatting strings for output</h3>
+<h3 class="anchored" data-anchor-id="formatting-strings-for-output">Formatting strings for output</h3>
 <p>In most programs, strings are not used in isolation. They are combined with variables to produce readable output for users, logs, or reports. <strong>String formatting</strong> is the process of embedding variable values into text.</p>
 <p>One common and modern approach is the use of <strong>formatted strings</strong>, often called f-strings. These allow variables to be inserted directly into a string:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">"Jordan"</span></span>
@@ -452,41 +439,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> scored </span><span class="sc">{</span>score<span class="sc">}</span><span class="ss"> points"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Formatted strings improve readability by keeping text and values together in a single expression. They also reduce the need for manual concatenation, which can become error-prone as output becomes more complex.</p>
 <p>Formatting matters because output is often how results are interpreted by humans. Clear, well-formatted strings make it easier to understand what a program has done and what its results mean.</p>
-<p>At a conceptual level, string formatting answers the question: <em>How should this information be presented so it is easy to read and understand?</em></p>
 <hr>
 </section>
 </section>
 <section id="data-structures-lists" class="level2">
-<h2 class="anchored" data-anchor-id="data-structures-lists">3. Data Structures: Lists</h2>
-<p>Lists allow programs to work with <strong>collections of values</strong> rather than single items. Instead of storing one number, one string, or one result at a time, lists make it possible to store many related values together and treat them as a unit. This capability is essential for working with real-world data, where information almost always comes in groups.</p>
-<p>This section introduces lists as a natural extension of variables and strings, focusing on how they are created, accessed, and modified.</p>
+<h2 class="anchored" data-anchor-id="data-structures-lists">Data Structures: Lists</h2>
+<p>Lists allow programs to work with <strong>collections of values</strong> rather than single items. Instead of storing one number, one string, or one result at a time, lists make it possible to store many related values together and treat them as a unit. This is essential for working with real-world data, where information almost always comes in groups.</p>
 <hr>
 <section id="what-a-list-is-and-when-to-use-one" class="level3">
-<h3 class="anchored" data-anchor-id="what-a-list-is-and-when-to-use-one">3.1 What a list is and when to use one</h3>
-<p>A <strong>list</strong> is an ordered collection of values. Each value in the list occupies a position, and those positions are preserved. This ordering allows values to be accessed, updated, and processed in a predictable way.</p>
+<h3 class="anchored" data-anchor-id="what-a-list-is-and-when-to-use-one">What a list is and when to use one</h3>
+<p>A <strong>list</strong> is an ordered collection of values. Each value in the list occupies a <em>position</em>, and those positions are preserved. This ordering allows values to be accessed, updated, and processed in a predictable way.</p>
 <p>Lists are useful whenever a program needs to work with:<br>
 - multiple related values,<br>
 - values that should be processed together,<br>
 - or data whose size may change over time.</p>
 <p>For example, a list can represent a set of scores, a group of names, or a sequence of measurements. Rather than creating separate variables for each value, a list groups them into a single structure.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Conceptually, lists answer the question: <em>How do I represent many values as one thing?</em> This makes lists a foundational structure for iteration, aggregation, and analysis later in the course.</p>
+<p>Conceptually, lists answer the question: <em>How do I represent many values as one thing?</em> This makes lists a foundational structure for iteration, aggregation, and analysis.</p>
 <hr>
 </section>
 <section id="creating-lists" class="level3">
-<h3 class="anchored" data-anchor-id="creating-lists">3.2 Creating lists</h3>
+<h3 class="anchored" data-anchor-id="creating-lists">Creating lists</h3>
 <p>Lists are created using square brackets, with individual values separated by commas. A list can contain values of the same type or a mixture of different types.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>]</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>mixed <span class="op">=</span> [<span class="dv">1</span>, <span class="st">"two"</span>, <span class="va">True</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Although Python allows mixed-type lists, using a consistent type within a list often improves readability and reduces confusion. For example, a list of numbers or a list of strings communicates intent more clearly than a list with unrelated values.</p>
+<p>Keep in mind that although Python <em>allows</em> mixed-type lists, using a consistent type within a list often improves readability and reduces confusion. For example, a list of numbers or a list of strings communicates intent more clearly than a list with unrelated values.</p>
 <p>Lists can also be created empty and filled later as the program runs. This pattern is especially useful when values are generated dynamically.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>At a conceptual level, creating a list establishes a container whose contents can grow, shrink, or change as the program executes.</p>
+<p>At a conceptual level, creating a list establishes a container, a place to put things later, whose contents can grow, shrink, or change as the program executes.</p>
 <hr>
 </section>
 <section id="indexing-and-slicing-lists" class="level3">
-<h3 class="anchored" data-anchor-id="indexing-and-slicing-lists">3.3 Indexing and slicing lists</h3>
-<p>Like strings, lists are <strong>sequences</strong>, which means their elements are accessed using zero-based indexing. The first element is at index 0, the second at index 1, and so on.</p>
+<h3 class="anchored" data-anchor-id="indexing-and-slicing-lists">Indexing and slicing lists</h3>
+<p>Like strings, lists are <strong>sequences</strong>, which means their elements are accessed using zero-based indexing. The first element is at index 0, the second at index 1, and so on. In plain english- Python starts counting at 0. The best way to understand this is to run a lot of examples and look at the results.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>]</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(values[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Negative indexing also works with lists, allowing access from the end:</p>
@@ -498,24 +483,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 <section id="modifying-list-contents" class="level3">
-<h3 class="anchored" data-anchor-id="modifying-list-contents">3.4 Modifying list contents</h3>
-<p>One key difference between lists and strings is that <strong>lists are mutable</strong>. This means their contents can be changed after the list is created.</p>
+<h3 class="anchored" data-anchor-id="modifying-list-contents">Modifying list contents</h3>
+<p>One key difference between lists and strings is that <strong>lists are mutable</strong>. This means their contents can be changed after the list is created. This in contrast to something that is <strong>immutable</strong> in Python, which can’t be changed.</p>
 <p>Individual elements can be updated by assigning a new value to a specific index:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>values[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Elements can also be added to a list. A common pattern is appending new values to the end:</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>values.append(<span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Removing elements is also possible, either by value or by position. Because lists can change over time, they are well suited for workflows where data is accumulated, filtered, or updated incrementally.</p>
-<p>Mutability is powerful, but it also means that changes to a list affect all parts of the program that reference it. Understanding when and how list contents change is critical for reasoning about program behavior.</p>
+<p>Removing elements is possible, either by value or by position. Because lists can change over time, they are well suited for workflows where data is accumulated, filtered, or updated incrementally.</p>
+<p>Mutability is powerful, but it also means that changes to a list affect all parts of the program that reference it.</p>
 <hr>
 </section>
 <section id="common-list-patterns-and-mistakes" class="level3">
-<h3 class="anchored" data-anchor-id="common-list-patterns-and-mistakes">3.5 Common list patterns and mistakes</h3>
+<h3 class="anchored" data-anchor-id="common-list-patterns-and-mistakes">Common list patterns and mistakes</h3>
 <p>Lists are frequently used in patterns that involve building up data step by step. A common approach is to start with an empty list and add values as they are produced.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>results.append(<span class="dv">10</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>results.append(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>One common mistake involves <strong>indexing errors</strong>, such as attempting to access an index that does not exist. These errors often arise from forgetting that indexing starts at zero or miscounting list length.</p>
+<p>One common mistake involves <strong>indexing errors</strong>, such as attempting to access an index that does not exist. These errors usually arise from forgetting that indexing starts at zero or miscounting list length.</p>
 <p>Another frequent source of confusion involves <strong>references</strong>. When one variable is assigned to another, both names may refer to the same list rather than creating a copy.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a</span>
@@ -526,13 +511,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="data-structures-dictionaries" class="level2">
-<h2 class="anchored" data-anchor-id="data-structures-dictionaries">4. Data Structures: Dictionaries</h2>
+<h2 class="anchored" data-anchor-id="data-structures-dictionaries">Data Structures: Dictionaries</h2>
 <p>Dictionaries provide a way to store <strong>structured, labeled data</strong>. While lists organize values by position, dictionaries organize values by meaning. This makes dictionaries especially useful for representing real-world entities, records, and attributes where each value has a clear label.</p>
 <p>This section introduces dictionaries as a complementary data structure to lists, emphasizing when dictionaries are the better choice and how they support clearer, more expressive programs.</p>
 <hr>
 <section id="why-dictionaries-exist" class="level3">
-<h3 class="anchored" data-anchor-id="why-dictionaries-exist">4.1 Why dictionaries exist</h3>
-<p>Lists are effective when values are naturally ordered and accessed by position. However, many real-world data problems are not about position—they are about <strong>association</strong>. For example, a person is not best described by “the first value, the second value, and the third value,” but by attributes such as name, age, or location.</p>
+<h3 class="anchored" data-anchor-id="why-dictionaries-exist">Why dictionaries exist</h3>
+<p>Lists are effective when values are naturally ordered and accessed by position. However, many real-world data problems are not about position; they are about <strong>association</strong>. For example, a person is not best described by “the first value, the second value, and the the third value,” but by attributes such as name, age, or location.</p>
 <p>Dictionaries exist to solve this problem. A dictionary allows values to be accessed using <strong>keys</strong> that describe what the values represent. This makes programs easier to read and reason about, especially as the number of attributes grows.</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>person <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Alex"</span>, <span class="st">"age"</span>: <span class="dv">30</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In this example, each value is paired with a descriptive label. The dictionary structure makes it immediately clear what each value represents, without relying on positional knowledge.</p>
@@ -540,16 +525,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 <section id="keyvalue-pairs" class="level3">
-<h3 class="anchored" data-anchor-id="keyvalue-pairs">4.2 Key–value pairs</h3>
+<h3 class="anchored" data-anchor-id="keyvalue-pairs">Key–value pairs</h3>
 <p>A dictionary is composed of <strong>key–value pairs</strong>. The key acts as an identifier, and the value is the data associated with that identifier. Together, they form a mapping from meaning to data.</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>record <span class="op">=</span> {<span class="st">"city"</span>: <span class="st">"Gainesville"</span>, <span class="st">"state"</span>: <span class="st">"FL"</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Keys are typically strings, although Python allows other immutable types to be used as keys. The important property is that keys must be <strong>unique</strong> within a dictionary. Each key identifies exactly one value.</p>
 <p>Accessing data through keys is fundamentally different from indexing into a list. Instead of asking “what is at position 0?” the program asks “what is the value associated with this label?” This shift from positional access to semantic access improves clarity and reduces errors.</p>
-<p>At a conceptual level, key–value pairs encode relationships: <em>this label corresponds to that value</em>. This relational structure is central to many analytics and AI workflows.</p>
+<p>At a conceptual level, key–value pairs encode relationships: <em>this label corresponds to that value</em>.</p>
 <hr>
 </section>
 <section id="creating-and-accessing-dictionaries" class="level3">
-<h3 class="anchored" data-anchor-id="creating-and-accessing-dictionaries">4.3 Creating and accessing dictionaries</h3>
+<h3 class="anchored" data-anchor-id="creating-and-accessing-dictionaries">Creating and accessing dictionaries</h3>
 <p>Dictionaries are created using curly braces, with key–value pairs separated by commas. Each key is followed by a colon and its associated value.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> {<span class="st">"math"</span>: <span class="dv">90</span>, <span class="st">"history"</span>: <span class="dv">85</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Values are accessed by referencing the key:</p>
@@ -560,7 +545,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 <section id="updating-and-iterating-over-dictionaries" class="level3">
-<h3 class="anchored" data-anchor-id="updating-and-iterating-over-dictionaries">4.4 Updating and iterating over dictionaries</h3>
+<h3 class="anchored" data-anchor-id="updating-and-iterating-over-dictionaries">Updating and iterating over dictionaries</h3>
 <p>Dictionaries are <strong>mutable</strong>, meaning their contents can be changed after creation. Existing values can be updated by assigning a new value to an existing key:</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>scores[<span class="st">"math"</span>] <span class="op">=</span> <span class="dv">92</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>New key–value pairs can also be added dynamically:</p>
@@ -571,7 +556,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 <section id="structured-data-with-dictionaries" class="level3">
-<h3 class="anchored" data-anchor-id="structured-data-with-dictionaries">4.5 Structured data with dictionaries</h3>
+<h3 class="anchored" data-anchor-id="structured-data-with-dictionaries">Structured data with dictionaries</h3>
 <p>One of the most common uses of dictionaries is to represent <strong>records</strong>—collections of related attributes that describe a single entity. For example, a dictionary can represent a student, a transaction, or a configuration setting.</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Alex"</span>, <span class="st">"score"</span>: <span class="dv">90</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>When working with multiple records, it is common to use <strong>lists of dictionaries</strong>, where each dictionary represents one structured item:</p>
@@ -585,23 +570,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="control-flow-conditional-logic" class="level2">
-<h2 class="anchored" data-anchor-id="control-flow-conditional-logic">5. Control Flow: Conditional Logic</h2>
-<p>Conditional logic allows programs to make decisions. Without conditional logic, a program would execute the same instructions in the same order every time, regardless of what data it receives. Real programs do not work that way. They respond differently depending on inputs, context, and state.</p>
+<h2 class="anchored" data-anchor-id="control-flow-conditional-logic">Control Flow: Conditional Logic</h2>
+<p>Python executes code sequentially from top to bottom, unless control structures such as conditionals or loops explicitly alter the flow of execution.</p>
+<p>Conditional logic allows programs to make decisions. Without conditional logic, a program would execute the same instructions in the same order every time, regardless of what data it receives. Real programs do not work that way; they respond differently depending on inputs, context, and state.</p>
 <p>This section introduces conditional logic as a fundamental mechanism for decision-making in programs.</p>
 <hr>
 <section id="why-programs-need-branching" class="level3">
-<h3 class="anchored" data-anchor-id="why-programs-need-branching">5.1 Why programs need branching</h3>
-<p>Many early programming examples look like calculators: values go in, a result comes out, and the program ends. That is useful for learning syntax, but it does not capture how most programs behave in practice.</p>
-<p>Real programs must handle situations where different cases require different actions. For example:<br>
-- If a user enters invalid input, the program should respond differently than if the input is valid.<br>
-- If a customer’s risk score is high, the program may trigger review, while a low score may be ignored.<br>
-- If a file exists, the program may load it; otherwise it may create a new one.</p>
+<h3 class="anchored" data-anchor-id="why-programs-need-branching">Why programs need branching</h3>
+<p>Many early programming examples look like calculators: values go in, a result comes out, and the program ends. That is useful for learning syntax, but it does not capture how most programs behave in practice. This is not to say you shouldn’t start with these simple examples, you absolutely should start here.</p>
+<p>Real programs must handle situations where different cases require different actions. For example:</p>
+<ul>
+<li>If a user enters invalid input, the program should respond differently than if the input is valid.<br>
+</li>
+<li>If a customer’s risk score is high, the program may trigger review, while a low score may be ignored.<br>
+</li>
+<li>If a file exists, the program may load it; otherwise it may create a new one.</li>
+</ul>
 <p>This is the purpose of <strong>branching</strong>. Branching means that a program can follow one of multiple paths depending on a condition.</p>
 <p>Conditional logic is also the foundation for many forms of decision logic in analytics and AI systems. Models may produce scores or probabilities, but something still has to decide what happens next. That decision is often implemented using thresholds and conditional statements. Even simple branching logic is therefore a core building block for larger systems.</p>
 <hr>
 </section>
 <section id="if-elif-and-else" class="level3">
-<h3 class="anchored" data-anchor-id="if-elif-and-else">5.2 If, elif, and else</h3>
+<h3 class="anchored" data-anchor-id="if-elif-and-else">If, elif, and else</h3>
 <p>In Python, branching is expressed using the <code>if</code> statement. An <code>if</code> statement evaluates a condition. If the condition is true, Python executes the block of code under the <code>if</code>. If the condition is false, Python skips that block.</p>
 <p>A minimal example looks like this:</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
@@ -616,17 +606,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"B"</span>)</span>
 <span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Below B"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>In this structure: - <code>if</code> checks the first condition. - <code>elif</code> checks additional conditions only if earlier ones were false. - <code>else</code> acts as a fallback when no conditions were met.</p>
+<p>In this structure:</p>
+<ul>
+<li><code>if</code> checks the first condition.</li>
+<li><code>elif</code> checks additional conditions only if earlier ones were false.</li>
+<li><code>else</code> acts as a fallback when no conditions were met.</li>
+</ul>
 <p>A useful way to read this is: “check the first condition; if it fails, check the next; if all fail, use the default.”</p>
 <hr>
 </section>
 <section id="boolean-expressions-in-conditions" class="level3">
-<h3 class="anchored" data-anchor-id="boolean-expressions-in-conditions">5.3 Boolean expressions in conditions</h3>
+<h3 class="anchored" data-anchor-id="boolean-expressions-in-conditions">Boolean expressions in conditions</h3>
 <p>Conditions in <code>if</code> statements are <strong>boolean expressions</strong>. A boolean expression is any expression that evaluates to either <code>True</code> or <code>False</code>.</p>
-<p>The most common boolean expressions are comparisons. Python supports standard comparison operators such as:<br>
-- greater than and less than<br>
-- equality and inequality<br>
-- greater than or equal to, less than or equal to</p>
+<p>The most common boolean expressions are comparisons. Python supports standard comparison operators such as:</p>
+<ul>
+<li>greater than and less than,<br>
+</li>
+<li>equality and inequality,<br>
+</li>
+<li>greater than or equal to, less than or equal to.</li>
+</ul>
 <p>For example:</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">==</span> <span class="dv">5</span>)</span>
@@ -637,36 +636,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 <section id="nested-conditionals-and-readability" class="level3">
-<h3 class="anchored" data-anchor-id="nested-conditionals-and-readability">5.4 Nested conditionals and readability</h3>
+<h3 class="anchored" data-anchor-id="nested-conditionals-and-readability">Nested conditionals and readability</h3>
 <p>A <strong>nested conditional</strong> is an <code>if</code> statement inside another <code>if</code> statement. Nesting is sometimes necessary when decisions depend on multiple layers of conditions.</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">20</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> age <span class="op">&gt;=</span> <span class="dv">18</span>:</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> age <span class="op">&lt;</span> <span class="dv">21</span>:</span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Adult, but under 21"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This structure expresses two related conditions:<br>
-- The outer condition checks whether the person is an adult.<br>
-- The inner condition refines the case for adults under 21.</p>
+<p>This structure expresses two related conditions:</p>
+<ul>
+<li>The outer condition checks whether the person is an adult.<br>
+</li>
+<li>The inner condition refines the case for adults under 21.</li>
+</ul>
 <p>Nesting can be useful, but it can also reduce readability if overused. Deeply nested logic is harder to follow, harder to debug, and easier to misunderstand. As conditional logic becomes more complex, readability becomes a design concern, not just a style preference.</p>
-<p>Two practical habits help keep conditionals readable:<br>
-- Use clear conditions that communicate intent.<br>
-- Avoid unnecessary nesting when a simpler structure is possible.</p>
+<p>Two practical habits help keep conditionals readable:</p>
+<ul>
+<li>Use clear conditions that communicate intent.<br>
+</li>
+<li>Avoid unnecessary nesting when a simpler structure is possible.</li>
+</ul>
 <p>Even when nesting is appropriate, indentation must be treated as part of the logic. In Python, indentation is not cosmetic; it determines which code belongs to which branch. Learning to visually interpret indentation is therefore part of learning how conditional logic works.</p>
 <hr>
 </section>
 </section>
 <section id="control-flow-loops" class="level2">
-<h2 class="anchored" data-anchor-id="control-flow-loops">6. Control Flow: Loops</h2>
+<h2 class="anchored" data-anchor-id="control-flow-loops">Control Flow: Loops</h2>
 <p>Loops allow programs to <strong>repeat actions systematically</strong>. Instead of writing the same instruction multiple times, loops provide a way to apply the same logic across collections of data or across repeated conditions. This ability to repeat is essential for working with real data, where the number of values is often large or unknown in advance.</p>
-<p>This section introduces looping as a fundamental control structure and emphasizes careful reasoning about how and when repetition occurs.</p>
 <hr>
 <section id="why-repetition-matters" class="level3">
-<h3 class="anchored" data-anchor-id="why-repetition-matters">6.1 Why repetition matters</h3>
+<h3 class="anchored" data-anchor-id="why-repetition-matters">Why repetition matters</h3>
 <p>Without loops, programs would be limited to one-time calculations. Any task that involved processing multiple values would require duplicated code, which is inefficient, error-prone, and difficult to maintain.</p>
-<p>Many real-world tasks involve repetition:<br>
-- Checking each item in a list<br>
-- Processing each record in a dataset<br>
-- Repeating an action until a condition is met<br>
-- Accumulating results across many values</p>
+<p>Many real-world tasks involve repetition:</p>
+<ul>
+<li>Checking each item in a list.<br>
+</li>
+<li>Processing each record in a dataset.<br>
+</li>
+<li>Repeating an action until a condition is met.<br>
+</li>
+<li>Accumulating results across many values.</li>
+</ul>
 <p>Loops make these tasks possible by allowing a program to <strong>apply the same operation repeatedly</strong>, while only writing the logic once.</p>
 <p>Conceptually, loops are closely tied to data structures. When data is stored in collections such as lists or dictionaries, loops provide the mechanism to visit each element in turn. This connection between <em>structure</em> (data) and <em>behavior</em> (loops) is central to programming and analytics.</p>
 <p>At a high level, loops answer the question:<br>
@@ -674,7 +683,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 <section id="for-loops-and-iteration-patterns" class="level3">
-<h3 class="anchored" data-anchor-id="for-loops-and-iteration-patterns">6.2 For loops and iteration patterns</h3>
+<h3 class="anchored" data-anchor-id="for-loops-and-iteration-patterns">For loops and iteration patterns</h3>
 <p>A <strong>for loop</strong> is used when a program needs to iterate over a collection of values. The loop variable takes on each value in the collection, one at a time, and the loop body runs once for each value.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> values:</span>
@@ -682,32 +691,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This loop can be read as: “for each value in the list, print the value.” The loop variable <code>v</code> is assigned a new value on each iteration.</p>
 <p>For loops work naturally with sequences such as lists and strings. The number of iterations is determined by the size of the collection, which makes for loops predictable and easy to reason about.</p>
 <p>A helpful habit is to read for loops <strong>out loud in plain language</strong>. Doing so reinforces the intent of the loop and reduces confusion about what the code is doing.</p>
-<p>For loops are especially useful when:<br>
-- the collection is known,<br>
-- every element should be processed,<br>
-- and the order of processing matters.</p>
+<p>For loops are especially useful when:</p>
+<ul>
+<li>the collection is known,<br>
+</li>
+<li>every element should be processed,<br>
+</li>
+<li>and the order of processing matters.</li>
+</ul>
 <hr>
 </section>
 <section id="while-loops-and-termination-conditions" class="level3">
-<h3 class="anchored" data-anchor-id="while-loops-and-termination-conditions">6.3 While loops and termination conditions</h3>
+<h3 class="anchored" data-anchor-id="while-loops-and-termination-conditions">While loops and termination conditions</h3>
 <p>A <strong>while loop</strong> repeats as long as a condition remains true. Instead of iterating over a collection, a while loop continues until a specific condition changes.</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> count <span class="op">&lt;</span> <span class="dv">3</span>:</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(count)</span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> count <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This loop runs while the condition <code>count &lt; 3</code> is true. Each iteration updates <code>count</code>, and eventually the condition becomes false, causing the loop to stop.</p>
-<p>While loops are useful when:<br>
-- the number of iterations is not known in advance,<br>
-- repetition depends on a changing condition,<br>
-- or the loop should continue until some state is reached.</p>
+<p>While loops are useful when:</p>
+<ul>
+<li>the number of iterations is not known in advance,<br>
+</li>
+<li>repetition depends on a changing condition,<br>
+</li>
+<li>or the loop should stop until some state is reached.</li>
+</ul>
 <p>The most important concept with while loops is <strong>termination</strong>. Every while loop must include logic that eventually makes the condition false. Without this, the loop will continue indefinitely.</p>
 <p>Conceptually, while loops answer the question:<br>
 <em>Should I keep going right now?</em></p>
 <hr>
 </section>
 <section id="common-looping-errors" class="level3">
-<h3 class="anchored" data-anchor-id="common-looping-errors">6.4 Common looping errors</h3>
+<h3 class="anchored" data-anchor-id="common-looping-errors">Common looping errors</h3>
 <p>Loops are powerful, but they also introduce common sources of error. One of the most frequent mistakes is creating an <strong>infinite loop</strong>, where the condition never becomes false.</p>
+<p>Don’t run this!</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> count <span class="op">&lt;</span> <span class="dv">3</span>:</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(count)</span>
@@ -715,20 +733,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this example, the condition remains true forever because <code>count</code> never changes. Infinite loops often occur when a loop variable is not updated or when the termination condition is incorrect.</p>
 <p>Another common issue is <strong>off-by-one errors</strong>, where a loop runs one time too many or one time too few. These errors often arise from misunderstandings about starting values, ending conditions, or zero-based indexing.</p>
 <p>Loops can also behave unexpectedly when data is modified while being iterated over. Changing a list while looping through it can lead to skipped values or unintended behavior, which is why careful reasoning about loop structure is important.</p>
-<p>When debugging loops, a useful strategy is to:<br>
-- trace the loop step by step,<br>
-- track how loop variables change,<br>
-- and verify exactly when the condition becomes false.</p>
+<p>When debugging loops, a useful strategy is to:</p>
+<ul>
+<li>trace the loop step by step,<br>
+</li>
+<li>track how loop variables change,<br>
+</li>
+<li>and verify exactly when the condition becomes false.</li>
+</ul>
 <hr>
 </section>
 <section id="choosing-between-for-and-while" class="level3">
-<h3 class="anchored" data-anchor-id="choosing-between-for-and-while">6.5 Choosing between for and while</h3>
+<h3 class="anchored" data-anchor-id="choosing-between-for-and-while">Choosing between for and while</h3>
 <p>Both for and while loops enable repetition, but they serve different purposes. Choosing between them is a matter of <strong>intent</strong>, not preference.</p>
-<p>A for loop is usually the better choice when:<br>
-- iterating over a known collection,<br>
-- applying logic to each element,<br>
-- or when the number of iterations is determined by the data.</p>
-<p>A while loop is usually the better choice when: - repetition depends on a condition, - the number of iterations is not known ahead of time, - or the loop should stop based on changing state.</p>
+<p>A for loop is usually the better choice when:</p>
+<ul>
+<li>iterating over a known collection,<br>
+</li>
+<li>applying logic to each element,<br>
+</li>
+<li>or when the number of iterations is determined by the data.</li>
+</ul>
+<p>A while loop is usually the better choice when:</p>
+<ul>
+<li>repetition depends on a condition,</li>
+<li>the number of iterations is not known ahead of time,</li>
+<li>or the loop should stop based on changing state.</li>
+</ul>
 <div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for loop: known collection</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]:</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x)</span>
@@ -739,17 +770,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(count)</span>
 <span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> count <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In many cases, either loop could be used, but one will communicate intent more clearly than the other. Readability and correctness are more important than cleverness.</p>
-<p>Understanding when and why to use each type of loop makes programs easier to understand, debug, and extend. Loops are not just a syntactic feature—they are a way of expressing repeated reasoning in code.</p>
+<p>Understanding when and why to use each type of loop makes programs easier to understand, debug, and extend. Loops are not just a syntactic feature; they are a way of expressing repeated reasoning in code.</p>
 <hr>
 </section>
 </section>
 <section id="functions-and-modular-design" class="level2">
-<h2 class="anchored" data-anchor-id="functions-and-modular-design">7. Functions and Modular Design</h2>
+<h2 class="anchored" data-anchor-id="functions-and-modular-design">Functions and Modular Design</h2>
 <p>As programs grow, writing code from top to bottom becomes difficult to manage. Logic is repeated, scripts become long, and small changes require edits in multiple places. <strong>Functions</strong> address this problem by allowing programs to be broken into reusable, named units of logic.</p>
 <p>This section introduces functions not just as a Python feature, but as a way of thinking about program design. Functions help manage complexity, improve readability, and make programs easier to reason about and extend.</p>
 <hr>
 <section id="why-functions-exist" class="level3">
-<h3 class="anchored" data-anchor-id="why-functions-exist">7.1 Why functions exist</h3>
+<h3 class="anchored" data-anchor-id="why-functions-exist">Why functions exist</h3>
 <p>One of the earliest signs that a program needs functions is <strong>repetition</strong>. When the same logic appears multiple times, it becomes harder to maintain and easier to introduce errors.</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Processing value"</span>)</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Processing value"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -761,7 +792,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 <section id="defining-a-function" class="level3">
-<h3 class="anchored" data-anchor-id="defining-a-function">7.2 Defining a function</h3>
+<h3 class="anchored" data-anchor-id="defining-a-function">Defining a function</h3>
 <p>A function is defined using the <code>def</code> keyword, followed by the function name, parentheses, and a colon. The body of the function is indented beneath the definition.</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> greet():</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Hello"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -773,7 +804,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 <section id="calling-functions" class="level3">
-<h3 class="anchored" data-anchor-id="calling-functions">7.3 Calling functions</h3>
+<h3 class="anchored" data-anchor-id="calling-functions">Calling functions</h3>
 <p>A function runs only when it is <strong>called</strong>. Calling a function means telling Python to execute the instructions inside the function body.</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>greet()</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>greet()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -783,7 +814,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 <section id="parameters-and-return-values" class="level3">
-<h3 class="anchored" data-anchor-id="parameters-and-return-values">7.4 Parameters and return values</h3>
+<h3 class="anchored" data-anchor-id="parameters-and-return-values">Parameters and return values</h3>
 <p>Functions become more powerful when they can accept <strong>inputs</strong> and produce <strong>outputs</strong>. Inputs are specified using <strong>parameters</strong>, and outputs are produced using <strong>return values</strong>.</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add(a, b):</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -795,7 +826,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 <section id="functions-as-building-blocks" class="level3">
-<h3 class="anchored" data-anchor-id="functions-as-building-blocks">7.5 Functions as building blocks</h3>
+<h3 class="anchored" data-anchor-id="functions-as-building-blocks">Functions as building blocks</h3>
 <p>As programs grow, functions act as <strong>building blocks</strong> that can be combined with loops, conditionals, and data structures. Each function handles a specific task, making the overall program easier to understand.</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_passing(score):</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> score <span class="op">&gt;=</span> <span class="dv">70</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -803,46 +834,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Functions also improve <strong>testability</strong> and <strong>debugging</strong>. When behavior is isolated inside a function, it can be tested independently. If something goes wrong, the scope of the problem is smaller and easier to locate.</p>
 <p>At a higher level, functions support modular design. Programs can be understood as collections of interacting functions, each with a clear purpose. This mirrors how larger analytics and AI systems are structured, where components are designed to do one thing well and interact through well-defined interfaces.</p>
 <p>Thinking in terms of functions encourages a shift from writing code that merely works to writing code that is understandable, maintainable, and scalable.</p>
+<p>Organizing logic into functions supports modular design, making programs easier to understand, reuse, test, and debug as they grow.</p>
 <hr>
 </section>
 </section>
 <section id="debugging-fundamentals" class="level2">
-<h2 class="anchored" data-anchor-id="debugging-fundamentals">8. Debugging Fundamentals</h2>
+<h2 class="anchored" data-anchor-id="debugging-fundamentals">Debugging Fundamentals</h2>
 <p>Debugging is the process of identifying, understanding, and correcting problems in code. It is not a special activity reserved for advanced programmers, nor is it a sign that something has gone wrong in learning. Debugging is how programming actually happens.</p>
 <p>This section reframes errors as information and introduces debugging as a <strong>systematic reasoning process</strong>, not a guessing game.</p>
 <hr>
 <section id="what-an-error-message-is-telling-you" class="level3">
-<h3 class="anchored" data-anchor-id="what-an-error-message-is-telling-you">8.1 What an error message is telling you</h3>
+<h3 class="anchored" data-anchor-id="what-an-error-message-is-telling-you">What an error message is telling you</h3>
 <p>When Python encounters a problem it cannot resolve, it produces an <strong>error message</strong>. That message is Python’s way of explaining what it expected, what it encountered instead, and where the problem occurred.</p>
 <p>An error message is not a judgment about your ability. It is a report. Learning to debug begins with learning to <strong>read error messages rather than avoiding them</strong>.</p>
 <p>Some errors occur before the program runs at all. These are typically <strong>syntax errors</strong>, where Python cannot understand the structure of the code. For example:</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In this case, Python reaches the end of the line and realizes something is missing. The error message points to the location where Python became confused.</p>
 <p>Other errors occur <strong>while the program is running</strong>. These runtime errors indicate that Python understood the code structurally, but something went wrong during execution.</p>
-<p>At a high level, error messages answer three questions:<br>
-- Where did the problem occur?<br>
-- What kind of problem was it?<br>
-- What was Python trying to do at the time?</p>
+<p>At a high level, error messages answer three questions:</p>
+<ul>
+<li>Where did the problem occur?<br>
+</li>
+<li>What kind of problem was it?<br>
+</li>
+<li>What was Python trying to do at the time?</li>
+</ul>
 <p>Debugging begins by treating error messages as clues rather than obstacles.</p>
 <hr>
 </section>
 <section id="reading-a-traceback-from-top-to-bottom" class="level3">
-<h3 class="anchored" data-anchor-id="reading-a-traceback-from-top-to-bottom">8.2 Reading a traceback from top to bottom</h3>
+<h3 class="anchored" data-anchor-id="reading-a-traceback-from-top-to-bottom">Reading a traceback from top to bottom</h3>
 <p>When a runtime error occurs, Python often produces a <strong>traceback</strong>. A traceback shows the sequence of steps Python followed before encountering the error.</p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> divide(a, b):</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">/</span> b</span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>divide(<span class="dv">10</span>, <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The traceback lists function calls from top to bottom, ending with the line where the error actually occurred. While the traceback may look intimidating at first, it follows a consistent structure.</p>
-<p>A useful strategy is to:<br>
-- skim the traceback to understand the context,<br>
-- then focus on the <strong>last line</strong>, which usually describes the actual error.</p>
+<p>A useful strategy is to:</p>
+<ul>
+<li>skim the traceback to understand the context,<br>
+</li>
+<li>then focus on the <strong>last line</strong>, which usually describes the actual error.</li>
+</ul>
 <p>The file name and line number tell you where Python was executing when the problem occurred. This information narrows the search space and prevents unnecessary changes elsewhere in the code.</p>
 <p>Over time, reading tracebacks becomes a skill. Instead of seeing a wall of text, you begin to recognize patterns and quickly identify the relevant information.</p>
 <hr>
 </section>
 <section id="common-beginner-errors" class="level3">
-<h3 class="anchored" data-anchor-id="common-beginner-errors">8.3 Common beginner errors</h3>
+<h3 class="anchored" data-anchor-id="common-beginner-errors">Common beginner errors</h3>
 <p>Certain errors appear frequently when learning Python. These errors are predictable and shared by almost everyone at this stage.</p>
 <p><strong>Syntax errors</strong> occur when Python cannot parse the code structure. Missing quotation marks, parentheses, or colons are common causes.</p>
 <p><strong>Name errors</strong> occur when a variable or function is used before it has been defined. This often results from spelling mistakes or assumptions about what exists in the current scope.</p>
@@ -855,13 +894,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 <section id="debugging-as-a-systematic-process" class="level3">
-<h3 class="anchored" data-anchor-id="debugging-as-a-systematic-process">8.4 Debugging as a systematic process</h3>
+<h3 class="anchored" data-anchor-id="debugging-as-a-systematic-process">Debugging as a systematic process</h3>
 <p>Effective debugging is not about trying random fixes. It is about <strong>narrowing the problem space</strong> and testing assumptions deliberately.</p>
-<p>A systematic debugging process usually involves:<br>
-- reproducing the error consistently,<br>
-- identifying the exact location of failure,<br>
-- inspecting the values of variables at that point,<br>
-- and changing one thing at a time.</p>
+<p>A systematic debugging process usually involves:</p>
+<ul>
+<li>reproducing the error consistently,<br>
+</li>
+<li>identifying the exact location of failure,<br>
+</li>
+<li>inspecting the values of variables at that point,<br>
+</li>
+<li>and changing one thing at a time.</li>
+</ul>
 <p>One of the simplest and most effective debugging tools is printing intermediate values.</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Current value:"</span>, x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>By inspecting program state as it runs, it becomes easier to understand how data flows through the code and where expectations diverge from reality.</p>
@@ -870,100 +914,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 <section id="when-to-fix-code-vs.-rethink-logic" class="level3">
-<h3 class="anchored" data-anchor-id="when-to-fix-code-vs.-rethink-logic">8.5 When to fix code vs.&nbsp;rethink logic</h3>
+<h3 class="anchored" data-anchor-id="when-to-fix-code-vs.-rethink-logic">When to fix code vs.&nbsp;rethink logic</h3>
 <p>Not all bugs are caused by incorrect syntax or misuse of language features. Sometimes the code runs exactly as written, but the result is still wrong. In these cases, the issue lies in the <strong>logic</strong>, not the implementation.</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_valid(score):</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> score <span class="op">&gt;</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This function works exactly as defined, but the condition may not reflect the intended rule. Debugging logic errors requires stepping back and examining assumptions.</p>
 <p>A useful question to ask is: <em>Is Python doing something unexpected, or is Python doing exactly what I told it to do?</em></p>
 <p>If the latter is true, the solution may involve redesigning conditions, rethinking data structures, or clarifying the problem definition rather than fixing syntax.</p>
-<p>Debugging is therefore part of program design. It is how understanding improves over time. Learning when to adjust code and when to rethink logic is one of the most valuable skills developed in this course.</p>
+<p>Debugging is therefore part of program design. It is how understanding improves over time. Learning when to adjust code and when to rethink logic is one of the most valuable skills you can develop as you write and refine programs.</p>
 <hr>
 </section>
 </section>
-<section id="debugging-fundamentals-1" class="level2">
-<h2 class="anchored" data-anchor-id="debugging-fundamentals-1">8. Debugging Fundamentals</h2>
-<p>Debugging is the process of identifying, understanding, and correcting problems in code. It is not a special activity reserved for advanced programmers, nor is it a sign that something has gone wrong in learning. Debugging is how programming actually happens.</p>
-<p>This section reframes errors as information and introduces debugging as a <strong>systematic reasoning process</strong>, not a guessing game.</p>
-<hr>
-<section id="what-an-error-message-is-telling-you-1" class="level3">
-<h3 class="anchored" data-anchor-id="what-an-error-message-is-telling-you-1">8.1 What an error message is telling you</h3>
-<p>When Python encounters a problem it cannot resolve, it produces an <strong>error message</strong>. That message is Python’s way of explaining what it expected, what it encountered instead, and where the problem occurred.</p>
-<p>An error message is not a judgment about your ability. It is a report. Learning to debug begins with learning to <strong>read error messages rather than avoiding them</strong>.</p>
-<p>Some errors occur before the program runs at all. These are typically <strong>syntax errors</strong>, where Python cannot understand the structure of the code. For example:</p>
-<pre><code>print("Hello"</code></pre>
-<p>In this case, Python reaches the end of the line and realizes something is missing. The error message points to the location where Python became confused.</p>
-<p>Other errors occur <strong>while the program is running</strong>. These runtime errors indicate that Python understood the code structurally, but something went wrong during execution.</p>
-<p>At a high level, error messages answer three questions:<br>
-- Where did the problem occur?<br>
-- What kind of problem was it?<br>
-- What was Python trying to do at the time?</p>
-<p>Debugging begins by treating error messages as clues rather than obstacles.</p>
-<hr>
-</section>
-<section id="reading-a-traceback-from-top-to-bottom-1" class="level3">
-<h3 class="anchored" data-anchor-id="reading-a-traceback-from-top-to-bottom-1">8.2 Reading a traceback from top to bottom</h3>
-<p>When a runtime error occurs, Python often produces a <strong>traceback</strong>. A traceback shows the sequence of steps Python followed before encountering the error.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> divide(a, b):</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">/</span> b</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>divide(<span class="dv">10</span>, <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The traceback lists function calls from top to bottom, ending with the line where the error actually occurred. While the traceback may look intimidating at first, it follows a consistent structure.</p>
-<p>A useful strategy is to:<br>
-- skim the traceback to understand the context,<br>
-- then focus on the <strong>last line</strong>, which usually describes the actual error.</p>
-<p>The file name and line number tell you where Python was executing when the problem occurred. This information narrows the search space and prevents unnecessary changes elsewhere in the code.</p>
-<p>Over time, reading tracebacks becomes a skill. Instead of seeing a wall of text, you begin to recognize patterns and quickly identify the relevant information.</p>
-<hr>
-</section>
-<section id="common-beginner-errors-1" class="level3">
-<h3 class="anchored" data-anchor-id="common-beginner-errors-1">8.3 Common beginner errors</h3>
-<p>Certain errors appear frequently when learning Python. These errors are predictable and shared by almost everyone at this stage.</p>
-<p><strong>Syntax errors</strong> occur when Python cannot parse the code structure. Missing quotation marks, parentheses, or colons are common causes.</p>
-<p><strong>Name errors</strong> occur when a variable or function is used before it has been defined. This often results from spelling mistakes or assumptions about what exists in the current scope.</p>
-<p><strong>Type errors</strong> occur when an operation is applied to incompatible data types. These errors highlight the importance of understanding how different types behave.</p>
-<p><strong>Index and key errors</strong> occur when attempting to access elements that do not exist.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(values[<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This error does not mean the list is broken. It means the program asked for something outside the valid range.</p>
-<p>Recognizing these errors as <em>categories</em> rather than isolated failures helps reduce frustration and speeds up debugging.</p>
-<hr>
-</section>
-<section id="debugging-as-a-systematic-process-1" class="level3">
-<h3 class="anchored" data-anchor-id="debugging-as-a-systematic-process-1">8.4 Debugging as a systematic process</h3>
-<p>Effective debugging is not about trying random fixes. It is about <strong>narrowing the problem space</strong> and testing assumptions deliberately.</p>
-<p>A systematic debugging process usually involves:<br>
-- reproducing the error consistently,<br>
-- identifying the exact location of failure,<br>
-- inspecting the values of variables at that point,<br>
-- and changing one thing at a time.</p>
-<p>One of the simplest and most effective debugging tools is printing intermediate values.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Current value:"</span>, x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>By inspecting program state as it runs, it becomes easier to understand how data flows through the code and where expectations diverge from reality.</p>
-<p>Changing multiple things at once makes debugging harder. When only one change is made, its effect is easier to interpret.</p>
-<p>Debugging rewards patience and methodical thinking. The goal is not to fix the error as quickly as possible, but to understand <strong>why the error occurred</strong>.</p>
-<hr>
-</section>
-<section id="when-to-fix-code-vs.-rethink-logic-1" class="level3">
-<h3 class="anchored" data-anchor-id="when-to-fix-code-vs.-rethink-logic-1">8.5 When to fix code vs.&nbsp;rethink logic</h3>
-<p>Not all bugs are caused by incorrect syntax or misuse of language features. Sometimes the code runs exactly as written, but the result is still wrong. In these cases, the issue lies in the <strong>logic</strong>, not the implementation.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_valid(score):</span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> score <span class="op">&gt;</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This function works exactly as defined, but the condition may not reflect the intended rule. Debugging logic errors requires stepping back and examining assumptions.</p>
-<p>A useful question to ask is: <em>Is Python doing something unexpected, or is Python doing exactly what I told it to do?</em></p>
-<p>If the latter is true, the solution may involve redesigning conditions, rethinking data structures, or clarifying the problem definition rather than fixing syntax.</p>
-<p>Debugging is therefore part of program design. It is how understanding improves over time. Learning when to adjust code and when to rethink logic is one of the most valuable skills developed in this course.</p>
-<hr>
-</section>
-</section>
-<section id="week-2-summary" class="level2">
-<h2 class="anchored" data-anchor-id="week-2-summary">Week 2 Summary</h2>
+<section id="chapter-summary" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-summary">Chapter Summary</h2>
 <p>This chapter focused on building foundational Python skills by moving from individual values to structured data, decision-making, repetition, and modular program design. The goal was not just to learn Python syntax, but to develop a mental model of how programs reason about data and control their own behavior.</p>
 <p>Conceptually, the chapter emphasized that <strong>data representation matters</strong>. Numbers, strings, booleans, lists, and dictionaries are not interchangeable; each type carries assumptions about how it can be used, combined, and transformed. Understanding these differences is essential for writing programs that behave predictably and for interpreting results correctly in analytics and AI contexts.</p>
 <p>The introduction of <strong>control flow</strong>—conditional logic and loops—marked a shift from linear execution to decision-making and repetition. Programs were no longer treated as calculators that run once, but as systems that respond differently depending on conditions and that can operate over collections of data. This logic-based view of execution directly connects to how larger decision systems and algorithms function.</p>
 <p>Functions extended this idea by introducing <strong>modularity and abstraction</strong>. By encapsulating logic into reusable units, programs become easier to read, test, and extend. Functions also reinforce the idea that complex behavior is built from smaller, well-defined components—a principle that scales from simple scripts to full analytics and AI systems.</p>
-<p>Finally, the chapter reframed <strong>debugging</strong> as a core reasoning skill rather than a remedial activity. Error messages, tracebacks, and unexpected results were treated as sources of information that guide understanding. Learning to debug systematically—by isolating problems, checking assumptions, and distinguishing between syntax issues and logic flaws—is a skill that will be used continuously in later weeks.</p>
-<p>By the end of Week 2, you should be able to write Python programs that store and manipulate structured data, make decisions, repeat actions, and organize logic into functions. More importantly, you should be developing confidence in reading, reasoning about, and correcting code—skills that form the foundation for more advanced analytics and AI techniques in the weeks ahead.</p>
+<p>Finally, the chapter reframed <strong>debugging</strong> as a core reasoning skill rather than a remedial activity. Error messages, tracebacks, and unexpected results were treated as sources of information that guide understanding. Learning to debug systematically—by isolating problems, checking assumptions, and distinguishing between syntax issues and logic flaws—is a skill that will be used continuously in later chapters.</p>
+<p>By the end of this chapter, you should be able to write Python programs that store and manipulate structured data, make decisions, repeat actions, and organize logic into functions. More importantly, you should be developing confidence in reading, reasoning about, and correcting code—skills that form the foundation for more advanced analytics and AI techniques.</p>
 
 
 </section>

@@ -2,73 +2,127 @@
 title: "Foundations of Analytics & AI"
 ---
 
-## Course Textbook
+## Use of AI-Assisted Tools
 
-Welcome to the online textbook for the course. It is organized to provide a clear, structured pathway through the foundational ideas and practical techniques of analytics and artificial intelligence. Each week’s chapter includes:
+The initial draft of this textbook was written by the author. Subsequent revisions and refinements were supported by digital writing tools, including large language models and grammar-support software, such as Grammarly, Gemini, ChatGPT, and various markdown, text and Python linters. These tools were used to assist with organization, revision, and clarity of exposition. All conceptual content, interpretations, examples, and pedagogical decisions remain the responsibility of the author, who reviewed, edited, and verified all material for accuracy and coherence.
 
-- An explaination of the key/core concepts and our objectives for the week.   
-- Demonstrations (where applicable) and worked examples  
-- Links to downloadable code associated with the topics in the lectures.  
-- Practice sections and applied exercises  
-- Short conceptual notes to reinforce key ideas  
+## 
 
-This site is designed to complement the in-class experience while remaining accessible for self-study. All materials can be viewed online and code files can be downloaded from the course repository. The code in github and on Canvas is the same. The data for this course is stored in Canvas. 
+## Welcome
 
----
+*Foundations of Analytics & AI* is a modular, evolving textbook designed to introduce the core ideas, computational tools, and analytical workflows that underpin modern data-driven decision-making. The text integrates conceptual understanding with hands-on examples. Including:
 
-## How to Use This Textbook
+- Explanations of key concepts  
+- Demonstrations and worked Python examples  
+- Short conceptual notes to reinforce essential ideas  
+- Mini-labs that integrate skills into complete workflows  
 
-The material is organized into three  types:
-
-### **1. Weekly Modules**  
-These chapters follow the course schedule and lectures. The readings from the text are not identical to the lectures, but they are close. The readings introduce new concepts, connect them to analytics and AI practice, and provide examples to run independently.
-
-Start here:
-
-- [Week 1 – What is Analytics & AI?](textbook_src/week01_main.qmd)  
-- [Week 2 – Python Basics](textbook_src/week02_main.qmd)  
-- [Week 3 – Data Structures & Pandas](textbook_src/week03_main.qmd)  
-- [Week 4 – From Data to Models](textbook_src/week04_main.qmd)  
-<!-- Add more weeks as they are created -->
+The book is structured so readers can progress linearly or for those with some experience, navigate directly to topics of interest.
 
 ---
 
-### **2. Practical Guides (Task-Oriented Documentation)**  
-These pages provide focused instructions for installing tools, configuring environments, and resolving common issues.
+## How This Textbook Is Organized
 
-- [How to Install Python](guides/install_python.qmd)  
-- [Installing the Course requirements.txt](guides/install_requirements.qmd)  
-- [Using Google Colab](guides/using_colab.qmd)
-
-These guides remain relevant throughout the semester and may be updated as tools evolve.
+The material is grouped into **three major parts**: foundational concepts → computational skills → applied machine learning and AI methods.
 
 ---
 
-## Course Learning Philosophy
+### **Part I — Conceptual Foundations of Analytics & AI**
 
-This textbook is built around two related objectives:
+These chapters develop the core ideas that unify analytics, machine learning, and AI systems. They are *concept-only* and require no coding background.
 
-- **AI Literacy:** developing conceptual understanding of modern analytics and AI systems. How they work, where they succeed, and where they sometimes fail.  
-- **Job-Relevant Skills:** Translating these concepts into practical, executable workflows using Python and contemporary tools. 
+- [**Chapter 1 — What Is Analytics and AI?**](textbook_src/ch1_foundations_analytics_ai_split.qmd)  
+- [**Chapter 2 — AI Systems: Data, Models, and Logic**](textbook_src/ch2_ai_systems_data_models_logic.qmd)  
+- [**Chapter 3 — Data Pipelines & Decision Frameworks**](textbook_src/ch3_data_pipelines_decision_frameworks.qmd)
 
-Each week reinforces both trajectories: one conceptual, one applied.
+---
+
+### **Part II — Python & Data Foundations**
+
+These chapters introduce programming concepts and data skills used throughout modern analytics and AI practice.  
+They combine explanation with practical Python examples.
+
+- [**Chapter 4 — Python Execution Foundations**](textbook_src/ch4_terminal_paths_envs.qmd)  
+- [**Chapter 5 — Python Basics: Data, Control, Functions**](textbook_src/ch5_python_foundations_data_control_functions.qmd)  
+- [**Chapter 6 — Working with Tabular Data in Pandas**](textbook_src/ch6_working_with_tabular_data_pandas.qmd)  
+- [**Chapter 7 — JSON and APIs for Data Access**](textbook_src/ch7_json_apis_data_access.qmd)  
+- [**Chapter 8 — Simulation and Synthetic Data**](textbook_src/ch8_simulation_synthetic_data.qmd)  
+- [**Chapter 9 — Visualization: From Data to Insight**](textbook_src/ch9_visualization_from_data_to_insight.qmd)
+
+These skills are used repeatedly in later chapters.  
+
+Readers already familiar with Python may skim or skip based on experience.
+
+---
+
+
+### **Part III — Machine Learning & Applied AI**  
+(*Chapters appear as they are completed.*)
+
+Each chapter in this part will integrate:
+
+1. **Conceptual Foundations**  
+2. **Python Implementation**  
+3. **Interpretation & Diagnostics**  
+4. **Mini-Labs**  
+
+Planned topics include:
+
+- Supervised learning  
+- Regression and classification  
+- Model evaluation and diagnostics  
+- Overfitting and the bias–variance tradeoff  
+- ML pipelines  
+- Unsupervised learning and clustering  
+- PCA and dimensionality reduction  
+- Neural networks and deep learning  
+- Convolutional networks  
+- Large Language Models (LLMs)  
+- Retrieval-Augmented Generation (RAG)  
+
+As chapters are released, links will appear here.
+
+---
+
+# Practical Guides
+
+Task-oriented reference pages that support installation, configuration, and technical troubleshooting.
+
+- [Using the Terminal or PowerShell](guides/terminal_powershell_basics.qmd)  
+- [Installing Python, `uv`, and VS Code](guides/setup_python_uv_vscode.qmd)  
+- [Using Google Colab](guides/using_colab.qmd)  
+- [Optional: Stabilizing VS Code Updates](guides/vscode_update_stability.qmd)
+
+---
+
+## Learning Philosophy
+
+This textbook is built around two reinforcing goals:
+
+### **AI Literacy**  
+Understanding how analytical and AI systems are structured, why they behave as they do, and how they influence decision-making.
+
+### **Practical Capabilities**  
+Developing the ability to implement real analytical workflows using Python, diagnostic tools, and modern data processing libraries.
 
 ---
 
 ## Accessing Code and Data
 
-All example code for the course is maintained in the main GitHub repository:
+All example code and supporting data for the text are provided in organized folders:
 
-> **Code folder:** `code/` (available in GitHub and Canvas)
-> **Data folder:** `data/` (available in Canvas only)
+- **`code/`** — downloadable Python scripts and examples  
+- **`data/`** — datasets used in demonstrations and mini-labs  
+
+Download the full repository or browse files individually.
+
+## Copyright and Use
+
+© 2026 Joel Davis.
+This work—including all text, figures, and diagrams—may be used, shared, adapted, remixed, and redistributed for any purpose, including commercial use. No permission is required. Attribution is appreciated but not required. This content is provided as-is, without warranty.
+
+This work is dedicated to the public domain under the Creative Commons CC0 1.0 Universal license.
 
 
-You may download the entire repository as a `.zip` file or clone it directly.  
-
-Links to specific scripts and notebooks appear at the end of each week’s chapter.
-
----
-
-## Need Help?
-
-If you encounter technical issues with installation, environments, or package setup, consult the **Guides** section using the navigation bar above. These pages provide step-by-step instructions tailored for this course.
+Welcome to *Foundations of Analytics & AI*.  
+Have fun!

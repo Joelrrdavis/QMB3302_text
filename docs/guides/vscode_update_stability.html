@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Using Google Colab for This Course – Foundations of Analytics &amp; AI</title>
+<title>Locking VS Code Updates for a Stable Semester – Foundations of Analytics &amp; AI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -207,21 +207,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#what-is-google-colab" id="toc-what-is-google-colab" class="nav-link" data-scroll-target="#what-is-google-colab">1. What Is Google Colab?</a></li>
-  <li><a href="#opening-google-colab" id="toc-opening-google-colab" class="nav-link" data-scroll-target="#opening-google-colab">2. Opening Google Colab</a></li>
-  <li><a href="#option-a-create-a-new-notebook" id="toc-option-a-create-a-new-notebook" class="nav-link" data-scroll-target="#option-a-create-a-new-notebook">3. Option A — Create a New Notebook</a></li>
-  <li><a href="#option-b-upload-a-notebook-from-your-computer" id="toc-option-b-upload-a-notebook-from-your-computer" class="nav-link" data-scroll-target="#option-b-upload-a-notebook-from-your-computer">4. Option B — Upload a Notebook from Your Computer</a></li>
-  <li><a href="#option-c-open-a-notebook-directly-from-github" id="toc-option-c-open-a-notebook-directly-from-github" class="nav-link" data-scroll-target="#option-c-open-a-notebook-directly-from-github">5. Option C — Open a Notebook Directly from GitHub</a></li>
-  <li><a href="#installing-packages-in-colab" id="toc-installing-packages-in-colab" class="nav-link" data-scroll-target="#installing-packages-in-colab">6. Installing Packages in Colab</a></li>
-  <li><a href="#working-with-files" id="toc-working-with-files" class="nav-link" data-scroll-target="#working-with-files">7. Working with Files</a>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
   <ul class="collapse">
-  <li><a href="#temporary-upload" id="toc-temporary-upload" class="nav-link" data-scroll-target="#temporary-upload">Temporary Upload</a></li>
-  <li><a href="#mount-google-drive" id="toc-mount-google-drive" class="nav-link" data-scroll-target="#mount-google-drive">Mount Google Drive</a></li>
+  <li><a href="#prerequisite" id="toc-prerequisite" class="nav-link" data-scroll-target="#prerequisite">Prerequisite</a></li>
+  <li><a href="#what-you-will-have-when-youre-done" id="toc-what-you-will-have-when-youre-done" class="nav-link" data-scroll-target="#what-you-will-have-when-youre-done">What you will have when you’re done</a></li>
   </ul></li>
-  <li><a href="#saving-your-work" id="toc-saving-your-work" class="nav-link" data-scroll-target="#saving-your-work">8. Saving Your Work</a></li>
-  <li><a href="#limitations-of-colab" id="toc-limitations-of-colab" class="nav-link" data-scroll-target="#limitations-of-colab">9. Limitations of Colab</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">10. Summary</a></li>
+  <li><a href="#phase-1-make-vs-code-updates-manual" id="toc-phase-1-make-vs-code-updates-manual" class="nav-link" data-scroll-target="#phase-1-make-vs-code-updates-manual">Phase 1 — Make VS Code Updates Manual</a>
+  <ul class="collapse">
+  <li><a href="#open-the-settings-json-file" id="toc-open-the-settings-json-file" class="nav-link" data-scroll-target="#open-the-settings-json-file">1. Open the Settings (JSON) file</a></li>
+  <li><a href="#add-the-stability-settings" id="toc-add-the-stability-settings" class="nav-link" data-scroll-target="#add-the-stability-settings">2. Add the “stability settings”</a></li>
+  <li><a href="#confirm-the-settings-were-applied" id="toc-confirm-the-settings-were-applied" class="nav-link" data-scroll-target="#confirm-the-settings-were-applied">3. Confirm the settings were applied</a></li>
+  </ul></li>
+  <li><a href="#phase-2-install-only-the-required-extension" id="toc-phase-2-install-only-the-required-extension" class="nav-link" data-scroll-target="#phase-2-install-only-the-required-extension">Phase 2 — Install Only the Required Extension</a>
+  <ul class="collapse">
+  <li><a href="#install-the-python-extension-microsoft" id="toc-install-the-python-extension-microsoft" class="nav-link" data-scroll-target="#install-the-python-extension-microsoft">4. Install the Python extension (Microsoft)</a></li>
+  </ul></li>
+  <li><a href="#phase-3-interpreter-consistency-common-hidden-source-of-errors" id="toc-phase-3-interpreter-consistency-common-hidden-source-of-errors" class="nav-link" data-scroll-target="#phase-3-interpreter-consistency-common-hidden-source-of-errors">Phase 3 — Interpreter Consistency (Common “Hidden” Source of Errors)</a>
+  <ul class="collapse">
+  <li><a href="#select-the-correct-python-interpreter" id="toc-select-the-correct-python-interpreter" class="nav-link" data-scroll-target="#select-the-correct-python-interpreter">5. Select the correct Python interpreter</a></li>
+  <li><a href="#quick-visual-check-bottom-right" id="toc-quick-visual-check-bottom-right" class="nav-link" data-scroll-target="#quick-visual-check-bottom-right">6. Quick visual check (bottom-right)</a></li>
+  </ul></li>
+  <li><a href="#phase-4-manual-updates" id="toc-phase-4-manual-updates" class="nav-link" data-scroll-target="#phase-4-manual-updates">Phase 4 — Manual Updates</a>
+  <ul class="collapse">
+  <li><a href="#updating-vs-code-manual" id="toc-updating-vs-code-manual" class="nav-link" data-scroll-target="#updating-vs-code-manual">7. Updating VS Code (manual)</a></li>
+  <li><a href="#updating-extensions-manual" id="toc-updating-extensions-manual" class="nav-link" data-scroll-target="#updating-extensions-manual">8. Updating extensions (manual)</a></li>
+  </ul></li>
+  <li><a href="#optional-apply-these-settings-to-a-course-workspace-folder" id="toc-optional-apply-these-settings-to-a-course-workspace-folder" class="nav-link" data-scroll-target="#optional-apply-these-settings-to-a-course-workspace-folder">Optional: Apply These Settings to a Course Workspace Folder</a>
+  <ul class="collapse">
+  <li><a href="#workspace-settings-file" id="toc-workspace-settings-file" class="nav-link" data-scroll-target="#workspace-settings-file">Workspace settings file</a></li>
+  </ul></li>
+  <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a>
+  <ul class="collapse">
+  <li><a href="#i-cant-find-open-settings-json" id="toc-i-cant-find-open-settings-json" class="nav-link" data-scroll-target="#i-cant-find-open-settings-json">“I can’t find Open Settings (JSON)”</a></li>
+  <li><a href="#my-json-is-broken" id="toc-my-json-is-broken" class="nav-link" data-scroll-target="#my-json-is-broken">“My JSON is broken”</a></li>
+  <li><a href="#python-works-in-terminal-but-not-in-vs-code" id="toc-python-works-in-terminal-but-not-in-vs-code" class="nav-link" data-scroll-target="#python-works-in-terminal-but-not-in-vs-code">“Python works in terminal but not in VS Code”</a></li>
+  </ul></li>
+  <li><a href="#final-checkpoint" id="toc-final-checkpoint" class="nav-link" data-scroll-target="#final-checkpoint">Final checkpoint</a></li>
   </ul>
 </nav>
     </div>
@@ -230,7 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Using Google Colab for This Course</h1>
+<h1 class="title">Locking VS Code Updates for a Stable Semester</h1>
 </div>
 
 
@@ -249,153 +270,315 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>Google Colab is a free, cloud-based environment for running Python notebooks.<br>
-You can use it from any computer without installing Python locally. It is especially helpful if:</p>
+<div class="callout-alert">
+<p>OPTIONAL! This guide and these steps are optional. I would suggest attempting this if you are relatively computer savy. If not, you should skip it. The consequences for not locking down surpise updates are not that severe. Some of the code I run might look different to you, minor changes in behavior.</p>
+</div>
+<p>This guide walks you through a <strong>one-time configuration</strong> that prevents surprise changes in Visual Studio Code during the semester:</p>
 <ul>
-<li>Your computer cannot install packages reliably<br>
-</li>
-<li>You are troubleshooting your Python installation<br>
-</li>
-<li>You want quick access to a working Python environment</li>
+<li>Disabling <strong>automatic VS Code updates</strong></li>
+<li>Disabling <strong>automatic extension updates</strong></li>
+<li>Installing the <strong>Python extension (Microsoft)</strong></li>
+<li>Verifying your <strong>Python interpreter selection</strong></li>
+<li>Confirming everything still runs normally</li>
 </ul>
-<p>This guide explains how to open Colab, upload or access notebooks, install packages, work with files, and download your work.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Follow this top-to-bottom, in order.</strong><br>
+Most problems happen when settings are changed in the wrong place or only partially applied. Again, don’t attempt this if you are not very comfortable problem solving on a PC or MAC.</p>
+</div>
+</div>
 <hr>
-</section>
-<section id="what-is-google-colab" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-google-colab">1. What Is Google Colab?</h2>
-<p>Google Colab provides:</p>
+<section id="prerequisite" class="level3">
+<h3 class="anchored" data-anchor-id="prerequisite">Prerequisite</h3>
+<p>This guide assumes you can:</p>
 <ul>
-<li>A hosted Python runtime (no setup required)<br>
+<li>open VS Code<br>
 </li>
-<li>Built-in Jupyter-like notebook interface<br>
+<li>open a terminal (Mac Terminal / Windows PowerShell)<br>
 </li>
-<li>Free GPU/TPU access (not required for this course but available)<br>
+<li>copy/paste text<br>
 </li>
-<li>Integration with Google Drive</li>
-</ul>
-<p>Colab notebooks use the <code>.ipynb</code> format, but you can also copy/paste Python code from <code>.py</code> files.</p>
-<hr>
-</section>
-<section id="opening-google-colab" class="level2">
-<h2 class="anchored" data-anchor-id="opening-google-colab">2. Opening Google Colab</h2>
-<p>Go to:</p>
-<p><a href="https://colab.research.google.com/" class="uri">https://colab.research.google.com/</a></p>
-<p>You will see a window prompting you to:</p>
-<ul>
-<li>Start a new notebook<br>
-</li>
-<li>Upload a <code>.ipynb</code> file<br>
-</li>
-<li>Open from Google Drive<br>
-</li>
-<li>Open from GitHub</li>
+<li>save a file</li>
 </ul>
 <hr>
 </section>
-<section id="option-a-create-a-new-notebook" class="level2">
-<h2 class="anchored" data-anchor-id="option-a-create-a-new-notebook">3. Option A — Create a New Notebook</h2>
+<section id="what-you-will-have-when-youre-done" class="level3">
+<h3 class="anchored" data-anchor-id="what-you-will-have-when-youre-done">What you will have when you’re done</h3>
+<p>By the end of this guide/walkthrough, you should have:</p>
 <ol type="1">
-<li>Go to <strong>File → New Notebook</strong>.<br>
-</li>
-<li>A new notebook will open with a default Python environment.<br>
-</li>
-<li>You can copy/paste code from the course textbook or <code>.py</code> files.</li>
+<li>VS Code configured to <strong>only update when you choose</strong></li>
+<li>Extensions configured to <strong>only update when you choose</strong></li>
+<li>The Python extension installed</li>
+<li>A quick health check confirming Python runs</li>
 </ol>
-<p>Use <strong>Shift + Enter</strong> to run a cell.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you are working in a class project folder, you can apply these settings at the <strong>workspace level</strong> so the course environment behaves consistently in that folder.</p>
+</div>
+</div>
 <hr>
 </section>
-<section id="option-b-upload-a-notebook-from-your-computer" class="level2">
-<h2 class="anchored" data-anchor-id="option-b-upload-a-notebook-from-your-computer">4. Option B — Upload a Notebook from Your Computer</h2>
+</section>
+<section id="phase-1-make-vs-code-updates-manual" class="level2">
+<h2 class="anchored" data-anchor-id="phase-1-make-vs-code-updates-manual">Phase 1 — Make VS Code Updates Manual</h2>
+<section id="open-the-settings-json-file" class="level3">
+<h3 class="anchored" data-anchor-id="open-the-settings-json-file">1. Open the Settings (JSON) file</h3>
 <ol type="1">
-<li>Go to <strong>File → Upload Notebook</strong><br>
+<li>Open VS Code<br>
 </li>
-<li>Select the notebook you downloaded<br>
+<li>Open <strong>Settings</strong><br>
 </li>
-<li>Colab will open it in a new tab</li>
+<li>In the upper right, click the icon: <strong>Open Settings (JSON)</strong></li>
 </ol>
+<p>You are now editing a file that looks like:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="er">//</span> <span class="er">settings</span> <span class="er">live</span> <span class="er">here</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You must edit <strong>Settings (JSON)</strong>, not the normal Settings UI, so you can copy the exact configuration reliably. Stop here if this looks scary.</p>
+</div>
+</div>
 <hr>
 </section>
-<section id="option-c-open-a-notebook-directly-from-github" class="level2">
-<h2 class="anchored" data-anchor-id="option-c-open-a-notebook-directly-from-github">5. Option C — Open a Notebook Directly from GitHub</h2>
-<ol type="1">
-<li>Go to <strong>File → Open Notebook</strong><br>
-</li>
-<li>Choose the <strong>GitHub</strong> tab<br>
-</li>
-<li>Paste the repository URL<br>
-</li>
-<li>Select the notebook you want to open</li>
-</ol>
-<p>Example:</p>
-<pre><code>https://github.com/&lt;your-username&gt;/undergrad-ai-course</code></pre>
+<section id="add-the-stability-settings" class="level3">
+<h3 class="anchored" data-anchor-id="add-the-stability-settings">2. Add the “stability settings”</h3>
+<p>Copy and paste the following <strong>exactly</strong> into your Settings (JSON).<br>
+If there are already settings in the file, paste these inside the top-level <code>{ ... }</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"update.mode"</span><span class="fu">:</span> <span class="st">"manual"</span><span class="fu">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"extensions.autoUpdate"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"extensions.autoCheckUpdates"</span><span class="fu">:</span> <span class="kw">false</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Save the file.</p>
 <hr>
 </section>
-<section id="installing-packages-in-colab" class="level2">
-<h2 class="anchored" data-anchor-id="installing-packages-in-colab">6. Installing Packages in Colab</h2>
-<p>Colab comes with many Python packages preinstalled.</p>
-<p>To install additional packages:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install seaborn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Or install from a requirements file:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>r requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
-</section>
-<section id="working-with-files" class="level2">
-<h2 class="anchored" data-anchor-id="working-with-files">7. Working with Files</h2>
-<section id="temporary-upload" class="level3">
-<h3 class="anchored" data-anchor-id="temporary-upload">Temporary Upload</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> files</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>uploaded <span class="op">=</span> files.upload()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="mount-google-drive" class="level3">
-<h3 class="anchored" data-anchor-id="mount-google-drive">Mount Google Drive</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> drive</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>drive.mount(<span class="st">'/content/drive'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Your Drive will appear at:</p>
-<pre><code>/content/drive/MyDrive/</code></pre>
-<hr>
-</section>
-</section>
-<section id="saving-your-work" class="level2">
-<h2 class="anchored" data-anchor-id="saving-your-work">8. Saving Your Work</h2>
-<section id="save-to-drive" class="level4">
-<h4 class="anchored" data-anchor-id="save-to-drive">Save to Drive</h4>
-<p><strong>File → Save a copy in Drive</strong></p>
-</section>
-<section id="download" class="level4">
-<h4 class="anchored" data-anchor-id="download">Download</h4>
-<p><strong>File → Download → .ipynb</strong><br>
-<strong>File → Download → .py</strong></p>
-<hr>
-</section>
-</section>
-<section id="limitations-of-colab" class="level2">
-<h2 class="anchored" data-anchor-id="limitations-of-colab">9. Limitations of Colab</h2>
+<section id="confirm-the-settings-were-applied" class="level3">
+<h3 class="anchored" data-anchor-id="confirm-the-settings-were-applied">3. Confirm the settings were applied</h3>
+<p>Do a quick confirmation:</p>
 <ul>
-<li>Sessions time out<br>
+<li>Open Settings UI and search for <strong>Update Mode</strong>
+<ul>
+<li>It should show <strong>Manual</strong></li>
+</ul></li>
+<li>Open Settings UI and search for <strong>Extensions: Auto Update</strong>
+<ul>
+<li>It should be <strong>off/unchecked</strong></li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you accidentally pasted an extra comma or broke the JSON formatting, VS Code will show a warning in the Settings (JSON) editor. Fix formatting first.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="phase-2-install-only-the-required-extension" class="level2">
+<h2 class="anchored" data-anchor-id="phase-2-install-only-the-required-extension">Phase 2 — Install Only the Required Extension</h2>
+<section id="install-the-python-extension-microsoft" class="level3">
+<h3 class="anchored" data-anchor-id="install-the-python-extension-microsoft">4. Install the Python extension (Microsoft)</h3>
+<p>Note: You may have this installed already… check!</p>
+<ol type="1">
+<li>Open the <strong>Extensions</strong> panel</li>
+<li>Search for: <strong>Python</strong></li>
+<li>Install <strong>Python</strong> by <strong>Microsoft</strong></li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Do not install preview/insider Python extensions.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="phase-3-interpreter-consistency-common-hidden-source-of-errors" class="level2">
+<h2 class="anchored" data-anchor-id="phase-3-interpreter-consistency-common-hidden-source-of-errors">Phase 3 — Interpreter Consistency (Common “Hidden” Source of Errors)</h2>
+<section id="select-the-correct-python-interpreter" class="level3">
+<h3 class="anchored" data-anchor-id="select-the-correct-python-interpreter">5. Select the correct Python interpreter</h3>
+<p>Even if VS Code is stable, your code can still fail if VS Code uses the wrong interpreter.</p>
+<ol type="1">
+<li>Open the Command Palette
+<ul>
+<li>macOS: <code>Cmd + Shift + P</code><br>
 </li>
-<li>Temporary files are deleted<br>
+<li>Windows: <code>Ctrl + Shift + P</code><br>
 </li>
-<li>Packages must be reinstalled each session<br>
-</li>
-<li>Internet connection required</li>
+</ul></li>
+<li>Choose: <strong>Python: Select Interpreter</strong></li>
+<li>Select the interpreter you want (The course suggests a UV solution):
+<ul>
+<li>System Python (if required), or</li>
+<li>A project environment interpreter (commonly a <code>.venv</code> folder)</li>
+</ul></li>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The wrong interpreter is the #1 cause of: - <code>ModuleNotFoundError</code> - “package not found” - code working in terminal but not in VS Code (or vice versa)</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="quick-visual-check-bottom-right" class="level3">
+<h3 class="anchored" data-anchor-id="quick-visual-check-bottom-right">6. Quick visual check (bottom-right)</h3>
+<p>Look at the bottom-right corner of VS Code.</p>
+<ul>
+<li>You should see a Python version + environment name</li>
+<li>If you click it, it should show the interpreter you selected</li>
 </ul>
 <hr>
 </section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">10. Summary</h2>
-<p>Google Colab allows you to:</p>
+</section>
+<section id="phase-4-manual-updates" class="level2">
+<h2 class="anchored" data-anchor-id="phase-4-manual-updates">Phase 4 — Manual Updates</h2>
+<section id="updating-vs-code-manual" class="level3">
+<h3 class="anchored" data-anchor-id="updating-vs-code-manual">7. Updating VS Code (manual)</h3>
 <ul>
-<li>Run Python without installing anything<br>
-</li>
-<li>Upload/open notebooks<br>
-</li>
-<li>Install packages<br>
-</li>
-<li>Work with Drive<br>
-</li>
-<li>Download your work</li>
+<li><strong>Windows / macOS:</strong><br>
+<code>Help → Check for Updates</code></li>
 </ul>
-<p>It is a useful fallback or complementary environment for this course.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Do not update VS Code right before an exam, That may lead to unexpectected and frustrating changes to your working environment.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="updating-extensions-manual" class="level3">
+<h3 class="anchored" data-anchor-id="updating-extensions-manual">8. Updating extensions (manual)</h3>
+<ol type="1">
+<li>Open <strong>Extensions</strong></li>
+<li>Click the <code>…</code> menu in the Extensions panel</li>
+<li>Choose <strong>Check for Updates</strong></li>
+<li>Update only what you need</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="optional-apply-these-settings-to-a-course-workspace-folder" class="level2">
+<h2 class="anchored" data-anchor-id="optional-apply-these-settings-to-a-course-workspace-folder">Optional: Apply These Settings to a Course Workspace Folder</h2>
+<p>If you have a course project folder (recommended), you can apply settings to that folder only.</p>
+<section id="workspace-settings-file" class="level3">
+<h3 class="anchored" data-anchor-id="workspace-settings-file">Workspace settings file</h3>
+<p>Inside your project folder, create:</p>
+<pre class="text"><code>.vscode/settings.json</code></pre>
+<p>Then paste the same settings into that file:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"update.mode"</span><span class="fu">:</span> <span class="st">"manual"</span><span class="fu">,</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"extensions.autoUpdate"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"extensions.autoCheckUpdates"</span><span class="fu">:</span> <span class="kw">false</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Workspace settings are helpful because they travel with the project folder.<br>
+User settings apply to <strong>all</strong> VS Code projects on your machine.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="troubleshooting" class="level2">
+<h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
+<section id="i-cant-find-open-settings-json" class="level3">
+<h3 class="anchored" data-anchor-id="i-cant-find-open-settings-json">“I can’t find Open Settings (JSON)”</h3>
+<p>Try either of these:</p>
+<ul>
+<li>Command Palette → <strong>Preferences: Open User Settings (JSON)</strong></li>
+<li>Settings UI → use the top-right icon for JSON</li>
+</ul>
+<hr>
+</section>
+<section id="my-json-is-broken" class="level3">
+<h3 class="anchored" data-anchor-id="my-json-is-broken">“My JSON is broken”</h3>
+<p>Symptoms include red underlines and warnings in the settings editor.</p>
+<p>Fixes: - Make sure there is only <strong>one</strong> outer <code>{ ... }</code> - Every setting line except the last must end with a comma - Strings must be wrapped in quotes</p>
+<p>Correct example:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"update.mode"</span><span class="fu">:</span> <span class="st">"manual"</span><span class="fu">,</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"extensions.autoUpdate"</span><span class="fu">:</span> <span class="kw">false</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="python-works-in-terminal-but-not-in-vs-code" class="level3">
+<h3 class="anchored" data-anchor-id="python-works-in-terminal-but-not-in-vs-code">“Python works in terminal but not in VS Code”</h3>
+<p>This is almost always interpreter mismatch.</p>
+<p>Checklist: - Run <strong>Python: Select Interpreter</strong> - Confirm the bottom-right interpreter matches your project environment</p>
+<hr>
+</section>
+</section>
+<section id="final-checkpoint" class="level2">
+<h2 class="anchored" data-anchor-id="final-checkpoint">Final checkpoint</h2>
+<ul>
+<li>VS Code updates are set to <strong>manual</strong></li>
+<li>Extensions do <strong>not</strong> auto-update</li>
+<li>Python extension (Microsoft) is installed</li>
+<li>VS Code shows the correct Python interpreter</li>
+<li>You can run a simple Python file successfully</li>
+</ul>
 
 
 </section>

@@ -1,0 +1,149 @@
+---
+title: "Foundations of Analytics and AI"
+---
+
+## Analytics: Descriptive → Diagnostic → Predictive → Prescriptive
+
+Analytics is an probably best understood as a decision-support capability. Analytics methods help to summarize, explain, and forecast patterns in data, but they do not make decisions on their own. 
+
+Importantly, analytics isn't a single technique, or a single approach. Sometimes it helps to think of analytics approaches as a **progression of questions** organizations and analysts ask about their data. These questions range in purpose from understanding what has already happened to deciding what action should be taken next. One common, and useful way, to organize this progression is through four categories: **descriptive, diagnostic, predictive, and prescriptive analytics**.
+
+**Descriptive analytics** answers the question: *What happened?*  
+This is probably, for most beginners and businesses, the most familiar form of analytics. It focuses on summarizing historical data, and reporting on the past. All data is in the past of course, so this is not an unusual place to start! Examples include reports, dashboards, averages, totals, and trends of events or activity over time. Descriptive analytics does not attempt to explain *why* something occurred or what will happen next; rather it provides a picture of past outcomes.
+
+**Diagnostic analytics** asks: *Why did it happen?*  
+Once an outcome is observed, the next step is (sometimes) to understand its cause. Diagnostic analytics explores relationships, comparisons, pproperties in the data to identify factors that may have contributed to a givern outcome. This might involve segmenting or profiling customers, comparing performance across regions, or examining changes before and after a specific event. While still focused on historical data, the goal of diagnostic analytics is to move beyond description toward explanation.
+
+**Predictive analytics** moves the focus from the past, to the future by asking: *What is likely to happen next?*  
+Here, statistical models and machine learning techniques are often used to estimate some future outcome based on the patterns in past data. Common examples include forecasting demand, predicting customer churn, or estimating the probability that an event will occur. Predictive analytics does not of course  *guarantee* what will happen; it produces **probabilistic estimates**, perhaps best thought of as a data-educated guess,  that support informed decision making. 
+
+**Prescriptive analytics** asks *What should we do about it?*  
+Prescriptive analytics builds on predictions by incorporating goals, constraints, policies and trade-offs to recommend actions. This may involve optimization models, business rules, or simulation. For example, a system might recommend how much inventory to reorder to avoid a forecasted product shortage, which customers are most likely to target with a promotion and how they shoulkd be approached, or how to allocate limited resources. At this stage, analytics becomes tightly connected to decision-making rather than analysis alone.
+
+These categories are almost never **mutually exclusive**.  Most modern systems will combine multiple aspects of these.  For example, a workflow might summarize past performance (descriptive), given a finding here, it might move on identifying a problem area (diagnostic). More sophisticated systems might then estimate or try to quantify some future risk (predictive), and recommend a precise action (prescriptive). 
+
+To make this idea more concrete, let's take the same inventory problem vexxing a business, and view it through these different levels of analytics. 
+
+- **Descriptive:** “Stockouts of product x increased last month.”  
+- **Diagnostic:** “The stockouts of product x spiked after supplier delays on key supply routes through the port of y.”  
+- **Predictive:** “Next month’s stockout risk for product x is approximately 0.35.”  
+- **Prescriptive:** “Increase the reorder point for product x, and route more goods through an alternate port (z) to to reduce stockout risk.”
+
+The underlying domain is unchanged; what changes is the **question** being asked.
+
+
+## Artificial Intelligence: Systems That Perform Tasks Requiring Human-Like Judgment
+
+In practice, AI systems often:
+
+- produce **scores, classes, or recommendations**,  
+- operate **at scale** (many decisions, quickly), and  
+- trigger or prioritize actions with **limited human-in-the-loop**.
+
+One simple way to distinguish analytics from artificial intelligence is to focus on how the outputs of each are used. Analytics systems typically produce insights, these might be things like a business summary, explanations, or forecasts. These artifacts or outputs are then reviewed and acted upon by humans. AI systems, by contrast, are often designed to execute or automate decisions directly, using models and logic to act without human intervention in each instance.These characteristics distinguish AI systems from purely descriptive or exploratory analytics, even when they rely on similar mathematical tools.
+
+Artificial intelligence (AI) refers to a class of systems designed to perform tasks that would normally require **human judgment, interpretation, or decision-making**. Unlike traditional analytics, which primarily focuses on summarizing data or supporting decisions, AI systems are often embedded directly into processes where they make or influence decisions in real time.
+
+A defining feature of AI systems is that they operate in environments where rules are incomplete, uncertainty is often present, or inputs are too complex to handle with simple, hand-coded logic. Examples include recognizing objects in images, understanding natural language, detecting fraudulent transactions, or recommending products to users. In each case, the system must evaluate patterns, weigh evidence, and produce an output. Although the actual process a computer takes is different, it does mimic or resemble what a human might do, and how a human might approach the same problem(s).
+
+AI systems often (though not always!) rely on **models trained from data** rather than explicit instructions for every possible scenario. An AI system is not usuakky told *exactly* how to respond in each case it has to work with. Rather, the system learns statistical relationships or representations from historical examples. When presented with new inputs, new cases, it uses the learned patterns to generate predictions, classifications, or actions. This learning-based approach allows AI systems to scale to very complex tasks, while it also introduces uncertainty and the possibility of error.
+
+Another important characteristic of AI is that its outputs are often **probabilistic rather than definitive**. This is a distinction that is key for decision makers using these systems to understand. An AI system may estimate the likelihood that an email is spam, that a customer will stop using a service, or that an image contains a particular object. To make these systems actionable requires combining these estimates with thresholds, business rules, or human oversight to determine what action is taken. It should be clear at this point that AI should be understood as a component within a broader decision system rather than as an autonomous replacement for human judgment. This is not to say these systems do not or cannot replace human decision making. It is not always clear in these systems when and how human judgment was involved in the making or deployment of a system, but it was involved.
+
+It is useful at this point to distinguish between **narrow AI** and broader notions of **artififical general intelligence.** The systems discussed in this book are narrow by design: they are built to perform specific tasks under specific conditions, often very well, but they do not possess general understanding or awareness. Recognizing both the strengths and limitations of these systems is essential for using them responsibly and effectively in organizational settings.
+
+### Nested views of AI, machine learning, and deep learning
+
+<figure>
+  <img src="../assets/images/1_qmb_nested_ai.svg"
+       alt="Conceptual diagram showing artificial intelligence as the broad category, with machine learning as a subset and deep learning as a further subset.">
+  <figcaption>AI is often described as a broad category that contains machine learning methods, with deep learning as a further subset.</figcaption>
+</figure>
+
+This nested view is not the only way to define AI, but it is useful:
+- **AI** refers broadly to systems that participate in decisions.  
+- **Machine learning** focuses on models learned from data.  
+- **Deep learning** is a subset of machine learning that uses layered neural networks.
+
+Later chapters will revisit these distinctions in more detail.
+
+
+## Analytics vs. AI: Overlap and Differences
+
+Analytics and AI are related, but they shouldn't be considered interchangeable. Many systems labeled as “AI” rely heavily on analytical techniques, and many analytical workflows now incorporate AI-based models. There is considerale overlap in the domains, and it is often misunderstood. It is also important for business decison makers to be able to differ from the reality of these systems, and the very real ways they can add value, and the hype surrounding them. 
+
+We've discussed earlier the specific characteristics of these systems. At a high level, **analytics** is primarily concerned with *supporting human decision-making*.  The focus of these systems is in extracting insight from data, identifying patterns, and presenting information in ways that help humans better understand what is happening and decide what to do. Even in advanced forms such as predictive or prescriptive analytics, the output is often intended to inform a human decision-maker, who retains responsibility for interpreting the results and acting on them.
+
+**AI**, by contrast, is often designed to *participate directly in the decision process*.  AI systems may initiate actions with little or no  human involvement, this is especially the case  in high-volume or time-sensitive contexts. While humans still define objectives, constraints, and oversight mechanisms, AI systems are frequently embedded into operational workflows where their outputs have immediate consequences.
+
+There is, however, an **area of overlap**. Both of these systems,  analytics and AI:
+- rely on data as the primary input,
+- use models to represent relationships or patterns,
+- and produce outputs that influence decisions.
+
+Many predictive analytics techniques, such as regression or classification models, are also foundational components of AI systems. One of the simplist ways to understand the difference: it lies not in the mathematics, but in **how the results are used**. A churn prediction model displayed on a dashboard for managers is typically considered analytics; the same model automatically triggering retention offers for customers may be considered AI.
+
+Another key distinction is the role of **interpretability and automation**. Analytics tools are often designed and implemented in a way the emphasize transparency and explainability. They are built to allow users to drill down into results and ask follow-up questions. AI systems, one the other hand,  often prioritize performance and scalability over this level of transparency. This sometimes triggers requirements such as  additional governance and monitoring to ensure appropriate use. The lack of interpretability may also lead some users of these systems to lack trust in the outputs or the decisions the system makes. 
+
+Rather than viewing analytics and AI as competing approaches, it is more accurate to see them as **points along a continuum**. Most system deployed in the real world combine facets of analytical reporting, predictive modeling, and AI-driven automation into a single pipeline. 
+
+This distinction becomes increasingly important as we move into topics such as machine learning and generative AI, where the same underlying techniques can support very different organizational roles depending on how they are deployed.
+
+### A continuum of decision autonomy
+
+
+<figure>
+  <img src="../assets/images/1_autonomy_continuum.svg"
+       alt="Autonomy continuum showing four stages from left to right: Dashboard, Decision Support, Assisted Action, and Automated Action. The left side indicates lower autonomy and the right side indicates higher autonomy.">
+  <figcaption>Decision autonomy increases as model outputs move from being viewed by humans to driving actions automatically.</figcaption>
+</figure>
+
+## Prediction as a Component
+
+
+::: {.callout-important}
+How does decision logic, thresholds, constraints and appropriate oversite play in this system space? 
+
+A prediction might help to answer: **“What is likely to happen?”**  
+A system goal is often to answer: **“What do we do now that we know that?”**
+
+:::
+
+It is not at all uncommon for many discussions of AI, especially those focused on machine learning, to treat **prediction** as the central task. Sometimes the only task! While prediction is a critical capability, it is important to recognize that **prediction alone does not make a complete AI system**. In practice, prediction is just one component within a larger structure that connects data, models, and decisions. 
+
+A prediction answers a narrow question such as *“What is the likelihood that this event will occur?”* or *“Which category does this input most likely belong to?”* For example, a model might predict the probability that a customer will churn, that a transaction is fraudulent, or that a document belongs to a particular topic. These outputs are useful, but on their own they do not specify what action should be taken, and they do not take action independent of human action. 
+
+What turns a prediction into something operational is the surrounding **decision logic**. Organizations must decide how to interpret a predicted probability, what threshold to apply, what constraints exist within the business environment, and what costs are associated with different actions. A churn prediction of 70%, for instance, does not automatically imply a given action should be taken. In a different business, or market that prediction may trigger different responses depending on business priorities or resource availability.
+
+This distinction highlights why AI systems might be understood as **socio-technical systems**, not just a simple model. Data pipelines determine what information is available to the model. Models generate predictions based on learned patterns from data. Decision frameworks and processes translate those into actions, sometimes with with human oversight and governance layered in.
+
+Recognizing that prediction is a component rather than the *whole system* also helps clarify common misunderstandings about AI capability. High predictive accuracy does not guarantee good decisions, ethical outcomes, or organizational value! When an analyst or a business utilizes poorly designed thresholds, has misaligned incentives, or fails to appropriately examine assumptions, even the most accurate model can be undermined. 
+
+Throughout this book, we will return to this idea repeatedly: **models produce predictions, but systems produce decisions**. 
+
+### Quick Check: Analytics, AI, or Both?
+
+The goal in this short thought experiement is not to label each system perfectly, but to consider *why* something is considered analytics, AI, or a combination of both. The differences are fairly nuanced. In most real-world systems, the distinction depends less on the mathematical technique and more on **how the output is used**.
+
+- **A dashboard showing last quarter’s sales by region, with filters and charts**  
+**Analytics**. The system summarizes historical data and presents it to a human decision-maker, who interprets the results and decides what action to take.  It does not predict outcomes or take autonomous action.
+
+- **A model that predicts the probability a customer will cancel their subscription, displayed to a manager**  
+**analytics**.  Although perhaps this one is closer to edge. Even though a predictive model is used, the output supports human judgment rather than directly triggering an action.
+
+- **The same churn prediction model automatically sending retention offers to high-risk customers**  
+Definetly **AI**. The prediction is now embedded in an operational workflow, and the system is actively participating in decision-making and taking action rather than merely informing it.
+
+- **A fraud detection system that flags suspicious transactions for human review**  
+**Both analytics and AI?**.  This one is probably the most complex to cleanly seperate. The model performs a task that is very "AI-like" (pattern recognition and classification), but the final decision is still made by a human, creating a hybrid system. 
+
+- **A recommendation engine that personalizes product suggestions in real time**  
+ This is clearly **AI**. The system continuously generates predictions and acts on them automatically at scale, often without direct human intervention for each decision.
+
+::: {.callout-note}
+Even when the underlying model is identical, the **system label** may shift from “analytics” to “AI” as autonomy increases.  
+A churn model whose scores appear only on a dashboard is typically analytics. The same model driving automatic retention offers is better described as AI.
+:::
+
+The key takeaway is that **the same underlying model can be analytics or AI depending on context**. What matters is not just whether a model is used, but *where it sits in the decision process*, how much autonomy it has, and who—or what—ultimately acts on its output.
+

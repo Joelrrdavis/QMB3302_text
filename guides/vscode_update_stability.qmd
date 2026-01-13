@@ -1,0 +1,253 @@
+---
+title: "Locking VS Code Updates for a Stable Semester"
+---
+
+## Overview
+
+::: {.callout-alert}
+OPTIONAL! This guide and these steps are optional. I would suggest attempting this if you are relatively computer savy. If not, you should skip it. The consequences for not locking down surpise updates are not that severe. Some of the code I run might look different to you, minor changes in behavior. 
+:::
+
+
+This guide walks you through a **one-time configuration** that prevents surprise changes in Visual Studio Code during the semester:
+
+- Disabling **automatic VS Code updates**
+- Disabling **automatic extension updates**
+- Installing the **Python extension (Microsoft)** 
+- Verifying your **Python interpreter selection**
+- Confirming everything still runs normally
+
+::: {.callout-note}
+**Follow this top-to-bottom, in order.**  
+Most problems happen when settings are changed in the wrong place or only partially applied. Again, don't attempt this if you are not very comfortable problem solving on a PC or MAC. 
+:::
+
+---
+
+### Prerequisite
+
+This guide assumes you can:
+
+- open VS Code  
+- open a terminal (Mac Terminal / Windows PowerShell)  
+- copy/paste text  
+- save a file  
+
+---
+
+### What you will have when you’re done
+
+By the end of this guide/walkthrough, you should have:
+
+1. VS Code configured to **only update when you choose**
+2. Extensions configured to **only update when you choose**
+3. The Python extension installed
+4. A quick health check confirming Python runs
+
+::: {.callout-tip}
+If you are working in a class project folder, you can apply these settings at the **workspace level** so the course environment behaves consistently in that folder.
+:::
+
+---
+
+## Phase 1 — Make VS Code Updates Manual
+
+### 1. Open the Settings (JSON) file
+
+1. Open VS Code  
+2. Open **Settings**  
+3. In the upper right, click the icon: **Open Settings (JSON)**  
+
+You are now editing a file that looks like:
+
+```json
+{
+  // settings live here
+}
+```
+
+::: {.callout-important}
+You must edit **Settings (JSON)**, not the normal Settings UI, so you can copy the exact configuration reliably. Stop here if this looks scary. 
+:::
+
+---
+
+### 2. Add the “stability settings”
+
+Copy and paste the following **exactly** into your Settings (JSON).  
+If there are already settings in the file, paste these inside the top-level `{ ... }`.
+
+```json
+{
+  "update.mode": "manual",
+  "extensions.autoUpdate": false,
+  "extensions.autoCheckUpdates": false
+}
+```
+
+Save the file.
+
+---
+
+### 3. Confirm the settings were applied
+
+Do a quick confirmation:
+
+- Open Settings UI and search for **Update Mode**
+  - It should show **Manual**
+- Open Settings UI and search for **Extensions: Auto Update**
+  - It should be **off/unchecked**
+
+::: {.callout-tip}
+If you accidentally pasted an extra comma or broke the JSON formatting, VS Code will show a warning in the Settings (JSON) editor. Fix formatting first.
+:::
+
+---
+
+## Phase 2 — Install Only the Required Extension
+
+### 4. Install the Python extension (Microsoft)
+
+Note: You may have this installed already... check!
+
+1. Open the **Extensions** panel
+2. Search for: **Python**
+3. Install **Python** by **Microsoft**
+
+::: {.callout-important}
+Do not install preview/insider Python extensions.
+:::
+
+---
+
+## Phase 3 — Interpreter Consistency (Common “Hidden” Source of Errors)
+
+### 5. Select the correct Python interpreter
+
+Even if VS Code is stable, your code can still fail if VS Code uses the wrong interpreter.
+
+1. Open the Command Palette  
+   - macOS: `Cmd + Shift + P`  
+   - Windows: `Ctrl + Shift + P`  
+2. Choose: **Python: Select Interpreter**
+3. Select the interpreter you want (The course suggests a UV solution):
+   - System Python (if required), or
+   - A project environment interpreter (commonly a `.venv` folder)
+
+::: {.callout-warning}
+The wrong interpreter is the #1 cause of:
+- `ModuleNotFoundError`
+- “package not found”
+- code working in terminal but not in VS Code (or vice versa)
+:::
+
+---
+
+### 6. Quick visual check (bottom-right)
+
+Look at the bottom-right corner of VS Code.
+
+- You should see a Python version + environment name
+- If you click it, it should show the interpreter you selected
+
+---
+
+## Phase 4 — Manual Updates
+
+### 7. Updating VS Code (manual)
+
+- **Windows / macOS:**  
+  `Help → Check for Updates`
+
+::: {.callout-note}
+Do not update VS Code right before an exam, That may lead to unexpectected and frustrating changes to your working environment.
+:::
+
+---
+
+### 8. Updating extensions (manual)
+
+1. Open **Extensions**
+2. Click the `…` menu in the Extensions panel
+3. Choose **Check for Updates**
+4. Update only what you need
+
+---
+
+## Optional: Apply These Settings to a Course Workspace Folder
+
+If you have a course project folder (recommended), you can apply settings to that folder only.
+
+### Workspace settings file
+
+Inside your project folder, create:
+
+```text
+.vscode/settings.json
+```
+
+Then paste the same settings into that file:
+
+```json
+{
+  "update.mode": "manual",
+  "extensions.autoUpdate": false,
+  "extensions.autoCheckUpdates": false
+}
+```
+
+::: {.callout-tip}
+Workspace settings are helpful because they travel with the project folder.  
+User settings apply to **all** VS Code projects on your machine.
+:::
+
+---
+
+## Troubleshooting
+
+### “I can’t find Open Settings (JSON)”
+
+Try either of these:
+
+- Command Palette → **Preferences: Open User Settings (JSON)**
+- Settings UI → use the top-right icon for JSON
+
+---
+
+### “My JSON is broken”
+
+Symptoms include red underlines and warnings in the settings editor.
+
+Fixes:
+- Make sure there is only **one** outer `{ ... }`
+- Every setting line except the last must end with a comma
+- Strings must be wrapped in quotes
+
+Correct example:
+
+```json
+{
+  "update.mode": "manual",
+  "extensions.autoUpdate": false
+}
+```
+
+---
+
+### “Python works in terminal but not in VS Code”
+
+This is almost always interpreter mismatch.
+
+Checklist:
+- Run **Python: Select Interpreter**
+- Confirm the bottom-right interpreter matches your project environment
+
+---
+
+## Final checkpoint
+
+- VS Code updates are set to **manual**
+- Extensions do **not** auto-update
+- Python extension (Microsoft) is installed
+- VS Code shows the correct Python interpreter
+- You can run a simple Python file successfully

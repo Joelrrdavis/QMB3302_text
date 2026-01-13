@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Installing the Course Requirements and Checking Your Environment – Foundations of Analytics &amp; AI</title>
+<title>JSON and APIs for Data Access – Foundations of Analytics &amp; AI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -126,25 +126,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-weeks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Weeks</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-textbook" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Textbook</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-weeks">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-textbook">    
         <li>
-    <a class="dropdown-item" href="../textbook_src/week01_main.html">
- <span class="dropdown-text">Week 1. What is Analytics &amp; AI?</span></a>
+    <a class="dropdown-item" href="../textbook_src/ch1_foundations_analytics_ai_split.html">
+ <span class="dropdown-text">Ch 1. What Is Analytics &amp; AI?</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../textbook_src/week02_main.html">
- <span class="dropdown-text">Week 2. Python Basics</span></a>
+    <a class="dropdown-item" href="../textbook_src/ch2_ai_systems_data_models_logic.html">
+ <span class="dropdown-text">Ch 2. AI Systems: Data, Models, Logic</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../textbook_src/week03_main.html">
- <span class="dropdown-text">Week 3. Data Structures &amp; Pandas</span></a>
+    <a class="dropdown-item" href="../textbook_src/ch3_data_pipelines_decision_frameworks.html">
+ <span class="dropdown-text">Ch 3. Data Pipelines &amp; Decision Frameworks</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../textbook_src/week04_main.html">
- <span class="dropdown-text">Week 4. From Data to Models</span></a>
+    <a class="dropdown-item" href="../textbook_src/ch4_terminal_paths_envs.html">
+ <span class="dropdown-text">Ch 4. Python Execution Foundations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch5_python_foundations_data_control_functions.html">
+ <span class="dropdown-text">Ch 5. Python Basics: Data, Control, Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch6_working_with_tabular_data_pandas.html">
+ <span class="dropdown-text">Ch 6. Working with Tabular Data in Pandas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch7_json_apis_data_access.html">
+ <span class="dropdown-text">Ch 7. JSON and APIs for Data Access</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch8_simulation_synthetic_data.html">
+ <span class="dropdown-text">Ch 8. Simulation and Synthetic Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch9_visualization_from_data_to_insight.html">
+ <span class="dropdown-text">Ch 9. Visualization: From Data to Insight</span></a>
   </li>  
     </ul>
   </li>
@@ -154,16 +174,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
         <li>
-    <a class="dropdown-item" href="../guides/install_python.html">
- <span class="dropdown-text">Install Python</span></a>
+    <a class="dropdown-item" href="../guides/terminal_powershell_basics.html">
+ <span class="dropdown-text">Terminal and PowerShell Basics</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../guides/install_requirements.html">
- <span class="dropdown-text">Installing requirements.txt</span></a>
+    <a class="dropdown-item" href="../guides/setup_python_uv_vscode.html">
+ <span class="dropdown-text">Install Python, uv, VS Code</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../guides/using_colab.html">
  <span class="dropdown-text">Using Colab</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/vscode_update_stability.html">
+ <span class="dropdown-text">Locking VS Code Updates (Optional)</span></a>
   </li>  
     </ul>
   </li>
@@ -184,43 +208,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#before-you-start" id="toc-before-you-start" class="nav-link" data-scroll-target="#before-you-start">Before You Start</a></li>
-  <li><a href="#step-1-download-the-environment-files" id="toc-step-1-download-the-environment-files" class="nav-link" data-scroll-target="#step-1-download-the-environment-files">Step 1 — Download the Environment Files</a>
+  <li><a href="#json-and-structured-data-exchange" id="toc-json-and-structured-data-exchange" class="nav-link" data-scroll-target="#json-and-structured-data-exchange">JSON and Structured Data Exchange</a>
   <ul class="collapse">
-  <li><a href="#download-the-files" id="toc-download-the-files" class="nav-link" data-scroll-target="#download-the-files">1.1 — Download the files</a></li>
-  <li><a href="#save-them-to-your-week-1-folder" id="toc-save-them-to-your-week-1-folder" class="nav-link" data-scroll-target="#save-them-to-your-week-1-folder">1.2 — Save them to your Week 1 folder</a></li>
+  <li><a href="#what-json-is" id="toc-what-json-is" class="nav-link" data-scroll-target="#what-json-is">What JSON is</a></li>
+  <li><a href="#json-vs-tabular-data" id="toc-json-vs-tabular-data" class="nav-link" data-scroll-target="#json-vs-tabular-data">JSON vs tabular data</a></li>
   </ul></li>
-  <li><a href="#step-2-open-a-terminal-command-line" id="toc-step-2-open-a-terminal-command-line" class="nav-link" data-scroll-target="#step-2-open-a-terminal-command-line">Step 2 — Open a Terminal / Command Line</a>
+  <li><a href="#apis-as-data-sources" id="toc-apis-as-data-sources" class="nav-link" data-scroll-target="#apis-as-data-sources">APIs as Data Sources</a>
   <ul class="collapse">
-  <li><a href="#windows-vs-code-recommended" id="toc-windows-vs-code-recommended" class="nav-link" data-scroll-target="#windows-vs-code-recommended">Windows (VS Code recommended)</a></li>
-  <li><a href="#macos-linux" id="toc-macos-linux" class="nav-link" data-scroll-target="#macos-linux">macOS / Linux</a></li>
+  <li><a href="#what-an-api-is" id="toc-what-an-api-is" class="nav-link" data-scroll-target="#what-an-api-is">What an API is</a></li>
   </ul></li>
-  <li><a href="#step-3-change-directory-to-week-1" id="toc-step-3-change-directory-to-week-1" class="nav-link" data-scroll-target="#step-3-change-directory-to-week-1">Step 3 — Change Directory to Week 1</a>
+  <li><a href="#making-api-requests-with-python" id="toc-making-api-requests-with-python" class="nav-link" data-scroll-target="#making-api-requests-with-python">Making API Requests with Python</a>
   <ul class="collapse">
-  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
-  <li><a href="#macos-linux-1" id="toc-macos-linux-1" class="nav-link" data-scroll-target="#macos-linux-1">macOS / Linux</a></li>
+  <li><a href="#sending-a-request" id="toc-sending-a-request" class="nav-link" data-scroll-target="#sending-a-request">Sending a request</a></li>
+  <li><a href="#parsing-json-responses" id="toc-parsing-json-responses" class="nav-link" data-scroll-target="#parsing-json-responses">Parsing JSON responses</a></li>
   </ul></li>
-  <li><a href="#step-4-install-required-packages" id="toc-step-4-install-required-packages" class="nav-link" data-scroll-target="#step-4-install-required-packages">Step 4 — Install Required Packages</a>
-  <ul class="collapse">
-  <li><a href="#windows-1" id="toc-windows-1" class="nav-link" data-scroll-target="#windows-1">Windows</a></li>
-  <li><a href="#macos-linux-2" id="toc-macos-linux-2" class="nav-link" data-scroll-target="#macos-linux-2">macOS / Linux</a></li>
-  </ul></li>
-  <li><a href="#step-5-run-the-environment-check" id="toc-step-5-run-the-environment-check" class="nav-link" data-scroll-target="#step-5-run-the-environment-check">Step 5 — Run the Environment Check</a>
-  <ul class="collapse">
-  <li><a href="#windows-2" id="toc-windows-2" class="nav-link" data-scroll-target="#windows-2">Windows</a></li>
-  <li><a href="#macos-linux-3" id="toc-macos-linux-3" class="nav-link" data-scroll-target="#macos-linux-3">macOS / Linux</a></li>
-  </ul></li>
-  <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a>
-  <ul class="collapse">
-  <li><a href="#pip-is-not-recognized" id="toc-pip-is-not-recognized" class="nav-link" data-scroll-target="#pip-is-not-recognized"><code>'pip' is not recognized</code></a></li>
-  <li><a href="#modulenotfounderror" id="toc-modulenotfounderror" class="nav-link" data-scroll-target="#modulenotfounderror"><code>ModuleNotFoundError</code></a></li>
-  <li><a href="#file-not-found" id="toc-file-not-found" class="nav-link" data-scroll-target="#file-not-found">File not found</a></li>
-  </ul></li>
-  <li><a href="#appendix-example-files" id="toc-appendix-example-files" class="nav-link" data-scroll-target="#appendix-example-files">Appendix — Example Files</a>
-  <ul class="collapse">
-  <li><a href="#example-requirements.txt" id="toc-example-requirements.txt" class="nav-link" data-scroll-target="#example-requirements.txt">Example <code>requirements.txt</code></a></li>
-  <li><a href="#example-check_environment.py" id="toc-example-check_environment.py" class="nav-link" data-scroll-target="#example-check_environment.py">Example <code>check_environment.py</code></a></li>
-  </ul></li>
+  <li><a href="#chapter-summary" id="toc-chapter-summary" class="nav-link" data-scroll-target="#chapter-summary">Chapter Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -229,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Installing the Course Requirements and Checking Your Environment</h1>
+<h1 class="title">JSON and APIs for Data Access</h1>
 </div>
 
 
@@ -246,188 +248,87 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="overview" class="level1">
-<h1>Overview</h1>
-<p>This guide will walk you through:</p>
-<ul>
-<li>Downloading the course <strong>requirements file</strong><br>
-</li>
-<li>Using the <strong>terminal / command line</strong> to navigate to your course folder<br>
-</li>
-<li>Installing the required Python packages with <code>pip install -r requirements.txt</code><br>
-</li>
-<li>Running a small Python script to confirm that everything is set up correctly</li>
-</ul>
-<p>By the end of this guide, your Python environment should be ready for the rest of the semester.</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This chapter introduces JSON as a structured data format and shows how Python can retrieve and parse JSON data from APIs. The goal is to understand how modern analytics and AI workflows obtain data from external services and convert it into forms suitable for analysis.</p>
 <hr>
 </section>
-<section id="before-you-start" class="level1">
-<h1>Before You Start</h1>
-<p>You should already have:</p>
-<ul>
-<li><strong>Python 3</strong> installed<br>
-</li>
-<li><strong>VS Code</strong> installed (or another editor, but VS Code is recommended)<br>
-</li>
-<li>A main course folder on your computer, for example:</li>
-</ul>
-<pre class="text"><code>AI_Course/
-  week01/
-  week02/
-  ...</code></pre>
-<p>If you do <strong>not</strong> have this yet, complete the Python setup instructions first.</p>
-<hr>
+<section id="json-and-structured-data-exchange" class="level2">
+<h2 class="anchored" data-anchor-id="json-and-structured-data-exchange">JSON and Structured Data Exchange</h2>
+<section id="what-json-is" class="level3">
+<h3 class="anchored" data-anchor-id="what-json-is">What JSON is</h3>
+<p><strong>JSON</strong> (JavaScript Object Notation) is a text-based format used to represent structured data. Despite its name, JSON is language-agnostic and is widely used across programming languages and platforms.</p>
+<p>JSON represents data using <strong>key–value pairs</strong>, much like Python dictionaries. Values associated with keys can themselves be other objects, lists, or simple values such as numbers, strings, or booleans. This allows JSON to represent complex, nested structures.</p>
+<p>Conceptually, JSON encodes data as a hierarchy rather than a table. Instead of rows and columns, JSON organizes information into objects that contain other objects or lists. This makes it well suited for representing entities with varying attributes or nested relationships.</p>
+<p>JSON is common in AI systems because it is:<br>
+- human-readable,<br>
+- easy for machines to parse,<br>
+- flexible in structure,<br>
+- and well suited for transmitting data over networks.</p>
+<p>APIs frequently return data in JSON format because it allows systems to exchange structured information without requiring a fixed schema in advance. This flexibility is valuable in environments where data evolves over time or where different consumers may need different parts of the data.</p>
 </section>
-<section id="step-1-download-the-environment-files" class="level1">
-<h1>Step 1 — Download the Environment Files</h1>
-<p>Your instructor will provide two files (for example in Canvas) for Week 1:</p>
-<ol type="1">
-<li><code>requirements.txt</code><br>
-</li>
-<li><code>check_environment.py</code></li>
-</ol>
-<section id="download-the-files" class="level2">
-<h2 class="anchored" data-anchor-id="download-the-files">1.1 — Download the files</h2>
-<ol type="1">
-<li>Go to the location where your instructor has shared the files.<br>
-</li>
-<li>Download <code>requirements.txt</code>.<br>
-</li>
-<li>Download <code>check_environment.py</code>.</li>
-</ol>
-</section>
-<section id="save-them-to-your-week-1-folder" class="level2">
-<h2 class="anchored" data-anchor-id="save-them-to-your-week-1-folder">1.2 — Save them to your Week 1 folder</h2>
-<p>Save both files in:</p>
-<pre class="text"><code>AI_Course/week01/</code></pre>
-<p>So your folder structure looks like:</p>
-<pre class="text"><code>AI_Course/
-  week01/
-    requirements.txt
-    check_environment.py
-  week02/
-  ...</code></pre>
+<section id="json-vs-tabular-data" class="level3">
+<h3 class="anchored" data-anchor-id="json-vs-tabular-data">JSON vs tabular data</h3>
+<p>Although JSON and tabular data both represent structured information, they differ in how that structure is expressed.</p>
+<p><strong>Tabular data</strong> is flat. Each row represents an observation, and each column represents a variable. This structure is ideal for many forms of analysis, especially when observations are uniform and relationships are simple.</p>
+<p><strong>JSON data</strong>, by contrast, is hierarchical. Objects can contain nested objects or lists, and not every object must have the same keys. This allows JSON to represent more complex relationships, but it also makes direct analysis more challenging.</p>
+<p>Mapping JSON to tables often requires <strong>flattening</strong> the structure. Nested objects may be expanded into columns, and lists may be transformed into multiple rows. This transformation step is common in data pipelines that ingest API data and prepare it for analysis with tools like Pandas.</p>
 <hr>
 </section>
 </section>
-<section id="step-2-open-a-terminal-command-line" class="level1">
-<h1>Step 2 — Open a Terminal / Command Line</h1>
-<section id="windows-vs-code-recommended" class="level2">
-<h2 class="anchored" data-anchor-id="windows-vs-code-recommended">Windows (VS Code recommended)</h2>
-<ol type="1">
-<li>Open <strong>VS Code</strong>.<br>
-</li>
-<li>Click <strong>File → Open Folder…</strong> → select <code>AI_Course/week01/</code>.<br>
-</li>
-<li>Go to <strong>View → Terminal</strong>.</li>
-</ol>
-</section>
-<section id="macos-linux" class="level2">
-<h2 class="anchored" data-anchor-id="macos-linux">macOS / Linux</h2>
-<ol type="1">
-<li>Open <strong>Terminal</strong>.<br>
-</li>
-<li>Use <code>cd</code> to navigate to your Week 1 folder (see next step).</li>
-</ol>
+<section id="apis-as-data-sources" class="level2">
+<h2 class="anchored" data-anchor-id="apis-as-data-sources">APIs as Data Sources</h2>
+<section id="what-an-api-is" class="level3">
+<h3 class="anchored" data-anchor-id="what-an-api-is">What an API is</h3>
+<p>An <strong>API</strong> (Application Programming Interface) is a structured way for one system to request information or services from another system. In data workflows, APIs are most often used as <strong>data access mechanisms</strong>. Sometimes it is helpful to think of APIs like a bridge, from one system to another, as a path to get information that is needed.</p>
+<p>Rather than downloading a file manually, a program sends a request to an API endpoint and receives a response containing data. This interaction follows a predictable pattern:<br>
+- the client sends a request,<br>
+- the server processes it,<br>
+- the server returns a response.</p>
+<p>The response typically includes both the requested data and metadata about the request itself, such as whether it was successful.</p>
+<p>APIs are widely used because they:<br>
+- allow real-time or near-real-time access to data,<br>
+- enable controlled and authenticated access,<br>
+- support integration across systems and platforms.</p>
+<p>In analytics and AI contexts, APIs are commonly used to retrieve data from web services, cloud platforms, and internal systems.</p>
 <hr>
 </section>
 </section>
-<section id="step-3-change-directory-to-week-1" class="level1">
-<h1>Step 3 — Change Directory to Week 1</h1>
-<section id="windows" class="level3">
-<h3 class="anchored" data-anchor-id="windows">Windows</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> %USERPROFILE%<span class="dt">\D</span>ocuments<span class="dt">\A</span>I_Course<span class="dt">\w</span>eek01</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="making-api-requests-with-python" class="level2">
+<h2 class="anchored" data-anchor-id="making-api-requests-with-python">Making API Requests with Python</h2>
+<section id="sending-a-request" class="level3">
+<h3 class="anchored" data-anchor-id="sending-a-request">Sending a request</h3>
+<p>Python provides several libraries for working with APIs. One of the most commonly used is the <strong>requests</strong> library, which simplifies sending HTTP requests and handling responses.</p>
+<p>The basic workflow for making an API request involves:<br>
+1. importing the requests library,<br>
+2. sending a request to a URL,<br>
+3. storing the response for further inspection.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">"https://api.example.com/data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this example, a GET request is sent to the specified URL. The result is stored in a variable named <code>response</code>. At this stage, no assumptions are made about the content of the response; it is treated as an object that contains information returned by the server.</p>
+<p>Handling responses responsibly involves checking whether the request succeeded and understanding what kind of data was returned. Although error handling and authentication are not covered here, it is important to recognize that API requests can fail for many reasons, including network issues, invalid endpoints, or access restrictions.</p>
+<p>The key idea is that APIs allow programs to retrieve data programmatically rather than manually.</p>
 </section>
-<section id="macos-linux-1" class="level3">
-<h3 class="anchored" data-anchor-id="macos-linux-1">macOS / Linux</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/AI_Course/week01</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Check your location:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You should see a path ending with:</p>
-<pre><code>.../AI_Course/week01</code></pre>
+<section id="parsing-json-responses" class="level3">
+<h3 class="anchored" data-anchor-id="parsing-json-responses">Parsing JSON responses</h3>
+<p>Many APIs return data in <strong>JSON format</strong>. Once a response has been received, the next step is to convert that JSON data into Python objects that can be inspected and manipulated.</p>
+<p>The requests library provides a method for this purpose:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> response.json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Calling <code>json()</code> on the response parses the JSON text and converts it into native Python data structures, typically dictionaries and lists. This transformation allows the data to be explored using familiar Python tools.</p>
+<p>At this point, inspection becomes important. API responses often contain nested structures, metadata, or multiple layers of information. Examining the structure of the returned object helps determine which parts of the data are relevant and how they might be transformed into tabular form.</p>
+<p>Parsing JSON responses reinforces a recurring theme: data often arrives in one structure and must be <strong>transformed</strong> into another before analysis can occur. APIs provide access to rich data sources, but turning that data into usable datasets requires effort.</p>
 <hr>
 </section>
 </section>
-<section id="step-4-install-required-packages" class="level1">
-<h1>Step 4 — Install Required Packages</h1>
-<section id="windows-1" class="level3">
-<h3 class="anchored" data-anchor-id="windows-1">Windows</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Alternate:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">py</span> <span class="at">-m</span> pip install <span class="at">-r</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="macos-linux-2" class="level3">
-<h3 class="anchored" data-anchor-id="macos-linux-2">macOS / Linux</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> install <span class="at">-r</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
-</section>
-</section>
-<section id="step-5-run-the-environment-check" class="level1">
-<h1>Step 5 — Run the Environment Check</h1>
-<section id="windows-2" class="level3">
-<h3 class="anchored" data-anchor-id="windows-2">Windows</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">py</span> check_environment.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>or:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> check_environment.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="macos-linux-3" class="level3">
-<h3 class="anchored" data-anchor-id="macos-linux-3">macOS / Linux</h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> check_environment.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Expected output:</p>
-<pre><code>All core packages imported successfully!
-Environment check passed.</code></pre>
-<hr>
-</section>
-</section>
-<section id="troubleshooting" class="level1">
-<h1>Troubleshooting</h1>
-<section id="pip-is-not-recognized" class="level3">
-<h3 class="anchored" data-anchor-id="pip-is-not-recognized"><code>'pip' is not recognized</code></h3>
-<p>Python may not be on your PATH. Restart terminal or reinstall with PATH enabled.</p>
-</section>
-<section id="modulenotfounderror" class="level3">
-<h3 class="anchored" data-anchor-id="modulenotfounderror"><code>ModuleNotFoundError</code></h3>
-<p>You may not be in the same environment where you installed packages.</p>
-</section>
-<section id="file-not-found" class="level3">
-<h3 class="anchored" data-anchor-id="file-not-found">File not found</h3>
-<p>Ensure you are in the <code>week01</code> directory before running commands.</p>
-<hr>
-</section>
-</section>
-<section id="appendix-example-files" class="level1">
-<h1>Appendix — Example Files</h1>
-<section id="example-requirements.txt" class="level3">
-<h3 class="anchored" data-anchor-id="example-requirements.txt">Example <code>requirements.txt</code></h3>
-<pre><code>pandas
-matplotlib
-scikit-learn
-requests
-seaborn</code></pre>
-</section>
-<section id="example-check_environment.py" class="level3">
-<h3 class="anchored" data-anchor-id="example-check_environment.py">Example <code>check_environment.py</code></h3>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Running environment check...</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        <span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="im">import</span> matplotlib</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        <span class="im">import</span> sklearn</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        <span class="im">import</span> requests</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">ImportError</span> <span class="im">as</span> e:</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Environment check FAILED."</span>)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Missing package:"</span>, e)</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>        sys.exit(<span class="dv">1</span>)</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"All core packages imported successfully!"</span>)</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Environment check passed."</span>)</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="chapter-summary" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-summary">Chapter Summary</h2>
+<p>This chapter introduced JSON and APIs as key components of modern data workflows. While earlier chapters focused on data stored in local files, this chapter expanded the view to include data that is retrieved dynamically from external systems.</p>
+<p>JSON was presented as a flexible, hierarchical data format that uses key–value pairs and nested structures to represent complex information. Its widespread use in AI and analytics systems reflects its strengths for data exchange and representation, even though it is not always convenient for direct analysis.</p>
+<p>APIs were introduced as structured interfaces for requesting data and services from other systems. By sending requests and receiving responses, programs can obtain up-to-date information without manual file handling. The combination of APIs and JSON underpins many contemporary data pipelines.</p>
+<p>Finally, the chapter showed how Python’s <code>requests</code> library can be used to call APIs and parse JSON responses into native Python objects. This ability to retrieve and interpret external data is essential for building analytics and AI workflows that interact with real-world systems.</p>
+<p>Together, JSON and APIs extend your data toolkit beyond static files. They enable your code to participate in larger ecosystems of services and data sources, setting the stage for more advanced topics such as automated pipelines, streaming data, and integration with AI services.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

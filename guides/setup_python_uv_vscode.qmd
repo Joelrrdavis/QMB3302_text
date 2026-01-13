@@ -1,0 +1,348 @@
+---
+title: "Course Setup Guide: Python, uv, and VS Code"
+---
+
+## Overview
+
+This guide walks you through **everything required to get set up for this course**, end to end:
+
+- Installing **Python**
+- Installing **uv**
+- Installing and configuring **VS Code**
+- Creating a **project-based Python environment**
+- Running code successfully
+
+This is a **one-time setup**. Once completed, you will reuse this workflow all semester.
+
+::: {.callout-note}
+**Read this once, then follow it top-to-bottom.**  
+Most setup problems happen when steps are skipped or done out of order.
+:::
+
+---
+
+### Prerequisite
+This guide assumes you know how to:  
+- open Terminal (Mac) or PowerShell (Windows)  
+- run a command  
+- copy/paste commands  
+- recognize when a command succeeds or fails  
+
+If not, complete the short Terminal Basics video and guide before continuing. 
+
+### What you will have when you’re done
+
+By the end of this guide, you should have a project folder that looks like this:
+
+```text
+CLASS_FOLDER/
+├── pyproject.toml
+├── .venv/
+└── hello.py
+```
+
+And you should be able to:
+- open this folder in VS Code
+- run Python code using the project environment
+- install packages in a repeatable way
+
+::: {.callout-tip}
+If your folder does **not** look like this at the end, stop and fix it before moving on.
+:::
+
+---
+
+## Phase 1 — Install Required Tools
+
+### 1. Install Python (3.xx)
+
+This course works with **Python 3.12 or higher**.  
+Examples below use **Python 3.13**.
+
+::: {.callout-important}
+If you already have Python installed, you still need to **verify** the version and that it runs from the terminal.
+:::
+
+#### macOS
+
+1. Download Python from https://www.python.org  
+2. Run the installer (accept defaults)  
+3. Verify in Terminal:
+
+```bash
+python3 --version
+pip3 --version
+```
+
+#### Windows
+
+1. Download Python from https://www.python.org  
+2. **Check “Add Python to PATH” during install**  
+3. Verify in PowerShell:
+
+```powershell
+python --version
+pip --version
+```
+
+::: {.callout-warning}
+If `python` or `pip` is “not recognized,” restart your terminal first.  
+If it still fails, Python was not added to PATH.
+:::
+
+---
+
+### 2. Install uv
+
+`uv` manages your project, environment, and packages.
+
+::: {.callout-note}
+Do **not** install `uv` using plain `pip install uv`.  
+Modern systems intentionally block this to protect your Python installation.
+:::
+
+#### macOS
+
+##### Option A — Homebrew (if you already use it)
+
+```bash
+brew install uv
+uv --version
+```
+
+##### Option B — pipx (no Homebrew required)
+
+```bash
+python3 -m pip install --user pipx
+python3 -m pipx ensurepath
+```
+
+Restart your terminal, then:
+
+```bash
+pipx install uv
+uv --version
+```
+
+---
+
+#### Windows
+
+##### Option A — winget
+
+```powershell
+winget install uv
+uv --version
+```
+
+##### Option B — pipx
+
+```powershell
+python -m pip install --user pipx
+python -m pipx ensurepath
+pipx install uv
+uv --version
+```
+
+::: {.callout-tip}
+If `uv` is “not found,” close and reopen your terminal.  
+This fixes most PATH-related issues.
+:::
+
+---
+
+### 3. Install VS Code
+
+1. Download from https://code.visualstudio.com  
+2. Install using defaults  
+   - On Windows, check **Add to PATH**
+3. Open VS Code
+
+#### Install the Python extension
+
+- Extensions → search **Python**
+- Install **Python (by Microsoft)**
+
+::: {.callout-important}
+VS Code will not work correctly for Python until the **Python extension** is installed.
+:::
+
+---
+
+## Phase 2 — Create Your Course Project
+
+### 4. Create a project folder
+
+Choose a location (Documents recommended).
+
+#### macOS
+
+
+
+```bash
+mkdir -p ~/Documents/CLASS_FOLDER
+cd ~/Documents/CLASS_FOLDER
+```
+
+#### Windows
+
+```powershell
+mkdir $HOME\Documents\CLASS_FOLDER
+cd $HOME\Documents\CLASS_FOLDER
+```
+
+::: {.callout-note}
+Avoid spaces in folder names.  
+Use letters, numbers, and hyphens only.
+:::
+
+---
+
+### 5. Initialize the project
+
+```bash
+uv init
+uv venv
+```
+
+You should now see:
+- `pyproject.toml`
+- `.venv/`
+
+::: {.callout-warning}
+If you do **not** see `.venv`, you are not in the correct folder.
+:::
+
+---
+
+### 6. Add a test package
+
+```bash
+uv add rich
+```
+
+::: {.callout-tip}
+Using `uv add` both installs the package **and** records it in `pyproject.toml`.
+:::
+
+---
+
+### 7. Create a test file
+
+Create `hello.py`:
+
+```python
+from rich import print
+print("[bold green]Hello from Python + uv + VS Code![/bold green]")
+```
+
+---
+
+## Phase 3 — Connect VS Code to the Project
+
+### 8. Open the folder in VS Code
+
+- File → **Open Folder…**
+- Select `CLASS_FOLDER`
+
+::: {.callout-important}
+Open the **folder**, not just the Python file.  
+VS Code needs the folder to find `.venv`.
+:::
+
+---
+
+### 9. Select the Python interpreter
+
+1. Command Palette  
+   - macOS: `Cmd + Shift + P`  
+   - Windows: `Ctrl + Shift + P`
+2. Choose **Python: Select Interpreter**
+3. Select the interpreter inside `.venv`
+
+::: {.callout-warning}
+The **wrong interpreter** is the #1 cause of “ModuleNotFoundError.”
+:::
+
+---
+
+## Phase 4 — Run Code (Choose One Style)
+
+You only need **one** of the following approaches.  
+Pick one and use it consistently.
+
+---
+
+### Option A — Activation style (recommended for beginners)
+
+#### macOS
+
+```bash
+source .venv/bin/activate
+python hello.py
+```
+
+#### Windows
+
+```powershell
+. .\.venv\Scripts\Activate.ps1
+python hello.py
+```
+
+If PowerShell blocks activation:
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
+::: {.callout-note}
+This setting applies only to **your user account**  
+and is commonly required for Python environments.
+:::
+
+---
+
+### Option B — No activation (uv-managed)
+
+```bash
+uv run python hello.py
+```
+
+::: {.callout-tip}
+This avoids activation entirely and is often easier on Windows.
+:::
+
+---
+
+## Troubleshooting
+
+#### “ModuleNotFoundError”
+
+::: {.callout-warning}
+This almost always means Python is running **outside** the project environment.
+:::
+
+Checklist:
+- VS Code interpreter is set to `.venv`
+- You are in the project folder
+- You activated `.venv` **or** used `uv run`
+
+---
+
+#### “uv: command not found”
+
+- Restart your terminal
+- Re-run `pipx ensurepath` (pipx installs)
+
+---
+
+### Final checkpoint
+
+::: {.callout-important}
+Do **not** move on until all of the following work.
+:::
+
+- `python --version`
+- `uv --version`
+- `hello.py` runs successfully
+- VS Code shows the `.venv` interpreter

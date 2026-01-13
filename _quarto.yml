@@ -2,14 +2,19 @@ project:
   type: website
   output-dir: docs
 
-# which files to render.
+# Which files to render
 render:
   - index.qmd
-  - textbook_src/week01_main.qmd
-  - textbook_src/week02_main.qmd
-  - textbook_src/week03_main.qmd
-  - textbook_src/week04_main.qmd
-  - guides/*.qmd    # Render all guide pages
+  - textbook_src/ch1_foundations_analytics_ai_split.qmd
+  - textbook_src/ch2_ai_systems_data_models_logic.qmd
+  - textbook_src/ch3_data_pipelines_decision_frameworks.qmd
+  - textbook_src/ch4_terminal_paths_envs.qmd
+  - textbook_src/ch5_python_foundations_data_control_functions.qmd
+  - textbook_src/ch6_working_with_tabular_data_pandas.qmd
+  - textbook_src/ch7_json_apis_data_access.qmd
+  - textbook_src/ch8_simulation_synthetic_data.qmd
+  - textbook_src/ch9_visualization_from_data_to_insight.qmd
+  - guides/*.qmd      # Render all guide pages
 
 website:
   title: "Foundations of Analytics & AI"
@@ -19,31 +24,44 @@ website:
       - href: index.qmd
         text: Home
 
-      - text: Weeks
+      - text: Textbook
         menu:
-          - href: textbook_src/week01_main.qmd
-            text: Week 1. What is Analytics & AI?
-          - href: textbook_src/week02_main.qmd
-            text: Week 2. Python Basics
-          - href: textbook_src/week03_main.qmd
-            text: Week 3. Data Structures & Pandas
-          - href: textbook_src/week04_main.qmd
-            text: Week 4. From Data to Models
+          # Part I — Conceptual Foundations
+          - href: textbook_src/ch1_foundations_analytics_ai_split.qmd
+            text: "Ch 1. What Is Analytics & AI?"
+          - href: textbook_src/ch2_ai_systems_data_models_logic.qmd
+            text: "Ch 2. AI Systems: Data, Models, Logic"
+          - href: textbook_src/ch3_data_pipelines_decision_frameworks.qmd
+            text: "Ch 3. Data Pipelines & Decision Frameworks"
+
+          # Part II — Python & Data Foundations
+          - href: textbook_src/ch4_terminal_paths_envs.qmd
+            text: "Ch 4. Python Execution Foundations"
+          - href: textbook_src/ch5_python_foundations_data_control_functions.qmd
+            text: "Ch 5. Python Basics: Data, Control, Functions"
+          - href: textbook_src/ch6_working_with_tabular_data_pandas.qmd
+            text: "Ch 6. Working with Tabular Data in Pandas"
+          - href: textbook_src/ch7_json_apis_data_access.qmd
+            text: "Ch 7. JSON and APIs for Data Access"
+          - href: textbook_src/ch8_simulation_synthetic_data.qmd
+            text: "Ch 8. Simulation and Synthetic Data"
+          - href: textbook_src/ch9_visualization_from_data_to_insight.qmd
+            text: "Ch 9. Visualization: From Data to Insight"
 
       - text: Guides
         menu:
-          - href: guides/install_python.qmd
-            text: Install Python
-          - href: guides/install_requirements.qmd
-            text: Installing requirements.txt
+          - href: guides/terminal_powershell_basics.qmd
+            text: "Terminal and PowerShell Basics"
+          - href: guides/setup_python_uv_vscode.qmd
+            text: "Install Python, uv, VS Code"
           - href: guides/using_colab.qmd
-            text: Using Colab
+            text: "Using Colab"
+          - href: guides/vscode_update_stability.qmd
+            text: "Locking VS Code Updates (Optional)"
 
-  # Correct place for search configuration
   search:
-    location: navbar      # puts it in the top navbar
-    type: overlay         # magnifying glass icon that opens a dialog
-    # type: textbox      
+    location: navbar   # search box in navbar
+    type: overlay      # magnifying glass icon that opens a dialog
 
 format:
   html:

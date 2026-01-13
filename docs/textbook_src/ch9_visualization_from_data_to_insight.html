@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.55">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Visualization: From Data to Insight – Foundations of Analytics &amp; AI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="access.theme.scss">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Foundations of Analytics &amp; AI</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-textbook" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Textbook</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-textbook">    
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch1_foundations_analytics_ai_split.html">
+ <span class="dropdown-text">Ch 1. What Is Analytics &amp; AI?</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch2_ai_systems_data_models_logic.html">
+ <span class="dropdown-text">Ch 2. AI Systems: Data, Models, Logic</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch3_data_pipelines_decision_frameworks.html">
+ <span class="dropdown-text">Ch 3. Data Pipelines &amp; Decision Frameworks</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch4_terminal_paths_envs.html">
+ <span class="dropdown-text">Ch 4. Python Execution Foundations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch5_python_foundations_data_control_functions.html">
+ <span class="dropdown-text">Ch 5. Python Basics: Data, Control, Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch6_working_with_tabular_data_pandas.html">
+ <span class="dropdown-text">Ch 6. Working with Tabular Data in Pandas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch7_json_apis_data_access.html">
+ <span class="dropdown-text">Ch 7. JSON and APIs for Data Access</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch8_simulation_synthetic_data.html">
+ <span class="dropdown-text">Ch 8. Simulation and Synthetic Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../textbook_src/ch9_visualization_from_data_to_insight.html">
+ <span class="dropdown-text">Ch 9. Visualization: From Data to Insight</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guides" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Guides</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-guides">    
+        <li>
+    <a class="dropdown-item" href="../guides/terminal_powershell_basics.html">
+ <span class="dropdown-text">Terminal and PowerShell Basics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/setup_python_uv_vscode.html">
+ <span class="dropdown-text">Install Python, uv, VS Code</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/using_colab.html">
+ <span class="dropdown-text">Using Colab</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../guides/vscode_update_stability.html">
+ <span class="dropdown-text">Locking VS Code Updates (Optional)</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#why-visualization-matters" id="toc-why-visualization-matters" class="nav-link" data-scroll-target="#why-visualization-matters">Why Visualization Matters</a>
+  <ul class="collapse">
+  <li><a href="#visualization-as-a-reasoning-tool" id="toc-visualization-as-a-reasoning-tool" class="nav-link" data-scroll-target="#visualization-as-a-reasoning-tool">Visualization as a Reasoning Tool</a></li>
+  </ul></li>
+  <li><a href="#fundamentals-of-visual-representation" id="toc-fundamentals-of-visual-representation" class="nav-link" data-scroll-target="#fundamentals-of-visual-representation">Fundamentals of Visual Representation</a></li>
+  <li><a href="#core-plot-types" id="toc-core-plot-types" class="nav-link" data-scroll-target="#core-plot-types">Core Plot Types</a>
+  <ul class="collapse">
+  <li><a href="#line-plots" id="toc-line-plots" class="nav-link" data-scroll-target="#line-plots">Line Plots</a></li>
+  <li><a href="#line-plots-1" id="toc-line-plots-1" class="nav-link" data-scroll-target="#line-plots-1">Line Plots</a></li>
+  <li><a href="#bar-plots" id="toc-bar-plots" class="nav-link" data-scroll-target="#bar-plots">Bar Plots</a></li>
+  <li><a href="#scatter-plots" id="toc-scatter-plots" class="nav-link" data-scroll-target="#scatter-plots">Scatter Plots</a></li>
+  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms">Histograms</a></li>
+  <li><a href="#boxplots" id="toc-boxplots" class="nav-link" data-scroll-target="#boxplots">Boxplots</a></li>
+  <li><a href="#heatmaps" id="toc-heatmaps" class="nav-link" data-scroll-target="#heatmaps">Heatmaps</a></li>
+  </ul></li>
+  <li><a href="#customizing-visualizations" id="toc-customizing-visualizations" class="nav-link" data-scroll-target="#customizing-visualizations">Customizing Visualizations</a></li>
+  <li><a href="#interpreting-visualizations" id="toc-interpreting-visualizations" class="nav-link" data-scroll-target="#interpreting-visualizations">Interpreting Visualizations</a></li>
+  <li><a href="#integrated-workflow" id="toc-integrated-workflow" class="nav-link" data-scroll-target="#integrated-workflow">Integrated Workflow</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Visualization: From Data to Insight</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Visualization translates data into visual form, enabling humans to detect patterns that may be invisible in raw numbers. This chapter introduces visualization as a <strong>reasoning tool</strong>, teaches fundamental plot types using matplotlib and seaborn, and explains how to interpret visuals with clarity—not just <em>read</em> them, but <em>understand</em> them.</p>
+<hr>
+</section>
+<section id="why-visualization-matters" class="level2">
+<h2 class="anchored" data-anchor-id="why-visualization-matters">Why Visualization Matters</h2>
+<section id="visualization-as-a-reasoning-tool" class="level3">
+<h3 class="anchored" data-anchor-id="visualization-as-a-reasoning-tool">Visualization as a Reasoning Tool</h3>
+<p>Tables of numbers impose heavy cognitive load. Humans are far better at perceiving:</p>
+<ul>
+<li><strong>Trends</strong></li>
+<li><strong>Clusters</strong></li>
+<li><strong>Relationships</strong></li>
+<li><strong>Anomalies</strong></li>
+<li><strong>Distributions</strong></li>
+</ul>
+<p>Exploratory visualizations help analysts:</p>
+<ul>
+<li>Diagnose data quality issues<br>
+</li>
+<li>Identify unexpected patterns<br>
+</li>
+<li>Form hypotheses<br>
+</li>
+<li>Guide modeling choices<br>
+</li>
+<li>Understand uncertainty</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="fundamentals-of-visual-representation" class="level2">
+<h2 class="anchored" data-anchor-id="fundamentals-of-visual-representation">Fundamentals of Visual Representation</h2>
+<p>Before diving into specific plot types, it helps to recognize that every visualization—no matter how simple or complex—relies on <strong>encodings</strong>, the rules that map data values to visual properties. These encodings are the “language” of visualization: they determine what information is communicated, how accurately it is perceived, and how easily viewers can extract meaning from what they see.</p>
+<p>Common encodings include:</p>
+<ul>
+<li><strong>Position</strong><br>
+</li>
+<li><strong>Length</strong><br>
+</li>
+<li><strong>Angle</strong><br>
+</li>
+<li><strong>Color</strong><br>
+</li>
+<li><strong>Shape</strong><br>
+</li>
+<li><strong>Density</strong></li>
+</ul>
+<p>Some encodings are more precise than others. Position on a common scale, for example, is one of the most accurate ways humans perceive quantitative differences, which is why scatter plots and line plots are so effective. Length is also interpreted reliably, making bar charts useful for comparing magnitudes. Color, angle, and shape communicate useful information but with less precision; they are powerful when used deliberately, but can become ambiguous or misleading when overused.</p>
+<p>A visualization succeeds only when its encodings clearly represent the underlying data. If the chosen encoding does not match the structure of the variable, for example, using color to represent a subtle numeric difference, or using position for unordered categories—the resulting plot may confuse more than it clarifies. Effective analysts therefore develop an awareness not just of <em>what</em> a plot shows, but <em>how</em> it shows it, and why that encoding is appropriate for the question at hand.</p>
+<hr>
+</section>
+<section id="core-plot-types" class="level2">
+<h2 class="anchored" data-anchor-id="core-plot-types">Core Plot Types</h2>
+<p>(examples in Python’s matplotlib)</p>
+<section id="line-plots" class="level3">
+<h3 class="anchored" data-anchor-id="line-plots">Line Plots</h3>
+</section>
+<section id="line-plots-1" class="level3">
+<h3 class="anchored" data-anchor-id="line-plots-1">Line Plots</h3>
+<p>A line plot shows how a quantity changes across an ordered sequence, most commonly time. Each point represents a single observation, and the line connecting allows the reader to see the display as a trajectory rather than a collection of isolated values. This makes line plots especially effective for questions like “Are we improving?” or “When did things change?” rather than “How big is this number in isolation?”</p>
+<p>Line plots are appropriate whenever the horizontal axis has a meaningful order: dates, time steps, ranks, or indices. In these cases, the continuity of the line reflects the continuity of the underlying process. When that order is real, a line plot can reveal long-term trends, local spikes or dips, seasonal patterns, and periods of stability or volatility. For example, plotting daily website traffic as a line allows you to quickly see weekdays versus weekends, holiday surges, or the impact of a new marketing campaign.</p>
+<p>When reading a line plot, look for:</p>
+<ul>
+<li>Overall trend: increasing, decreasing, or flat.</li>
+<li>Local patterns: spikes, dips, or plateaus.</li>
+<li>Seasonality or cycles: repeating patterns across intervals.</li>
+<li>Volatility: how jagged or smooth the line appears.</li>
+<li>Structural breaks: points where the pattern changes abruptly.</li>
+</ul>
+<p>Several pitfalls are common with line plots. The first is using them when there is <em>no natural order on the x-axis</em>. This is generally not an appropriate chart in this case. For example, connecting product categories or regions. In those cases, the line suggests a trend that does not actually exist. A second issue arises when too many series are plotted on the same axes: the resulting “spaghetti plot” becomes difficult to read, and subtle patterns disappear into visual clutter. Finally, axis scaling matters greatly. Truncating the y-axis or using different scales on similar plots can unintentionally exaggerate or hide meaningful changes.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>plt.plot(values)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Simulated Time Series"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Index"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Value"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="bar-plots" class="level3">
+<h3 class="anchored" data-anchor-id="bar-plots">Bar Plots</h3>
+<p>Bar plots represent values for discrete categories using the height or length of bars. Because the visual encoding relies on comparing bar lengths, bar plots are well suited for questions about magnitude and contrast: “Which category is largest?”, “How do these groups differ?”, or “Where is performance strongest or weakest?”</p>
+<p>Bar plots are most appropriate when the categories on the horizontal axis are <strong>distinct, unordered groups</strong>. Think product types, customer segments, or regions. In these cases, bars provide a clean visual summary of how totals, averages, or counts differ across groups. A well-designed bar plot can immediately reveal whether one category dominates, whether values are relatively uniform, or whether the distribution is highly imbalanced. Small choices, such as sorting bars from largest to smallest, can make important patterns easier to see.</p>
+<p>When reading a bar plot, look for:</p>
+<ul>
+<li>Differences in bar height, especially between adjacent categories.<br>
+</li>
+<li>The ordering of categories—sorted bars reveal structure more clearly.<br>
+</li>
+<li>Categories that stand out as unusually high or low.<br>
+</li>
+<li>Whether differences appear substantively meaningful or trivially small.</li>
+</ul>
+<p>One of the most common pitfalls in bar charts is starting the vertical axis above zero, which <em>exaggerates</em> differences in bar height and can mislead interpretation. Another is attempting to show too many categories at once; long category labels or dense clusters of bars quickly overwhelm the visual space. Stacked bars are often misused as well—while they save space, they make it difficult to compare components that are not anchored to a common baseline. Finally, bar plots are not appropriate for continuous or time-ordered data; a line plot or scatter plot communicates those relationships more effectively.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.bar([<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>], [<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">7</span>])</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Category Counts"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="scatter-plots" class="level3">
+<h3 class="anchored" data-anchor-id="scatter-plots">Scatter Plots</h3>
+<p>Scatter plots display pairs of numeric values as points on a two-dimensional coordinate system. Each point represents a single observation, and its location encodes the relationship between two variables. This makes scatter plots invaluable when the goal is to understand how one quantity changes with another, whether a relationship appears linear or nonlinear, or whether distinct clusters or unusual points emerge from the data. Unlike bar or line plots, scatter plots emphasize <strong>relationships</strong> rather than comparisons or sequences.</p>
+<p>Scatter plots are most appropriate when both variables are continuous and measured on a meaningful numeric scale. In these situations, the arrangement of points can reveal patterns that are otherwise invisible in summary statistics alone. A tight, upward-sloping cloud of points suggests a strong positive association, whereas a widely dispersed cloud implies a weaker relationship. Curved or funnel-shaped patterns may indicate nonlinearities, heteroskedasticity, or the presence of subgroups. Scatter plots are also often the first tool analysts use to identify outliers, which may reflect extreme cases, data-entry errors, or important special conditions worth investigating.</p>
+<p>When reading a scatter plot, look for:</p>
+<ul>
+<li><strong>Direction</strong>: whether the cloud slopes upward, downward, or shows no consistent pattern.<br>
+</li>
+<li><strong>Strength</strong>: how tightly the points cluster around an imagined line or curve.<br>
+</li>
+<li><strong>Linearity vs.&nbsp;curvature</strong>: whether a straight line adequately summarizes the pattern.<br>
+</li>
+<li><strong>Clusters or subgroups</strong>: evidence of multiple populations within the same display.<br>
+</li>
+<li><strong>Outliers</strong>: points far from the main cloud that may influence summary statistics or models.</li>
+</ul>
+<p>One frequent issue is overplotting, when thousands of points overlap, the resulting chart just looks like big “ink blob” and hides the true structure of the data. Transparency, hexbin plots, or sampling strategies can help mitigate this. Another pitfall is treating correlation as causation: even though we know we shouldn’t, scatterplots make this almost subconcious. Even a strong visual pattern does not reveal which variable influences the other, nor does it rule out the effect of unobserved confounders. Like with other plots, analysts must also be careful to watch axis scaling; log or standardized scales may be necessary when values span several orders of magnitude. Finally, outliers deserve careful attention: a single extreme point can dramatically change a model’s slope or correlation estimate, making it important to decide whether it reflects real variation or a data-quality issue.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(x, y)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Scatter Plot Example"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"X"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="histograms" class="level3">
+<h3 class="anchored" data-anchor-id="histograms">Histograms</h3>
+<p>Rather than showing individual data points, a histogram groups values into bins and displays how many observations fall into each bin. This allows the reader to see the overall shape of the data, whether values cluster in certain regions, whether the distribution is symmetric or skewed, and whether the data exhibit multiple peaks. Histograms are often the first visualization analysts turn to when exploring an unfamiliar dataset because they reveal structure that cannot be inferred from simple summary statistics alone.</p>
+<p>Histograms are most effective when the underlying variable is continuous or takes on many distinct values. In these cases, the binning process provides a useful abstraction: the analyst sees patterns in density and concentration rather than a long list of raw values. For example, a histogram of transaction amounts may reveal heavy right-skew due to a small number of very large purchases, or a histogram of sensor readings may show several peaks corresponding to different operating states of a machine. Because histograms emphasize distributional shape, they are particularly helpful in diagnosing data quality issues, such as impossible values, unexpected gaps, or measurement artifacts.</p>
+<p>When reading a histogram, look for:</p>
+<ul>
+<li><strong>Shape</strong>: whether the distribution is symmetric, skewed, flat, or multi-peaked.<br>
+</li>
+<li><strong>Spread</strong>: how wide the distribution is and whether values are tightly clustered or dispersed.<br>
+</li>
+<li><strong>Central tendency</strong>: the approximate region where most values fall.<br>
+</li>
+<li><strong>Gaps</strong>: intervals with unexpectedly few observations, which may signal missing data or structural boundaries.<br>
+</li>
+<li><strong>Outliers</strong>: isolated bars far from the main concentration of values.</li>
+</ul>
+<p>Histograms also have several common pitfalls. The most important is sensitivity to <strong>bin width</strong>: too few bins oversimplify the distribution and hide meaningful structure, while too many bins create visual noise and obscure broader patterns. For this reason, comparing histograms requires consistent bin choices, otherwise differences may reflect bin settings rather than real properties of the data. Another pitfall arises when comparing groups with different sample sizes; one distribution may appear “taller” simply because it contains more observations. In such cases, density plots or standardized histograms provide a clearer comparison. Finally, histograms assume continuous or near-continuous data; when variables are naturally discrete, bar plots or empirical frequency tables may offer better clarity.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plt.hist(values, bins<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Histogram of Values"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="boxplots" class="level3">
+<h3 class="anchored" data-anchor-id="boxplots">Boxplots</h3>
+<p>Boxplots provide a compact summary of a distribution by highlighting its median, quartiles, and potential outliers. Unlike histograms, which emphasize the full shape of a distribution, boxplots focus on key summary statistics. This makes them particularly well suited for comparing multiple groups side by side. A single box encodes where the “middle” of the data lies, how spread out the values are, and whether there are observations that fall far from the typical range. Because of their condensed form, boxplots are widely used in exploratory data analysis, quality control, and any setting where many distributions must be compared quickly.</p>
+<p>Boxplots are most effective for continuous variables and for situations where differences between groups are of interest. For example, comparing the distribution of customer purchase amounts across demographic segments or examining test scores across classrooms can be done efficiently with boxplots. Their ability to summarize multiple distributions in a consistent visual format allows analysts to see whether groups differ in their central tendency, their variability, or their presence of outliers—three characteristics that often have substantive implications.</p>
+<p>When reading a boxplot, look for:</p>
+<ul>
+<li><strong>Median location</strong>: a line inside the box showing the middle of the distribution.<br>
+</li>
+<li><strong>Interquartile range (IQR)</strong>: the height of the box, representing the spread of the central 50% of values.<br>
+</li>
+<li><strong>Whisker length</strong>: showing how far the bulk of the data extends beyond the IQR.<br>
+</li>
+<li><strong>Outliers</strong>: individual points beyond the whiskers, which may represent unusual cases or data issues.<br>
+</li>
+<li><strong>Group comparisons</strong>: differences in median or spread across categories displayed side by side.</li>
+</ul>
+<p>One limitation to boxplots is that they <strong>hide the shape</strong> of the distribution; two groups may have identical boxplots but very different underlying patterns, such as bimodality. Another issue arises when sample sizes differ greatly between groups—small samples can produce unstable quartile estimates, which make comparisons misleading. Analysts must also decide how to treat outliers: boxplots flag them mechanically, but not all flagged points are errors, and not all errors will be flagged. Finally, boxplots are inappropriate when groups have extremely skewed or categorical data; in those cases, histograms, violin plots, or frequency displays may communicate the distribution more effectively.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span>category, y<span class="op">=</span>value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="heatmaps" class="level3">
+<h3 class="anchored" data-anchor-id="heatmaps">Heatmaps</h3>
+<p>Heatmaps visualize a matrix of values using color intensity, allowing the reader to quickly grasp patterns, clusters, or anomalies across two dimensions at once. Because the visual encoding relies on color rather than position alone, heatmaps can reveal structure that might be difficult to detect in numerical tables. They are especially common in analytics and AI workflows for displaying correlation matrices, confusion matrices, feature–target relationships, and any grid-like data where the magnitude of values matters more than their exact numeric labels.</p>
+<p>Heatmaps are most effective when the underlying data represent a meaningful two-dimensional relationship. For example, a correlation heatmap allows you to see which variables are strongly related and which are largely independent. A confusion matrix, presented as a heatmap, shows where a classification model succeeds or fails by highlighting concentration along the diagonal or leakage into off-diagonal cells. In operational systems, heatmaps can highlight seasonal or hourly patterns in activity, or detect anomalies when a particular row or column deviates sharply from the expected color pattern.</p>
+<p>When reading a heatmap, look for:</p>
+<ul>
+<li><strong>Color intensity</strong>: darker or lighter regions that indicate high or low values.<br>
+</li>
+<li><strong>Clusters or blocks</strong>: visually contiguous regions suggesting variables or categories with similar behavior.<br>
+</li>
+<li><strong>Symmetry</strong>: especially in correlation heatmaps, where symmetry is expected and deviations may indicate data-processing issues.<br>
+</li>
+<li><strong>Outliers or sharp transitions</strong>: individual cells that abruptly differ from their neighbors.<br>
+</li>
+<li><strong>Dominant rows or columns</strong>: which may signal influential variables or structural patterns in the data.</li>
+</ul>
+<p>Heatmaps also come with several common pitfalls. One of the most important is the choice of <strong>colormap</strong>: perceptually uneven palettes (such as rainbow or jet) can distort interpretation by making small differences appear large. Similarly, inappropriate scaling—such as compressing all values between −0.2 and 0.2 into the same color range, hiding meaningful variation. Labeling is another constraint: heatmaps with many rows or columns can become unreadable if axis labels are crowded or rotated excessively. Finally, heatmaps are not suitable when exact values matter; the purpose is to highlight <strong>patterns</strong>, not precise magnitudes. Analysts must always verify numerical values when decisions depend on them.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sns.heatmap(df.corr(), annot<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+</section>
+<section id="customizing-visualizations" class="level2">
+<h2 class="anchored" data-anchor-id="customizing-visualizations">Customizing Visualizations</h2>
+<p>A visualization is more than a direct translation of data into marks on a screen. Small design choices on facets suchs as titles, labels, scales, colors, and layout—shape how readers interpret the information and whether they interpret it correctly. Good customization does not embellish a plot; rather, it clarifies its purpose and reduces the cognitive work required to understand it. Poor customization, by contrast, can distort patterns, obscure important comparisons, or lead to misinterpretation even when the underlying data are correct.</p>
+<p>Clear, descriptive <strong>titles and axis labels</strong> are essential. A title should communicate the purpose of the plot, not merely restate variable names. Axis labels should specify units, transformations, or categories where relevant. Ambiguous or missing labels force readers to infer meaning, increasing the risk of misunderstanding. In professional settings, unclear labeling is one of the most common reasons stakeholders misinterpret visual summaries.</p>
+<p>Color is a powerful but easily misused visual encoding. <strong>Accessible color palettes</strong> help ensure that plots remain interpretable for readers with color-vision deficiencies and that meaning is tied to structure rather than decoration. Colors should signal differences that matter: categorical differences, intensity gradients, or grouping structures. Using too many colors, or colors with no conceptual mapping, creates visual noise. Red–green contrasts, in particular, should be avoided unless paired with alternate encodings such as texture or shape.</p>
+<p>One of the most critical customization decisions involves <strong>scales and axis limits</strong>. Truncating the y-axis—starting it above zero—can dramatically exaggerate differences in bar or line heights, making minor variations appear significant. Conversely, setting overly wide limits can flatten meaningful differences. Logarithmic or standardized scales may be appropriate when data span several orders of magnitude, but these should always be labeled clearly. In general, a reader should never be surprised by how an axis has been configured.</p>
+<p>Additional customization tools, such as gridlines, legends, and annotations, should be used with intention. Gridlines can support accurate comparisons but become distracting when too dense. Legends should appear in locations that do not obscure the data. Annotations can highlight noteworthy points or ranges, but excessive annotation can clutter a plot. Good visualization practice balances clarity with simplicity, emphasizing the data’s story rather than the plot’s mechanics.</p>
+<p>Ultimately, customization is not about aesthetics, although that plays a role, it is about <strong>honest communication</strong>. A well-customized visualization respects the reader’s effort, supports accurate inference, and reduces opportunities for confusion. These qualities become especially important as we transition into model evaluation, where misleading visualizations can produce overconfidence in models or misdiagnose sources of error.</p>
+<hr>
+</section>
+<section id="interpreting-visualizations" class="level2">
+<h2 class="anchored" data-anchor-id="interpreting-visualizations">Interpreting Visualizations</h2>
+<p>Interpreting a visualization is not the same as describing what it looks like. Description is surface-level: “the line goes up,” “this bar is taller,” or “these points are scattered.” Interpretation goes deeper. It connects the visual structure to the underlying data-generating process, the analytical question at hand, and the limitations or uncertainties that shape our conclusions. Effective interpretation requires curiosity, skepticism, and a disciplined habit of checking what a plot really shows—and what it might hide.</p>
+<p>A good starting point is to ask <strong>what is being encoded</strong>. Every visualization maps data to visual properties such as position, length, color, or shape. Before drawing any conclusions, readers should identify which attributes correspond to which variables and whether those mappings are appropriate. A scatter plot with log-scaled axes tells a different story than the same data plotted on a linear scale. A heatmap’s color range can emphasize or downplay variation depending on how its limits are set. Understanding the encoding is a prerequisite for understanding the plot.</p>
+<p>Next, look for <strong>patterns in the distribution</strong>: where values cluster, where they spread out, and whether there are unexpected gaps or concentrations. These features often reveal how the underlying system behaves. A long right tail may indicate rare but consequential events. A bimodal distribution may suggest two subpopulations with different behaviors. Unexpected spikes or gaps can signal measurement issues or structural breaks in the data. Visualization makes these clues visible, but interpretation requires linking them to plausible explanations.</p>
+<p>Interpreting visualizations also involves scrutinizing <strong>outliers</strong>. Outliers can be the most informative points in a dataset or the most misleading. A single extreme value may represent a critical event (such as a fraudulent transaction), a rare but real phenomenon (a customer making a very large purchase), or a simple data-entry error. Visualization helps analysts identify outliers quickly, but it cannot determine their meaning. That judgment must come from domain knowledge and further investigation.</p>
+<p>Another important habit is to consider <strong>the role of noise and sample size</strong>. Patterns that look compelling in small samples may vanish when more data are collected, while real relationships may appear weak or jagged when data are limited. Analysts must be cautious not to over-interpret small fluctuations or assume that smooth patterns indicate certainty. Many seemingly strong visual trends are driven by random variation, and many messy plots reflect systems with genuine complexity.</p>
+<p>When relationships between variables are visualized—especially in scatter plots or line plots—analysts should resist the temptation to infer <strong>causation</strong> from <strong>correlation</strong>. Visual relationships are powerful and persuasive, and they often guide model building. But they do not explain why the relationship exists or rule out confounding factors. A downward-sloping trend might reflect a true causal effect, a seasonal pattern, or an omitted variable that influences both axes.</p>
+<p>To interpret responsibly, ask yourself:</p>
+<ul>
+<li>What does the visualization encode, and are those encodings appropriate?<br>
+</li>
+<li>What patterns are visible, and which might be artifacts of binning, smoothing, or scale?<br>
+</li>
+<li>Are there outliers, and what could they represent?<br>
+</li>
+<li>How might sample size or noise influence what I see?<br>
+</li>
+<li>What alternative explanations could produce this pattern?<br>
+</li>
+<li>Does this visualization support the analytic question I am trying to answer?</li>
+</ul>
+<p>Visualization provides <strong>evidence</strong>, not conclusions! It shapes hypotheses, guides modeling decisions, and surfaces questions that require deeper inquiry. Rich interpretation comes from integrating what the visualization shows with what the analyst knows about the system, the data, and the methodological tools available for further analysis.</p>
+<p>Ultimately, interpreting visualizations is a form of <strong>critical thinking</strong>. It combines visual literacy with domain insight and statistical reasoning.</p>
+<hr>
+</section>
+<section id="integrated-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="integrated-workflow">Integrated Workflow</h2>
+<p>The process of turning raw data into visual insight is almost never linear. It looks more like an iterative cycle in which each step informs and sets up the next. Visualization plays a central role in this cycle: it clarifies what the data contain, reveals whether summaries are accurate, and suggests how models or transformations should be adjusted. A useful mental model for this process consists of five recurring steps:</p>
+<ol type="1">
+<li><p><strong>Simulate or load data</strong><br>
+Every workflow begins with a dataset—either drawn from the real world or generated synthetically to test ideas. The goal at this stage is not interpretation but orientation: understanding what data are available and how they are structured.</p></li>
+<li><p><strong>Summarize</strong><br>
+Before creating any visualization, compute simple summaries: counts, means, ranges, and distributional statistics. These summaries provide a baseline understanding of scale, variability, and potential anomalies. They also create expectations that can later be checked against visual evidence. If a summary statistic and a visualization tell different stories, take note! That discrepancy is often a clue worth investigating.</p></li>
+<li><p><strong>Visualize</strong><br>
+Visualization makes the structure of the data visible. Patterns that are unclear in numeric form, think clusters, gaps, skew, relationships, often emerge immediately when plotted.</p></li>
+<li><p><strong>Interpret</strong><br>
+Interpretation involves asking what the visual patterns suggest about the underlying system, whether anomalies are meaningful or artifacts, and whether observed relationships align with theory or domain knowledge.</p></li>
+<li><p><strong>Refine</strong><br>
+The first view is rarely the final one. Analysts adjust bin widths, try alternate scales, filter subgroups, or generate additional plots to clarify ambiguous patterns. They may revise summaries or return to earlier steps entirely, especially when visualizations reveal inconsistencies or unexpected behavior. In complex systems, refinement is not a sign of error but a hallmark of responsible analytical reasoning.</p></li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

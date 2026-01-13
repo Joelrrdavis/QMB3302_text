@@ -1,0 +1,339 @@
+---
+title: "Terminal, Paths, and Virtual Environments"
+---
+
+## Overview
+
+This chapter explains how Python scripts are located and executed on a computer by introducing the basic ideas behind the terminal, file systems, and paths. Then we introduce virtual environments as a way to control which version of Python and which packages are used for a given project. 
+
+## Opening the Terminal
+
+The exact steps to opening a terminal depend on the operating system and tools being used, but the underlying concept is the same: opening a window where text-based commands can be entered and executed.
+
+On **macOS**, the terminal application is called Terminal. It can be opened in several ways:
+
+- By using Spotlight search and typing “Terminal”  
+- By navigating to Applications → Utilities → Terminal  
+
+Once opened, the Terminal window provides direct access to the macOS command line.
+
+On **Windows**, the terminal experience may appear under different names depending on configuration. Common options include:
+
+- Command Prompt  
+- Windows PowerShell  
+- Windows Terminal (a newer application that supports multiple shells)  
+
+Any of these can be opened by searching from the Start menu. While they may look slightly different, they all allow commands to be typed and executed in the same basic way.
+
+Many developers use **Visual Studio Code**, which includes an **integrated terminal**. This terminal runs inside the editor itself and behaves just like a regular system terminal, but with important advantages for programming.
+
+To open the integrated terminal in Visual Studio Code:
+
+- Use the menu option View → Terminal  
+- Or use the keyboard shortcut that opens the terminal panel  
+
+The integrated terminal often starts in the context of the *current project folder*, which reduces the need to navigate manually through the file system. This makes it especially convenient for running Python scripts and managing project files.
+
+Regardless of how the terminal is opened, the same ideas apply. Commands are typed, executed, and produce output.
+
+## What the Terminal Is and Why It Matters
+
+The **terminal** is a text-based interface for interacting directly with a computer’s operating system. Instead of clicking on icons or navigating menus, instructions are typed as commands. The computer executes those commands and returns output in the same window.
+
+While graphical interfaces are designed for ease of use, the terminal is designed for **precision and control**. It allows you to specify exactly what you want the computer to do, where to do it, and how to do it. 
+
+In a graphical interface, running a program often involves clicking on a file. In contrast, running a Python script from the terminal requires two pieces of information:
+
+1. **Which Python interpreter to use**  
+2. **Where the script is located**  
+
+The terminal makes both of these explicit.
+
+When you type a command into the terminal, you are issuing an instruction and then waiting for a response. For example, a simple command that asks the computer where you currently are in the file system looks like this:
+
+```bash
+pwd
+```
+
+After pressing Enter, the terminal responds by printing the current working directory. This directory is the location the terminal is “pointing to,” and it determines which files the computer can see when you issue commands.
+
+This idea of *location* is critical. When you run a Python script using a command such as:
+
+```bash
+python first_program.py
+```
+
+Python looks for the file named `first_program.py` **in the current working directory**. If the file is not located there, Python cannot run it, even if the file exists elsewhere on your computer. This is one of the most common sources of confusion for beginners, and it highlights why understanding the terminal matters.
+
+The terminal also differs from clicking files in an important way: commands are **repeatable and explicit**. When you type a command, you can see exactly what was executed. This makes it easier to reproduce results, diagnose errors, and understand what the computer is doing step by step.
+
+Every terminal interaction follows the same basic pattern:
+
+1. You type a command.  
+2. The computer executes it.  
+3. The terminal displays output or an error message.  
+4. Control returns to you.  
+
+For example, listing the contents of the current directory in the terminal (MacOS or VSCode terminal) looks like this:
+
+```bash
+ls
+```
+
+The terminal responds by showing the files and folders in that location. This immediate feedback loop—command followed by output—is central to working effectively with the terminal and will be used frequently in analytics and AI workflows.
+
+The best way to understand and learn the terminal is not to memorize the commands. Those can be looked up, or cheat sheets printed until they are known. Instead, try to develop a mental model of how the computer interprets instructions, how files are located, and how programs are executed. 
+
+## Files, Folders, and Working Directories
+
+Computers organize information using **files** and **folders** (also called directories). A file contains data or instructions, such as a Python script, while a folder is a container that holds files and other folders. Every file on a computer exists inside exactly one folder, and folders can be nested inside other folders.
+
+When working in the terminal, the computer always keeps track of a single location called the **current working directory**. This directory represents “where you are” in the file system at any given moment. All commands you type into the terminal are interpreted relative to this location unless you explicitly say otherwise. This is one of biggest sources of confusion and issue with new programmers, so take note how to find and change your working directory. It will avoid a lot of confusion and frustration later. 
+
+You can ask the terminal to show the current working directory using the following command:
+
+```bash
+pwd
+```
+
+The output shows the full path to the folder the terminal is currently using. This location matters because most commands—including those that run Python scripts—operate on files in this directory by default.
+
+To see what files and folders exist in the current working directory, you can list its contents:
+
+```bash
+ls
+```
+
+The terminal responds by displaying the names of files and folders in that location. If a Python script does not appear in this list, it means the terminal cannot “see” it from the current directory.
+
+This explains why a command such as:
+
+```bash
+python script.py
+```
+
+only works when the file named `script.py` is located in the current working directory. When this command is run, Python looks for `script.py` in the folder the terminal is currently pointing to. If the file is elsewhere, Python cannot run it and will report that the file cannot be found.
+
+Programs locate files using the same logic. When a program is executed, it starts in the current working directory and interprets file references relative to that location. If a script refers to another file without specifying a full path, Python assumes that file is located in—or relative to—the directory where the program was run.
+
+Changing the current working directory changes what files are visible to the terminal and to any programs launched from it. Moving between folders is a *fundamental* skill when working with scripts and project-based code.
+
+## Relative vs Absolute Paths
+
+A **path** is a description of where a file or folder is located on a computer. Paths allow both humans and programs to refer to specific locations in the file system. When working in the terminal, paths are how you tell the computer *which* file or folder you mean.
+
+There are two main types of paths: **absolute paths** and **relative paths**. The difference between them depends on where the path begins.
+
+An **absolute path** describes a location starting from the root of the file system. It specifies the full sequence of folders that must be followed to reach a file, regardless of the current working directory. Because absolute paths always start from the same place, they uniquely identify a file’s location.
+
+For example, an absolute path might look like this:
+
+```bash
+/Users/username/projects/week1/hello_world.py
+```
+
+This path tells the computer exactly where the file lives, no matter where the terminal is currently pointed. Absolute paths are precise, but they can be long, system-specific, and inconvenient to type repeatedly.
+
+A **relative path**, by contrast, describes a location starting from the **current working directory**. Instead of beginning at the root of the file system, a relative path is interpreted based on where you are at the moment the command is run.
+
+For example, if the terminal is already inside the `week1` folder, the same file could be referred to simply as:
+
+```bash
+hello_world.py
+```
+
+Relative paths are shorter and easier to read, but they only make sense in relation to the current working directory. This is why understanding where you are in the file system is so important when using the terminal.
+
+In most projects, **relative paths are used far more often than absolute paths**. Relative paths make code easier to move between computers and directories without modification. If a project folder is copied or shared, relative paths continue to work as long as the internal structure of the project remains the same.
+
+Two special symbols are commonly used in relative paths. The symbol `.` refers to the **current directory**, while `..` refers to the **parent directory**, which is the folder that contains the current one. These symbols provide a concise way to navigate up and down the folder hierarchy.
+
+For example, moving up one level in the directory structure looks like this:
+
+```bash
+cd ..
+```
+
+Using these symbols allows paths to express relationships between folders rather than fixed locations. This relational view of file locations is central to working effectively with scripts, projects, and command-line tools.
+
+## Essential Navigation Commands (Conceptual Overview)
+
+Working in the terminal involves a small set of core commands that allow you to **navigate the file system** and understand what files are available at any given moment. These commands are used constantly when working with Python scripts, not because they are complex, but because they express intent very directly.
+
+One of the most common tasks is **moving between folders**. This is done by changing the current working directory. Conceptually, this is no different from opening a different folder in a graphical interface, except that it is done by issuing a command rather than clicking.
+
+For example, moving into a folder looks like this:
+
+```bash
+cd projects
+```
+
+After this command runs, the terminal’s current working directory changes to the `projects` folder. All subsequent commands are interpreted relative to this new location.
+
+Another common task is **listing the contents of a folder**. This allows you to see which files and subfolders exist in the current directory:
+
+```bash
+ls
+```
+
+Listing files is often the first step when something does not work as expected. If a file does not appear in the listing, it means the terminal cannot see it from the current location.
+
+Folders are also created directly from the terminal. Creating folders is especially useful for organizing projects and keeping related files together:
+
+```bash
+mkdir week1
+```
+
+This command creates a new folder named `week1` inside the current working directory. Organizing code into folders helps keep scripts, data, and outputs clearly separated, which becomes increasingly important as projects grow.
+
+These navigation commands matter because **the terminal always operates in a specific location**. Python scripts are run from that location, files are created there by default, and relative paths are resolved based on it. When a command behaves unexpectedly, the cause is often not the command itself, but the directory from which it was run.
+
+If you are new in the terminal, don't memorize commands, but try to understand their intent:
+
+- *Where am I?*  
+- *What files are here?*  
+- *Where do I want to go next?*  
+
+Once this mental model is in place, the specific command names become easier to remember, and working in the terminal becomes a predictable and logical process rather than a trial-and-error activity.
+
+## How the Terminal Connects to Python Execution
+
+The terminal plays a central role in running Python scripts because it provides the context in which commands are interpreted. When a Python script is executed, the terminal is responsible for telling Python **which file to run** and **where to find it**.
+
+When you type a command such as:
+
+```bash
+python first_program.py
+```
+
+(note in some MacOS systems you might write `python3` instead of `python`)
+
+you are giving Python two pieces of information at once. First, you are specifying that the Python interpreter should be used. Second, you are specifying the name of the file to execute. What is not explicitly stated—but is critically important—is **where Python should look for that file**.
+
+By default, Python looks for the script in the **current working directory**. That directory is determined entirely by the terminal’s location at the moment the command is run. If the file named `first_program.py` is located in that directory, Python can execute it. If it is not, Python reports an error indicating that the file cannot be found.
+
+This explains why errors such as “file not found” or “no such file or directory” occur so frequently. In many cases, the issue is not that the file does not exist, but that the terminal is pointed at the wrong folder when the command is issued.
+
+Changing directories changes what files are visible to Python. Listing files allows you to verify whether the script you want to run is actually present in the current location. A simple but powerful workflow:
+
+1. Navigate to the folder containing the script.  
+2. Confirm the file is present.  
+3. Run the script using the Python command.  
+
+Project folder structure reinforces this workflow. When scripts are organized into predictable folders, it becomes easier to navigate to the correct location and run code reliably. Relative paths and consistent organization reduce the likelihood of execution errors and make projects easier to understand and maintain.
+
+This leads to a useful mental model for running Python scripts:
+
+**location → command → execution**
+
+First, the terminal’s location determines what files are accessible. Next, the command specifies what action to take. Finally, Python executes the script based on that context. When something goes wrong, tracing the problem through these three steps is often the fastest way to identify and resolve the issue.
+
+Understanding this connection between the terminal and Python execution transforms error messages from obstacles into signals. Rather than guessing, it becomes possible to reason systematically about what the computer is doing and why a particular command succeeds or fails.
+
+## Virtual Environments Overview
+
+A virtual environment defines the execution context of a Python project, including its library versions and dependencies. This isolation ensures that code behaves consistently across machines and over time. Without virtual environments, the same script may run successfully in one setting and fail in another, even when the code itself is unchanged. Virtual environments add an important system level question, and lock in options:  **which version of Python, and which set of installed tools, should be used when a script runs?**
+
+This question becomes especially important as projects grow and as additional libraries are introduced. Virtual environments provide a structured way to manage this complexity by controlling the software context in which Python programs execute. 
+
+### Why Virtual Environments Exist
+
+Virtual environments exist to solve a practical problem that arises when working with Python across multiple projects: **different projects often require different packages, or worse different versions of the same package**.
+
+By default, Python allows packages to be installed globally, meaning they are available to all Python programs on a computer. While this may seem convenient at first, it quickly leads to conflicts. One project may require a newer version of a library, while another depends on an older version. Installing or upgrading a package for one project can unintentionally break another.
+
+These conflicts are especially common in analytics and AI work, where projects often rely on rapidly evolving libraries. Changes in package behavior, version compatibility, or dependencies can cause code that once worked correctly to fail without any changes to the code itself.
+
+Virtual environments address this problem by providing **isolation**. Each environment contains its own copy of the Python interpreter along with its own set of installed packages. This allows each project to define and control exactly which packages and versions it uses, without affecting other projects or the system-wide Python installation.
+
+Importantly, virtual environments are not about adding complexity for its own sake. They are a way to **reduce uncertainty and prevent accidental breakage**. By isolating dependencies, environments make projects more predictable, easier to reproduce, and easier to share with others.
+
+From a workflow perspective, virtual environments support a simple principle: *a project should carry its own assumptions about its software dependencies*. When those assumptions are explicit and isolated, problems become easier to diagnose and fixes become easier to apply.
+
+### What a Virtual Environment Is
+
+A **virtual environment** is a self-contained Python setup that exists alongside, but separate from, the system-wide Python installation. It provides a controlled space in which a project can run using a specific Python interpreter and a specific set of installed packages.
+
+Each virtual environment includes its own Python interpreter and its own package directory. When a program is run inside an environment, Python uses the interpreter and packages associated with that environment rather than those installed globally on the system. This separation is what allows multiple projects with different requirements to coexist on the same computer without interfering with one another.
+
+Virtual environments are closely tied to two components: the **Python interpreter** and **installed packages**. The interpreter determines which version of Python is used, while the installed packages determine which libraries and tools are available to the program. Together, these define the software context in which a script executes.
+
+When a virtual environment is **activated**, the terminal is instructed to use the environment’s Python interpreter by default. As a result, running Python commands or executing scripts uses the environment’s configuration rather than the system-wide one. Activation does not change Python itself; it changes which Python is selected when commands are run.
+
+It is important to understand what activation does *not* do. Activating a virtual environment does not delete or replace the system Python installation. It does not modify other environments, and it does not affect projects outside the current working context. The system Python remains available and unchanged; the environment simply provides an alternative that is used temporarily.
+
+This distinction is essential for developing confidence with environments. Virtual environments do not take control of the computer or permanently alter Python. They provide a scoped, reversible context in which projects can be developed and executed reliably.
+
+### A Standard Environment Workflow (Using uv)
+
+To manage virtual environments consistently, it is helpful to use a single tool. One modern option is **uv**, which can create and manage environments efficiently. Standardizing on one tool reduces confusion, minimizes setup errors, and helps ensure that examples behave the same way across machines.
+
+At a high level, an environment workflow consists of three steps:
+
+1. **Create an environment**  
+   A new virtual environment is created for the project. This environment serves as an isolated space where the project’s Python interpreter and packages will live.
+
+2. **Activate the environment**  
+   Activating the environment tells the terminal to use the environment’s Python interpreter by default. From this point forward, Python commands and scripts run within the context of the environment rather than the system-wide installation.
+
+3. **Install dependencies**  
+   Required packages are installed into the environment. These packages become available only within that environment, ensuring that the project’s dependencies are isolated and controlled.
+
+These steps form a repeatable process that can be used for every project. While specific commands depend on the tool and operating system, the underlying structure remains the same. Understanding this structure makes it easier to reason about environment errors, recover from mistakes, and apply the same approach in future projects.
+
+### Activating and Deactivating Environments (Conceptual)
+
+Activating a virtual environment changes how the terminal interprets Python-related commands. Rather than altering Python itself, activation tells the terminal **which Python interpreter and which set of packages should be used** when commands are executed.
+
+When an environment is activated, the terminal is temporarily configured so that Python commands refer to the environment’s Python interpreter instead of the system-wide one. As a result, any script that is run uses the packages installed in that environment. This is why activation is such an important step in the workflow: it determines the software context in which code executes.
+
+Activation affects two key things. First, it determines **which Python runs**. Even if multiple versions of Python exist on a computer, activation ensures that the correct interpreter is used for the current project. Second, it determines **which packages are available**. Only the packages installed in the active environment can be imported and used by scripts.
+
+Forgetting to activate an environment is a common source of confusion. When this happens, Python may still run, but it may use the system-wide interpreter and packages instead of the project-specific ones. This can lead to errors where code appears correct but fails because required packages are missing or the wrong versions are being used.
+
+Deactivating an environment simply returns the terminal to its default state. After deactivation, Python commands once again refer to the system-wide Python installation. No files are deleted, and no environments are removed; the change is temporary and reversible.
+
+Understanding activation and deactivation reinforces an important idea: **virtual environments are contexts, not permanent changes**. They define how Python behaves in a given terminal session, and they can be entered and exited as needed.
+
+### How Environments Connect to the Terminal and Visual Studio Code
+
+Virtual environments are closely tied to the **terminal session** in which they are activated. When an environment is activated, the change applies only to that specific terminal window. Other terminal windows remain unaffected unless the environment is activated there as well. This session-specific behavior is intentional and allows different projects to be worked on simultaneously using different environments.
+
+Because activation is terminal-specific, it is possible for two terminals on the same computer to behave differently at the same time. One terminal may be using a project’s virtual environment, while another is using the system-wide Python installation. Understanding this distinction helps explain why code may run successfully in one terminal but fail in another.
+
+Visual Studio Code builds on this behavior by integrating the terminal and the editor. When a project folder is opened in VS Code, the editor can detect virtual environments. If an environment is found, VS Code can associate that environment with the project and use it when running Python scripts.
+
+VS Code’s Python tooling uses this association to determine which Python interpreter should be used for execution, linting, and debugging. When the correct environment is selected, running a script from the editor or from the integrated terminal uses the same Python configuration. This alignment reduces confusion and helps ensure consistent behavior across tools.
+
+At this point, several concepts come together:
+
+- The **terminal location** determines which files are visible.  
+- The **active environment** determines which Python interpreter and packages are used.  
+- The **execution command** tells Python which script to run.  
+
+All three must align for code to run as expected. If any one of them is incorrect—wrong directory, wrong environment, or wrong command—errors can occur even if the code itself is correct.
+
+Viewing these elements as a coordinated system rather than independent pieces makes troubleshooting much easier. Instead of guessing, it becomes possible to check each part in turn: where the terminal is, which environment is active, and which Python is being used.
+
+### Common Environment Mistakes and Recovery Strategies
+
+Mistakes involving virtual environments are extremely common and occur at all experience levels. These issues rarely indicate a problem with the code itself. Instead, they usually arise from a mismatch between the environment that was intended and the one that is actually being used.
+
+One frequent mistake is **installing packages in the wrong environment**. This happens when packages are installed while the system-wide Python environment is active instead of the project’s virtual environment. As a result, a script may fail to import a package even though it appears to be installed. The package exists—but not in the environment the script is using.
+
+Another common issue is **running scripts with the wrong Python interpreter**. Because multiple Python interpreters can exist on the same computer, it is possible to run a script using a different interpreter than expected. When this occurs, the script may behave inconsistently across terminals or tools, even though no changes were made to the code.
+
+It is also easy to **forget which environment is active**, especially when switching between projects or terminal windows. Since activation is specific to each terminal session, opening a new terminal often means starting without any environment activated. This can lead to confusion when previously working code suddenly fails.
+
+Recovering from environment-related issues usually involves a small number of simple checks:
+
+- Confirm which environment is active in the current terminal.  
+- Verify which Python interpreter is being used.  
+- Ensure required packages are installed in that environment.  
+- Re-activate the intended environment if necessary.  
+
+These steps are effective because they reestablish clarity about the execution context before any changes are made. Guessing or reinstalling packages repeatedly is rarely helpful without first confirming which environment is actually in use.
+
+Most importantly, these mistakes are routine and fixable. Even experienced developers encounter them regularly, particularly when working across multiple projects or tools. With practice, identifying environment issues becomes a quick diagnostic step rather than a source of frustration.
+
+Virtual environments are designed to make work more reliable, not more fragile. Once their role is understood, environment-related problems become signals to check context rather than obstacles to progress.

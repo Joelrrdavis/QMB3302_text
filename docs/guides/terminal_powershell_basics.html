@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Using Google Colab for This Course – Foundations of Analytics &amp; AI</title>
+<title>Terminal &amp; PowerShell Basics for This Course – Foundations of Analytics &amp; AI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -207,21 +207,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#what-is-google-colab" id="toc-what-is-google-colab" class="nav-link" data-scroll-target="#what-is-google-colab">1. What Is Google Colab?</a></li>
-  <li><a href="#opening-google-colab" id="toc-opening-google-colab" class="nav-link" data-scroll-target="#opening-google-colab">2. Opening Google Colab</a></li>
-  <li><a href="#option-a-create-a-new-notebook" id="toc-option-a-create-a-new-notebook" class="nav-link" data-scroll-target="#option-a-create-a-new-notebook">3. Option A — Create a New Notebook</a></li>
-  <li><a href="#option-b-upload-a-notebook-from-your-computer" id="toc-option-b-upload-a-notebook-from-your-computer" class="nav-link" data-scroll-target="#option-b-upload-a-notebook-from-your-computer">4. Option B — Upload a Notebook from Your Computer</a></li>
-  <li><a href="#option-c-open-a-notebook-directly-from-github" id="toc-option-c-open-a-notebook-directly-from-github" class="nav-link" data-scroll-target="#option-c-open-a-notebook-directly-from-github">5. Option C — Open a Notebook Directly from GitHub</a></li>
-  <li><a href="#installing-packages-in-colab" id="toc-installing-packages-in-colab" class="nav-link" data-scroll-target="#installing-packages-in-colab">6. Installing Packages in Colab</a></li>
-  <li><a href="#working-with-files" id="toc-working-with-files" class="nav-link" data-scroll-target="#working-with-files">7. Working with Files</a>
+  <li><a href="#why-this-guide-exists" id="toc-why-this-guide-exists" class="nav-link active" data-scroll-target="#why-this-guide-exists">Why this guide exists</a></li>
+  <li><a href="#what-the-terminal-powershell-is-plain-language" id="toc-what-the-terminal-powershell-is-plain-language" class="nav-link" data-scroll-target="#what-the-terminal-powershell-is-plain-language">What the terminal / PowerShell is (plain language)</a></li>
+  <li><a href="#what-this-guide-assumes-and-teaches" id="toc-what-this-guide-assumes-and-teaches" class="nav-link" data-scroll-target="#what-this-guide-assumes-and-teaches">What this guide assumes (and teaches)</a></li>
+  <li><a href="#part-a-opening-the-terminal" id="toc-part-a-opening-the-terminal" class="nav-link" data-scroll-target="#part-a-opening-the-terminal">Part A — Opening the terminal</a>
   <ul class="collapse">
-  <li><a href="#temporary-upload" id="toc-temporary-upload" class="nav-link" data-scroll-target="#temporary-upload">Temporary Upload</a></li>
-  <li><a href="#mount-google-drive" id="toc-mount-google-drive" class="nav-link" data-scroll-target="#mount-google-drive">Mount Google Drive</a></li>
+  <li><a href="#macos-open-terminal" id="toc-macos-open-terminal" class="nav-link" data-scroll-target="#macos-open-terminal">macOS: Open Terminal</a></li>
+  <li><a href="#windows-open-powershell" id="toc-windows-open-powershell" class="nav-link" data-scroll-target="#windows-open-powershell">Windows: Open PowerShell</a></li>
   </ul></li>
-  <li><a href="#saving-your-work" id="toc-saving-your-work" class="nav-link" data-scroll-target="#saving-your-work">8. Saving Your Work</a></li>
-  <li><a href="#limitations-of-colab" id="toc-limitations-of-colab" class="nav-link" data-scroll-target="#limitations-of-colab">9. Limitations of Colab</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">10. Summary</a></li>
+  <li><a href="#part-b-what-you-see-when-it-opens" id="toc-part-b-what-you-see-when-it-opens" class="nav-link" data-scroll-target="#part-b-what-you-see-when-it-opens">Part B — What you see when it opens</a>
+  <ul class="collapse">
+  <li><a href="#the-most-important-rule" id="toc-the-most-important-rule" class="nav-link" data-scroll-target="#the-most-important-rule">The most important rule</a></li>
+  </ul></li>
+  <li><a href="#part-c-running-commands" id="toc-part-c-running-commands" class="nav-link" data-scroll-target="#part-c-running-commands">Part C — Running commands</a>
+  <ul class="collapse">
+  <li><a href="#how-to-run-a-command" id="toc-how-to-run-a-command" class="nav-link" data-scroll-target="#how-to-run-a-command">How to run a command</a></li>
+  <li><a href="#copying-and-pasting-commands" id="toc-copying-and-pasting-commands" class="nav-link" data-scroll-target="#copying-and-pasting-commands">Copying and pasting commands</a></li>
+  <li><a href="#how-to-tell-if-a-command-worked" id="toc-how-to-tell-if-a-command-worked" class="nav-link" data-scroll-target="#how-to-tell-if-a-command-worked">How to tell if a command worked</a></li>
+  <li><a href="#how-to-tell-if-a-command-failed" id="toc-how-to-tell-if-a-command-failed" class="nav-link" data-scroll-target="#how-to-tell-if-a-command-failed">How to tell if a command failed</a></li>
+  </ul></li>
+  <li><a href="#part-d-where-am-i-folders" id="toc-part-d-where-am-i-folders" class="nav-link" data-scroll-target="#part-d-where-am-i-folders">Part D — Where am I? (folders)</a>
+  <ul class="collapse">
+  <li><a href="#check-your-current-folder" id="toc-check-your-current-folder" class="nav-link" data-scroll-target="#check-your-current-folder">Check your current folder</a></li>
+  <li><a href="#list-files-in-the-current-folder" id="toc-list-files-in-the-current-folder" class="nav-link" data-scroll-target="#list-files-in-the-current-folder">List files in the current folder</a></li>
+  </ul></li>
+  <li><a href="#part-e-moving-between-folders" id="toc-part-e-moving-between-folders" class="nav-link" data-scroll-target="#part-e-moving-between-folders">Part E — Moving between folders</a>
+  <ul class="collapse">
+  <li><a href="#change-folders-cd" id="toc-change-folders-cd" class="nav-link" data-scroll-target="#change-folders-cd">Change folders (<code>cd</code>)</a></li>
+  <li><a href="#move-into-a-specific-folder" id="toc-move-into-a-specific-folder" class="nav-link" data-scroll-target="#move-into-a-specific-folder">Move into a specific folder</a></li>
+  <li><a href="#move-up-one-level" id="toc-move-up-one-level" class="nav-link" data-scroll-target="#move-up-one-level">Move up one level</a></li>
+  </ul></li>
+  <li><a href="#part-f-stopping-a-command" id="toc-part-f-stopping-a-command" class="nav-link" data-scroll-target="#part-f-stopping-a-command">Part F — Stopping a command</a></li>
+  <li><a href="#part-g-common-beginner-mistakes-and-fixes" id="toc-part-g-common-beginner-mistakes-and-fixes" class="nav-link" data-scroll-target="#part-g-common-beginner-mistakes-and-fixes">Part G — Common beginner mistakes (and fixes)</a>
+  <ul class="collapse">
+  <li><a href="#nothing-happened" id="toc-nothing-happened" class="nav-link" data-scroll-target="#nothing-happened">“Nothing happened”</a></li>
+  <li><a href="#command-not-found" id="toc-command-not-found" class="nav-link" data-scroll-target="#command-not-found">“Command not found”</a></li>
+  <li><a href="#permission-denied-maclinux" id="toc-permission-denied-maclinux" class="nav-link" data-scroll-target="#permission-denied-maclinux">“Permission denied” (Mac/Linux)</a></li>
+  <li><a href="#im-nervous-ill-break-something" id="toc-im-nervous-ill-break-something" class="nav-link" data-scroll-target="#im-nervous-ill-break-something">I’m nervous I’ll break something</a></li>
+  <li><a href="#final-confidence-check" id="toc-final-confidence-check" class="nav-link" data-scroll-target="#final-confidence-check">Final confidence check</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -230,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Using Google Colab for This Course</h1>
+<h1 class="title">Terminal &amp; PowerShell Basics for This Course</h1>
 </div>
 
 
@@ -247,157 +271,352 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>Google Colab is a free, cloud-based environment for running Python notebooks.<br>
-You can use it from any computer without installing Python locally. It is especially helpful if:</p>
-<ul>
-<li>Your computer cannot install packages reliably<br>
-</li>
-<li>You are troubleshooting your Python installation<br>
-</li>
-<li>You want quick access to a working Python environment</li>
-</ul>
-<p>This guide explains how to open Colab, upload or access notebooks, install packages, work with files, and download your work.</p>
+<section id="why-this-guide-exists" class="level2">
+<h2 class="anchored" data-anchor-id="why-this-guide-exists">Why this guide exists</h2>
+<p>Many students in this course have <strong>never used the terminal (Mac)</strong> or <strong>PowerShell (Windows)</strong> before.<br>
+That is completely normal.</p>
+<p>This short guide teaches <strong>only what you need</strong> to successfully complete the course setup and run Python code later.</p>
+<p>You do <strong>not</strong> need to memorize commands or understand how your computer works internally.<br>
+You just need to be comfortable running a small number of commands and recognizing when something worked.</p>
 <hr>
 </section>
-<section id="what-is-google-colab" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-google-colab">1. What Is Google Colab?</h2>
-<p>Google Colab provides:</p>
-<ul>
-<li>A hosted Python runtime (no setup required)<br>
-</li>
-<li>Built-in Jupyter-like notebook interface<br>
-</li>
-<li>Free GPU/TPU access (not required for this course but available)<br>
-</li>
-<li>Integration with Google Drive</li>
-</ul>
-<p>Colab notebooks use the <code>.ipynb</code> format, but you can also copy/paste Python code from <code>.py</code> files.</p>
+<section id="what-the-terminal-powershell-is-plain-language" class="level2">
+<h2 class="anchored" data-anchor-id="what-the-terminal-powershell-is-plain-language">What the terminal / PowerShell is (plain language)</h2>
+<p>Think of the terminal as:</p>
+<blockquote class="blockquote">
+<p>A text-based way to tell your computer exactly what to do, step by step.</p>
+</blockquote>
+<p>Instead of clicking buttons, you:<br>
+- type a command<br>
+- press <strong>Enter</strong><br>
+- read the result</p>
+<p>The terminal:<br>
+- works inside a <strong>folder</strong><br>
+- runs commands <strong>in order</strong><br>
+- shows errors immediately when something goes wrong</p>
 <hr>
 </section>
-<section id="opening-google-colab" class="level2">
-<h2 class="anchored" data-anchor-id="opening-google-colab">2. Opening Google Colab</h2>
-<p>Go to:</p>
-<p><a href="https://colab.research.google.com/" class="uri">https://colab.research.google.com/</a></p>
-<p>You will see a window prompting you to:</p>
+<section id="what-this-guide-assumes-and-teaches" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-guide-assumes-and-teaches">What this guide assumes (and teaches)</h2>
+<p>By the end of this guide, you should be able to:</p>
 <ul>
-<li>Start a new notebook<br>
+<li>open Terminal (Mac) or PowerShell (Windows)<br>
 </li>
-<li>Upload a <code>.ipynb</code> file<br>
+<li>type or paste a command<br>
 </li>
-<li>Open from Google Drive<br>
+<li>run a command<br>
 </li>
-<li>Open from GitHub</li>
+<li>know whether it worked<br>
+</li>
+<li>know which folder you are in<br>
+</li>
+<li>move into a different folder</li>
 </ul>
 <hr>
 </section>
-<section id="option-a-create-a-new-notebook" class="level2">
-<h2 class="anchored" data-anchor-id="option-a-create-a-new-notebook">3. Option A — Create a New Notebook</h2>
+<section id="part-a-opening-the-terminal" class="level2">
+<h2 class="anchored" data-anchor-id="part-a-opening-the-terminal">Part A — Opening the terminal</h2>
+<section id="macos-open-terminal" class="level3">
+<h3 class="anchored" data-anchor-id="macos-open-terminal">macOS: Open Terminal</h3>
+<p>You have two common options:</p>
+<section id="option-1-spotlight-recommended" class="level4">
+<h4 class="anchored" data-anchor-id="option-1-spotlight-recommended">Option 1: Spotlight (recommended)</h4>
 <ol type="1">
-<li>Go to <strong>File → New Notebook</strong>.<br>
+<li>Press <code>Command + Space</code><br>
 </li>
-<li>A new notebook will open with a default Python environment.<br>
+<li>Type <strong>Terminal</strong><br>
 </li>
-<li>You can copy/paste code from the course textbook or <code>.py</code> files.</li>
+<li>Press Enter</li>
 </ol>
-<p>Use <strong>Shift + Enter</strong> to run a cell.</p>
+</section>
+<section id="option-2-applications-folder" class="level4">
+<h4 class="anchored" data-anchor-id="option-2-applications-folder">Option 2: Applications folder</h4>
+<ul>
+<li>Applications → Utilities → Terminal</li>
+</ul>
 <hr>
 </section>
-<section id="option-b-upload-a-notebook-from-your-computer" class="level2">
-<h2 class="anchored" data-anchor-id="option-b-upload-a-notebook-from-your-computer">4. Option B — Upload a Notebook from Your Computer</h2>
+</section>
+<section id="windows-open-powershell" class="level3">
+<h3 class="anchored" data-anchor-id="windows-open-powershell">Windows: Open PowerShell</h3>
+<section id="option-1-start-menu-recommended" class="level4">
+<h4 class="anchored" data-anchor-id="option-1-start-menu-recommended">Option 1: Start Menu (recommended)</h4>
 <ol type="1">
-<li>Go to <strong>File → Upload Notebook</strong><br>
+<li>Click Start<br>
 </li>
-<li>Select the notebook you downloaded<br>
+<li>Type <strong>PowerShell</strong><br>
 </li>
-<li>Colab will open it in a new tab</li>
+<li>Open <strong>Windows PowerShell</strong> or <strong>Windows Terminal</strong></li>
 </ol>
+</section>
+<section id="option-2-right-click-menu-sometimes-available" class="level4">
+<h4 class="anchored" data-anchor-id="option-2-right-click-menu-sometimes-available">Option 2: Right-click menu (sometimes available)</h4>
+<ul>
+<li>Right-click in a folder<br>
+</li>
+<li>Choose <strong>Open in Terminal</strong> or <strong>Open PowerShell here</strong></li>
+</ul>
+<hr>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For this course, <strong>Terminal (Mac)</strong> and <strong>PowerShell (Windows)</strong> are equivalent.<br>
+All commands will be clearly labeled for your system.</p>
+</div>
+</div>
 <hr>
 </section>
-<section id="option-c-open-a-notebook-directly-from-github" class="level2">
-<h2 class="anchored" data-anchor-id="option-c-open-a-notebook-directly-from-github">5. Option C — Open a Notebook Directly from GitHub</h2>
+</section>
+</section>
+<section id="part-b-what-you-see-when-it-opens" class="level2">
+<h2 class="anchored" data-anchor-id="part-b-what-you-see-when-it-opens">Part B — What you see when it opens</h2>
+<p>When the terminal opens, you will see:<br>
+- a block of text<br>
+- a blinking cursor</p>
+<p>Example (Mac):</p>
+<pre class="text"><code>username@computer-name ~ %</code></pre>
+<p>Example (Windows):</p>
+<pre class="text"><code>PS C:\Users\username&gt;</code></pre>
+<p>This line is called the <strong>prompt</strong>.<br>
+It tells you:<br>
+- who you are<br>
+- which computer you are on<br>
+- <strong>which folder you are currently in</strong></p>
+<hr>
+<section id="the-most-important-rule" class="level3">
+<h3 class="anchored" data-anchor-id="the-most-important-rule">The most important rule</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Commands run in the current folder.</strong><br>
+If you are in the wrong folder, commands will fail or create files in the wrong place.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="part-c-running-commands" class="level2">
+<h2 class="anchored" data-anchor-id="part-c-running-commands">Part C — Running commands</h2>
+<section id="how-to-run-a-command" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-run-a-command">How to run a command</h3>
 <ol type="1">
-<li>Go to <strong>File → Open Notebook</strong><br>
-</li>
-<li>Choose the <strong>GitHub</strong> tab<br>
-</li>
-<li>Paste the repository URL<br>
-</li>
-<li>Select the notebook you want to open</li>
+<li>Click in the terminal window</li>
+<li>Type (or paste) a command</li>
+<li>Press <strong>Enter</strong></li>
 </ol>
 <p>Example:</p>
-<pre><code>https://github.com/&lt;your-username&gt;/undergrad-ai-course</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The computer will respond immediately.</p>
 <hr>
 </section>
-<section id="installing-packages-in-colab" class="level2">
-<h2 class="anchored" data-anchor-id="installing-packages-in-colab">6. Installing Packages in Colab</h2>
-<p>Colab comes with many Python packages preinstalled.</p>
-<p>To install additional packages:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install seaborn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Or install from a requirements file:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>r requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
-</section>
-<section id="working-with-files" class="level2">
-<h2 class="anchored" data-anchor-id="working-with-files">7. Working with Files</h2>
-<section id="temporary-upload" class="level3">
-<h3 class="anchored" data-anchor-id="temporary-upload">Temporary Upload</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> files</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>uploaded <span class="op">=</span> files.upload()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="mount-google-drive" class="level3">
-<h3 class="anchored" data-anchor-id="mount-google-drive">Mount Google Drive</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> drive</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>drive.mount(<span class="st">'/content/drive'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Your Drive will appear at:</p>
-<pre><code>/content/drive/MyDrive/</code></pre>
-<hr>
-</section>
-</section>
-<section id="saving-your-work" class="level2">
-<h2 class="anchored" data-anchor-id="saving-your-work">8. Saving Your Work</h2>
-<section id="save-to-drive" class="level4">
-<h4 class="anchored" data-anchor-id="save-to-drive">Save to Drive</h4>
-<p><strong>File → Save a copy in Drive</strong></p>
-</section>
-<section id="download" class="level4">
-<h4 class="anchored" data-anchor-id="download">Download</h4>
-<p><strong>File → Download → .ipynb</strong><br>
-<strong>File → Download → .py</strong></p>
-<hr>
-</section>
-</section>
-<section id="limitations-of-colab" class="level2">
-<h2 class="anchored" data-anchor-id="limitations-of-colab">9. Limitations of Colab</h2>
+<section id="copying-and-pasting-commands" class="level3">
+<h3 class="anchored" data-anchor-id="copying-and-pasting-commands">Copying and pasting commands</h3>
 <ul>
-<li>Sessions time out<br>
+<li><strong>Mac:</strong> <code>Cmd + C</code> (copy), <code>Cmd + V</code> (paste)</li>
+<li><strong>Windows:</strong> <code>Ctrl + C</code> (copy), <code>Ctrl + V</code> (paste)</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is perfectly fine to <strong>copy and paste commands</strong> from course materials.<br>
+This is not cheating; it is standard practice.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="how-to-tell-if-a-command-worked" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-tell-if-a-command-worked">How to tell if a command worked</h3>
+<p>A command usually <strong>worked</strong> if:<br>
+- no error message appears<br>
+- you see output (text) that looks reasonable<br>
+- the prompt returns and waits for the next command</p>
+<p>Example of success:</p>
+<pre class="text"><code>Python 3.13.1</code></pre>
+<hr>
+</section>
+<section id="how-to-tell-if-a-command-failed" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-tell-if-a-command-failed">How to tell if a command failed</h3>
+<p>A command likely <strong>failed</strong> if: - you see words like <code>error</code>, <code>not found</code>, or <code>command not recognized</code><br>
+- the output looks red or alarming<br>
+- nothing happened and the prompt did not return</p>
+<p>Example of failure:</p>
+<pre class="text"><code>python : The term 'python' is not recognized</code></pre>
+<p>When this happens:<br>
+- stop<br>
+- read the message<br>
+- do <strong>not</strong> keep running commands blindly</p>
+<hr>
+</section>
+</section>
+<section id="part-d-where-am-i-folders" class="level2">
+<h2 class="anchored" data-anchor-id="part-d-where-am-i-folders">Part D — Where am I? (folders)</h2>
+<section id="check-your-current-folder" class="level3">
+<h3 class="anchored" data-anchor-id="check-your-current-folder">Check your current folder</h3>
+<section id="mac" class="level4">
+<h4 class="anchored" data-anchor-id="mac">Mac</h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="windows" class="level4">
+<h4 class="anchored" data-anchor-id="windows">Windows</h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This prints the folder you are currently in.</p>
+<hr>
+</section>
+</section>
+<section id="list-files-in-the-current-folder" class="level3">
+<h3 class="anchored" data-anchor-id="list-files-in-the-current-folder">List files in the current folder</h3>
+<section id="mac-1" class="level4">
+<h4 class="anchored" data-anchor-id="mac-1">Mac</h4>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="windows-1" class="level4">
+<h4 class="anchored" data-anchor-id="windows-1">Windows</h4>
+<div class="sourceCode" id="cb9"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You should recognize file names you expect to see.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="part-e-moving-between-folders" class="level2">
+<h2 class="anchored" data-anchor-id="part-e-moving-between-folders">Part E — Moving between folders</h2>
+<section id="change-folders-cd" class="level3">
+<h3 class="anchored" data-anchor-id="change-folders-cd">Change folders (<code>cd</code>)</h3>
+<p><code>cd</code> means <strong>change directory</strong>.</p>
+<section id="example-mac" class="level4">
+<h4 class="anchored" data-anchor-id="example-mac">Example (Mac)</h4>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Documents</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-windows" class="level4">
+<h4 class="anchored" data-anchor-id="example-windows">Example (Windows)</h4>
+<div class="sourceCode" id="cb11"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cd</span> Documents</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+</section>
+<section id="move-into-a-specific-folder" class="level3">
+<h3 class="anchored" data-anchor-id="move-into-a-specific-folder">Move into a specific folder</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> CLASS_FOLDER</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>(Replace <code>CLASS_FOLDER</code> with the actual folder name.)</p>
+<hr>
+</section>
+<section id="move-up-one-level" class="level3">
+<h3 class="anchored" data-anchor-id="move-up-one-level">Move up one level</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is useful if you accidentally went into the wrong folder.</p>
+<hr>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Folder names <strong>must match exactly</strong>, including capitalization.<br>
+If a folder name has spaces, it is harder to use in the terminal.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="part-f-stopping-a-command" class="level2">
+<h2 class="anchored" data-anchor-id="part-f-stopping-a-command">Part F — Stopping a command</h2>
+<p>If a command appears to be stuck or running too long:</p>
+<ul>
+<li>Press <strong>Ctrl + C</strong></li>
+</ul>
+<p>This safely stops the command.</p>
+<hr>
+</section>
+<section id="part-g-common-beginner-mistakes-and-fixes" class="level2">
+<h2 class="anchored" data-anchor-id="part-g-common-beginner-mistakes-and-fixes">Part G — Common beginner mistakes (and fixes)</h2>
+<section id="nothing-happened" class="level3">
+<h3 class="anchored" data-anchor-id="nothing-happened">“Nothing happened”</h3>
+<ul>
+<li>Did you press <strong>Enter</strong>?<br>
 </li>
-<li>Temporary files are deleted<br>
-</li>
-<li>Packages must be reinstalled each session<br>
-</li>
-<li>Internet connection required</li>
+<li>Is the cursor still blinking?</li>
 </ul>
 <hr>
 </section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">10. Summary</h2>
-<p>Google Colab allows you to:</p>
+<section id="command-not-found" class="level3">
+<h3 class="anchored" data-anchor-id="command-not-found">“Command not found”</h3>
 <ul>
-<li>Run Python without installing anything<br>
+<li>You may have typed the command incorrectly<br>
 </li>
-<li>Upload/open notebooks<br>
+<li>You may not have the software installed yet<br>
 </li>
-<li>Install packages<br>
-</li>
-<li>Work with Drive<br>
-</li>
-<li>Download your work</li>
+<li>Check spelling carefully</li>
 </ul>
-<p>It is a useful fallback or complementary environment for this course.</p>
+<hr>
+</section>
+<section id="permission-denied-maclinux" class="level3">
+<h3 class="anchored" data-anchor-id="permission-denied-maclinux">“Permission denied” (Mac/Linux)</h3>
+<ul>
+<li>This usually means you are trying to modify a protected folder<br>
+</li>
+<li>Move your project into <strong>Documents</strong> or your <strong>home folder</strong></li>
+</ul>
+<hr>
+</section>
+<section id="im-nervous-ill-break-something" class="level3">
+<h3 class="anchored" data-anchor-id="im-nervous-ill-break-something">I’m nervous I’ll break something</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You are <strong>very unlikely</strong> to damage your computer by running commands in this course.</p>
+</div>
+</div>
+<p>We do not:<br>
+- delete system files<br>
+- modify protected locations<br>
+- require administrator access</p>
+<hr>
+</section>
+<section id="final-confidence-check" class="level3">
+<h3 class="anchored" data-anchor-id="final-confidence-check">Final confidence check</h3>
+<p>Before moving on to the course setup guide, make sure you can:</p>
+<ul>
+<li>open Terminal or PowerShell</li>
+<li>run a command</li>
+<li>see output</li>
+<li>move into a folder</li>
+<li>stop a command with <code>Ctrl + C</code></li>
+</ul>
+<p>If you can do those things, you are ready.</p>
+<hr>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

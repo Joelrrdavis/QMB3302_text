@@ -2,7 +2,7 @@
 title: "Using Google Colab for This Course"
 ---
 
-# Overview
+## Overview
 
 Google Colab is a free, cloud-based environment for running Python notebooks.  
 You can use it from any computer without installing Python locally. It is especially helpful if:
@@ -15,7 +15,7 @@ This guide explains how to open Colab, upload or access notebooks, install packa
 
 ---
 
-# 1. What Is Google Colab?
+## 1. What Is Google Colab?
 
 Google Colab provides:
 
@@ -28,7 +28,7 @@ Colab notebooks use the `.ipynb` format, but you can also copy/paste Python code
 
 ---
 
-# 2. Opening Google Colab
+## 2. Opening Google Colab
 
 Go to:
 
@@ -43,7 +43,7 @@ You will see a window prompting you to:
 
 ---
 
-# 3. Option A — Create a New Notebook
+## 3. Option A — Create a New Notebook
 
 1. Go to **File → New Notebook**.  
 2. A new notebook will open with a default Python environment.  
@@ -53,7 +53,7 @@ Use **Shift + Enter** to run a cell.
 
 ---
 
-# 4. Option B — Upload a Notebook from Your Computer
+## 4. Option B — Upload a Notebook from Your Computer
 
 1. Go to **File → Upload Notebook**  
 2. Select the notebook you downloaded  
@@ -61,7 +61,7 @@ Use **Shift + Enter** to run a cell.
 
 ---
 
-# 5. Option C — Open a Notebook Directly from GitHub
+## 5. Option C — Open a Notebook Directly from GitHub
 
 1. Go to **File → Open Notebook**  
 2. Choose the **GitHub** tab  
@@ -76,7 +76,7 @@ https://github.com/<your-username>/undergrad-ai-course
 
 ---
 
-# 6. Installing Packages in Colab
+## 6. Installing Packages in Colab
 
 Colab comes with many Python packages preinstalled.
 
@@ -94,16 +94,16 @@ Or install from a requirements file:
 
 ---
 
-# 7. Working with Files
+## 7. Working with Files
 
-## Temporary Upload
+### Temporary Upload
 
 ```python
 from google.colab import files
 uploaded = files.upload()
 ```
 
-## Mount Google Drive
+### Mount Google Drive
 
 ```python
 from google.colab import drive
@@ -118,18 +118,18 @@ Your Drive will appear at:
 
 ---
 
-# 8. Saving Your Work
+## 8. Saving Your Work
 
-### Save to Drive  
+#### Save to Drive  
 **File → Save a copy in Drive**
 
-### Download  
+#### Download  
 **File → Download → .ipynb**  
 **File → Download → .py**
 
 ---
 
-# 9. Limitations of Colab
+## 9. Limitations of Colab
 
 - Sessions time out  
 - Temporary files are deleted  
@@ -138,7 +138,7 @@ Your Drive will appear at:
 
 ---
 
-# 10. Summary
+## 10. Summary
 
 Google Colab allows you to:
 

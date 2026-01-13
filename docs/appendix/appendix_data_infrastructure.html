@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Using Google Colab for This Course – Foundations of Analytics &amp; AI</title>
+<title>Appendix: Data Infrastructure and Databases for AI – Foundations of Analytics &amp; AI</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,6 +99,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="access.theme.scss">
@@ -207,21 +210,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#what-is-google-colab" id="toc-what-is-google-colab" class="nav-link" data-scroll-target="#what-is-google-colab">1. What Is Google Colab?</a></li>
-  <li><a href="#opening-google-colab" id="toc-opening-google-colab" class="nav-link" data-scroll-target="#opening-google-colab">2. Opening Google Colab</a></li>
-  <li><a href="#option-a-create-a-new-notebook" id="toc-option-a-create-a-new-notebook" class="nav-link" data-scroll-target="#option-a-create-a-new-notebook">3. Option A — Create a New Notebook</a></li>
-  <li><a href="#option-b-upload-a-notebook-from-your-computer" id="toc-option-b-upload-a-notebook-from-your-computer" class="nav-link" data-scroll-target="#option-b-upload-a-notebook-from-your-computer">4. Option B — Upload a Notebook from Your Computer</a></li>
-  <li><a href="#option-c-open-a-notebook-directly-from-github" id="toc-option-c-open-a-notebook-directly-from-github" class="nav-link" data-scroll-target="#option-c-open-a-notebook-directly-from-github">5. Option C — Open a Notebook Directly from GitHub</a></li>
-  <li><a href="#installing-packages-in-colab" id="toc-installing-packages-in-colab" class="nav-link" data-scroll-target="#installing-packages-in-colab">6. Installing Packages in Colab</a></li>
-  <li><a href="#working-with-files" id="toc-working-with-files" class="nav-link" data-scroll-target="#working-with-files">7. Working with Files</a>
+  <li><a href="#data-infrastructure-and-databases-for-ai" id="toc-data-infrastructure-and-databases-for-ai" class="nav-link active" data-scroll-target="#data-infrastructure-and-databases-for-ai">Data Infrastructure and Databases for AI</a></li>
+  <li><a href="#sql-vs.-nosql-databases" id="toc-sql-vs.-nosql-databases" class="nav-link" data-scroll-target="#sql-vs.-nosql-databases">1. SQL vs.&nbsp;NoSQL Databases</a>
   <ul class="collapse">
-  <li><a href="#temporary-upload" id="toc-temporary-upload" class="nav-link" data-scroll-target="#temporary-upload">Temporary Upload</a></li>
-  <li><a href="#mount-google-drive" id="toc-mount-google-drive" class="nav-link" data-scroll-target="#mount-google-drive">Mount Google Drive</a></li>
+  <li><a href="#sql-relational-databases" id="toc-sql-relational-databases" class="nav-link" data-scroll-target="#sql-relational-databases">SQL (Relational Databases)</a></li>
+  <li><a href="#nosql-non-relational-databases" id="toc-nosql-non-relational-databases" class="nav-link" data-scroll-target="#nosql-non-relational-databases">NoSQL (Non-Relational Databases)</a>
+  <ul class="collapse">
+  <li><a href="#comparison-table" id="toc-comparison-table" class="nav-link" data-scroll-target="#comparison-table">Comparison Table</a></li>
   </ul></li>
-  <li><a href="#saving-your-work" id="toc-saving-your-work" class="nav-link" data-scroll-target="#saving-your-work">8. Saving Your Work</a></li>
-  <li><a href="#limitations-of-colab" id="toc-limitations-of-colab" class="nav-link" data-scroll-target="#limitations-of-colab">9. Limitations of Colab</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">10. Summary</a></li>
+  </ul></li>
+  <li><a href="#acid-vs.-base-transaction-guarantees" id="toc-acid-vs.-base-transaction-guarantees" class="nav-link" data-scroll-target="#acid-vs.-base-transaction-guarantees">2. ACID vs.&nbsp;BASE: Transaction Guarantees</a>
+  <ul class="collapse">
+  <li><a href="#acid-sql" id="toc-acid-sql" class="nav-link" data-scroll-target="#acid-sql">ACID (SQL)</a></li>
+  <li><a href="#base-nosql" id="toc-base-nosql" class="nav-link" data-scroll-target="#base-nosql">BASE (NoSQL)</a></li>
+  </ul></li>
+  <li><a href="#vertical-vs.-horizontal-scaling" id="toc-vertical-vs.-horizontal-scaling" class="nav-link" data-scroll-target="#vertical-vs.-horizontal-scaling">3. Vertical vs.&nbsp;Horizontal Scaling</a>
+  <ul class="collapse">
+  <li><a href="#vertical-scaling-scale-up" id="toc-vertical-scaling-scale-up" class="nav-link" data-scroll-target="#vertical-scaling-scale-up">Vertical Scaling (“Scale Up”)</a></li>
+  <li><a href="#horizontal-scaling-scale-out" id="toc-horizontal-scaling-scale-out" class="nav-link" data-scroll-target="#horizontal-scaling-scale-out">Horizontal Scaling (“Scale Out”)</a>
+  <ul class="collapse">
+  <li><a href="#comparison" id="toc-comparison" class="nav-link" data-scroll-target="#comparison">Comparison</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#in-memory-vs.-disk-based-databases" id="toc-in-memory-vs.-disk-based-databases" class="nav-link" data-scroll-target="#in-memory-vs.-disk-based-databases">4. In-Memory vs.&nbsp;Disk-Based Databases</a>
+  <ul class="collapse">
+  <li><a href="#in-memory-databases" id="toc-in-memory-databases" class="nav-link" data-scroll-target="#in-memory-databases">In-Memory Databases</a></li>
+  <li><a href="#disk-based-databases" id="toc-disk-based-databases" class="nav-link" data-scroll-target="#disk-based-databases">Disk-Based Databases</a>
+  <ul class="collapse">
+  <li><a href="#table" id="toc-table" class="nav-link" data-scroll-target="#table">Table</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#open-source-vs.-proprietary-databases" id="toc-open-source-vs.-proprietary-databases" class="nav-link" data-scroll-target="#open-source-vs.-proprietary-databases">5. Open-Source vs.&nbsp;Proprietary Databases</a>
+  <ul class="collapse">
+  <li><a href="#open-source" id="toc-open-source" class="nav-link" data-scroll-target="#open-source">Open-Source</a></li>
+  <li><a href="#proprietary" id="toc-proprietary" class="nav-link" data-scroll-target="#proprietary">Proprietary</a>
+  <ul class="collapse">
+  <li><a href="#comparison-table-1" id="toc-comparison-table-1" class="nav-link" data-scroll-target="#comparison-table-1">Comparison Table</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#relational-database-structures-for-ai" id="toc-relational-database-structures-for-ai" class="nav-link" data-scroll-target="#relational-database-structures-for-ai">6. Relational Database Structures for AI</a>
+  <ul class="collapse">
+  <li><a href="#example-entityrelationship-diagram-erd" id="toc-example-entityrelationship-diagram-erd" class="nav-link" data-scroll-target="#example-entityrelationship-diagram-erd">Example Entity–Relationship Diagram (ERD)</a></li>
+  <li><a href="#primary-and-foreign-keys" id="toc-primary-and-foreign-keys" class="nav-link" data-scroll-target="#primary-and-foreign-keys">Primary and Foreign Keys</a></li>
+  <li><a href="#how-database-choice-shapes-ai-systems" id="toc-how-database-choice-shapes-ai-systems" class="nav-link" data-scroll-target="#how-database-choice-shapes-ai-systems">How Database Choice Shapes AI Systems</a>
+  <ul class="collapse">
+  <li><a href="#performance" id="toc-performance" class="nav-link" data-scroll-target="#performance"><strong>Performance</strong></a></li>
+  <li><a href="#scalability" id="toc-scalability" class="nav-link" data-scroll-target="#scalability"><strong>Scalability</strong></a></li>
+  <li><a href="#consistency-requirements" id="toc-consistency-requirements" class="nav-link" data-scroll-target="#consistency-requirements"><strong>Consistency Requirements</strong></a></li>
+  <li><a href="#data-structure-variety" id="toc-data-structure-variety" class="nav-link" data-scroll-target="#data-structure-variety"><strong>Data Structure Variety</strong></a></li>
+  <li><a href="#latency-and-throughput" id="toc-latency-and-throughput" class="nav-link" data-scroll-target="#latency-and-throughput"><strong>Latency and Throughput</strong></a></li>
+  </ul></li>
+  <li><a href="#real-time-vs.-batch-data-workflows-in-ai" id="toc-real-time-vs.-batch-data-workflows-in-ai" class="nav-link" data-scroll-target="#real-time-vs.-batch-data-workflows-in-ai">Real-Time vs.&nbsp;Batch Data Workflows in AI</a>
+  <ul class="collapse">
+  <li><a href="#real-time-ai" id="toc-real-time-ai" class="nav-link" data-scroll-target="#real-time-ai"><strong>Real-Time AI</strong></a></li>
+  <li><a href="#batch-ai" id="toc-batch-ai" class="nav-link" data-scroll-target="#batch-ai"><strong>Batch AI</strong></a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -230,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Using Google Colab for This Course</h1>
+<h1 class="title">Appendix: Data Infrastructure and Databases for AI</h1>
 </div>
 
 
@@ -247,157 +292,498 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>Google Colab is a free, cloud-based environment for running Python notebooks.<br>
-You can use it from any computer without installing Python locally. It is especially helpful if:</p>
+<section id="data-infrastructure-and-databases-for-ai" class="level1">
+<h1>Data Infrastructure and Databases for AI</h1>
+<p>Modern AI systems depend not only on algorithms and models, but on <strong>the data infrastructure that feeds them</strong>. Databases, storage systems, and data architectures determine:</p>
 <ul>
-<li>Your computer cannot install packages reliably<br>
+<li>how data is collected and stored,<br>
 </li>
-<li>You are troubleshooting your Python installation<br>
+<li>how quickly it can be retrieved,<br>
 </li>
-<li>You want quick access to a working Python environment</li>
+<li>what formats it can take,<br>
+</li>
+<li>how much data the system can scale to support,<br>
+</li>
+<li>and how reliable AI outputs will be.</li>
 </ul>
-<p>This guide explains how to open Colab, upload or access notebooks, install packages, work with files, and download your work.</p>
+<p>This appendix provides a conceptual overview of the major database paradigms, architectural choices, and design considerations relevant to AI work.</p>
 <hr>
 </section>
-<section id="what-is-google-colab" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-google-colab">1. What Is Google Colab?</h2>
-<p>Google Colab provides:</p>
+<section id="sql-vs.-nosql-databases" class="level1">
+<h1>1. SQL vs.&nbsp;NoSQL Databases</h1>
+<p>Databases can be broadly divided into <strong>relational (SQL)</strong> and <strong>non-relational (NoSQL)</strong> systems.</p>
+<section id="sql-relational-databases" class="level2">
+<h2 class="anchored" data-anchor-id="sql-relational-databases">SQL (Relational Databases)</h2>
 <ul>
-<li>A hosted Python runtime (no setup required)<br>
+<li>Organize data in <strong>tables</strong> with predefined <strong>schemas</strong>.<br>
 </li>
-<li>Built-in Jupyter-like notebook interface<br>
+<li>Use the SQL query language for joins, aggregations, and complex analytical queries.<br>
 </li>
-<li>Free GPU/TPU access (not required for this course but available)<br>
-</li>
-<li>Integration with Google Drive</li>
+<li>Strong support for <strong>ACID transactions</strong>, ensuring reliability and correctness.</li>
 </ul>
-<p>Colab notebooks use the <code>.ipynb</code> format, but you can also copy/paste Python code from <code>.py</code> files.</p>
-<hr>
+<p><strong>Examples:</strong> PostgreSQL, MySQL, Oracle.</p>
 </section>
-<section id="opening-google-colab" class="level2">
-<h2 class="anchored" data-anchor-id="opening-google-colab">2. Opening Google Colab</h2>
-<p>Go to:</p>
-<p><a href="https://colab.research.google.com/" class="uri">https://colab.research.google.com/</a></p>
-<p>You will see a window prompting you to:</p>
+<section id="nosql-non-relational-databases" class="level2">
+<h2 class="anchored" data-anchor-id="nosql-non-relational-databases">NoSQL (Non-Relational Databases)</h2>
 <ul>
-<li>Start a new notebook<br>
+<li>Use <strong>flexible data models</strong> such as documents (JSON), key–value stores, wide-column tables, or graph structures.<br>
 </li>
-<li>Upload a <code>.ipynb</code> file<br>
+<li>Designed for horizontal scaling, large volume, and rapidly changing or semi-structured data.<br>
 </li>
-<li>Open from Google Drive<br>
-</li>
-<li>Open from GitHub</li>
+<li>Often rely on <strong>BASE</strong> consistency models (eventual consistency).</li>
 </ul>
-<hr>
-</section>
-<section id="option-a-create-a-new-notebook" class="level2">
-<h2 class="anchored" data-anchor-id="option-a-create-a-new-notebook">3. Option A — Create a New Notebook</h2>
-<ol type="1">
-<li>Go to <strong>File → New Notebook</strong>.<br>
-</li>
-<li>A new notebook will open with a default Python environment.<br>
-</li>
-<li>You can copy/paste code from the course textbook or <code>.py</code> files.</li>
-</ol>
-<p>Use <strong>Shift + Enter</strong> to run a cell.</p>
-<hr>
-</section>
-<section id="option-b-upload-a-notebook-from-your-computer" class="level2">
-<h2 class="anchored" data-anchor-id="option-b-upload-a-notebook-from-your-computer">4. Option B — Upload a Notebook from Your Computer</h2>
-<ol type="1">
-<li>Go to <strong>File → Upload Notebook</strong><br>
-</li>
-<li>Select the notebook you downloaded<br>
-</li>
-<li>Colab will open it in a new tab</li>
-</ol>
-<hr>
-</section>
-<section id="option-c-open-a-notebook-directly-from-github" class="level2">
-<h2 class="anchored" data-anchor-id="option-c-open-a-notebook-directly-from-github">5. Option C — Open a Notebook Directly from GitHub</h2>
-<ol type="1">
-<li>Go to <strong>File → Open Notebook</strong><br>
-</li>
-<li>Choose the <strong>GitHub</strong> tab<br>
-</li>
-<li>Paste the repository URL<br>
-</li>
-<li>Select the notebook you want to open</li>
-</ol>
-<p>Example:</p>
-<pre><code>https://github.com/&lt;your-username&gt;/undergrad-ai-course</code></pre>
-<hr>
-</section>
-<section id="installing-packages-in-colab" class="level2">
-<h2 class="anchored" data-anchor-id="installing-packages-in-colab">6. Installing Packages in Colab</h2>
-<p>Colab comes with many Python packages preinstalled.</p>
-<p>To install additional packages:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install seaborn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Or install from a requirements file:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>r requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
-</section>
-<section id="working-with-files" class="level2">
-<h2 class="anchored" data-anchor-id="working-with-files">7. Working with Files</h2>
-<section id="temporary-upload" class="level3">
-<h3 class="anchored" data-anchor-id="temporary-upload">Temporary Upload</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> files</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>uploaded <span class="op">=</span> files.upload()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="mount-google-drive" class="level3">
-<h3 class="anchored" data-anchor-id="mount-google-drive">Mount Google Drive</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> drive</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>drive.mount(<span class="st">'/content/drive'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Your Drive will appear at:</p>
-<pre><code>/content/drive/MyDrive/</code></pre>
+<p><strong>Examples:</strong> MongoDB, Cassandra, DynamoDB, Redis.</p>
+<section id="comparison-table" class="level3">
+<h3 class="anchored" data-anchor-id="comparison-table">Comparison Table</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 37%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>SQL Databases</th>
+<th>NoSQL Databases</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Data Model</td>
+<td>Relational (tables)</td>
+<td>Flexible (document, key-value, graph)</td>
+</tr>
+<tr class="even">
+<td>Schema</td>
+<td>Fixed</td>
+<td>Schema-less or dynamic</td>
+</tr>
+<tr class="odd">
+<td>Consistency</td>
+<td>Strong (ACID)</td>
+<td>Often eventual (BASE)</td>
+</tr>
+<tr class="even">
+<td>Scaling</td>
+<td>Vertical; harder to distribute</td>
+<td>Horizontal; distributed by design</td>
+</tr>
+<tr class="odd">
+<td>Query Power</td>
+<td>Complex SQL queries</td>
+<td>Simple lookups, model-specific querying</td>
+</tr>
+<tr class="even">
+<td>Use Cases</td>
+<td>Transactions, structured analytics</td>
+<td>High-volume, unstructured or semi-structured data</td>
+</tr>
+</tbody>
+</table>
 <hr>
 </section>
 </section>
-<section id="saving-your-work" class="level2">
-<h2 class="anchored" data-anchor-id="saving-your-work">8. Saving Your Work</h2>
-<section id="save-to-drive" class="level4">
-<h4 class="anchored" data-anchor-id="save-to-drive">Save to Drive</h4>
-<p><strong>File → Save a copy in Drive</strong></p>
 </section>
-<section id="download" class="level4">
-<h4 class="anchored" data-anchor-id="download">Download</h4>
-<p><strong>File → Download → .ipynb</strong><br>
-<strong>File → Download → .py</strong></p>
-<hr>
-</section>
-</section>
-<section id="limitations-of-colab" class="level2">
-<h2 class="anchored" data-anchor-id="limitations-of-colab">9. Limitations of Colab</h2>
+<section id="acid-vs.-base-transaction-guarantees" class="level1">
+<h1>2. ACID vs.&nbsp;BASE: Transaction Guarantees</h1>
+<section id="acid-sql" class="level2">
+<h2 class="anchored" data-anchor-id="acid-sql">ACID (SQL)</h2>
+<p>ACID ensures <strong>reliable and correct transactions</strong>.</p>
 <ul>
-<li>Sessions time out<br>
+<li><strong>Atomicity:</strong> All or nothing<br>
 </li>
-<li>Temporary files are deleted<br>
+<li><strong>Consistency:</strong> Maintains valid states<br>
 </li>
-<li>Packages must be reinstalled each session<br>
+<li><strong>Isolation:</strong> Transactions don’t interfere<br>
 </li>
-<li>Internet connection required</li>
+<li><strong>Durability:</strong> Once committed, data persists</li>
+</ul>
+</section>
+<section id="base-nosql" class="level2">
+<h2 class="anchored" data-anchor-id="base-nosql">BASE (NoSQL)</h2>
+<p>BASE prioritizes <strong>scalability and availability</strong>:</p>
+<ul>
+<li><strong>Basically Available</strong><br>
+</li>
+<li><strong>Soft State</strong> (state may change over time)<br>
+</li>
+<li><strong>Eventual Consistency</strong> (nodes converge eventually)</li>
+</ul>
+<p>This tradeoff allows large-scale AI systems to ingest data at extremely high speed, but with weaker short-term consistency guarantees.</p>
+<hr>
+</section>
+</section>
+<section id="vertical-vs.-horizontal-scaling" class="level1">
+<h1>3. Vertical vs.&nbsp;Horizontal Scaling</h1>
+<section id="vertical-scaling-scale-up" class="level2">
+<h2 class="anchored" data-anchor-id="vertical-scaling-scale-up">Vertical Scaling (“Scale Up”)</h2>
+<ul>
+<li>Add CPU, RAM, or SSD to a single server.<br>
+</li>
+<li>Simpler to manage; strong for transactional workloads.<br>
+</li>
+<li>Limited by hardware ceilings.</li>
+</ul>
+<p><strong>Common with:</strong> SQL databases.</p>
+</section>
+<section id="horizontal-scaling-scale-out" class="level2">
+<h2 class="anchored" data-anchor-id="horizontal-scaling-scale-out">Horizontal Scaling (“Scale Out”)</h2>
+<ul>
+<li>Add more servers (nodes) in a distributed system.<br>
+</li>
+<li>Supports massive throughput and storage growth.<br>
+</li>
+<li>Requires sharding/partitioning and distributed consistency management.</li>
+</ul>
+<p><strong>Common with:</strong> NoSQL databases.</p>
+<section id="comparison" class="level3">
+<h3 class="anchored" data-anchor-id="comparison">Comparison</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th>Vertical Scaling</th>
+<th>Horizontal Scaling</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Approach</td>
+<td>Bigger machine</td>
+<td>More machines</td>
+</tr>
+<tr class="even">
+<td>Easy to Implement?</td>
+<td>Yes</td>
+<td>Harder (distributed systems)</td>
+</tr>
+<tr class="odd">
+<td>Limits</td>
+<td>Hardware</td>
+<td>Nearly unlimited growth</td>
+</tr>
+<tr class="even">
+<td>Examples</td>
+<td>PostgreSQL</td>
+<td>Cassandra, DynamoDB</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+</section>
+<section id="in-memory-vs.-disk-based-databases" class="level1">
+<h1>4. In-Memory vs.&nbsp;Disk-Based Databases</h1>
+<section id="in-memory-databases" class="level2">
+<h2 class="anchored" data-anchor-id="in-memory-databases">In-Memory Databases</h2>
+<ul>
+<li>Store data primarily in <strong>RAM</strong>.<br>
+</li>
+<li>Extremely fast; ideal for real-time AI use cases.<br>
+</li>
+<li>Volatile unless snapshots/logging enable persistence.</li>
+</ul>
+<p><strong>Examples:</strong> Redis, Memcached, SAP HANA.</p>
+</section>
+<section id="disk-based-databases" class="level2">
+<h2 class="anchored" data-anchor-id="disk-based-databases">Disk-Based Databases</h2>
+<ul>
+<li>Store data on <strong>HDD/SSD</strong>, with caching layers for speed.<br>
+</li>
+<li>Support larger datasets with strong persistence.<br>
+</li>
+<li>Slower than memory but more reliable for long-term storage.</li>
+</ul>
+<p><strong>Examples:</strong> PostgreSQL, MongoDB.</p>
+<section id="table" class="level3">
+<h3 class="anchored" data-anchor-id="table">Table</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 35%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th>In-Memory</th>
+<th>Disk-Based</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Speed</td>
+<td>Very fast</td>
+<td>Slower but persistent</td>
+</tr>
+<tr class="even">
+<td>Persistence</td>
+<td>Volatile unless logged</td>
+<td>Persistent by default</td>
+</tr>
+<tr class="odd">
+<td>Capacity</td>
+<td>Limited by RAM</td>
+<td>Scales via disk/sharding</td>
+</tr>
+<tr class="even">
+<td>Use Cases</td>
+<td>Caching, sessions, real-time AI</td>
+<td>Analytics, transactions, general data storage</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+</section>
+<section id="open-source-vs.-proprietary-databases" class="level1">
+<h1>5. Open-Source vs.&nbsp;Proprietary Databases</h1>
+<section id="open-source" class="level2">
+<h2 class="anchored" data-anchor-id="open-source">Open-Source</h2>
+<ul>
+<li>Free to use and modify<br>
+</li>
+<li>Supported by large communities<br>
+</li>
+<li>Highly extensible</li>
+</ul>
+<p><strong>Examples:</strong> PostgreSQL, MySQL, MongoDB</p>
+</section>
+<section id="proprietary" class="level2">
+<h2 class="anchored" data-anchor-id="proprietary">Proprietary</h2>
+<ul>
+<li>Enterprise-grade features<br>
+</li>
+<li>Vendor support<br>
+</li>
+<li>Integrated tooling for data governance and security</li>
+</ul>
+<p><strong>Examples:</strong> Oracle, SQL Server, Amazon Aurora</p>
+<section id="comparison-table-1" class="level3">
+<h3 class="anchored" data-anchor-id="comparison-table-1">Comparison Table</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Criteria</th>
+<th>Open-Source</th>
+<th>Proprietary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cost</td>
+<td>Free</td>
+<td>Paid</td>
+</tr>
+<tr class="even">
+<td>Support</td>
+<td>Community-driven</td>
+<td>Vendor-backed</td>
+</tr>
+<tr class="odd">
+<td>Extensibility</td>
+<td>Very customizable</td>
+<td>Controlled by vendor</td>
+</tr>
+<tr class="even">
+<td>Lock-in</td>
+<td>Low</td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+</section>
+<section id="relational-database-structures-for-ai" class="level1">
+<h1>6. Relational Database Structures for AI</h1>
+<p>Relational databases remain central in many AI pipelines because:</p>
+<ul>
+<li>They preserve <strong>data integrity</strong><br>
+</li>
+<li>They organize information predictably<br>
+</li>
+<li>They support analytical queries and feature generation</li>
+</ul>
+<section id="example-entityrelationship-diagram-erd" class="level2">
+<h2 class="anchored" data-anchor-id="example-entityrelationship-diagram-erd">Example Entity–Relationship Diagram (ERD)</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>A simplified relational schema for an e-commerce environment:</p>
+</div><div class="column" style="width:60%;">
+<div class="cell" data-layout-align="default">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>erDiagram</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    CUSTOMER ||--o{ ORDER : places</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    ORDER ||--o{ ORDERITEM : includes</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    PRODUCT ||--o{ ORDERITEM : listed_in</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    ORDER ||--o{ ORDERITEM : includes
+    PRODUCT ||--o{ ORDERITEM : listed_in
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="primary-and-foreign-keys" class="level2">
+<h2 class="anchored" data-anchor-id="primary-and-foreign-keys">Primary and Foreign Keys</h2>
+<p>Relational databases use <strong>primary keys (PK)</strong> to uniquely identify each record in a table, and <strong>foreign keys (FK)</strong> to establish relationships between tables. These relationships enable joins that enrich feature engineering and support downstream analytics.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 39%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Table</strong></th>
+<th><strong>Primary Key (PK)</strong></th>
+<th><strong>Foreign Keys (FK)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CUSTOMER</strong></td>
+<td><code>customer_id</code></td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><strong>ORDER</strong></td>
+<td><code>order_id</code></td>
+<td><code>customer_id</code></td>
+</tr>
+<tr class="odd">
+<td><strong>PRODUCT</strong></td>
+<td><code>product_id</code></td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><strong>ORDERITEM</strong></td>
+<td>(<code>order_id</code>, <code>product_id</code>)</td>
+<td><code>order_id</code>, <code>product_id</code></td>
+</tr>
+</tbody>
+</table>
+<p>These relationships enable integrated datasets where customer attributes, product attributes, and transactional details can be combined for analytics, feature engineering, and modeling.</p>
+<hr>
+</section>
+<section id="how-database-choice-shapes-ai-systems" class="level2">
+<h2 class="anchored" data-anchor-id="how-database-choice-shapes-ai-systems">How Database Choice Shapes AI Systems</h2>
+<p>Database choices directly influence the reliability, speed, and scalability of AI systems. Key dimensions include:</p>
+<section id="performance" class="level3">
+<h3 class="anchored" data-anchor-id="performance"><strong>Performance</strong></h3>
+<ul>
+<li>Slow reads or writes → delays in model training<br>
+</li>
+<li>Bottlenecks in feature retrieval → slower real-time predictions</li>
+</ul>
+</section>
+<section id="scalability" class="level3">
+<h3 class="anchored" data-anchor-id="scalability"><strong>Scalability</strong></h3>
+<ul>
+<li>AI systems accumulate <strong>massive datasets</strong></li>
+<li>NoSQL architectures often become necessary for high-volume logs, telemetry, or clickstream data</li>
+</ul>
+</section>
+<section id="consistency-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="consistency-requirements"><strong>Consistency Requirements</strong></h3>
+<ul>
+<li><strong>High-stakes domains</strong> (e.g., fraud detection, finance) require ACID guarantees<br>
+</li>
+<li><strong>Recommendation engines</strong> and other high-throughput AI applications can tolerate eventual consistency</li>
+</ul>
+</section>
+<section id="data-structure-variety" class="level3">
+<h3 class="anchored" data-anchor-id="data-structure-variety"><strong>Data Structure Variety</strong></h3>
+<ul>
+<li><strong>SQL</strong>: ideal for structured, tabular data<br>
+</li>
+<li><strong>NoSQL</strong>: more natural for JSON documents, event logs, sensor streams, and heterogeneous data</li>
+</ul>
+</section>
+<section id="latency-and-throughput" class="level3">
+<h3 class="anchored" data-anchor-id="latency-and-throughput"><strong>Latency and Throughput</strong></h3>
+<ul>
+<li><strong>Real-time inference</strong>: best supported by in-memory stores or fast NoSQL systems<br>
+</li>
+<li><strong>Batch training</strong>: disk-based analytical stores suffice and can handle larger volumes</li>
 </ul>
 <hr>
+</section>
+</section>
+<section id="real-time-vs.-batch-data-workflows-in-ai" class="level2">
+<h2 class="anchored" data-anchor-id="real-time-vs.-batch-data-workflows-in-ai">Real-Time vs.&nbsp;Batch Data Workflows in AI</h2>
+<section id="real-time-ai" class="level3">
+<h3 class="anchored" data-anchor-id="real-time-ai"><strong>Real-Time AI</strong></h3>
+<ul>
+<li>Continuous ingestion of events<br>
+</li>
+<li>Low-latency feature retrieval and decision-making<br>
+</li>
+<li>Powers applications like:
+<ul>
+<li>live recommendation engines<br>
+</li>
+<li>anomaly detection<br>
+</li>
+<li>streaming fraud detection<br>
+</li>
+<li>chatbots and conversational agents</li>
+</ul></li>
+</ul>
+</section>
+<section id="batch-ai" class="level3">
+<h3 class="anchored" data-anchor-id="batch-ai"><strong>Batch AI</strong></h3>
+<ul>
+<li>Periodic, scheduled data ingestion<br>
+</li>
+<li>Used for:
+<ul>
+<li>nightly or weekly model retraining<br>
+</li>
+<li>offline scoring<br>
+</li>
+<li>long-term historical analysis</li>
+</ul></li>
+</ul>
+<p>Most production AI systems use <strong>both</strong> approaches:<br>
+real-time for immediate decisions, and batch for maintaining or improving the models.</p>
+<hr>
+</section>
 </section>
 <section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">10. Summary</h2>
-<p>Google Colab allows you to:</p>
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>This appendix outlines core concepts in data infrastructure that support AI systems. Key takeaways include:</p>
 <ul>
-<li>Run Python without installing anything<br>
+<li><strong>No single database is “best”</strong> for all AI applications — choices should reflect workload, data structures, and consistency needs.<br>
 </li>
-<li>Upload/open notebooks<br>
+<li><strong>SQL databases</strong> excel for structured, transactional, strongly consistent data.<br>
 </li>
-<li>Install packages<br>
+<li><strong>NoSQL databases</strong> excel for scale, flexibility, and high-volume unstructured or semi-structured data.<br>
 </li>
-<li>Work with Drive<br>
+<li><strong>Scaling strategy</strong> matters: vertical scaling increases hardware capacity on one machine, while horizontal scaling distributes data across many nodes.<br>
 </li>
-<li>Download your work</li>
+<li><strong>In-memory vs.&nbsp;disk-based</strong> architectures determine latency, throughput, and persistence strategies.<br>
+</li>
+<li><strong>Data architecture decisions directly impact model quality</strong>, model-training speed, feature delivery, and operational reliability.</li>
 </ul>
-<p>It is a useful fallback or complementary environment for this course.</p>
+<p>AI models depend critically on the systems beneath them.<br>
+Understanding database infrastructure is therefore an essential component of understanding modern AI systems.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

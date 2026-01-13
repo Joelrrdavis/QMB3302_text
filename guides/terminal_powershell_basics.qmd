@@ -1,0 +1,332 @@
+---
+title: "Terminal & PowerShell Basics for This Course"
+---
+
+## Why this guide exists
+
+Many students in this course have **never used the terminal (Mac)** or **PowerShell (Windows)** before.  
+That is completely normal.
+
+This short guide teaches **only what you need** to successfully complete the course setup and run Python code later.
+
+You do **not** need to memorize commands or understand how your computer works internally.  
+You just need to be comfortable running a small number of commands and recognizing when something worked.
+
+---
+
+## What the terminal / PowerShell is (plain language)
+
+Think of the terminal as:
+
+> A text-based way to tell your computer exactly what to do, step by step.
+
+Instead of clicking buttons, you:  
+- type a command  
+- press **Enter**  
+- read the result  
+
+The terminal:  
+- works inside a **folder**  
+- runs commands **in order**  
+- shows errors immediately when something goes wrong  
+
+---
+
+## What this guide assumes (and teaches)
+
+By the end of this guide, you should be able to:  
+
+- open Terminal (Mac) or PowerShell (Windows)  
+- type or paste a command  
+- run a command  
+- know whether it worked  
+- know which folder you are in  
+- move into a different folder  
+
+---
+
+## Part A — Opening the terminal
+
+### macOS: Open Terminal  
+
+You have two common options:  
+
+#### Option 1: Spotlight (recommended)  
+
+1. Press `Command + Space`  
+2. Type **Terminal**  
+3. Press Enter  
+
+#### Option 2: Applications folder  
+
+- Applications → Utilities → Terminal  
+
+---
+
+### Windows: Open PowerShell  
+
+#### Option 1: Start Menu (recommended)  
+
+1. Click Start  
+2. Type **PowerShell**  
+3. Open **Windows PowerShell** or **Windows Terminal**  
+
+#### Option 2: Right-click menu (sometimes available)  
+
+- Right-click in a folder  
+- Choose **Open in Terminal** or **Open PowerShell here**  
+
+---
+
+::: {.callout-note}
+For this course, **Terminal (Mac)** and **PowerShell (Windows)** are equivalent.  
+All commands will be clearly labeled for your system.
+:::
+
+---
+
+## Part B — What you see when it opens
+
+When the terminal opens, you will see:  
+- a block of text  
+- a blinking cursor  
+
+Example (Mac):
+
+```text
+username@computer-name ~ %
+```
+
+Example (Windows):
+
+```text
+PS C:\Users\username>
+```
+
+This line is called the **prompt**.    
+It tells you:  
+- who you are  
+- which computer you are on  
+- **which folder you are currently in**  
+
+---
+
+### The most important rule
+
+::: {.callout-important}
+**Commands run in the current folder.**  
+If you are in the wrong folder, commands will fail or create files in the wrong place.
+:::
+
+---
+
+## Part C — Running commands
+
+### How to run a command
+
+1. Click in the terminal window
+2. Type (or paste) a command
+3. Press **Enter**
+
+Example:
+
+```bash
+python --version
+```
+
+The computer will respond immediately.
+
+---
+
+### Copying and pasting commands
+
+- **Mac:** `Cmd + C` (copy), `Cmd + V` (paste)
+- **Windows:** `Ctrl + C` (copy), `Ctrl + V` (paste)
+
+::: {.callout-tip}
+It is perfectly fine to **copy and paste commands** from course materials.  
+This is not cheating; it is standard practice.
+:::
+
+---
+
+### How to tell if a command worked
+
+A command usually **worked** if:  
+- no error message appears  
+- you see output (text) that looks reasonable  
+- the prompt returns and waits for the next command  
+
+Example of success:
+
+```text
+Python 3.13.1
+```
+
+---
+
+### How to tell if a command failed
+
+A command likely **failed** if:
+- you see words like `error`, `not found`, or `command not recognized`  
+- the output looks red or alarming  
+- nothing happened and the prompt did not return  
+
+Example of failure:
+
+```text
+python : The term 'python' is not recognized
+```
+
+When this happens:  
+- stop  
+- read the message  
+- do **not** keep running commands blindly  
+
+---
+
+## Part D — Where am I? (folders)
+
+### Check your current folder
+
+#### Mac
+
+```bash
+pwd
+```
+
+#### Windows
+
+```powershell
+cd
+```
+
+This prints the folder you are currently in.
+
+---
+
+### List files in the current folder
+
+#### Mac
+
+```bash
+ls
+```
+
+#### Windows
+
+```powershell
+dir
+```
+
+You should recognize file names you expect to see.
+
+---
+
+## Part E — Moving between folders
+
+### Change folders (`cd`)
+
+`cd` means **change directory**.
+
+#### Example (Mac)
+
+```bash
+cd Documents
+```
+
+#### Example (Windows)
+
+```powershell
+cd Documents
+```
+
+---
+
+### Move into a specific folder
+
+```bash
+cd CLASS_FOLDER
+```
+
+(Replace `CLASS_FOLDER` with the actual folder name.)
+
+---
+
+### Move up one level
+
+```bash
+cd ..
+```
+
+This is useful if you accidentally went into the wrong folder.
+
+---
+
+::: {.callout-warning}
+Folder names **must match exactly**, including capitalization.  
+If a folder name has spaces, it is harder to use in the terminal.
+:::
+
+---
+
+## Part F — Stopping a command
+
+If a command appears to be stuck or running too long:
+
+- Press **Ctrl + C**  
+
+This safely stops the command.
+
+---
+
+## Part G — Common beginner mistakes (and fixes)
+
+### “Nothing happened”
+
+- Did you press **Enter**?  
+- Is the cursor still blinking?  
+
+---
+
+### “Command not found”
+
+- You may have typed the command incorrectly  
+- You may not have the software installed yet  
+- Check spelling carefully  
+
+---
+
+### “Permission denied” (Mac/Linux)
+
+- This usually means you are trying to modify a protected folder  
+- Move your project into **Documents** or your **home folder**  
+
+---
+
+### I’m nervous I’ll break something
+
+::: {.callout-important}
+You are **very unlikely** to damage your computer by running commands in this course.
+:::
+
+We do not:  
+- delete system files  
+- modify protected locations  
+- require administrator access  
+
+---
+
+### Final confidence check
+
+Before moving on to the course setup guide, make sure you can:
+
+- open Terminal or PowerShell
+- run a command
+- see output
+- move into a folder
+- stop a command with `Ctrl + C`
+
+If you can do those things, you are ready.
+
+---
