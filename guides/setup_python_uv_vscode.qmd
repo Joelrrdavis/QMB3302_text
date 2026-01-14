@@ -135,6 +135,15 @@ winget install uv
 uv --version
 ```
 
+Some users may encounter an error here...something like : "multiple packages found matching input criteria...". If this happens, try using the ID field in the table that winget produces. For example:
+
+```powershell
+winget install astral-sh.uv
+uv --version
+```
+
+Note: this may take a little work, and some frustration. 
+
 ##### Option B — pipx
 
 ```powershell
