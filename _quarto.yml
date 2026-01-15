@@ -21,8 +21,8 @@ website:
 
   navbar:
     left:
-      - href: index.qmd
-        text: Home
+      #- href: index.qmd
+      #  text: Home
 
       - text: Textbook
         menu:

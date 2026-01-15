@@ -325,7 +325,7 @@ This avoids activation entirely and is often easier on Windows.
 
 ## Troubleshooting
 
-#### “ModuleNotFoundError”
+### “ModuleNotFoundError”
 
 ::: {.callout-warning}
 This almost always means Python is running **outside** the project environment.
@@ -338,7 +338,7 @@ Checklist:
 
 ---
 
-#### “uv: command not found”
+### “uv: command not found”
 
 - Restart your terminal
 - Re-run `pipx ensurepath` (pipx installs)

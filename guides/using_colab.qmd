@@ -120,10 +120,10 @@ Your Drive will appear at:
 
 ## 8. Saving Your Work
 
-#### Save to Drive  
+Save to Drive  
 **File → Save a copy in Drive**
 
-#### Download  
+Download  
 **File → Download → .ipynb**  
 **File → Download → .py**
 
