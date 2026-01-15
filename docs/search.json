@@ -67,7 +67,7 @@
     "href": "guides/using_colab.html#saving-your-work",
     "title": "Using Google Colab - Rapid Intro",
     "section": "8. Saving Your Work",
-    "text": "8. Saving Your Work\n\nSave to Drive\nFile → Save a copy in Drive\n\n\nDownload\nFile → Download → .ipynb\nFile → Download → .py"
+    "text": "8. Saving Your Work\nSave to Drive\nFile → Save a copy in Drive\nDownload\nFile → Download → .ipynb\nFile → Download → .py"
   },
   {
     "objectID": "guides/using_colab.html#limitations-of-colab",

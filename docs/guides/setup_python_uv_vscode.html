@@ -121,10 +121,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
-  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-textbook" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Textbook</span>
@@ -237,6 +233,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a>
   <ul class="collapse">
+  <li><a href="#modulenotfounderror" id="toc-modulenotfounderror" class="nav-link" data-scroll-target="#modulenotfounderror">“ModuleNotFoundError”</a></li>
+  <li><a href="#uv-command-not-found" id="toc-uv-command-not-found" class="nav-link" data-scroll-target="#uv-command-not-found">“uv: command not found”</a></li>
   <li><a href="#final-checkpoint" id="toc-final-checkpoint" class="nav-link" data-scroll-target="#final-checkpoint">Final checkpoint</a></li>
   </ul></li>
   </ul>
@@ -670,8 +668,8 @@ Tip
 </section>
 <section id="troubleshooting" class="level2">
 <h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
-<section id="modulenotfounderror" class="level4">
-<h4 class="anchored" data-anchor-id="modulenotfounderror">“ModuleNotFoundError”</h4>
+<section id="modulenotfounderror" class="level3">
+<h3 class="anchored" data-anchor-id="modulenotfounderror">“ModuleNotFoundError”</h3>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -688,8 +686,8 @@ Warning
 <p>Checklist: - VS Code interpreter is set to <code>.venv</code> - You are in the project folder - You activated <code>.venv</code> <strong>or</strong> used <code>uv run</code></p>
 <hr>
 </section>
-<section id="uv-command-not-found" class="level4">
-<h4 class="anchored" data-anchor-id="uv-command-not-found">“uv: command not found”</h4>
+<section id="uv-command-not-found" class="level3">
+<h3 class="anchored" data-anchor-id="uv-command-not-found">“uv: command not found”</h3>
 <ul>
 <li>Restart your terminal</li>
 <li>Re-run <code>pipx ensurepath</code> (pipx installs)</li>
