@@ -1,138 +1,101 @@
 ---
-title: "AI Systems: Data, Models, and Logic"
+title: "Data Pipelines and Decision Frameworks"
 ---
 
-## Data, Models, and Logic: Core Components of AI Systems
+## Data Pipelines and Decision Frameworks
+
+(this chapter still has draft content, and lot's of typo's.)
+
+### How Systems Acquire Data
+
+Analytics and AI systems need data. The data that is available, how timely and appropriate it is for the problem at hand, it's reliability and how representative that data is are all shaped by the **data aquisition** process. 
+
+**Operational systems** are common source of data. These include things like transaction records, customer relationship systems, resource planning platforms and web applications. In most of these examples, data could be thought of as the byproduct of the operation, rather than something collected for analysis. This is why many companies struggle to "bring their data together" into one cohesive form. It was not designed from the start to be a data pipeline, that happened later. This data is almost always rich, and high-volume, properties that AI systems like. It does however also reflect the incentives of the creators of those operation systems, the structures and limits they had in place when the system was first stood up. 
+
+Another good source of data can be found in **instrumention and logging** systems. Businesses frequently have logs of events withing their IT systems, such as website clicks, application use, or sensor readings from devices. To be of value, this kind of data requires thoughtful and deliberate design decisions- what should we record? At what level of detail?
+
+Data may also be acquired through **external sources**. These include public datasets, third-party data providers, APIs, and partner organizations. External data can enrich internal records by providing additional context, such as demographic information, market indicators, or environmental conditions. However, reliance on external sources introduces dependencies related to data quality, licensing, update frequency, and long-term availability.
+
+Across these sources, data can be collected in different modes. **Batch acquisition** involves gathering data at regular intervals, such as daily or weekly extracts, and is common in reporting and strategic analysis. **Streaming or real-time acquisition** captures data continuously as events occur and is often used in monitoring, personalization, or fraud detection systems. The choice between batch and streaming acquisition affects system responsiveness, complexity, and infrastructure requirements.
+
+Importantly, data acquisition is not a passive process. Decisions about what to collect, how to define variables, and how frequently to record observations embed assumptions into the system. These assumptions influence downstream analysis and decision-making, sometimes in subtle ways. Understanding how data enters a system is therefore a critical step in evaluating both the capabilities and the limitations of analytics and AI applications.
+
+### Data Preprocessing in Pipelines
+
+Raw data as it is collected is rarely ready for analysis or modeling. It may be noisy, incomplete, duplicated, or inconsistently formatted. **Data preprocessing** refers to the set of steps that transform raw inputs into data that is usable, reliable, and aligned with downstream decision needs.
+
+Typical preprocessing activities include:
+
+- **Data cleaning** – Fixing or removing errors, handling missing values, resolving inconsistent labels, and removing clear duplicates.  
+- **Data integration** – Combining data from multiple systems (e.g., CRM, ERP, web analytics) into a unified view, aligning schemas and resolving conflicts.  
+- **Data transformation** – Converting data into appropriate formats, encodings, or scales, such as normalizing numeric fields or standardizing date formats.  
+- **Data reduction** – Optionally reducing the number of variables or records to those that are relevant for the task.
+
+Preprocessing is often where the “**garbage in, garbage out**” principle is felt most strongly. Even sophisticated models cannot compensate for fundamentally low-quality inputs. In practice, a substantial portion of analytical effort is spent at this stage, ensuring that data is a trustworthy representation of the phenomena an organization intends to reason about.
+
+### Data Integration and Joinability
+
+Many high-value use cases depend not on a single source, but on **joining** multiple sources together. For example, an organization might combine:
+
+- customer attributes from a CRM system,  
+- transaction history from an order management system, and  
+- behavior data from a website or mobile app.
+
+For this to work, data must be **joinable**. That usually requires:
+
+- stable **identifiers** (such as customer_id, account_id, or device_id),  
+- compatible **time representations** (e.g., time zones, formats, and granularities), and  
+- aligned **schemas** (column meanings, units, and encodings).
+
+Breakdowns in integration—such as mismatched IDs or inconsistent definitions—can lead to partial or fragmented views of the same entity. From the perspective of a pipeline, this means the model and decision framework are operating on an incomplete or distorted view of reality, even if each underlying source system is functioning as designed.
+
+### Data Quality Dimensions
+
+Data quality is not a single property; it is multi-dimensional. Several recurring dimensions are especially important in analytics and AI contexts:
+
+| **Dimension**   | **Description**                                      | **Impact on AI Models**                                           |
+|----------------|-------------------------------------------------------|-------------------------------------------------------------------|
+| **Accuracy**    | Data correctly reflects real-world values.           | Inaccurate data leads to systematically wrong predictions.        |
+| **Completeness**| All required fields and records are present.         | Missing data creates gaps, biasing learning and evaluation.       |
+| **Consistency** | Data is uniform and free of internal contradictions. | Inconsistent values confuse models and degrade learned patterns.  |
+| **Timeliness**  | Data is up-to-date and available when needed.        | Stale data produces predictions that are misaligned with reality. |
+| **Validity**    | Data conforms to expected formats and allowed ranges.| Invalid values can break pipelines or skew learned relationships. |
+| **Uniqueness**  | Each entity is represented once (no unintended duplicates). | Duplicates can overweight specific patterns and induce bias. |
+
+Well-designed pipelines monitor and enforce these dimensions explicitly. From a systems perspective, **data quality is part of system design**, not an afterthought. Decisions about how strictly to enforce each dimension reflect domain constraints, regulatory requirements, and the tolerance for risk in downstream decisions.
+
+### Pipelines to Decision Frameworks
+
+A data pipeline does not exist in isolation. Its purpose is to support **decisions** by moving raw data through a sequence of steps that make it usable, interpretable, and actionable. Understanding how pipelines connect to decision frameworks helps clarify how analytics and AI systems translate information into outcomes.
+
+A typical data pipeline begins with acquisition and continues through stages such as cleaning, transformation, storage, and aggregation. Each stage prepares the data for the next, addressing issues such as missing values, inconsistent formats, or incompatible sources. While these steps are often treated as technical details, they play a central role in shaping what information ultimately reaches models and decision-makers.
+
+Once data has been processed, it enters the **decision framework**. This framework defines what decision is being supported or automated, what objectives are being pursued, and what constraints must be respected. In analytical settings, the output of the pipeline may feed dashboards or reports that inform human judgment. In AI-driven settings, processed data may be passed directly to models whose outputs trigger actions or recommendations.
+
+Decision frameworks also specify **how outputs are evaluated and acted upon**. This includes defining thresholds, priorities, costs, and trade-offs. For example, a predictive model may estimate risk, but the decision framework determines what level of risk warrants intervention, how limited resources are allocated, and what actions are permissible. These choices are rarely purely technical; they reflect organizational goals and values.
+
+The connection between pipelines and decision frameworks is often iterative rather than linear. As decisions are made and actions are taken, new data is generated and fed back into the pipeline. This feedback loop can be used to monitor performance, update models, or revise decision rules over time. Effective systems are designed with this dynamic interaction in mind rather than treating pipelines as one-time processes.
 
 <figure>
-  <img src="../assets/images/1_core_system.svg"
-       alt="Core AI system diagram showing a left-to-right flow: Data feeds into Model, Model feeds into Logic, and Logic triggers Action. Arrows indicate sequential flow from inputs to decisions.">
-  <figcaption>An AI system is best understood as the interaction of data, a model, and decision logic—rather than as a model alone.</figcaption>
+  <img src="../assets/images/1_feedback_loop.svg"
+       alt="Feedback loop diagram showing a decision system where data and a model produce actions, actions lead to outcomes or behavior, and a dashed arrow returns from outcomes back to data to indicate that deployment changes future data.">
+  <figcaption>Deployment creates feedback: actions change outcomes, and outcomes change the data the system learns from next.</figcaption>
 </figure>
 
+Viewing pipelines and decision frameworks together reinforces a systems-level perspective. Data pipelines make information available, but decision frameworks determine how that information is used. Both are necessary for analytics and AI systems to function effectively, and weaknesses in either can undermine the overall quality of decisions.
 
-### Data
+### Common Failure Modes
 
-Data forms the foundation of all analytics and AI systems. Regardless of how sophisticated a model or decision framework may be, the system's behavior is shaped by the data it has available. Understanding what data represents, how it is generated, and how it enters a system is a critical step toward understanding how AI systems operate.
+Even when individual components appear well designed, analytics and AI systems can fail in predictable ways. Many of these failures arise not from a single mistake, but from **misalignments between data pipelines, models, and decision frameworks**. Recognizing common failure modes makes it easier to diagnose problems and to design systems that are more resilient.
 
-Data takes many forms, such as transaction records, sensor readings, text documents, images, user interactions, or system logs. These sources differ in structure and complexity, but all capture past events or states that can be analyzed, modeled, and acted upon.
+One common failure occurs when **data pipelines drift away from decision needs**. Data may be collected because it is easy to capture rather than because it is relevant to the decision at hand. Over time, pipelines can accumulate variables and transformations that no longer align with current objectives, leading to analyses that are technically correct but operationally unhelpful.
 
-Data serves two very critical functions within AI systems. First, it is used to **train models**. Historical data provides the needed examples from which AI models learn patterns, relationships, or representations. The coverage and quality of this data directly influence what a model can learn and how well it generalizes *beyond* its training examples. Second, data is used during **system operation**, when new observations are provided as input to a trained model in order to generate predictions, classifications, or scores. The key thing to remember here is that errors, shifts, or inconsistencies in *either* training data *or* operational data can degrade system performance.
+Another frequent issue is **stale or delayed data**. When pipelines operate on batch schedules that are too slow for the decisions they support, outputs may be outdated by the time they are used. This is especially problematic in environments where conditions change rapidly. In such cases, system performance degrades not because models are inaccurate, but because they are responding to yesterday’s information.
 
-For the most part, data is not a complete or neutral representation of reality. Data always reflects the processes through which it was collected. These include factors such as organizational priorities, technical constraints, and human choices. Some phenomena are easier to observe and record than others, some groups or behaviors are overrepresented, and some variables serve only as indirect proxies for what is actually of interest. As a result, data commonly contains noise, omissions, and systematic issues that need to be addressed.
+Failures also occur when **feedback loops are ignored or misunderstood**. Decisions based on model outputs often influence future data, which in turn affects subsequent model behavior. If these feedback effects are not anticipated, systems can reinforce undesirable patterns, amplify noise, or create misleading signals that appear as genuine trends.
 
-From a systems perspective, data does not simply exist, ready to be used by whatever model is in place; it is **acquired and prepared**, in a process often referred to as a pipeline. These pipelines involve decisions about what to collect, how frequently to collect it, how it is stored, and how it is cleaned or transformed before use. Choices made at this stage can have consequences that propagate throughout the system. Often in surprising ways.
+A further source of failure lies in **overconfidence in automation**. When decision frameworks rely too heavily on model outputs without sufficient monitoring or human oversight, small errors can scale quickly. Conversely, overly cautious frameworks that ignore model outputs may negate potential benefits. Balancing automation and control is therefore a persistent design challenge.
 
-Practical analysis of AI systems begins with careful attention to the data being collected. Asking where data comes from, what it represents, and what it leaves out is often the most, and sometimes the only, reliable way to understand system behavior, anticipate limitations, and diagnose failures.
+Finally, failure can result from **organizational misalignment**. Even well-designed pipelines and models can produce poor outcomes if incentives, responsibilities, or governance structures are unclear. Decisions about who owns the data, who is accountable for outcomes, and how performance is evaluated play a critical role in system success.
 
-A defining challenge for artificial intelligence systems is operating under uncertainty. Data is often incomplete, noisy, delayed, or sometimes just plain wrong. Models can only approximate real-world processes. AI models don't try to eliminate uncertainty; they're designed to manage and act despite it, using probabilistic reasoning, learned patterns, and decision logic to operate in the imperfect environments they are placed in.
-
-### Models
-
-A **model** is a formal representation of a relationship between inputs and outputs. In analytics and AI systems, models are used to map the observed data (inputs) to predictions, classifications, scores, or other quantities (outputs) that support decision-making. Models provide a structured way to generalize from past observations to new situations.
-
-Data records what has already happened. The keyword to remember there is "already". **All data is from the past.** We can't collect data on the future. Models, on the other hand, encode assumptions about **how the world works**.   The model's assumptions might be explicit. Obvious assumptions that are easily interpretable, as in a linear equation that specifies how inputs specifically combine to produce some output. Alternatively, the model might be more implicit, as in a deep learning model that learns internal representations through training on large datasets. 
-
-In supervised learning models, data (the model's input) is used to adjust a model’s parameters so that its outputs align as closely as possible with the observed outcomes. This **training proceess** allows the model to capture the relationships and patterns in the data. Of course this also ties the model’s behavior to the quality and scope of the data it was trained on. A model cannot reliably learn patterns that are absent, rare, or systematically distorted in the training data.
-
-Once trained, a model is given *new inputs and uses the representation that is learned in training to generate an output. These outputs are often **probabilistic** rather than deterministic; the model can't "know" that the process it followed to map the input data and adjust its parameters is accurate or without loss. Instead of producing a single “correct” answer, a model may estimate the likelihood of different outcomes or assign scores that reflect a relative confidence in a range of outputs. This probabilistic nature is a strength as it allows models to operate under a high level of uncertainty. 
-
-Talking about models this way is perhaps a little dangerous. Models are not inherently intelligent or autonomous. They do not understand context, intent, or consequences in a human sense. Instead, they apply learned patterns mechanically, based on the structure learned in training. This allows them to perform exceptionally well within familiar contexts,  constraints, boundaries, and conditions, while behaving unpredictably when those conditions change.
-
-Models can recognize patterns, make estimates, and scale decisions, but they do so within the boundaries defined by the data available, training procedures, and design choices of the model's architect. 
-
-### Logic
-
-Data, and the models that result from training, are often the most visible and perhaps "coolest"  components of AI systems. But **logic** is what ultimately connects model outputs to real-world actions. Logic defines how predictions, scores, or classifications are interpreted and how they are translated into actions. 
-
-Logic is the **rules, thresholds, constraints, and objectives** that govern a system's behavior. These elements specify what should happen when a model produces a given output. In a system designed to detect credit card fraud, a model may provide a probability score that fraud has occurred. This score might then be compared against some threshold, the level at which the business would like to take Action on the prediction, and an alert triggered. These thresholds are not inherent to the model; the model just outputs the prediction. These thresholds are design choices that reflect priorities, trade-offs, and risk tolerance.
-
-Logic also encodes **business or organizational constraints**. All businesses and organizations face at least some constraints, such as resource limitations, regulatory requirements, fairness considerations, or cost structures. A model might identify many high-risk cases, but logic determines how many can realistically be acted upon, which cases are prioritized, and which actions are permissible. As a result, logic often mediates between what a model suggests and what an organization can or should do.
-
-Logic can be implemented in various ways. In some systems, it takes the form of explicit rules written by humans, "when we see x, we do y. In others, it can be nuanced, the logic embedded within optimization routines, data collection policies, or decision frameworks. Even when decisions by a system appear automated, they are often controlled by the logic layered on through past human judgments about acceptable or optimal outcomes.
-
-**Models produce outputs, but logic determines actions**. 
-
-### Where Systems Fail (Data, Model, Logic Layers)
-
-Failures in analytics and AI systems tend to come from breakdowns at one or more layers of the system: **data**, **models**, or **logic**. Understanding these layers and the interactions between them provides a structured way to diagnose system results and understand why a system produces a sub-optimal outcome.
-
-Missing values, measurement errors, outdated records, or shifts in underlying patterns over time can cause failures in this **data layer**. Because models base their learning here, weaknesses or problems at this layer often propagate forward, limiting what the system can achieve, regardless of how sophisticated the model is
-
-Failures at the **model layer** arise when the model itself is poorly matched to the problem, task, or data available. This may involve using overly simplistic models that fail to capture complex but important relationships. Conservatively, this is also sometimes the use of overly complex models that overfit historical patterns. Even well-designed models can fail when deployed in contexts that differ meaningfully from those seen during training.
-
-Poorly chosen or arbitrary thresholds, rigid rules that do not adapt to changing conditions, or decision criteria that prioritize the wrong objectives can all lead to failures inte *logic layer**. In these cases, a model may be producing reasonable outputs, but the surrounding logic causes undesirable actions or missed opportunities.
-
-These layers are closely intertwined. High data quality and a strong model can't save a system with seriously flawed logic. Likewise, careful logic cannot compensate for fundamentally uninformative or skewed data. 
-
-Considering failures throughout these different layers, allows for more precide intervention when models go wrong. Rather than asking whether an AI system “works” or “does not work,” it becomes possible to ask *where* it is breaking down and *why*. 
-
-## AI Paradigms Overview
-
-<figure>
-  <img src="../assets/images/1_qmb_nested_ai.svg"
-       alt="Conceptual diagram showing AI as the broad area, with machine learning as a subset and deep learning as a further subset.">
-  <figcaption>A useful shorthand: AI includes many approaches, with machine learning and deep learning representing increasingly specialized subsets.</figcaption>
-</figure>
-
-
-### Symbolic AI
-
-Symbolic systems rely on **explicit representations of knowledge** and **rule-based reasoning** to perform tasks. Contrast that with the types of systems we have been discussing so far, which use pattern recognition from data. These systems operate by manipulating inputs (words, categories,  etc) according to predefined rules.
-
-The main idea in this approach is that intelligent behavior can be produced by encoding expert knowledge directly, as a series of rules and decision points, into a system. This often takes the form of *if–then* rules. For example, a symbolic system might contain rules such as: *if a customer is late on payment and has missed multiple deadlines, then flag the account for review*. Each rule reflects a human and/or expert judgment that has been translated into formal logic.
-
-Symbolic AI systems tend to be **transparent and interpretable**. Because their reasoning process is explicitly defined, it is usually possible to trace back to how a particular outcome was reached by the system. This makes these symbolic approaches attractive, and sometimes even required, in domains where explanations, compliance, or auditability are critical. They perform best in environments where the rules are stable, the problem space and scope are well understood, and rarely change. 
-
-There are some obvious limitations. Writing and maintaining rules is labor-intensive, complex, and such systems almost always struggle to scale as complexity increases. They also perform poorly in settings characterized by ambiguity, noise, or high variability (change). 
-
-While symbolic AI is no longer the dominant approach/paradigm, it is still an important conceptual foundation. Many modern AI systems rely on symbolic components for managing constraints, validation, and control. 
-
-### Statistical and Machine Learning
-
-Statistical and machine learning approaches to AI differ from symbolic systems in a fundamental way: rather than relying on explicitly programmed rules, they **learn patterns from data**. These approaches use historical observations to infer relationships between inputs and outputs, allowing systems to generalize to new, unseen cases without being told exactly how to respond in every situation.
-
-At the heart of machine learning is the idea that patterns (sometimes referred to as in data can be captured through mathematical models whose parameters are estimated from examples. During training, a model is exposed to data and adjusted so that its predictions align with observed outcomes as closely as possible. This process allows the system to adapt to complex patterns that would be difficult to specify manually using rules alone.
-
-Machine learning methods are often categorized based on the type of feedback available during training. In **supervised learning**, the model is trained using labeled examples. Each case (row or example) has a number of inputs, and then a labeled output. So the model knows the correct output in advance, for a large set of training data. In **unsupervised learning**, the model works with unlabeled data to identify structure. There is a number of cases (rows or examples), but there is no "known" outcome of interest. These models are often used to identify clusters or latent patterns, without predefined outcomes. Both approaches are widely used in analytics and AI systems.
-
-Compared to symbolic AI, statistical and machine learning systems are, for the most part, more flexible and scalable. Think of the fundamental differences: for every pattern in the data, a symbolic AI system needs to write a rule. Often, a human expert has to help with that rule. This is incredibly costly in terms of time and effort, and is brittle when new data is introduced. A machine learning system can build a model on data, and then build a model again when new data is introduced. These approaches perform well in situations with large volumes of data and are more adaptable when there are subtle patterns or relationships in the data.   However, this flexibility comes with trade-offs. Learned models may be less transparent; you can't simply follow the system's logic in some of them as you would in Symbolic AI systems. In addition, they are obviously very sensitive to the data and the decisions made about which data to include/exclude. The data used is almost always a proxy for the data we would like to have. 
-
-Statistical and machine learning approaches do not eliminate the need for human judgment. There are performance consequences to choices about data, features, and model evaluation/metrics. One way to think about Machine learning is that it shifts the burden of specification from rule-writing to **data curation and model design**. Expertise is still needed in the system, just applied within a different area.
-
-This paradigm has become central to modern analytics and AI, forming the basis for many applications encountered in practice. It also provides the foundation for more advanced approaches, such as neural and deep learning.
-
-### Neural and Deep Learning
-
-<figure>
-  <img src="../assets/images/deep_neural_network_structure_input.svg"
-       alt="Neural Networks are comprised of inputs, hidden layers, and output layers. The image shows a series of neurons, which look like nodes or circles, that are connected with lines, called synapses. ">
-  <figcaption>Neural Networks are comprised of inputs, hidden layers, and output layers.</figcaption>
-</figure>
-
-Neural and deep learning approaches extend the main idea of statistical machine learning by focusing on **learning representations** directly from data. These models use layered computational structures, *neural networks*, to transform raw inputs into increasingly abstract representations. 
-
-The key idea behind neural networks is inspired by, but not equivalent to, biological neurons. A neural network is composed of interconnected units that apply weighted combinations of inputs, followed by nonlinear transformations. If this sounds complicated it is. Later chapters will dig into the concept in more depth. But the essential idea is that the layered structure allows these models to excel in tasks such as image recognition, speech processing, and natural language understanding, where relationships are difficult to specify explicitly.
-
-One defining characteristic of deep learning is its ability to operate on **unstructured or semi-structured data**, including images, audio, and text. In these domains, traditional statistical models often require extensive feature engineering. Deep learning models, by contrast, can learn relevant representations automatically from large volumes of data, reducing the need for manual (human) specification of features. One way to think of this, not exactly correct but probably good enough for beginners, is that these systems are like automated versions of symbolic AI. Their computing power allows for thousands, millions of rules to be created to extract even very faint patterns. 
-
-The ability to model complex relationships comes with a trade-off. Neural and deep learning models are **data-intensive and computationally demanding**. Training them often requires large datasets, which can be expensive to obtain, store, and manage. They also often need specialized and expensive computer hardware. These approaches are also less interpretable than simpler models. The very nature of the complex modeling process makes it more difficult to explain *why* a particular output was produced. 
-
-### Hybrid Systems in Practice
-
-<figure>
-  <img src="../assets/images/1_hybrid_paradigm.svg"
-       alt="Hybrid AI paradigm diagram showing learned components, rule-based components, and human oversight combining into a decision layer.">
-  <figcaption>Most real-world AI systems blend machine learning, rules, and human oversight rather than relying on a single paradigm.</figcaption>
-</figure>
-
-
-AI is usually deployed as a**hybrid system**, combining features of symbolic reasoning systems, machine learning approaches, and neural networks. Most systems don't rely on a single paradigm. Each approach contributes different strengths, and hybrid designs allow systems to balance performance, interpretability, and control. 
-
-Imagine a deep learning system, designed primarily for object recognition. This system might be used to search for specific objects within an image or a video. The output of that vision system might be fed into a rule-based layer, which might determine if the output meets a threshold for taking or triggering some specific action. That Action might be fed into a third system in that chain, and so on. Systems that focus on **perception and prediction** are frequently rated with **symbolic rule-based systems** to map operational constraints. 
-
-Hybrid systems also help address the practical limitations of individual approaches. Machine learning models can adapt to data and capture subtle patterns, but they may behave unpredictably outside familiar conditions. Symbolic logic imposes guardrails, prevents certain actions, or requires human review under specified circumstances. Statistical models can provide calibrated probabilities that support decision thresholds and prioritization. Together, these components form systems that are more robust than any single approach alone.
-
-Think of the AI system almost everyone has encountered: recommendation systems. These combine user data such as past purchases, preferences, and page views. When the model is run, a machine learning only model would show the items to the user with the highest probability of purchase, or the highest possible value. A more complex system might combine a symbolic approach and use a logic function to validate that the item is in stock and available, and that the recommendation does not violate any company rules or legal restrictions.  
-
-Intelligence, or what we may take for intelligence, in computer systems is in practice **distributed across different system components**. 
+Effective analytics and AI systems depend on alignment across technical and organizational dimensions. Addressing failures requires looking beyond individual components to the system as a whole. When data pipelines fail, the resulting problems often appear downstream, sometimes much later anbd in different areas of the business,  as inconsistent summaries, unstable predictions, or incorrect decisions.
