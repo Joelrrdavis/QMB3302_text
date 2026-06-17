@@ -2,11 +2,27 @@
 title: "Foundations of Analytics & AI"
 ---
 
-## Use of AI-Assisted Tools
+## Initial Use of AI-Assisted Tools
 
 The initial draft of this textbook was written by the author. Subsequent revisions and refinements were supported by digital writing tools, including large language models and grammar-support software, such as Grammarly, Gemini, ChatGPT, and various markdown, text and Python linters. These tools were used to assist with organization, revision, and clarity of exposition. All conceptual content, interpretations, examples, and pedagogical decisions remain the responsibility of the author, who reviewed, edited, and verified all material for accuracy and coherence.
 
-## 
+## A Note on How This Reference Text Was Updated and Edited (June 2026)
+
+This reference text was developed to support several courses I teach in analytics, artificial intelligence, business decision-making, and related areas. It is not intended to replace lectures, assigned readings, class discussion, technical documentation, or primary sources. Instead, it is meant to serve as a flexible reference: a place where students can review key ideas, revisit examples, clarify terminology, and connect course concepts across different contexts.
+
+The ideas, structure, examples, and instructional goals in this text are mine. However, the process by which the text was written has changed **substantially** over time. Earlier versions were drafted primarily by me, with AI-enabled writing assistants used in familiar ways: checking grammar, improving clarity, suggesting edits, and helping revise explanations. More recent versions have been produced through a different workflow. Much of the drafting, editing, formatting, and revision is now managed with the assistance of AI agents and sub-agents. My role is to direct the work, evaluate the output, revise where needed, and decide what belongs in the final version.
+
+That distinction matters. It would not be accurate to say that every sentence in this text was manually written by me in the traditional sense. Nor would it be accurate to say that the text was generated independently by AI. The work reflects a human-directed process in which I set the intellectual agenda, define the learning goals, select the examples, evaluate the explanations, and make the final editorial decisions. The writing itself is the product of collaboration between human judgment and AI-based computational systems.
+
+This process is not separate from the subject matter of my courses. Across analytics, artificial intelligence, management, strategy, marketing, and decision-making, we are confronting a basic shift in how intellectual work is produced. For much of modern education and professional life, creating an artifact such as this required humans to perform most of the visible labor directly: drafting, revising, organizing, formatting, checking, and refining. Increasingly, humans are moving into a different role. We design workflows, guide computational systems, evaluate outputs, make judgments, and take responsibility for the final artifact.
+
+That shift creates a real authorship tension. The ideas and instructional intent remain human. The language, organization, and intermediate production steps may be substantially shaped by AI systems. This does not make the work meaningless, but it does require honesty about how the work was created. Authorship is becoming less about personally executing every step of production and more about judgment, direction, accountability, and responsibility for the final result.
+
+Because this text was created with substantial AI assistance, readers should approach it with appropriate caution. I have reviewed and vetted the material, but I make no claim that it is free of errors, omissions, hallucinations, outdated information, or misleading interpretations. Students should treat this reference text as a learning aid, not as an unquestionable authority. When precision matters, especially for definitions, technical claims, empirical statements, legal or policy issues, or current examples, students should verify the material against lectures, assigned readings, documentation, primary sources, and their own reasoning.
+
+The purpose of this text is therefore twofold. First, it is a practical resource for learning course material. Second, it is an example of the kind of human-AI collaboration that you will increasingly encounter in academic, organizational, and professional settings. We should not treat AI systems as magical sources of truth. We should also not dismiss them as merely mechanical tools. They extend human capability in some ways, perhaps diminishing it in others, while also introducing new responsibilities. This text was created in that spirit, and in this co-authored messy world.
+
+-Dr. Joel Davis & ChatGPT June 2026
 
 ## Welcome
 
@@ -91,6 +107,8 @@ Task-oriented reference pages that support installation, configuration, and tech
 - [Installing Python, `uv`, and VS Code](guides/setup_python_uv_vscode.qmd)  
 - [Using Google Colab](guides/using_colab.qmd)  
 - [Optional: Stabilizing VS Code Updates](guides/vscode_update_stability.qmd)
+- [Troubleshooting Python Imports in UV](guides/troubleshooting-python-imports-uv.qmd)
+- [Troubleshooting Web Requests and Timeouts](guides/troubleshooting-web-requests-timeouts.qmd)
 
 ---
 

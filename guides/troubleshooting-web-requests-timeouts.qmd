@@ -1,0 +1,404 @@
+---
+title: "Troubleshooting Guide: Web Requests, URLs, and Timeout Errors"
+---
+
+## Authorship
+
+This guide was developed through a collaboration between the instructor and ChatGPT. The issues are common issues new beginners have. These are generalizes by the author. The initial troubleshooting steps were generated with assistance from ChatGPT, then tested, revised, and adapted by the instructor.
+
+## Overview
+
+This guide helps you troubleshoot errors that happen when Python tries to connect to a website, API, or online data source.
+
+These errors often appear when using packages such as:
+
+```python
+requests
+urllib
+pandas
+```
+
+You may see errors such as:
+
+```text
+TimeoutError: [Errno 60] Operation timed out
+requests.exceptions.Timeout
+requests.exceptions.ConnectionError
+HTTPError
+403 Forbidden
+404 Not Found
+```
+
+These errors are different from ordinary Python errors. In these cases, your code may be correct, but the website, API, network, or URL may be causing the problem.
+
+::: {.callout-note}
+A timeout does not always mean your code is wrong.
+
+It means Python tried to reach something online and did not get a response quickly enough.
+:::
+
+---
+
+## The Big Idea
+
+When Python reads from the internet, several things have to work at the same time:
+
+1. Your computer must be connected to the internet
+2. The URL must be correct
+3. The website or API must be online
+4. The website must allow your request
+5. The request must finish before Python gives up
+
+If any of these fail, you may get a timeout or connection error.
+
+---
+
+## Example Timeout Error
+
+A common timeout error looks like this:
+
+```text
+TimeoutError: [Errno 60] Operation timed out
+```
+
+This means Python waited for a response, but the response did not arrive in time.
+
+Common causes include:
+
+- The website is slow
+- The website is temporarily unavailable
+- The URL is incorrect
+- Your internet connection is unstable
+- The website blocks automated requests
+- The website requires headers, login credentials, or an API key
+- The request is too large
+- The server is busy
+
+---
+
+## Step 1: Check the URL in a Browser
+
+Before changing your code, copy the URL and open it in a browser.
+
+Ask:
+
+- Does the page load?
+- Does the URL go to the expected page?
+- Does the site require a login?
+- Does the site show an error page?
+- Does the site block access?
+
+If the URL does not work in a browser, it probably will not work in Python.
+
+::: {.callout-tip}
+Always test the URL in a browser first.
+
+This separates Python problems from website problems.
+:::
+
+---
+
+## Step 2: Use `requests` with a Timeout
+
+In this course, we will usually use `requests` for web requests.
+
+First, make sure it is installed in your uv project:
+
+```bash
+uv add requests
+```
+
+Then use a timeout in your code:
+
+```python
+import requests
+
+url = "https://example.com"
+
+response = requests.get(url, timeout=10)
+
+print(response.status_code)
+print(response.text[:500])
+```
+
+The `timeout=10` argument tells Python not to wait forever.
+
+::: {.callout-important}
+Do not leave web requests open-ended.
+
+Always use a timeout when writing code that connects to the internet.
+:::
+
+---
+
+## Step 3: Add Error Handling
+
+A better version of the code uses `try` and `except`.
+
+```python
+import requests
+
+url = "https://example.com"
+
+try:
+    response = requests.get(url, timeout=10)
+    response.raise_for_status()
+    print(response.text[:500])
+
+except requests.exceptions.Timeout:
+    print("The request timed out. The website may be slow or unavailable.")
+
+except requests.exceptions.ConnectionError:
+    print("Could not connect to the website. Check your internet connection or the URL.")
+
+except requests.exceptions.HTTPError as e:
+    print(f"The website returned an HTTP error: {e}")
+
+except requests.exceptions.RequestException as e:
+    print(f"The request failed: {e}")
+```
+
+This makes the error easier to understand.
+
+Instead of a long technical traceback, the code gives a clearer message about what may have gone wrong.
+
+---
+
+## Step 4: Check the Status Code
+
+When a website responds, it sends a status code.
+
+Some common status codes are:
+
+```text
+200 = success
+403 = forbidden
+404 = not found
+429 = too many requests
+500 = server error
+```
+
+You can check the status code with:
+
+```python
+import requests
+
+url = "https://example.com"
+
+response = requests.get(url, timeout=10)
+
+print(response.status_code)
+```
+
+If the status code is `200`, the request worked.
+
+If the status code is `404`, the URL was not found.
+
+If the status code is `403`, the website may be blocking automated requests.
+
+If the status code is `429`, you may be sending too many requests too quickly.
+
+---
+
+## Step 5: Try Headers if the Site Blocks the Request
+
+Some websites reject requests that do not look like they came from a browser.
+
+You can sometimes fix this by adding headers:
+
+```python
+import requests
+
+url = "https://example.com"
+
+headers = {
+    "User-Agent": "Mozilla/5.0"
+}
+
+response = requests.get(url, headers=headers, timeout=10)
+
+print(response.status_code)
+print(response.text[:500])
+```
+
+::: {.callout-warning}
+Headers may help with some websites, but they do not give you permission to scrape or access restricted content.
+
+Always follow the website’s rules, terms of service, and course instructions.
+:::
+
+---
+
+## Step 6: Slow Down Repeated Requests
+
+If you are requesting many pages, do not send requests too quickly.
+
+Use a short pause between requests:
+
+```python
+import time
+import requests
+
+urls = [
+    "https://example.com/page1",
+    "https://example.com/page2",
+    "https://example.com/page3"
+]
+
+for url in urls:
+    try:
+        response = requests.get(url, timeout=10)
+        print(url, response.status_code)
+        time.sleep(1)
+
+    except requests.exceptions.RequestException as e:
+        print(f"Request failed for {url}: {e}")
+```
+
+This is better for your code and more respectful to the website.
+
+---
+
+## Step 7: Distinguish Between Package Problems and Web Problems
+
+A package problem looks like this:
+
+```text
+ModuleNotFoundError: No module named 'requests'
+```
+
+That means Python cannot find the package.
+
+Fix it with:
+
+```bash
+uv add requests
+```
+
+A web problem looks like this:
+
+```text
+TimeoutError: [Errno 60] Operation timed out
+```
+
+That means Python found the package and ran the code, but the online request failed.
+
+::: {.callout-note}
+If the error mentions a missing module, check your Python environment.
+
+If the error mentions timeout, connection, status code, or HTTP, check the URL and web request.
+:::
+
+---
+
+## A General Web Request Checklist
+
+When a web request fails, work through this checklist.
+
+### 1. Does the URL work in a browser?
+
+Copy and paste the URL into a browser.
+
+### 2. Is your computer online?
+
+Check your internet connection.
+
+### 3. Did you install `requests`?
+
+```bash
+uv add requests
+```
+
+### 4. Are you running the code inside the uv environment?
+
+```bash
+uv run python your_file_name.py
+```
+
+### 5. Did you use a timeout?
+
+```python
+requests.get(url, timeout=10)
+```
+
+### 6. Did you check the status code?
+
+```python
+print(response.status_code)
+```
+
+### 7. Is the website blocking automated requests?
+
+Look for status codes such as:
+
+```text
+403
+429
+```
+
+### 8. Are you sending too many requests?
+
+If so, slow down using:
+
+```python
+time.sleep(1)
+```
+
+---
+
+## Recommended Starting Template
+
+Use this template when testing a new website or API:
+
+```python
+import requests
+
+url = "https://example.com"
+
+try:
+    response = requests.get(url, timeout=10)
+    print("Status code:", response.status_code)
+
+    response.raise_for_status()
+
+    print(response.text[:500])
+
+except requests.exceptions.Timeout:
+    print("The request timed out.")
+
+except requests.exceptions.ConnectionError:
+    print("Could not connect to the website.")
+
+except requests.exceptions.HTTPError as e:
+    print(f"HTTP error: {e}")
+
+except requests.exceptions.RequestException as e:
+    print(f"Request failed: {e}")
+```
+
+This template helps you identify whether the problem is:
+
+- the URL
+- the connection
+- the website
+- the status code
+- the request itself
+
+---
+
+## Final Check
+
+Before assuming your code is broken, confirm:
+
+- The URL works in a browser
+- `requests` is installed with `uv add requests`
+- You are running the file with `uv run`
+- Your request includes `timeout=10`
+- You checked the status code
+- The website allows the type of access you are attempting
+
+::: {.callout-important}
+Timeouts are part of working with real websites and APIs.
+
+The goal is not to avoid them completely. The goal is to handle them clearly and responsibly.
+:::

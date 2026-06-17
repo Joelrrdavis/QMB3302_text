@@ -1,0 +1,509 @@
+---
+title: "Troubleshooting Guide: Python Imports, Packages, and uv Environments"
+---
+
+## Authorship
+
+This guide was developed through a collaboration between the instructor and ChatGPT. The issues are common issues new beginners have. These are generalizes by the author. The initial troubleshooting steps were generated with assistance from ChatGPT, then tested, revised, and adapted by the instructor.
+
+## Overview
+
+This guide helps you fix common Python errors related to packages, imports, and project environments.
+
+These errors often look different, but many of them come from the same underlying problem:
+
+> Python is not running in the environment you think it is running in.
+
+This is especially common when using **VS Code**, **uv**, and project-based Python environments.
+
+By the end of this guide, you should be able to diagnose and fix errors such as:
+
+```text
+Import "pandas" could not be resolved from source
+Import "requests" could not be resolved from source
+ModuleNotFoundError: No module named 'pandas'
+ModuleNotFoundError: No module named 'requests'
+urllib is not defined
+AttributeError: partially initialized module 'pandas' has no attribute ...
+```
+
+::: {.callout-note}
+Most of these problems are not caused by broken code.
+
+They are usually caused by a mismatch between your project, your Python environment, and VS Code.
+:::
+
+---
+
+## The Big Idea
+
+In this course, each project should have its own Python environment.
+
+That environment lives inside your project folder:
+
+```text
+CLASS_FOLDER/
+├── pyproject.toml
+├── uv.lock
+├── .venv/
+└── your_python_file.py
+```
+
+The `.venv` folder contains the version of Python and the packages for this specific project.
+
+When you install packages with `uv`, they are installed into the project environment. For example:
+
+```bash
+uv add pandas requests
+```
+
+That command does two things:
+
+1. Installs the packages into the project environment
+2. Records them in your project files so the setup is repeatable
+
+::: {.callout-important}
+Do not use random package installation commands from the internet unless you understand where they are installing packages.
+
+For this course, prefer `uv add`.
+:::
+
+---
+
+## Before You Troubleshoot
+
+Start by making sure you are in the correct project folder.
+
+In your terminal, run:
+
+```bash
+pwd
+```
+
+On Windows PowerShell, you can also run:
+
+```powershell
+pwd
+```
+
+You should see the folder for your class project.
+
+Then check the files in the folder.
+
+macOS:
+
+```bash
+ls -la
+```
+
+Windows PowerShell:
+
+```powershell
+dir
+```
+
+You should see something like:
+
+```text
+pyproject.toml
+uv.lock
+.venv
+```
+
+::: {.callout-warning}
+If you do not see `pyproject.toml` or `.venv`, you are probably not in the correct project folder.
+:::
+
+---
+
+## Error 1: `Import "pandas" could not be resolved from source`
+
+You may see this warning in VS Code:
+
+```text
+Import "pandas" could not be resolved from source
+```
+
+This usually means VS Code cannot find `pandas` in the Python environment currently selected for the project.
+
+### Step 1: Add the package with uv
+
+From your project folder, run:
+
+```bash
+uv add pandas
+```
+
+If you also need `requests`, run:
+
+```bash
+uv add requests
+```
+
+Or install both at the same time:
+
+```bash
+uv add pandas requests
+```
+
+### Step 2: Test the package from the terminal
+
+Run:
+
+```bash
+uv run python -c "import pandas; print('pandas works')"
+```
+
+If that works, pandas is installed correctly in the uv project environment.
+
+### Step 3: Select the correct interpreter in VS Code
+
+In VS Code:
+
+1. Open the Command Palette
+   - macOS: `Cmd + Shift + P`
+   - Windows: `Ctrl + Shift + P`
+
+2. Search for:
+
+```text
+Python: Select Interpreter
+```
+
+3. Choose the interpreter inside your project’s `.venv` folder.
+
+It may look like this on macOS:
+
+```text
+.venv/bin/python
+```
+
+Or like this on Windows:
+
+```text
+.venv\Scripts\python.exe
+```
+
+::: {.callout-important}
+Installing the package and selecting the interpreter are separate steps.
+
+A package can be installed correctly, but VS Code may still be looking at the wrong Python environment.
+:::
+
+---
+
+## Error 2: `Import "requests" could not be resolved from source`
+
+This is the same kind of problem as the pandas error.
+
+Install `requests` with uv:
+
+```bash
+uv add requests
+```
+
+Then test it:
+
+```bash
+uv run python -c "import requests; print('requests works')"
+```
+
+If the terminal test works but VS Code still shows the warning, select the correct interpreter again:
+
+```text
+Python: Select Interpreter
+```
+
+Choose the interpreter inside `.venv`.
+
+---
+
+## Error 3: `ModuleNotFoundError: No module named 'pandas'`
+
+This error usually appears when you run the file.
+
+Example:
+
+```text
+ModuleNotFoundError: No module named 'pandas'
+```
+
+This means Python tried to run your code, but the environment it used did not have pandas installed.
+
+### Fix
+
+From the project folder, run:
+
+```bash
+uv add pandas
+uv run python your_file_name.py
+```
+
+Replace `your_file_name.py` with the name of your Python file.
+
+For example:
+
+```bash
+uv run python analysis.py
+```
+
+::: {.callout-tip}
+Using `uv run` is a good way to make sure your code runs inside the correct project environment.
+:::
+
+---
+
+## Error 4: `urllib is not defined`
+
+This is a code issue, not a package installation issue.
+
+You may see:
+
+```text
+NameError: name 'urllib' is not defined
+```
+
+This means your code uses `urllib`, but you did not import it.
+
+### Fix
+
+Add the correct import at the top of your file:
+
+```python
+import urllib.request
+```
+
+Then you can use:
+
+```python
+import urllib.request
+
+url = "https://example.com"
+response = urllib.request.urlopen(url)
+html = response.read()
+```
+
+However, in this course, we will often use `requests` instead because the syntax is simpler:
+
+```python
+import requests
+
+url = "https://example.com"
+response = requests.get(url)
+print(response.text)
+```
+
+If you use `requests`, make sure it has been added to your project:
+
+```bash
+uv add requests
+```
+
+---
+
+## Error 5: `AttributeError: partially initialized module 'pandas'`
+
+This error often looks confusing:
+
+```text
+AttributeError: partially initialized module 'pandas' has no attribute ...
+```
+
+The most common cause is that your Python file has the same name as a package.
+
+For example, this is a problem:
+
+```text
+pandas.py
+```
+
+If your file is named `pandas.py`, Python may try to import your file instead of the real pandas package.
+
+The same problem can happen with files named:
+
+```text
+requests.py
+urllib.py
+numpy.py
+matplotlib.py
+seaborn.py
+sklearn.py
+```
+
+### Fix
+
+Rename your file.
+
+Instead of:
+
+```text
+pandas.py
+```
+
+Use something like:
+
+```text
+pandas_practice.py
+data_analysis.py
+week03_analysis.py
+```
+
+Then delete the Python cache folder if it exists.
+
+macOS:
+
+```bash
+rm -rf __pycache__
+```
+
+Windows PowerShell:
+
+```powershell
+Remove-Item -Recurse -Force __pycache__
+```
+
+Then run your file again:
+
+```bash
+uv run python your_file_name.py
+```
+
+::: {.callout-warning}
+Avoid naming your files after Python packages.
+
+This is one of the most common beginner errors in Python.
+:::
+
+---
+
+## A General Import Error Checklist
+
+When you see an import error, work through this checklist in order.
+
+### 1. Am I in the correct folder?
+
+Run:
+
+```bash
+pwd
+```
+
+You should be inside your project folder.
+
+### 2. Does this project have a uv environment?
+
+Check for:
+
+```text
+pyproject.toml
+uv.lock
+.venv
+```
+
+If these are missing, you may not have initialized the project yet.
+
+Run:
+
+```bash
+uv init
+uv venv
+```
+
+### 3. Did I add the package with uv?
+
+For pandas:
+
+```bash
+uv add pandas
+```
+
+For requests:
+
+```bash
+uv add requests
+```
+
+For both:
+
+```bash
+uv add pandas requests
+```
+
+### 4. Can uv run the import?
+
+Test pandas:
+
+```bash
+uv run python -c "import pandas; print('pandas works')"
+```
+
+Test requests:
+
+```bash
+uv run python -c "import requests; print('requests works')"
+```
+
+### 5. Is VS Code using the `.venv` interpreter?
+
+In VS Code:
+
+```text
+Command Palette → Python: Select Interpreter
+```
+
+Choose the interpreter inside `.venv`.
+
+### 6. Did I accidentally name my file after a package?
+
+Bad file names include:
+
+```text
+pandas.py
+requests.py
+urllib.py
+numpy.py
+matplotlib.py
+```
+
+Rename the file and delete `__pycache__`.
+
+---
+
+## Recommended Workflow
+
+When starting work on this course project, use this pattern:
+
+```bash
+cd path/to/your/project
+uv add pandas requests
+uv run python your_file_name.py
+```
+
+When using VS Code:
+
+1. Open the whole project folder
+2. Select the `.venv` interpreter
+3. Run your Python file from inside the project folder
+
+::: {.callout-important}
+Open the folder, not just the file.
+
+VS Code needs the folder context to find the project environment.
+:::
+
+---
+
+## Final Check
+
+Before moving on, make sure all of these work:
+
+```bash
+uv --version
+uv run python --version
+uv run python -c "import pandas; print('pandas works')"
+uv run python -c "import requests; print('requests works')"
+```
+
+If those commands work, your uv environment is working.
+
+If VS Code still shows an import warning after these commands work, the problem is probably VS Code’s selected interpreter.
